@@ -1,5 +1,10 @@
 package com.football.manager.dao;
 
+import com.football.manager.domain.League;
+import com.football.manager.domain.Team;
+
+import java.util.List;
+
 /**
  * UserEntity: pawel
  * Date: 01.12.12
@@ -8,4 +13,6 @@ package com.football.manager.dao;
 public interface ITeamDao
 {
    Long getNextId();
+
+   List<Team> findTeamsFromLeague(League league);
 }

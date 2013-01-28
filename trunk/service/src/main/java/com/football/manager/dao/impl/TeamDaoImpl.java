@@ -2,9 +2,11 @@ package com.football.manager.dao.impl;
 
 import com.football.manager.dao.ITeamDao;
 import com.football.manager.domain.DataEntity;
+import com.football.manager.domain.League;
 import com.football.manager.domain.Team;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Property;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -35,5 +37,13 @@ public class TeamDaoImpl extends AbstractDaoImpl<Team> implements ITeamDao
       {
          return null;
       }
+   }
+
+   @Override
+   public List<Team> findTeamsFromLeague(League league)
+   {
+      Criteria criteria = createCriteria();
+      criteria.add(Restrictions.eq(Team.FIELD_LEAGUE, league));
+      return criteria.list();
    }
 }
