@@ -41,6 +41,7 @@ public class LeagueListPage extends AbstractPage
       super();
       mainContainer = new WebMarkupContainer("mainContainer");
       mainContainer.setOutputMarkupId(true);
+
       initView();
    }
 
@@ -49,6 +50,7 @@ public class LeagueListPage extends AbstractPage
       createNewLeagueWindow();
       createTableToolbar();
       createLeagueTable();
+
       add(mainContainer);
    }
 
@@ -73,7 +75,7 @@ public class LeagueListPage extends AbstractPage
          {
             League newLeague = new League();
             newLeague.setName(createNewLeagueWindow.getLeagueName());
-            newLeague = leagueService.save(newLeague);
+            leagueService.save(newLeague);
             target.add(mainContainer);
          }
       };
