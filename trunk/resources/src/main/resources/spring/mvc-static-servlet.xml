@@ -7,7 +7,6 @@
 
     <!-- WEB -->
     <mvc:resources mapping="css/**" location="classpath:css"/>
-    <mvc:resources mapping="img/**" location="classpath:img"/>
 
     <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter"/>
     <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping"/>
