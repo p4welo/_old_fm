@@ -1,6 +1,9 @@
 package com.football.manager.service;
 
+import com.football.manager.domain.League;
 import com.football.manager.domain.Team;
+
+import java.util.List;
 
 /**
  * UserEntity: pawel
@@ -10,4 +13,6 @@ import com.football.manager.domain.Team;
 public interface ITeamService extends IAbstractService<Team>
 {
    Team generate();
+
+   List<Team> findTeamsFromLeague(League league);
 }

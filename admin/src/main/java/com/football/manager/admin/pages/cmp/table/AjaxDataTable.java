@@ -1,7 +1,6 @@
 package com.football.manager.admin.pages.cmp.table;
 
 import com.football.manager.domain.DataEntity;
-import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.ajax.AjaxEventBehavior;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.extensions.ajax.markup.html.repeater.data.table.AjaxFallbackDefaultDataTable;
@@ -29,12 +28,6 @@ public class AjaxDataTable<T extends DataEntity> extends AjaxFallbackDefaultData
    protected Item<T> newRowItem(String id, int index, final IModel<T> model)
    {
       final Item<T> item = super.newRowItem(id, index, model);
-
-      item.add(new AttributeModifier("onmouseover",
-              "this.style.backgroundColor='#80b6ed';"));
-
-      item.add(new AttributeModifier("onmouseout",
-              "this.style.backgroundColor='';"));
 
       item.add(new AjaxEventBehavior("onclick")
       {

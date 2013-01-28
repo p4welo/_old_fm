@@ -2,12 +2,14 @@ package com.football.manager.service.impl;
 
 import com.football.manager.dao.IAbstractDao;
 import com.football.manager.dao.ITeamDao;
+import com.football.manager.domain.League;
 import com.football.manager.domain.Team;
 import com.football.manager.service.ITeamService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -29,6 +31,7 @@ public class TeamServiceImpl extends AbstractServiceImpl<Team> implements ITeamS
       return (IAbstractDao<Team>) teamDao;
    }
 
+   @Override
    @Transactional
    public Team generate()
    {
@@ -48,5 +51,12 @@ public class TeamServiceImpl extends AbstractServiceImpl<Team> implements ITeamS
       }
 
       return team;
+   }
+
+   @Override
+   @Transactional
+   public List<Team> findTeamsFromLeague(League league)
+   {
+      return teamDao.findTeamsFromLeague(league);
    }
 }

@@ -72,11 +72,11 @@ body {
     color: black;
 }
 
-#league_table {
+.ajax_table {
     border-collapse: collapse;
 }
 
-#league_table th a {
+.ajax_table th a {
     text-align: center;
     text-decoration: none;
     display: block;
@@ -84,33 +84,13 @@ body {
     width: 100%;
 }
 
-/*#league_table th a:hover {*/
-/*background-color: #8DC6FF;*/
-/*}*/
-
-/*.ajax_table tbody a {*/
-/*text-decoration: none;*/
-/*display: block;*/
-/*height: 100%;*/
-/*width: 100%;*/
-/*}*/
-
-/*.league_table th.wicket_orderUp {*/
-/*}*/
-
-/*.league_table th.wicket_orderDown {*/
-/*}*/
-
-#league_table th, td {
+.ajax_table th, td {
     border: 1px solid #d3d3d3;
     width: 300px;
 }
 
-#league_table th {
-    /*background-color: #5c89b3;*/
-}
-
-#left_content, #right_content {
+#left_content,
+#right_content {
     width: 49%;
 }
 
@@ -122,6 +102,36 @@ body {
     float: left;
 }
 
-div.wicket-modal div.w_blue div.w_top, div.wicket-modal div.w_blue div.w_bottom, div.wicket-modal div.w_blue div.w_topLeft, div.wicket-modal div.w_blue div.w_topRight, div.wicket-modal div.w_blue div.w_bottomRight, div.wicket-modal div.w_blue div.w_bottomLeft, div.wicket-modal div.w_blue a.w_close {
+.ajax_table tr.even:hover,
+.ajax_table tr.odd:hover,
+.ajax_table tr.table_body_row:hover {
+    background-color: #80b6ed;
+    cursor: pointer;
+}
+
+div.wicket-modal div.w_blue div.w_top,
+div.wicket-modal div.w_blue div.w_bottom,
+div.wicket-modal div.w_blue div.w_topLeft,
+div.wicket-modal div.w_blue div.w_topRight,
+div.wicket-modal div.w_blue div.w_bottomRight,
+div.wicket-modal div.w_blue div.w_bottomLeft,
+div.wicket-modal div.w_blue a.w_close {
     background-image: url("../img/frame-blue-1-alpha.png");
+}
+
+.feedbackPanel {
+    list-style: none;
+}
+
+.feedbackPanelERROR {
+    color: red;
+}
+
+.feedbackPanelSUCCESS {
+    color: #006400;
+}
+
+.form_table th,
+.form_table td {
+    border: none !important;
 }
