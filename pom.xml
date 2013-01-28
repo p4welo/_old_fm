@@ -29,6 +29,7 @@
     <modules>
         <module>domain</module>
         <module>service</module>
+        <module>resources</module>
         <module>client</module>
         <module>admin</module>
     </modules>
