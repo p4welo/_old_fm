@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+        <mapping class="com.football.manager.domain.League"/>
+        <mapping class="com.football.manager.domain.Manager"/>
+        <mapping class="com.football.manager.domain.MatchGame"/>
+        <mapping class="com.football.manager.domain.Name"/>
+        <mapping class="com.football.manager.domain.PlayerStats"/>
+        <mapping class="com.football.manager.domain.Player"/>
+        <mapping class="com.football.manager.domain.Position"/>
+        <mapping class="com.football.manager.domain.Season"/>
+        <mapping class="com.football.manager.domain.Surname"/>
+        <mapping class="com.football.manager.domain.Team"/>
+        <mapping class="com.football.manager.domain.TeamRecord"/>
+        <mapping class="com.football.manager.domain.UserEntity"/>
+        <mapping class="com.football.manager.domain.UserRole"/>
+    </session-factory>
+</hibernate-configuration>

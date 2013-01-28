@@ -1,0 +1,127 @@
+body {
+    padding: 0;
+    margin: 0;
+    font: 0.8em Tahoma, Geneva, sans-serif;
+}
+
+#menu_wrap {
+    background-color: black;
+    color: white;
+    position: relative;
+    width: 100%;
+    height: 30px;
+    margin-bottom: 15px;
+}
+
+#menu {
+    padding-top: 7px;
+    width: 900px;
+    margin: 0 auto;
+}
+
+#menu ul, #menu ul li {
+    display: block;
+    color: white;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#menu li {
+    display: inline;
+    float: left;
+    width: 115px;
+    white-space: nowrap;
+}
+
+#menu a {
+    color: #BBBBBB;
+    text-align: center;
+    text-decoration: none;
+}
+
+#menu a:hover {
+    color: white;
+}
+
+#menu a.active {
+    color: white;
+}
+
+#content_wrap {
+    position: relative;
+    width: 100%;
+}
+
+#content {
+    width: 900px;
+    margin: 0 auto;
+    min-height: 650px;
+}
+
+#content a {
+    color: #505050;
+    text-decoration: none;
+}
+
+#content a:hover {
+    color: black;
+}
+
+#content a.active {
+    color: black;
+}
+
+#league_table {
+    border-collapse: collapse;
+}
+
+#league_table th a {
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+
+/*#league_table th a:hover {*/
+/*background-color: #8DC6FF;*/
+/*}*/
+
+/*.ajax_table tbody a {*/
+/*text-decoration: none;*/
+/*display: block;*/
+/*height: 100%;*/
+/*width: 100%;*/
+/*}*/
+
+/*.league_table th.wicket_orderUp {*/
+/*}*/
+
+/*.league_table th.wicket_orderDown {*/
+/*}*/
+
+#league_table th, td {
+    border: 1px solid #d3d3d3;
+    width: 300px;
+}
+
+#league_table th {
+    /*background-color: #5c89b3;*/
+}
+
+#left_content, #right_content {
+    width: 49%;
+}
+
+#right_content {
+    float: right;
+}
+
+#left_content {
+    float: left;
+}
+
+div.wicket-modal div.w_blue div.w_top, div.wicket-modal div.w_blue div.w_bottom, div.wicket-modal div.w_blue div.w_topLeft, div.wicket-modal div.w_blue div.w_topRight, div.wicket-modal div.w_blue div.w_bottomRight, div.wicket-modal div.w_blue div.w_bottomLeft, div.wicket-modal div.w_blue a.w_close {
+    background-image: url("../img/frame-blue-1-alpha.png");
+}
