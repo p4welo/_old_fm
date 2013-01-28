@@ -1,0 +1,21 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:wicket="http://wicket.apache.org">
+<head>
+    <title>
+        <wicket:message key="page.title"/>
+    </title>
+</head>
+<body>
+<wicket:extend>
+    <h3>
+        <wicket:message key="page.header"/>
+    </h3>
+    <div wicket:id="createNewLeagueWindow"></div>
+    <div id="main_content" wicket:id="mainContainer">
+        <a wicket:id="newLeagueLink">
+            <wicket:message key="new.league.link.label"/>
+        </a>
+        <table id="league_table" cellspacing="0" wicket:id="table">[table]</table>
+    </div>
+</wicket:extend>
+</body>
+</html>
