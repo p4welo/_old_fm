@@ -4,6 +4,7 @@ body {
     font: 0.8em Tahoma, Geneva, sans-serif;
 }
 
+/*MENU*/
 #menu_wrap {
     background-color: black;
     color: white;
@@ -48,6 +49,7 @@ body {
     color: white;
 }
 
+/*MAIN CONTENT*/
 #content_wrap {
     position: relative;
     width: 100%;
@@ -72,23 +74,7 @@ body {
     color: black;
 }
 
-.ajax_table {
-    border-collapse: collapse;
-}
-
-.ajax_table th a {
-    text-align: center;
-    text-decoration: none;
-    display: block;
-    height: 100%;
-    width: 100%;
-}
-
-.ajax_table th, td {
-    border: 1px solid #d3d3d3;
-    width: 300px;
-}
-
+/*COLUMN CONTENT*/
 #left_content,
 #right_content {
     width: 49%;
@@ -102,6 +88,25 @@ body {
     float: left;
 }
 
+/*AJAX TABLE*/
+.ajax_table {
+    border-collapse: collapse;
+}
+
+.ajax_table th a {
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+
+.ajax_table th,
+.ajax_table td {
+    border: 1px solid #d3d3d3;
+    width: 300px;
+}
+
 .ajax_table tr.even:hover,
 .ajax_table tr.odd:hover,
 .ajax_table tr.table_body_row:hover {
@@ -109,6 +114,13 @@ body {
     cursor: pointer;
 }
 
+/*FORM TABLE*/
+.form_table th,
+.form_table td {
+    border: none !important;
+}
+
+/*MODAL WINDOW*/
 div.wicket-modal div.w_blue div.w_top,
 div.wicket-modal div.w_blue div.w_bottom,
 div.wicket-modal div.w_blue div.w_topLeft,
@@ -119,6 +131,7 @@ div.wicket-modal div.w_blue a.w_close {
     background-image: url("../img/frame-blue-1-alpha.png");
 }
 
+/*FEEDBACK PANEL*/
 .feedbackPanel {
     list-style: none;
 }
@@ -129,9 +142,4 @@ div.wicket-modal div.w_blue a.w_close {
 
 .feedbackPanelSUCCESS {
     color: #006400;
-}
-
-.form_table th,
-.form_table td {
-    border: none !important;
 }
