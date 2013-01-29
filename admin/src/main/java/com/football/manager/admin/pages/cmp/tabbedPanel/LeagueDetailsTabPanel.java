@@ -135,7 +135,7 @@ public class LeagueDetailsTabPanel extends Panel
             League selectedLeague = leagueDetailsPage.getSelectedLeague();
             leagueService.update(selectedLeague);
             success((new ResourceModel("successfully.updated.league.properties")).getObject());
-            target.add(mainContainer);
+            target.add(leagueDetailsPage.getMainContainer());
          }
       });
       FeedbackPanel feedbackPanel = new FeedbackPanel("feedback");
