@@ -3,10 +3,16 @@ package com.football.manager.service.impl;
 import com.football.manager.dao.IAbstractDao;
 import com.football.manager.dao.ISeasonDao;
 import com.football.manager.domain.Season;
+import com.football.manager.domain.Team;
+import com.football.manager.domain.TeamRecord;
 import com.football.manager.service.ISeasonService;
+import com.football.manager.service.ITeamRecordService;
+import com.football.manager.service.ITeamService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * UserEntity: pawel
@@ -21,9 +27,34 @@ public class SeasonServiceImpl extends AbstractServiceImpl<Season> implements IS
    @Resource
    private ISeasonDao seasonDao;
 
+   @Resource
+   private ITeamService teamService;
+
+   @Resource
+   private ITeamRecordService teamRecordService;
+
    @Override
    protected IAbstractDao<Season> getDao()
    {
       return (IAbstractDao<Season>) seasonDao;
+   }
+
+   @Override
+   @Transactional
+   public Season save(Season season)
+   {
+      season = super.save(season);
+      List<Team> teams = teamService.findTeamsFromLeague(season.getLeague());
+      for (Team team : teams)
+      {
+         TeamRecord teamRecord = new TeamRecord();
+         teamRecord.setSeason(season);
+         teamRecord.setTeam(team);
+         teamRecord.setTeamName(team.getName());
+
+//         TODO: Dokończyc - tworzenie teamrecord i rozszerzyc obiekt tr o pozostale atrybuty tabeli
+      }
+
+      return season;
    }
 }

@@ -101,4 +101,9 @@ public class LeagueDetailsPage extends AbstractPage
    {
       this.selectedLeague = selectedLeague;
    }
+
+   public WebMarkupContainer getMainContainer()
+   {
+      return mainContainer;
+   }
 }
