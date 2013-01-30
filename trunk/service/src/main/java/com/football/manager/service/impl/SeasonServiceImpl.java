@@ -51,8 +51,7 @@ public class SeasonServiceImpl extends AbstractServiceImpl<Season> implements IS
          teamRecord.setSeason(season);
          teamRecord.setTeam(team);
          teamRecord.setTeamName(team.getName());
-
-//         TODO: Dokończyc - tworzenie teamrecord i rozszerzyc obiekt tr o pozostale atrybuty tabeli
+         teamRecordService.save(teamRecord);
       }
 
       return season;

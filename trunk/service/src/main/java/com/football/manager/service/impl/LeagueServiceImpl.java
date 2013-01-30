@@ -3,9 +3,10 @@ package com.football.manager.service.impl;
 import com.football.manager.dao.IAbstractDao;
 import com.football.manager.dao.ILeagueDao;
 import com.football.manager.domain.League;
-import com.football.manager.domain.Season;
+import com.football.manager.domain.Team;
 import com.football.manager.service.ILeagueService;
 import com.football.manager.service.ISeasonService;
+import com.football.manager.service.ITeamService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,6 +26,9 @@ public class LeagueServiceImpl extends AbstractServiceImpl<League> implements IL
    @Resource
    private ISeasonService seasonService;
 
+   @Resource
+   private ITeamService teamService;
+
    @Override
    protected IAbstractDao<League> getDao()
    {
@@ -33,13 +37,22 @@ public class LeagueServiceImpl extends AbstractServiceImpl<League> implements IL
 
    @Override
    @Transactional
-   public League save(League league)
+   public League save(League league, boolean generateTeams)
    {
-      league = super.save(league);
-      Season season = new Season();
-      season.setNumber(1);
-      season.setLeague(league);
-      seasonService.save(season);
+      league = save(league);
+      if (generateTeams)
+      {
+         for (int i = 0; i < 15; i++)
+         {
+            Team team = teamService.generate();
+            team.setLeague(league);
+            teamService.save(team);
+         }
+      }
+//      Season season = new Season();
+//      season.setNumber(1);
+//      season.setLeague(league);
+//      seasonService.save(season);
       return league;
    }
 }

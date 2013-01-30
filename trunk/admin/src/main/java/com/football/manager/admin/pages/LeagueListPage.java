@@ -75,7 +75,7 @@ public class LeagueListPage extends AbstractPage
          {
             League newLeague = new League();
             newLeague.setName(createNewLeagueWindow.getLeagueName());
-            leagueService.save(newLeague);
+            leagueService.save(newLeague, createNewLeagueWindow.getGenerateTeams());
             target.add(mainContainer);
          }
       };

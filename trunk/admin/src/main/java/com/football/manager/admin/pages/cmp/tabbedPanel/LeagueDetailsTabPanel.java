@@ -94,7 +94,7 @@ public class LeagueDetailsTabPanel extends Panel
          protected void populateItem(ListItem<Team> item)
          {
             final Team team = item.getModelObject();
-            item.add(new Label("id", new PropertyModel<String>(team, Team.FIELD_ID)));
+//            item.add(new Label("id", new PropertyModel<String>(team, Team.FIELD_ID)));
             item.add(new Label("name", new PropertyModel<String>(team, Team.FIELD_NAME)));
             item.add(new Label("account", new PropertyModel<String>(team, Team.FIELD_ACCOUNT)));
          }
@@ -115,7 +115,7 @@ public class LeagueDetailsTabPanel extends Panel
             team.setLeague(leagueService.update(leagueDetailsPage.getSelectedLeague()));
             team = teamService.save(team);
             teamList.add(team);
-            target.add(mainContainer);
+            target.add(leagueDetailsPage.getMainContainer());
          }
       };
       add(createNewTeamWindow);
