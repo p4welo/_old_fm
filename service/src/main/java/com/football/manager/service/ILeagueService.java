@@ -9,4 +9,5 @@ import com.football.manager.domain.League;
  */
 public interface ILeagueService extends IAbstractService<League>
 {
+   League save(League league, boolean generateTeams);
 }

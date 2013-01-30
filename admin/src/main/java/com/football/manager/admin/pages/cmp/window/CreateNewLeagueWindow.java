@@ -1,7 +1,7 @@
 package com.football.manager.admin.pages.cmp.window;
 
 import org.apache.wicket.ajax.AjaxRequestTarget;
-import org.apache.wicket.markup.ComponentTag;
+import org.apache.wicket.markup.html.form.CheckBox;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
@@ -17,9 +17,15 @@ public class CreateNewLeagueWindow extends AbstractWindow
 {
    private String leagueName;
 
+   private boolean generateTeams;
+
    public CreateNewLeagueWindow(String id)
    {
       super(id, "create.new.league.title");
+      setUseInitialHeight(true);
+      setInitialHeight(300);
+      setInitialWidth(300);
+//      setCssClassName(getCssClassName() + " create_league_window");
    }
 
    @Override
@@ -36,6 +42,16 @@ public class CreateNewLeagueWindow extends AbstractWindow
    @Override
    protected void onCancel(AjaxRequestTarget target)
    {
+   }
+
+   public boolean getGenerateTeams()
+   {
+      return generateTeams;
+   }
+
+   public void setGenerateTeams(boolean generateTeams)
+   {
+      this.generateTeams = generateTeams;
    }
 
    public String getLeagueName()
@@ -59,19 +75,14 @@ public class CreateNewLeagueWindow extends AbstractWindow
 
       private void initView()
       {
-         Form form = new Form("form")
-         {
-            @Override
-            protected void onComponentTag(ComponentTag tag)
-            {
-               tag.put("class", "create_new_league_form");
-               super.onComponentTag(tag);
-            }
-         };
+         Form form = new Form("form");
          TextField nameField = new TextField<String>("nameField", new PropertyModel(
                  CreateNewLeagueWindow.this, "leagueName"));
          nameField.setRequired(true);
          form.add(nameField);
+         CheckBox generateTeamsField = new CheckBox("generateTeamsField",
+                 new PropertyModel<Boolean>(CreateNewLeagueWindow.this, "generateTeams"));
+         form.add(generateTeamsField);
          FeedbackPanel feedbackPanel = new FeedbackPanel("feedback");
          feedbackPanel.setOutputMarkupId(true);
          form.add(feedbackPanel);

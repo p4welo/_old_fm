@@ -128,7 +128,13 @@ div.wicket-modal div.w_blue div.w_topRight,
 div.wicket-modal div.w_blue div.w_bottomRight,
 div.wicket-modal div.w_blue div.w_bottomLeft,
 div.wicket-modal div.w_blue a.w_close {
-    background-image: url("../img/frame-blue-1-alpha.png");
+    background-image: url("../img/frame-blue-1-alpha.png") !important;
+}
+
+/*CREATE NEW LEAGUE WINDOW*/
+div.create_league_window {
+    width: 300px;
+    height: 250px;
 }
 
 /*FEEDBACK PANEL*/
