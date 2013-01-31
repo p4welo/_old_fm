@@ -1,7 +1,21 @@
 package com.football.manager.admin.pages.cmp.tabbedPanel;
 
+import com.football.manager.admin.pages.LeagueDetailsPage;
+import com.football.manager.domain.Season;
+import com.football.manager.domain.TeamRecord;
+import com.football.manager.service.ISeasonService;
+import com.football.manager.service.ITeamRecordService;
+import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.markup.html.WebMarkupContainer;
+import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.list.ListItem;
+import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.markup.html.panel.Panel;
+import org.apache.wicket.model.PropertyModel;
+import org.apache.wicket.spring.injection.annot.SpringBean;
+
+import java.util.List;
 
 /**
  * User: pawel
@@ -10,16 +24,32 @@ import org.apache.wicket.markup.html.panel.Panel;
  */
 public class SeasonDetailsTabPanel extends Panel
 {
+   @SpringBean
+   private ISeasonService seasonService;
+
+   @SpringBean
+   private ITeamRecordService teamRecordService;
+
    private final WebMarkupContainer mainContainer;
 
    private final WebMarkupContainer leftContainer;
 
    private final WebMarkupContainer rightContainer;
 
-   public SeasonDetailsTabPanel(String id)
+   private final LeagueDetailsPage leagueDetailsPage;
+
+   private Season selectedSeason;
+
+   private List<TeamRecord> teamRecords;
+
+   private ListView<TeamRecord> teamListView;
+
+   public SeasonDetailsTabPanel(String id, LeagueDetailsPage leagueDetailsPage)
    {
       super(id);
       setOutputMarkupId(true);
+      this.leagueDetailsPage = leagueDetailsPage;
+      selectedSeason = seasonService.getActiveSeason(leagueDetailsPage.getSelectedLeague());
 
       mainContainer = new WebMarkupContainer("mainContainer");
       mainContainer.setOutputMarkupId(true);
@@ -33,6 +63,51 @@ public class SeasonDetailsTabPanel extends Panel
 
    private void initView()
    {
-      //To change body of created methods use File | Settings | File Templates.
+      createTableToolbar(leftContainer);
+      createTeamRecordTable(leftContainer);
+
+      mainContainer.add(leftContainer);
+      mainContainer.add(rightContainer);
+      add(mainContainer);
+   }
+
+   private void createTeamRecordTable(WebMarkupContainer container)
+   {
+      teamRecords = teamRecordService.findTeamRecordsBySeason(selectedSeason);
+      teamListView = new ListView<TeamRecord>("teams", teamRecords)
+      {
+         @Override
+         protected void populateItem(ListItem<TeamRecord> item)
+         {
+            final TeamRecord teamRecord = item.getModelObject();
+            item.add(new Label("name", new PropertyModel<String>(teamRecord, TeamRecord.FIELD_TEAM_NAME)));
+            item.add(new Label("round", new PropertyModel<String>(teamRecord, TeamRecord.FIELD_ROUND_NUMBER)));
+            item.add(new Label("points", new PropertyModel<String>(teamRecord, TeamRecord.FIELD_POINTS_COUNT)));
+            item.add(new Label("goalsScored", new PropertyModel<String>(teamRecord, TeamRecord.FIELD_GOALS_SCORED)));
+            item.add(new Label("goalsAllowed", new PropertyModel<String>(teamRecord, TeamRecord.FIELD_GOALS_ALLOWED)));
+            item.add(new Label("goalsDifference",
+                    new PropertyModel<String>(teamRecord, TeamRecord.FIELD_GOALS_DIFFERENCE)));
+            item.add(new Label("wins", new PropertyModel<String>(teamRecord, TeamRecord.FIELD_WINS_COUNT)));
+            item.add(new Label("draws", new PropertyModel<String>(teamRecord, TeamRecord.FIELD_DRAWS_COUNT)));
+            item.add(new Label("loses", new PropertyModel<String>(teamRecord, TeamRecord.FIELD_LOSES_COUNT)));
+         }
+      };
+      container.add(teamListView);
+   }
+
+   private void createTableToolbar(WebMarkupContainer container)
+   {
+      container.add(new AjaxLink<Void>("newSeasonLink")
+      {
+         @Override
+         public void onClick(AjaxRequestTarget ajaxRequestTarget)
+         {
+//            TODO czy utworzyc nową ligę?
+            Season season = new Season();
+            season.setLeague(leagueDetailsPage.getSelectedLeague());
+            selectedSeason = seasonService.save(season);
+            ajaxRequestTarget.add(leagueDetailsPage.getMainContainer());
+         }
+      });
    }
 }

@@ -132,9 +132,15 @@ div.wicket-modal div.w_blue a.w_close {
 }
 
 /*CREATE NEW LEAGUE WINDOW*/
-div.create_league_window {
-    width: 300px;
-    height: 250px;
+div.create_league_window .w_content_container {
+    padding: 5px;
+    height: 120px !important;
+    width: 320px !important;
+}
+
+.wicket-modal form {
+    height: 120px !important;
+    width: 320px !important;
 }
 
 /*FEEDBACK PANEL*/

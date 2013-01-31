@@ -2,11 +2,14 @@ package com.football.manager.service.impl;
 
 import com.football.manager.dao.IAbstractDao;
 import com.football.manager.dao.ITeamRecordDao;
+import com.football.manager.domain.Season;
 import com.football.manager.domain.TeamRecord;
 import com.football.manager.service.ITeamRecordService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * UserEntity: pawel
@@ -25,5 +28,12 @@ public class TeamRecordServiceImpl extends AbstractServiceImpl<TeamRecord> imple
    protected IAbstractDao<TeamRecord> getDao()
    {
       return (IAbstractDao<TeamRecord>) teamRecordDao;
+   }
+
+   @Override
+   @Transactional
+   public List<TeamRecord> findTeamRecordsBySeason(Season season)
+   {
+      return teamRecordDao.findTeamRecordsBySeason(season);
    }
 }

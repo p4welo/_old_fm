@@ -70,7 +70,6 @@ public class LeagueDetailsTabPanel extends Panel
    private void initView()
    {
       createNewTeamWindow();
-      createPageHeader(mainContainer);
       createTableToolbar(leftContainer);
       createTeamTable(leftContainer);
       createLeaguePropertiesForm(rightContainer);
@@ -78,11 +77,6 @@ public class LeagueDetailsTabPanel extends Panel
       mainContainer.add(leftContainer);
       mainContainer.add(rightContainer);
       add(mainContainer);
-   }
-
-   private void createPageHeader(WebMarkupContainer container)
-   {
-      mainContainer.add(new Label("leagueName", new PropertyModel<String>(leagueDetailsPage, "selectedLeague.name")));
    }
 
    private void createTeamTable(WebMarkupContainer container)

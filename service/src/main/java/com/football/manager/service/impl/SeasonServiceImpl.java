@@ -2,6 +2,7 @@ package com.football.manager.service.impl;
 
 import com.football.manager.dao.IAbstractDao;
 import com.football.manager.dao.ISeasonDao;
+import com.football.manager.domain.League;
 import com.football.manager.domain.Season;
 import com.football.manager.domain.Team;
 import com.football.manager.domain.TeamRecord;
@@ -43,6 +44,7 @@ public class SeasonServiceImpl extends AbstractServiceImpl<Season> implements IS
    @Transactional
    public Season save(Season season)
    {
+      season.setNumber(seasonDao.getNextSeasonNumber(season.getLeague()));
       season = super.save(season);
       List<Team> teams = teamService.findTeamsFromLeague(season.getLeague());
       for (Team team : teams)
@@ -55,5 +57,19 @@ public class SeasonServiceImpl extends AbstractServiceImpl<Season> implements IS
       }
 
       return season;
+   }
+
+   @Override
+   @Transactional
+   public Season getActiveSeason(League league)
+   {
+      return seasonDao.getActiveSeason(league);
+   }
+
+   @Override
+   @Transactional
+   public Season getSeasonByNumber(League league, int number)
+   {
+      return seasonDao.getSeasonByNumber(league, number);
    }
 }

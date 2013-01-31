@@ -1,5 +1,6 @@
 package com.football.manager.service;
 
+import com.football.manager.domain.League;
 import com.football.manager.domain.Season;
 
 /**
@@ -9,4 +10,7 @@ import com.football.manager.domain.Season;
  */
 public interface ISeasonService extends IAbstractService<Season>
 {
+   Season getActiveSeason(League league);
+
+   Season getSeasonByNumber(League league, int number);
 }

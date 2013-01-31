@@ -77,7 +77,7 @@ public class LeagueDetailsPage extends AbstractPage
          @Override
          public Panel getPanel(String panelId)
          {
-            return new SeasonDetailsTabPanel(panelId);
+            return new SeasonDetailsTabPanel(panelId, LeagueDetailsPage.this);
          }
       });
 
