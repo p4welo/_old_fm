@@ -27,7 +27,7 @@ public class Season extends DataEntity
    @NotNull
    private int number;
 
-   @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+   @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
    @JoinColumn(nullable = false)
    @NotNull
    private League league;

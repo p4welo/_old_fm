@@ -46,6 +46,10 @@ public class SeasonDaoImpl extends AbstractDaoImpl<Season> implements ISeasonDao
       criteria.addOrder(Order.desc(Season.FIELD_NUMBER));
       criteria.setMaxResults(1);
       criteria.setProjection(Projections.property(Season.FIELD_NUMBER));
+      if (criteria.uniqueResult() == null)
+      {
+          return 1;
+      }
       return (Integer) criteria.uniqueResult() + 1;
    }
 }
