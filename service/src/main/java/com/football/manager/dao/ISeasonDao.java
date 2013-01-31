@@ -3,6 +3,8 @@ package com.football.manager.dao;
 import com.football.manager.domain.League;
 import com.football.manager.domain.Season;
 
+import java.util.List;
+
 /**
  * UserEntity: pawel
  * Date: 14.12.12
@@ -15,4 +17,6 @@ public interface ISeasonDao
    Season getSeasonByNumber(League league, int number);
 
    int getNextSeasonNumber(League league);
+
+   List<Season> getLeagueSeasons(League league);
 }

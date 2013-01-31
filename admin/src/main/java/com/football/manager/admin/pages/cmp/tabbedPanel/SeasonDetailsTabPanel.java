@@ -9,6 +9,7 @@ import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.markup.html.panel.Panel;
@@ -44,11 +45,16 @@ public class SeasonDetailsTabPanel extends Panel
 
    private ListView<TeamRecord> teamListView;
 
+   private DropDownChoice<Season> seasons;
+
+   private List<Season> allSeasons;
+
    public SeasonDetailsTabPanel(String id, LeagueDetailsPage leagueDetailsPage)
    {
       super(id);
       setOutputMarkupId(true);
       this.leagueDetailsPage = leagueDetailsPage;
+      allSeasons = seasonService.getLeagueSeasons(leagueDetailsPage.getSelectedLeague());
       selectedSeason = seasonService.getActiveSeason(leagueDetailsPage.getSelectedLeague());
 
       mainContainer = new WebMarkupContainer("mainContainer");
@@ -64,6 +70,7 @@ public class SeasonDetailsTabPanel extends Panel
    private void initView()
    {
       createTableToolbar(leftContainer);
+      createSeasonsCombo(leftContainer);
       createTeamRecordTable(leftContainer);
 
       mainContainer.add(leftContainer);
@@ -71,10 +78,22 @@ public class SeasonDetailsTabPanel extends Panel
       add(mainContainer);
    }
 
+   private void createSeasonsCombo(WebMarkupContainer container)
+   {
+
+      seasons = new DropDownChoice<Season>(
+              "seasons",
+              new PropertyModel<Season>(this, "selectedSeason"),
+              new PropertyModel(this, "allSeasons"));
+      seasons.setOutputMarkupId(true);
+      container.add(seasons);
+   }
+
    private void createTeamRecordTable(WebMarkupContainer container)
    {
       teamRecords = teamRecordService.findTeamRecordsBySeason(selectedSeason);
-      teamListView = new ListView<TeamRecord>("teams", teamRecords)
+      teamListView = new ListView<TeamRecord>("teams",
+              new PropertyModel<List<? extends TeamRecord>>(this, "teamRecords"))
       {
          @Override
          protected void populateItem(ListItem<TeamRecord> item)
@@ -106,8 +125,29 @@ public class SeasonDetailsTabPanel extends Panel
             Season season = new Season();
             season.setLeague(leagueDetailsPage.getSelectedLeague());
             selectedSeason = seasonService.save(season);
+            teamRecords = teamRecordService.findTeamRecordsBySeason(selectedSeason);
             ajaxRequestTarget.add(leagueDetailsPage.getMainContainer());
          }
       });
+   }
+
+   public Season getSelectedSeason()
+   {
+      return selectedSeason;
+   }
+
+   public void setSelectedSeason(Season selectedSeason)
+   {
+      this.selectedSeason = selectedSeason;
+   }
+
+   public List<TeamRecord> getTeamRecords()
+   {
+      return teamRecords;
+   }
+
+   public void setTeamRecords(List<TeamRecord> teamRecords)
+   {
+      this.teamRecords = teamRecords;
    }
 }

@@ -72,4 +72,11 @@ public class SeasonServiceImpl extends AbstractServiceImpl<Season> implements IS
    {
       return seasonDao.getSeasonByNumber(league, number);
    }
+
+   @Override
+   @Transactional
+   public List<Season> getLeagueSeasons(League league)
+   {
+      return seasonDao.getLeagueSeasons(league);
+   }
 }

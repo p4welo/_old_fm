@@ -9,6 +9,8 @@ import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * UserEntity: pawel
  * Date: 14.12.12
@@ -48,8 +50,17 @@ public class SeasonDaoImpl extends AbstractDaoImpl<Season> implements ISeasonDao
       criteria.setProjection(Projections.property(Season.FIELD_NUMBER));
       if (criteria.uniqueResult() == null)
       {
-          return 1;
+         return 1;
       }
       return (Integer) criteria.uniqueResult() + 1;
+   }
+
+   @Override
+   public List<Season> getLeagueSeasons(League league)
+   {
+      Criteria criteria = createCriteria();
+      criteria.add(Restrictions.eq(Season.FIELD_LEAGUE, league));
+      criteria.addOrder(Order.asc(Season.FIELD_NUMBER));
+      return criteria.list();
    }
 }
