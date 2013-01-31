@@ -3,6 +3,8 @@ package com.football.manager.service;
 import com.football.manager.domain.League;
 import com.football.manager.domain.Season;
 
+import java.util.List;
+
 /**
  * UserEntity: pawel
  * Date: 14.12.12
@@ -13,4 +15,6 @@ public interface ISeasonService extends IAbstractService<Season>
    Season getActiveSeason(League league);
 
    Season getSeasonByNumber(League league, int number);
+
+   List<Season> getLeagueSeasons(League league);
 }
