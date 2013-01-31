@@ -29,6 +29,12 @@ public class CreateNewLeagueWindow extends AbstractWindow
    }
 
    @Override
+   public String getCssClassName()
+   {
+      return super.getCssClassName() + " create_league_window";
+   }
+
+   @Override
    protected Panel getWindowPanel(String id)
    {
       return new CreateNewLeaguePanel(id);

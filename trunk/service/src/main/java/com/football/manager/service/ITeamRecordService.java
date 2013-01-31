@@ -1,6 +1,9 @@
 package com.football.manager.service;
 
+import com.football.manager.domain.Season;
 import com.football.manager.domain.TeamRecord;
+
+import java.util.List;
 
 /**
  * UserEntity: pawel
@@ -9,4 +12,5 @@ import com.football.manager.domain.TeamRecord;
  */
 public interface ITeamRecordService extends IAbstractService<TeamRecord>
 {
+   List<TeamRecord> findTeamRecordsBySeason(Season selectedSeason);
 }
