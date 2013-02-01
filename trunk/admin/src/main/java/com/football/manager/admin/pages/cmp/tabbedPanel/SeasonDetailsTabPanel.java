@@ -6,9 +6,11 @@ import com.football.manager.domain.TeamRecord;
 import com.football.manager.service.ISeasonService;
 import com.football.manager.service.ITeamRecordService;
 import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.ajax.form.AjaxFormComponentUpdatingBehavior;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.form.ChoiceRenderer;
 import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
@@ -84,7 +86,17 @@ public class SeasonDetailsTabPanel extends Panel
       seasons = new DropDownChoice<Season>(
               "seasons",
               new PropertyModel<Season>(this, "selectedSeason"),
-              new PropertyModel(this, "allSeasons"));
+              new PropertyModel(this, "allSeasons"), new ChoiceRenderer<Season>(Season.FIELD_NUMBER));
+      seasons.add(new AjaxFormComponentUpdatingBehavior("change")
+      {
+
+         @Override
+         protected void onUpdate(AjaxRequestTarget target)
+         {
+            teamRecords = teamRecordService.findTeamRecordsBySeason(selectedSeason);
+            target.add(leagueDetailsPage.getMainContainer());
+         }
+      });
       seasons.setOutputMarkupId(true);
       container.add(seasons);
    }
@@ -125,6 +137,7 @@ public class SeasonDetailsTabPanel extends Panel
             Season season = new Season();
             season.setLeague(leagueDetailsPage.getSelectedLeague());
             selectedSeason = seasonService.save(season);
+            allSeasons = seasonService.getLeagueSeasons(leagueDetailsPage.getSelectedLeague());
             teamRecords = teamRecordService.findTeamRecordsBySeason(selectedSeason);
             ajaxRequestTarget.add(leagueDetailsPage.getMainContainer());
          }

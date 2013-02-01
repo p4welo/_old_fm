@@ -1,7 +1,25 @@
+html, body {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
 body {
     padding: 0;
     margin: 0;
     font: 0.8em Tahoma, Geneva, sans-serif;
+}
+
+#background {
+    z-index: -999;
+    min-height: 100%;
+    min-width: 524px;
+    width: 100%;
+    height: auto;
+    position: fixed;
+    bottom: 0;
+    left: 0;
 }
 
 /*MENU*/
@@ -52,13 +70,22 @@ body {
 /*MAIN CONTENT*/
 #content_wrap {
     position: relative;
+    /*top: 160px;*/
     width: 100%;
+    display: block;
+    overflow: auto;
+    margin-top: 0px;
+    margin-bottom: 20px;
 }
 
 #content {
-    width: 900px;
+    position: relative;
+    width: 970px;
+    min-height: 700px;
+    /*color: #151515;*/
+    text-align: justify;
     margin: 0 auto;
-    min-height: 650px;
+    background-color: rgba(255, 255, 255, 0.6);
 }
 
 #content a {
