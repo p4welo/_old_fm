@@ -25,7 +25,6 @@ public class CreateNewLeagueWindow extends AbstractWindow
       setUseInitialHeight(true);
       setInitialHeight(300);
       setInitialWidth(300);
-//      setCssClassName(getCssClassName() + " create_league_window");
    }
 
    @Override

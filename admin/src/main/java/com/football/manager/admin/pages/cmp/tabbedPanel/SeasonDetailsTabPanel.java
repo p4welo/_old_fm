@@ -1,6 +1,7 @@
 package com.football.manager.admin.pages.cmp.tabbedPanel;
 
 import com.football.manager.admin.pages.LeagueDetailsPage;
+import com.football.manager.admin.pages.cmp.window.CreateNewSeasonWindow;
 import com.football.manager.domain.Season;
 import com.football.manager.domain.TeamRecord;
 import com.football.manager.service.ISeasonService;
@@ -51,6 +52,8 @@ public class SeasonDetailsTabPanel extends Panel
 
    private List<Season> allSeasons;
 
+   private CreateNewSeasonWindow createNewSeasonWindow;
+
    public SeasonDetailsTabPanel(String id, LeagueDetailsPage leagueDetailsPage)
    {
       super(id);
@@ -71,6 +74,7 @@ public class SeasonDetailsTabPanel extends Panel
 
    private void initView()
    {
+      createNewSeasonWindow();
       createTableToolbar(leftContainer);
       createSeasonsCombo(leftContainer);
       createTeamRecordTable(leftContainer);
@@ -78,6 +82,24 @@ public class SeasonDetailsTabPanel extends Panel
       mainContainer.add(leftContainer);
       mainContainer.add(rightContainer);
       add(mainContainer);
+   }
+
+   private void createNewSeasonWindow()
+   {
+      createNewSeasonWindow = new CreateNewSeasonWindow("createNewSeasonWindow", leagueDetailsPage.getSelectedLeague())
+      {
+         @Override
+         protected void onConfirm(AjaxRequestTarget target)
+         {
+            Season season = new Season();
+            season.setLeague(leagueDetailsPage.getSelectedLeague());
+            selectedSeason = seasonService.save(season);
+            allSeasons = seasonService.getLeagueSeasons(leagueDetailsPage.getSelectedLeague());
+            teamRecords = teamRecordService.findTeamRecordsBySeason(selectedSeason);
+            target.add(leagueDetailsPage.getMainContainer());
+         }
+      };
+      add(createNewSeasonWindow);
    }
 
    private void createSeasonsCombo(WebMarkupContainer container)
@@ -89,7 +111,6 @@ public class SeasonDetailsTabPanel extends Panel
               new PropertyModel(this, "allSeasons"), new ChoiceRenderer<Season>(Season.FIELD_NUMBER));
       seasons.add(new AjaxFormComponentUpdatingBehavior("change")
       {
-
          @Override
          protected void onUpdate(AjaxRequestTarget target)
          {
@@ -133,13 +154,7 @@ public class SeasonDetailsTabPanel extends Panel
          @Override
          public void onClick(AjaxRequestTarget ajaxRequestTarget)
          {
-//            TODO czy utworzyc nową ligę?
-            Season season = new Season();
-            season.setLeague(leagueDetailsPage.getSelectedLeague());
-            selectedSeason = seasonService.save(season);
-            allSeasons = seasonService.getLeagueSeasons(leagueDetailsPage.getSelectedLeague());
-            teamRecords = teamRecordService.findTeamRecordsBySeason(selectedSeason);
-            ajaxRequestTarget.add(leagueDetailsPage.getMainContainer());
+            createNewSeasonWindow.show(ajaxRequestTarget);
          }
       });
    }

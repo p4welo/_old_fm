@@ -33,8 +33,6 @@ public class LeagueListPage extends AbstractPage
 
    private final WebMarkupContainer mainContainer;
 
-   private CreateNewLeagueModal createNewLeagueWindow;
-
    public LeagueListPage()
    {
       super();
@@ -47,50 +45,30 @@ public class LeagueListPage extends AbstractPage
    private void initView()
    {
       createNewLeagueWindow();
-      createTableToolbar();
       createLeagueTable();
 
       add(mainContainer);
    }
 
-   private void createTableToolbar()
-   {
-//      mainContainer.add(new AjaxLink<Void>("newLeagueLink")
-//      {
-//         @Override
-//         public void onClick(AjaxRequestTarget ajaxRequestTarget)
-//         {
-//            createNewLeagueWindow.show(ajaxRequestTarget);
-//         }
-//      });
-   }
-
    private void createNewLeagueWindow()
    {
-      createNewLeagueWindow = new CreateNewLeagueModal("modal");
-      add(new CreateNewLeagueModal("modal"));
-//      createNewLeagueWindow = new CreateNewLeagueWindow("createNewLeagueWindow")
-//      {
-//         @Override
-//         protected void onConfirm(AjaxRequestTarget target)
-//         {
-//            League newLeague = new League();
-//            newLeague.setName(createNewLeagueWindow.getLeagueName());
-//            leagueService.save(newLeague, createNewLeagueWindow.getGenerateTeams());
-//            target.add(mainContainer);
-//         }
-//      };
-//      add(createNewLeagueWindow);
+      mainContainer.add(new CreateNewLeagueModal("myModal"));
    }
 
    private void createLeagueTable()
    {
       List<IColumn<League, String>> columns = new ArrayList<IColumn<League, String>>();
 
-      columns.add(new PropertyColumn<League, String>(new ResourceModel("table.league.id.column.header"),
-              DataEntity.FIELD_ID, DataEntity.FIELD_ID));
-      columns.add(new PropertyColumn<League, String>(new ResourceModel("table.league.name.column.header"),
-              League.FIELD_NAME, League.FIELD_NAME));
+      columns.add(new PropertyColumn<League, String>(
+              new ResourceModel("table.league.id.column.header"),
+              DataEntity.FIELD_ID,
+              DataEntity.FIELD_ID
+      ));
+      columns.add(new PropertyColumn<League, String>(
+              new ResourceModel("table.league.name.column.header"),
+              League.FIELD_NAME,
+              League.FIELD_NAME
+      ));
 
       mainContainer.add(new AjaxDataTable<League>("table", columns, new DataProvider<League>(leagueService), 10)
       {
