@@ -36,6 +36,7 @@ public class MenuPlugin extends Panel
          protected void populateItem(ListItem item)
          {
             final MenuItem menuItem = (MenuItem) item.getModelObject();
+
             Link link = new Link("link")
             {
                @Override

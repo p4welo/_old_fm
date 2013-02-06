@@ -6,15 +6,16 @@
 </head>
 <body>
 <wicket:extend>
-    <div wicket:id="createNewLeagueWindow"></div>
+    <!--<div wicket:id="createNewLeagueWindow"></div>-->
+    <wicket:container wicket:id="modal"/>
     <div id="main_content" wicket:id="mainContainer">
         <h3>
             <wicket:message key="page.header"/>
         </h3>
-        <a wicket:id="newLeagueLink">
+        <a href="#CreateNewLeagueModal" role="button" class="btn btn-success"> <!--  wicket:id="newLeagueLink"-->
             <wicket:message key="new.league.link.label"/>
         </a>
-        <table id="league_table" class="ajax_table" cellspacing="0" wicket:id="table">[table]</table>
+        <table class="table table-striped table-hover table-condensed" wicket:id="table"></table>
     </div>
 </wicket:extend>
 </body>
