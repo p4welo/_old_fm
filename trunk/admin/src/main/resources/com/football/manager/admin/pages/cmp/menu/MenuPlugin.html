@@ -8,11 +8,13 @@
 <wicket:panel>
     <div class="navbar">
         <div class="navbar-inner">
-            <a class="brand" href="#">Title</a>
+            <a class="brand" href="#" wicket:id="homeLink">
+                <wicket:message key="admin.module.name"/>
+            </a>
             <ul class="nav">
                 <li wicket:id="menuItem">
                     <a href="#" wicket:id="link">
-                        <span wicket:id="label"> </span>
+                        <span wicket:id="label"></span>
                     </a>
                 </li>
             </ul>

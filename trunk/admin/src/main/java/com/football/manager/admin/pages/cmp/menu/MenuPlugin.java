@@ -1,5 +1,6 @@
 package com.football.manager.admin.pages.cmp.menu;
 
+import com.football.manager.admin.AdminApplication;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.wicket.MarkupContainer;
 import org.apache.wicket.markup.ComponentTag;
@@ -28,6 +29,15 @@ public class MenuPlugin extends Panel
    public MenuPlugin(String id)
    {
       super(id);
+
+      add(new Link("homeLink")
+      {
+         @Override
+         public void onClick()
+         {
+            setResponsePage(AdminApplication.get().getHomePage());
+         }
+      });
 
       ListView listview = new ListView("menuItem", menuItemList)
       {
