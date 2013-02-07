@@ -1,7 +1,7 @@
 package com.football.manager.admin.pages.cmp.window;
 
 import org.apache.wicket.ajax.AjaxRequestTarget;
-import org.apache.wicket.ajax.markup.html.AjaxLink;
+import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.markup.html.form.CheckBox;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
@@ -20,28 +20,35 @@ public class CreateNewLeagueModal extends Panel
 
    private boolean generateTeams;
 
+   private Form form;
+
    public CreateNewLeagueModal(String id)
    {
       super(id);
+      form = new Form("form");
       initView();
       createOkButton();
    }
 
    private void createOkButton()
    {
-      add(new AjaxLink<Void>("saveButton")
+      add(new AjaxButton("saveButton", form)
       {
          @Override
-         public void onClick(AjaxRequestTarget ajaxRequestTarget)
+         protected void onSubmit(AjaxRequestTarget target, Form<?> form)
          {
-            int i = 4;
+            onConfirm(target);
          }
       });
    }
 
+   public void onConfirm(AjaxRequestTarget target)
+   {
+   }
+
    private void initView()
    {
-      Form form = new Form("form");
+
       TextField nameField = new TextField<String>("nameField", new PropertyModel(
               this, "leagueName"));
       nameField.setRequired(true);
