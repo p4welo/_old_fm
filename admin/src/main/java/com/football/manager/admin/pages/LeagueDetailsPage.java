@@ -1,13 +1,13 @@
 package com.football.manager.admin.pages;
 
 import com.football.manager.admin.api.AdminApiMappings;
+import com.football.manager.admin.pages.cmp.tabbedPanel.BootstrapTabbedPanel;
 import com.football.manager.admin.pages.cmp.tabbedPanel.LeagueDetailsTabPanel;
 import com.football.manager.admin.pages.cmp.tabbedPanel.SeasonDetailsTabPanel;
 import com.football.manager.domain.League;
 import com.football.manager.service.ILeagueService;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.wicket.RestartResponseAtInterceptPageException;
-import org.apache.wicket.extensions.ajax.markup.html.tabs.AjaxTabbedPanel;
 import org.apache.wicket.extensions.markup.html.tabs.AbstractTab;
 import org.apache.wicket.extensions.markup.html.tabs.ITab;
 import org.apache.wicket.markup.html.WebMarkupContainer;
@@ -89,7 +89,7 @@ public class LeagueDetailsPage extends AbstractPage
             return new LeagueDetailsTabPanel(panelId, LeagueDetailsPage.this);
          }
       });
-      container.add(new AjaxTabbedPanel("tabs", tabs));
+      container.add(new BootstrapTabbedPanel("tabs", tabs));
    }
 
    public League getSelectedLeague()

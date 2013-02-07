@@ -1,3 +1,25 @@
 .table tbody {
     cursor: pointer;
 }
+
+/*COLUMN CONTENT*/
+#left_content,
+#right_content {
+    width: 49%;
+}
+
+#right_content {
+    float: right;
+}
+
+#left_content {
+    float: left;
+}
+
+.text-align-right {
+    text-align: right;
+}
+
+.text-align-center {
+    text-align: center;
+}
