@@ -26,7 +26,7 @@ import java.util.List;
  * Date: 28.01.13
  * Time: 21:47
  */
-public class SeasonDetailsTabPanel extends Panel
+public class SeasonLeagueDetailsTabPanel extends Panel
 {
    @SpringBean
    private ISeasonService seasonService;
@@ -54,7 +54,7 @@ public class SeasonDetailsTabPanel extends Panel
 
    private CreateNewSeasonWindow createNewSeasonWindow;
 
-   public SeasonDetailsTabPanel(String id, LeagueDetailsPage leagueDetailsPage)
+   public SeasonLeagueDetailsTabPanel(String id, LeagueDetailsPage leagueDetailsPage)
    {
       super(id);
       setOutputMarkupId(true);
