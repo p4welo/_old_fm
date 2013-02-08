@@ -1,5 +1,8 @@
 package com.football.manager.admin.pages.cmp.window;
 
+import com.football.manager.admin.navigation.NavigateToLeagueDetailsPage;
+import com.football.manager.domain.League;
+import com.football.manager.service.ILeagueService;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.markup.html.form.CheckBox;
@@ -8,6 +11,7 @@ import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.PropertyModel;
+import org.apache.wicket.spring.injection.annot.SpringBean;
 
 /**
  * User: pawel
@@ -16,6 +20,9 @@ import org.apache.wicket.model.PropertyModel;
  */
 public class CreateNewLeagueModal extends Panel
 {
+   @SpringBean
+   private ILeagueService leagueService;
+
    private String leagueName;
 
    private boolean generateTeams;
@@ -44,11 +51,14 @@ public class CreateNewLeagueModal extends Panel
 
    public void onConfirm(AjaxRequestTarget target)
    {
+      League newLeague = new League();
+      newLeague.setName(getLeagueName());
+      newLeague = leagueService.save(newLeague, generateTeams);
+      new NavigateToLeagueDetailsPage(newLeague).navigate();
    }
 
    private void initView()
    {
-
       TextField nameField = new TextField<String>("nameField", new PropertyModel(
               this, "leagueName"));
       nameField.setRequired(true);

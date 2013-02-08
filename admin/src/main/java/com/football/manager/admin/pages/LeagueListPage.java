@@ -1,6 +1,7 @@
 package com.football.manager.admin.pages;
 
 import com.football.manager.admin.api.AdminApiMappings;
+import com.football.manager.admin.navigation.NavigateToLeagueDetailsPage;
 import com.football.manager.admin.pages.cmp.table.AjaxDataTable;
 import com.football.manager.admin.pages.cmp.table.DataProvider;
 import com.football.manager.admin.pages.cmp.window.CreateNewLeagueModal;
@@ -13,7 +14,6 @@ import org.apache.wicket.extensions.markup.html.repeater.data.table.PropertyColu
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.ResourceModel;
-import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.wicketstuff.annotation.mount.MountPath;
 
@@ -75,9 +75,7 @@ public class LeagueListPage extends AbstractPage
          @Override
          protected void executeOnClick(AjaxRequestTarget target, IModel<League> model)
          {
-            PageParameters parameters = new PageParameters();
-            parameters.set(SELECTED_LEAGUE_ID_KEY, model.getObject().getId());
-            setResponsePage(LeagueDetailsPage.class, parameters);
+            new NavigateToLeagueDetailsPage(model.getObject()).navigate();
          }
       });
    }

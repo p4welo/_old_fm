@@ -28,7 +28,7 @@ import java.util.List;
  * Date: 28.01.13
  * Time: 21:57
  */
-public class LeagueDetailsTabPanel extends Panel
+public class TeamsLeagueDetailsTabPanel extends Panel
 {
    @SpringBean
    private ILeagueService leagueService;
@@ -52,7 +52,7 @@ public class LeagueDetailsTabPanel extends Panel
 
    private Team selectedTeam;
 
-   public LeagueDetailsTabPanel(String id, LeagueDetailsPage leagueDetailsPage)
+   public TeamsLeagueDetailsTabPanel(String id, LeagueDetailsPage leagueDetailsPage)
    {
       super(id);
       this.leagueDetailsPage = leagueDetailsPage;

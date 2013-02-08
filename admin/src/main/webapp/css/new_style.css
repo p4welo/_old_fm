@@ -23,3 +23,15 @@
 .text-align-center {
     text-align: center;
 }
+
+select {
+    margin-bottom: 0 !important;
+}
+
+select.seasonCombo {
+    float: right;
+}
+
+.table_toolbar {
+    margin-bottom: 10px;
+}
