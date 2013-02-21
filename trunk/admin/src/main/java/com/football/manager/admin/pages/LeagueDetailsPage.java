@@ -1,9 +1,9 @@
 package com.football.manager.admin.pages;
 
 import com.football.manager.admin.api.AdminApiMappings;
-import com.football.manager.admin.pages.cmp.tabbedPanel.BootstrapTabbedPanel;
-import com.football.manager.admin.pages.cmp.tabbedPanel.SeasonLeagueDetailsTabPanel;
-import com.football.manager.admin.pages.cmp.tabbedPanel.TeamsLeagueDetailsTabPanel;
+import com.football.manager.admin.cmp.tabbedPanel.BootstrapTabbedPanel;
+import com.football.manager.admin.cmp.tabbedPanel.SeasonLeagueDetailsTabPanel;
+import com.football.manager.admin.cmp.tabbedPanel.TeamsLeagueDetailsTabPanel;
 import com.football.manager.domain.League;
 import com.football.manager.service.ILeagueService;
 import org.apache.commons.lang3.StringUtils;
