@@ -28,7 +28,7 @@ import java.util.List;
  * Date: 28.01.13
  * Time: 21:57
  */
-public class TeamsLeagueDetailsTabPanel extends Panel
+public class LeagueTeamsPanel extends Panel
 {
    @SpringBean
    private ILeagueService leagueService;
@@ -52,7 +52,7 @@ public class TeamsLeagueDetailsTabPanel extends Panel
 
    private Team selectedTeam;
 
-   public TeamsLeagueDetailsTabPanel(String id, LeagueDetailsPage leagueDetailsPage)
+   public LeagueTeamsPanel(String id, LeagueDetailsPage leagueDetailsPage)
    {
       super(id);
       this.leagueDetailsPage = leagueDetailsPage;
@@ -88,7 +88,6 @@ public class TeamsLeagueDetailsTabPanel extends Panel
          protected void populateItem(ListItem<Team> item)
          {
             final Team team = item.getModelObject();
-//            item.add(new Label("id", new PropertyModel<String>(team, Team.FIELD_ID)));
             item.add(new Label("name", new PropertyModel<String>(team, Team.FIELD_NAME)));
             item.add(new Label("account", new PropertyModel<String>(team, Team.FIELD_ACCOUNT)));
          }
@@ -103,16 +102,21 @@ public class TeamsLeagueDetailsTabPanel extends Panel
          @Override
          protected void onConfirm(AjaxRequestTarget target)
          {
-            Team team = new Team();
-            team.setName(createNewTeamWindow.getTeamName());
-            team.setAccount(createNewTeamWindow.getTeamAccount());
-            team.setLeague(leagueService.update(leagueDetailsPage.getSelectedLeague()));
-            team = teamService.save(team);
-            teamList.add(team);
+            teamList.add(saveTeam());
             target.add(leagueDetailsPage.getMainContainer());
          }
       };
       add(createNewTeamWindow);
+   }
+
+   private Team saveTeam()
+   {
+      Team team = new Team();
+      team.setName(createNewTeamWindow.getTeamName());
+      team.setAccount(createNewTeamWindow.getTeamAccount());
+      team.setLeague(leagueService.update(leagueDetailsPage.getSelectedLeague()));
+      team = teamService.save(team);
+      return team;
    }
 
    private void createLeaguePropertiesForm(WebMarkupContainer container)

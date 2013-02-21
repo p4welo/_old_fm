@@ -26,7 +26,7 @@ import java.util.List;
  * Date: 28.01.13
  * Time: 21:47
  */
-public class SeasonLeagueDetailsTabPanel extends Panel
+public class LeagueSeasonPanel extends Panel
 {
    @SpringBean
    private ISeasonService seasonService;
@@ -54,26 +54,27 @@ public class SeasonLeagueDetailsTabPanel extends Panel
 
    private CreateNewSeasonWindow createNewSeasonWindow;
 
-   public SeasonLeagueDetailsTabPanel(String id, LeagueDetailsPage leagueDetailsPage)
+   public LeagueSeasonPanel(String id, LeagueDetailsPage leagueDetailsPage)
    {
       super(id);
-      setOutputMarkupId(true);
       this.leagueDetailsPage = leagueDetailsPage;
       allSeasons = seasonService.getLeagueSeasons(leagueDetailsPage.getSelectedLeague());
       selectedSeason = seasonService.getActiveSeason(leagueDetailsPage.getSelectedLeague());
 
       mainContainer = new WebMarkupContainer("mainContainer");
-      mainContainer.setOutputMarkupId(true);
       leftContainer = new WebMarkupContainer("leftContainer");
-      leftContainer.setOutputMarkupId(true);
       rightContainer = new WebMarkupContainer("rightContainer");
-      rightContainer.setOutputMarkupId(true);
 
       initView();
    }
 
    private void initView()
    {
+      setOutputMarkupId(true);
+      mainContainer.setOutputMarkupId(true);
+      leftContainer.setOutputMarkupId(true);
+      rightContainer.setOutputMarkupId(true);
+
       createNewSeasonWindow();
       createTableToolbar(leftContainer);
       createSeasonsCombo(leftContainer);
