@@ -2,8 +2,9 @@ package com.football.manager.admin.pages;
 
 import com.football.manager.admin.api.AdminApiMappings;
 import com.football.manager.admin.cmp.tabbedPanel.BootstrapTabbedPanel;
-import com.football.manager.admin.cmp.tabbedPanel.SeasonLeagueDetailsTabPanel;
-import com.football.manager.admin.cmp.tabbedPanel.TeamsLeagueDetailsTabPanel;
+import com.football.manager.admin.cmp.tabbedPanel.LeagueInfoPanel;
+import com.football.manager.admin.cmp.tabbedPanel.LeagueSeasonPanel;
+import com.football.manager.admin.cmp.tabbedPanel.LeagueTeamsPanel;
 import com.football.manager.domain.League;
 import com.football.manager.service.ILeagueService;
 import org.apache.commons.lang3.StringUtils;
@@ -72,23 +73,32 @@ public class LeagueDetailsPage extends AbstractPage
    private void createTabbedPanel(WebMarkupContainer container)
    {
       List<ITab> tabs = new ArrayList<ITab>();
-      tabs.add(new AbstractTab(new ResourceModel("season.details.tab.header"))
+
+      tabs.add(new AbstractTab(new ResourceModel("league.info.tab.header"))
       {
          @Override
          public Panel getPanel(String panelId)
          {
-            return new SeasonLeagueDetailsTabPanel(panelId, LeagueDetailsPage.this);
+            return new LeagueInfoPanel(panelId, selectedLeague);
+         }
+      });
+      tabs.add(new AbstractTab(new ResourceModel("league.teams.tab.header"))
+      {
+         @Override
+         public Panel getPanel(String panelId)
+         {
+            return new LeagueTeamsPanel(panelId, LeagueDetailsPage.this);
+         }
+      });
+      tabs.add(new AbstractTab(new ResourceModel("league.season.tab.header"))
+      {
+         @Override
+         public Panel getPanel(String panelId)
+         {
+            return new LeagueSeasonPanel(panelId, LeagueDetailsPage.this);
          }
       });
 
-      tabs.add(new AbstractTab(new ResourceModel("team.details.tab.header"))
-      {
-         @Override
-         public Panel getPanel(String panelId)
-         {
-            return new TeamsLeagueDetailsTabPanel(panelId, LeagueDetailsPage.this);
-         }
-      });
       container.add(new BootstrapTabbedPanel("tabs", tabs));
    }
 
