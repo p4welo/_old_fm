@@ -1,7 +1,7 @@
-package com.football.manager.admin.pages.cmp.tabbedPanel;
+package com.football.manager.admin.cmp.tabbedPanel;
 
+import com.football.manager.admin.cmp.window.CreateNewSeasonWindow;
 import com.football.manager.admin.pages.LeagueDetailsPage;
-import com.football.manager.admin.pages.cmp.window.CreateNewSeasonWindow;
 import com.football.manager.domain.Season;
 import com.football.manager.domain.TeamRecord;
 import com.football.manager.service.ISeasonService;

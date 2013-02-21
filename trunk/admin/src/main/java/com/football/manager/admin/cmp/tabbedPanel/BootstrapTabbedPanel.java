@@ -1,4 +1,4 @@
-package com.football.manager.admin.pages.cmp.tabbedPanel;
+package com.football.manager.admin.cmp.tabbedPanel;
 
 import org.apache.wicket.extensions.ajax.markup.html.tabs.AjaxTabbedPanel;
 

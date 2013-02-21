@@ -1,4 +1,4 @@
-package com.football.manager.admin.pages.cmp.window;
+package com.football.manager.admin.cmp.window;
 
 import com.football.manager.domain.League;
 import com.football.manager.domain.Team;

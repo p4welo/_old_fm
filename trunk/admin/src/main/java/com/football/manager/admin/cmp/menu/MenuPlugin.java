@@ -1,4 +1,4 @@
-package com.football.manager.admin.pages.cmp.menu;
+package com.football.manager.admin.cmp.menu;
 
 import com.football.manager.admin.AdminApplication;
 import org.apache.commons.lang3.StringUtils;

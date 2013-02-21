@@ -1,4 +1,4 @@
-package com.football.manager.admin.pages.cmp.menu;
+package com.football.manager.admin.cmp.menu;
 
 /**
  * User: pawel

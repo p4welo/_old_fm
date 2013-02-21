@@ -1,4 +1,4 @@
-package com.football.manager.admin.pages.cmp.window;
+package com.football.manager.admin.cmp.window;
 
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.markup.ComponentTag;
