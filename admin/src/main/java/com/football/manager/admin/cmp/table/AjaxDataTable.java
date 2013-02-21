@@ -1,4 +1,4 @@
-package com.football.manager.admin.pages.cmp.table;
+package com.football.manager.admin.cmp.table;
 
 import com.football.manager.domain.DataEntity;
 import org.apache.wicket.ajax.AjaxEventBehavior;
