@@ -35,3 +35,7 @@ select.seasonCombo {
 .table_toolbar {
     margin-bottom: 10px;
 }
+
+td.field_label {
+    width: 250px !important;
+}
