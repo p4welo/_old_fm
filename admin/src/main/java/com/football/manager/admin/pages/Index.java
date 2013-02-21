@@ -1,8 +1,8 @@
 package com.football.manager.admin.pages;
 
 import com.football.manager.admin.api.AdminApiMappings;
-import com.football.manager.admin.pages.cmp.table.AjaxDataTable;
-import com.football.manager.admin.pages.cmp.table.DataProvider;
+import com.football.manager.admin.cmp.table.AjaxDataTable;
+import com.football.manager.admin.cmp.table.DataProvider;
 import com.football.manager.domain.DataEntity;
 import com.football.manager.domain.Position;
 import com.football.manager.service.IPositionService;
