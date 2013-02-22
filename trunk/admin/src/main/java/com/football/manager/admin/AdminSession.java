@@ -1,8 +1,10 @@
 package com.football.manager.admin;
 
+import com.football.manager.service.IUserEntityService;
 import org.apache.wicket.authroles.authentication.AuthenticatedWebSession;
 import org.apache.wicket.authroles.authorization.strategies.role.Roles;
 import org.apache.wicket.request.Request;
+import org.apache.wicket.spring.injection.annot.SpringBean;
 
 /**
  * Created with IntelliJ IDEA.
@@ -14,16 +16,21 @@ import org.apache.wicket.request.Request;
 public class AdminSession extends AuthenticatedWebSession {
     private String userName;
 
+    @SpringBean
+    private IUserEntityService userEntityService;
+
     public AdminSession(Request request) {
         super(request);
     }
 
     @Override
     public boolean authenticate(String userName, String password) {
-        boolean success = userName.equals("guest") && password.equals("guest");
+        boolean success = userEntityService.authenticate(userName, password);//userName.equals("guest") && password.equals("guest");
 
-        if ( success )
+        if (success)
+        {
             this.userName = userName;
+        }
 
         return success;
     }
@@ -32,8 +39,11 @@ public class AdminSession extends AuthenticatedWebSession {
     public Roles getRoles() {
         Roles roles = new Roles();
 
-        if ( isSignedIn() )
+        if (isSignedIn())
+        {
+
             roles.add("ROOT");
+        }
 
         return roles;
     }

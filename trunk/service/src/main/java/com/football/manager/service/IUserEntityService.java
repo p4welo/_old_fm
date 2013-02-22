@@ -10,4 +10,6 @@ import com.football.manager.domain.UserEntity;
 public interface IUserEntityService extends IAbstractService<UserEntity>
 {
    UserEntity findByLogin(String login);
+
+    boolean authenticate(String login, String password);
 }
