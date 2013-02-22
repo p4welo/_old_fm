@@ -59,4 +59,11 @@ public class TeamServiceImpl extends AbstractServiceImpl<Team> implements ITeamS
    {
       return teamDao.findTeamsFromLeague(league);
    }
+
+    @Override
+    @Transactional
+    public Integer getLeagueTeamsCount(League league)
+    {
+       return teamDao.getLeagueTeamsCount(league);
+    }
 }

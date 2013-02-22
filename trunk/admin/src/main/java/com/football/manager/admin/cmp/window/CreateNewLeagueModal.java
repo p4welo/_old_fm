@@ -4,12 +4,8 @@ import com.football.manager.admin.navigation.NavigateToLeagueDetailsPage;
 import com.football.manager.domain.League;
 import com.football.manager.service.ILeagueService;
 import org.apache.wicket.ajax.AjaxRequestTarget;
-import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.markup.html.form.CheckBox;
-import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
-import org.apache.wicket.markup.html.panel.FeedbackPanel;
-import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
@@ -18,7 +14,7 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
  * Date: 06.02.13
  * Time: 22:25
  */
-public class CreateNewLeagueModal extends Panel
+public class CreateNewLeagueModal extends AbstractModal
 {
    @SpringBean
    private ILeagueService leagueService;
@@ -27,33 +23,9 @@ public class CreateNewLeagueModal extends Panel
 
    private boolean generateTeams;
 
-   private Form form;
-
    public CreateNewLeagueModal(String id)
    {
       super(id);
-      form = new Form("form");
-      form.setOutputMarkupId(true);
-      initView();
-      createOkButton();
-   }
-
-   private void createOkButton()
-   {
-      add(new AjaxButton("saveButton", form)
-      {
-         @Override
-         protected void onSubmit(AjaxRequestTarget target, Form<?> form)
-         {
-            onConfirm(target);
-         }
-
-         @Override
-         protected void onError(AjaxRequestTarget target, Form<?> form)
-         {
-            target.add(form);
-         }
-      });
    }
 
    public void onConfirm(AjaxRequestTarget target)
@@ -64,7 +36,7 @@ public class CreateNewLeagueModal extends Panel
       new NavigateToLeagueDetailsPage(newLeague).navigate();
    }
 
-   private void initView()
+   protected void initView()
    {
       TextField nameField = new TextField<String>("nameField", new PropertyModel(
               this, "leagueName"));
@@ -73,10 +45,6 @@ public class CreateNewLeagueModal extends Panel
       CheckBox generateTeamsField = new CheckBox("generateTeamsField",
               new PropertyModel<Boolean>(this, "generateTeams"));
       form.add(generateTeamsField);
-      FeedbackPanel feedbackPanel = new FeedbackPanel("feedback");
-      feedbackPanel.setOutputMarkupId(true);
-      form.add(feedbackPanel);
-      add(form);
    }
 
    public String getLeagueName()

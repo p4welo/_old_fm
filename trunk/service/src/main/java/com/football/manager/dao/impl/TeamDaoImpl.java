@@ -46,4 +46,19 @@ public class TeamDaoImpl extends AbstractDaoImpl<Team> implements ITeamDao
       criteria.add(Restrictions.eq(Team.FIELD_LEAGUE, league));
       return criteria.list();
    }
+
+    @Override
+    public Integer getLeagueTeamsCount(League league) {
+        Criteria criteria = createCriteria();
+        criteria.add(Restrictions.eq(Team.FIELD_LEAGUE, league));
+        List<Team> result = criteria.list();
+        if (result != null && result.size() > 0)
+        {
+            return result.size();
+        }
+        else
+        {
+            return 0;
+        }
+    }
 }

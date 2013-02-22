@@ -1,11 +1,11 @@
 package com.football.manager.admin.cmp.window;
 
+import com.football.manager.admin.cmp.feedback.CssFeedbackPanel;
 import org.apache.wicket.ajax.AjaxEventBehavior;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.extensions.ajax.markup.html.modal.ModalWindow;
 import org.apache.wicket.markup.html.form.Form;
-import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.ResourceModel;
 
@@ -83,7 +83,7 @@ public abstract class AbstractWindow extends ModalWindow
       return createSaveButton(form, null);
    }
 
-   public AjaxButton createSaveButton(final Form form, final FeedbackPanel feedbackPanel)
+   public AjaxButton createSaveButton(final Form form, final CssFeedbackPanel feedbackPanel)
    {
       AjaxButton saveButton = new AjaxButton("saveButton", form)
       {
