@@ -1,6 +1,6 @@
 package com.football.manager.admin.cmp.window;
 
-import com.football.manager.admin.navigation1.NavigateToLeagueDetailsPage;
+import com.football.manager.admin.navigation.NavigateToLeagueDetailsPage;
 import com.football.manager.domain.League;
 import com.football.manager.service.ILeagueService;
 import org.apache.wicket.ajax.AjaxRequestTarget;
