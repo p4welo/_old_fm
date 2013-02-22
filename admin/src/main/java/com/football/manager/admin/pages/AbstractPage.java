@@ -2,6 +2,7 @@ package com.football.manager.admin.pages;
 
 import com.football.manager.admin.api.AdminApiMappings;
 import com.football.manager.admin.cmp.menu.MenuPanel;
+import org.apache.wicket.authroles.authorization.strategies.role.annotations.AuthorizeInstantiation;
 import org.apache.wicket.markup.html.WebPage;
 
 import java.io.Serializable;

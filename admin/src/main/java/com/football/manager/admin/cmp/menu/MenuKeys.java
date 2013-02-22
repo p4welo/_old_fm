@@ -9,7 +9,7 @@ public interface MenuKeys
 {
    public static final String MENU_ADMIN_LEAGUE_LIST_PAGE = "menu.admin.league.list.page";
 
-   public static final String MENU_ADMIN_TEAMS_LIST_PAGE = "menu.admin.teams.list.page";
+   public static final String MENU_ADMIN_USERS_PAGE = "menu.admin.users.page";
 
    public static final String MENU_ADMIN_RULES_PAGE = "menu.admin.rules.page";
 }

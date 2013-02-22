@@ -2,6 +2,11 @@
     cursor: pointer;
 }
 
+ul.feedbackPanel {
+    list-style: none;
+    margin: 0 !important;
+}
+
 /*COLUMN CONTENT*/
 #left_content,
 #right_content {

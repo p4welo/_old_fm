@@ -15,4 +15,6 @@ public interface ITeamDao
    Long getNextId();
 
    List<Team> findTeamsFromLeague(League league);
+
+    Integer getLeagueTeamsCount(League league);
 }

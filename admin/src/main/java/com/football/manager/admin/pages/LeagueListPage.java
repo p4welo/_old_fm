@@ -9,6 +9,7 @@ import com.football.manager.domain.DataEntity;
 import com.football.manager.domain.League;
 import com.football.manager.service.ILeagueService;
 import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.authroles.authorization.strategies.role.annotations.AuthorizeInstantiation;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.IColumn;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.PropertyColumn;
 import org.apache.wicket.markup.html.WebMarkupContainer;
@@ -26,6 +27,7 @@ import java.util.List;
  * Time: 15:00
  */
 @MountPath(AdminApiMappings.LEAGUE_LIST_PAGE)
+@AuthorizeInstantiation("ROOT")
 public class LeagueListPage extends AbstractPage
 {
    @SpringBean

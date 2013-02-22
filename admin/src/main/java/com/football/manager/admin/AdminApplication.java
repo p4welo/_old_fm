@@ -1,7 +1,11 @@
 package com.football.manager.admin;
 
 import com.football.manager.admin.pages.LeagueListPage;
+import com.football.manager.admin.pages.LoginPage;
 import org.apache.wicket.Page;
+import org.apache.wicket.authroles.authentication.AbstractAuthenticatedWebSession;
+import org.apache.wicket.authroles.authentication.AuthenticatedWebApplication;
+import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.settings.IRequestCycleSettings;
 import org.apache.wicket.spring.injection.annot.SpringComponentInjector;
@@ -12,13 +16,15 @@ import org.wicketstuff.annotation.scan.AnnotatedMountScanner;
  * Date: 25.01.13
  * Time: 16:55
  */
-public class AdminApplication extends WebApplication
+public class AdminApplication extends AuthenticatedWebApplication
 {
    @Override
    public Class<? extends Page> getHomePage()
    {
       return LeagueListPage.class;
    }
+
+    //http://wicket.wordpress.com/2010/01/08/template-for-building-authenticated-webapplication/
 
    @Override
    protected void init()
@@ -29,4 +35,14 @@ public class AdminApplication extends WebApplication
       getDebugSettings().setAjaxDebugModeEnabled(false);
       getRequestCycleSettings().setRenderStrategy(IRequestCycleSettings.RenderStrategy.ONE_PASS_RENDER);
    }
+
+    @Override
+    protected Class<? extends AbstractAuthenticatedWebSession> getWebSessionClass() {
+        return AdminSession.class;
+    }
+
+    @Override
+    protected Class<? extends WebPage> getSignInPageClass() {
+        return LoginPage.class;
+    }
 }

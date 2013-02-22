@@ -1,5 +1,6 @@
 package com.football.manager.admin.cmp.window;
 
+import com.football.manager.admin.cmp.feedback.CssFeedbackPanel;
 import com.football.manager.domain.League;
 import com.football.manager.domain.Team;
 import com.football.manager.service.ITeamService;
@@ -7,7 +8,6 @@ import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.markup.html.form.CheckBoxMultipleChoice;
 import org.apache.wicket.markup.html.form.ChoiceRenderer;
 import org.apache.wicket.markup.html.form.Form;
-import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.model.PropertyModel;
@@ -101,7 +101,7 @@ public class CreateNewSeasonWindow extends AbstractWindow
          teams.setOutputMarkupId(true);
 
          form.add(teams);
-         FeedbackPanel feedbackPanel = new FeedbackPanel("feedback");
+          CssFeedbackPanel feedbackPanel = new CssFeedbackPanel("feedback");
          feedbackPanel.setOutputMarkupId(true);
          form.add(feedbackPanel);
          form.add(createSaveButton(form, feedbackPanel));

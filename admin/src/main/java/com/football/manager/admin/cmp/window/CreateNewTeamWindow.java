@@ -1,10 +1,10 @@
 package com.football.manager.admin.cmp.window;
 
+import com.football.manager.admin.cmp.feedback.CssFeedbackPanel;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
-import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.PropertyModel;
 
@@ -87,7 +87,7 @@ public class CreateNewTeamWindow extends AbstractWindow
                  CreateNewTeamWindow.this, "teamAccount"));
          accountField.setRequired(true);
          form.add(accountField);
-         FeedbackPanel feedbackPanel = new FeedbackPanel("feedback");
+          CssFeedbackPanel feedbackPanel = new CssFeedbackPanel("feedback");
          feedbackPanel.setOutputMarkupId(true);
          form.add(feedbackPanel);
          form.add(createSaveButton(form, feedbackPanel));
