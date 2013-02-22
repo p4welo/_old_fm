@@ -1,6 +1,6 @@
 package com.football.manager.admin.cmp.window;
 
-import com.football.manager.admin.navigation.NavigateToLeagueDetailsPage;
+import com.football.manager.admin.navigation1.NavigateToLeagueDetailsPage;
 import com.football.manager.domain.League;
 import com.football.manager.service.ILeagueService;
 import org.apache.wicket.ajax.AjaxRequestTarget;
@@ -33,6 +33,7 @@ public class CreateNewLeagueModal extends Panel
    {
       super(id);
       form = new Form("form");
+      form.setOutputMarkupId(true);
       initView();
       createOkButton();
    }
@@ -45,6 +46,12 @@ public class CreateNewLeagueModal extends Panel
          protected void onSubmit(AjaxRequestTarget target, Form<?> form)
          {
             onConfirm(target);
+         }
+
+         @Override
+         protected void onError(AjaxRequestTarget target, Form<?> form)
+         {
+            target.add(form);
          }
       });
    }
