@@ -2,6 +2,7 @@ package com.football.manager.admin.cmp.menu;
 
 import com.football.manager.admin.pages.Index;
 import com.football.manager.admin.pages.LeagueListPage;
+import com.football.manager.domain.UserEntity;
 import org.apache.wicket.markup.html.panel.Panel;
 
 import java.util.List;
@@ -15,6 +16,8 @@ public class MenuPanel extends Panel implements MenuKeys
 {
    private MenuPlugin menu;
 
+   private UserEntity entity;
+
    public MenuPanel(String id)
    {
       super(id);
@@ -23,10 +26,22 @@ public class MenuPanel extends Panel implements MenuKeys
       menu.add(MENU_ADMIN_USERS_PAGE, Index.class);
       menu.add(MENU_ADMIN_RULES_PAGE, Index.class);
       add(menu);
+//      entity = AdminApplication.get().getSession().getUser();
+//      add(new Label("user", new PropertyModel(this, "entity.login")));
    }
 
    public List<Class> getTargetClasses()
    {
       return menu.getTargetClasses();
+   }
+
+   public UserEntity getEntity()
+   {
+      return entity;
+   }
+
+   public void setEntity(UserEntity entity)
+   {
+      this.entity = entity;
    }
 }
