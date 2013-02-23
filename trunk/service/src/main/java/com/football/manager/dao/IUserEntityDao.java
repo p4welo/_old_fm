@@ -10,4 +10,6 @@ import com.football.manager.domain.UserEntity;
 public interface IUserEntityDao
 {
    UserEntity findByLogin(String login);
+
+   UserEntity authenticate(String login, String password);
 }

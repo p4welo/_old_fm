@@ -1,11 +1,16 @@
 package com.football.manager.admin;
 
+import com.football.manager.domain.UserEntity;
 import com.football.manager.service.IUserEntityService;
-import com.football.manager.service.impl.UserEntityServiceImpl;
+import com.football.manager.service.IUserRoleService;
 import org.apache.wicket.authroles.authentication.AuthenticatedWebSession;
 import org.apache.wicket.authroles.authorization.strategies.role.Roles;
+import org.apache.wicket.injection.Injector;
 import org.apache.wicket.request.Request;
+import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -17,28 +22,28 @@ import org.springframework.stereotype.Component;
 @Component
 public class AdminSession extends AuthenticatedWebSession
 {
-   private String userName;
+   private UserEntity user;
 
-   //   @SpringBean
+   @SpringBean
    private IUserEntityService userEntityService;
+
+   @SpringBean
+   private IUserRoleService userRoleService;
 
    public AdminSession(Request request)
    {
       super(request);
-      userEntityService = AdminApplication.get().getSpringBean(UserEntityServiceImpl.class);
+      Injector.get().inject(this);
    }
 
    @Override
    public boolean authenticate(String userName, String password)
    {
-      boolean success = userEntityService
-              .authenticate(userName, password);//userName.equals("guest") && password.equals("guest");
-
+      boolean success = userEntityService.authenticate(userName, password);
       if (success)
       {
-         this.userName = userName;
+         this.user = userEntityService.findByLogin(userName);
       }
-
       return success;
    }
 
@@ -46,18 +51,22 @@ public class AdminSession extends AuthenticatedWebSession
    public Roles getRoles()
    {
       Roles roles = new Roles();
-
-      if (isSignedIn())
+      if (isSignedIn() && user != null)
       {
-
-         roles.add("ROOT");
+         List<String> list = userRoleService.getRoles(user);
+         if (list != null)
+         {
+            for (String role : list)
+            {
+               roles.add(role);
+            }
+         }
       }
-
       return roles;
    }
 
-   public String getUserName()
+   public UserEntity getUser()
    {
-      return userName;
+      return user;
    }
 }

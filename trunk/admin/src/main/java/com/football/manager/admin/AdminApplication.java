@@ -8,7 +8,6 @@ import org.apache.wicket.authroles.authentication.AuthenticatedWebApplication;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.settings.IRequestCycleSettings;
 import org.apache.wicket.spring.injection.annot.SpringComponentInjector;
-import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.wicketstuff.annotation.scan.AnnotatedMountScanner;
 
@@ -44,15 +43,15 @@ public class AdminApplication extends AuthenticatedWebApplication
       return (AdminApplication) AdminApplication.get();
    }
 
-   public static Object getSpringBean(String bean)
-   {
-      return get().ctx.getBean(bean);
-   }
-
-   public static <T> T getSpringBean(Class<T> bean)
-   {
-      return get().ctx.getBean(bean);
-   }
+//   public static Object getSpringBean(String bean)
+//   {
+//      return get().ctx.getBean(bean);
+//   }
+//
+//   public static <T> T getSpringBean(Class<T> bean)
+//   {
+//      return get().ctx.getBean(bean);
+//   }
 
    @Override
    protected Class<? extends AbstractAuthenticatedWebSession> getWebSessionClass()
@@ -66,8 +65,8 @@ public class AdminApplication extends AuthenticatedWebApplication
       return LoginPage.class;
    }
 
-   public void setApplicationContext(ApplicationContext applicationContext) throws BeansException
-   {
-      this.ctx = applicationContext;
-   }
+//   public void setApplicationContext(ApplicationContext applicationContext) throws BeansException
+//   {
+//      this.ctx = applicationContext;
+//   }
 }

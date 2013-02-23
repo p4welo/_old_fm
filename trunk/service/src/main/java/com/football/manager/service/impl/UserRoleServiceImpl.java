@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -30,9 +31,26 @@ public class UserRoleServiceImpl extends AbstractServiceImpl<UserRole> implement
       return (IAbstractDao<UserRole>) userRoleDao;
    }
 
+   @Override
    @Transactional
    public List<UserRole> getUserRoles(UserEntity userEntity)
    {
       return userRoleDao.getRolesByUser(userEntity);
+   }
+
+   @Override
+   @Transactional
+   public List<String> getRoles(UserEntity user)
+   {
+      List<String> roles = new ArrayList<String>();
+      List<UserRole> userRoles = userRoleDao.getRolesByUser(user);
+      if (userRoles != null)
+      {
+         for (UserRole userRole : userRoles)
+         {
+            roles.add(userRole.getRole());
+         }
+      }
+      return roles;
    }
 }

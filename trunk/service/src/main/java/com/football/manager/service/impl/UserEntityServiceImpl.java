@@ -4,13 +4,10 @@ import com.football.manager.dao.IAbstractDao;
 import com.football.manager.dao.IUserEntityDao;
 import com.football.manager.domain.UserEntity;
 import com.football.manager.service.IUserEntityService;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 
 /**
  * UserEntity: pawel
@@ -31,6 +28,8 @@ public class UserEntityServiceImpl extends AbstractServiceImpl<UserEntity> imple
       return (IAbstractDao<UserEntity>) userEntityDao;
    }
 
+   @Override
+   @Transactional
    public UserEntity findByLogin(String login)
    {
       return userEntityDao.findByLogin(login);
@@ -40,23 +39,7 @@ public class UserEntityServiceImpl extends AbstractServiceImpl<UserEntity> imple
    @Transactional
    public boolean authenticate(String login, String password)
    {
-      byte[] bytesOfMessage = password.getBytes();
-      try
-      {
-         MessageDigest md = MessageDigest.getInstance("MD5");
-         byte[] digest = md.digest(bytesOfMessage);
-         String pas = String.valueOf(digest);
-      }
-      catch (NoSuchAlgorithmException e)
-      {
-         e.printStackTrace();
-      }
-
-      UserEntity entity = userEntityDao.findByLogin(login);
-      if (entity != null)
-      {
-         StringUtils.equals(password, entity.getPassword());
-      }
-      return true;
+      UserEntity entity = userEntityDao.authenticate(login, password);
+      return entity != null;
    }
 }
