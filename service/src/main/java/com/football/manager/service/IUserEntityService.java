@@ -11,5 +11,5 @@ public interface IUserEntityService extends IAbstractService<UserEntity>
 {
    UserEntity findByLogin(String login);
 
-    boolean authenticate(String login, String password);
+   boolean authenticate(String login, String password);
 }

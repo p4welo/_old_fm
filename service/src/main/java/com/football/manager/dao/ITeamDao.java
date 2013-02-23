@@ -16,5 +16,5 @@ public interface ITeamDao
 
    List<Team> findTeamsFromLeague(League league);
 
-    Integer getLeagueTeamsCount(League league);
+   Integer getLeagueTeamsCount(League league);
 }

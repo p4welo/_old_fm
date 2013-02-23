@@ -28,87 +28,97 @@ import java.util.List;
  * Date: 28.01.13
  * Time: 21:57
  */
-public class LeagueTeamsPanel extends Panel {
-    @SpringBean
-    private ITeamService teamService;
+public class LeagueTeamsPanel extends Panel
+{
+   @SpringBean
+   private ITeamService teamService;
 
-    @SpringBean
-    private ILeagueService leagueService;
+   @SpringBean
+   private ILeagueService leagueService;
 
-    private final WebMarkupContainer mainContainer;
+   private final WebMarkupContainer mainContainer;
 
-    private final WebMarkupContainer leftContainer;
+   private final WebMarkupContainer leftContainer;
 
-    private final WebMarkupContainer rightContainer;
+   private final WebMarkupContainer rightContainer;
 
-    private final LeagueDetailsPage leagueDetailsPage;
+   private final LeagueDetailsPage leagueDetailsPage;
 
-    private CreateNewTeamWindow createNewTeamWindow;
+   private CreateNewTeamWindow createNewTeamWindow;
 
-    private List<Team> teamList;
+   private List<Team> teamList;
 
-    private ListView<Team> teamListView;
+   private ListView<Team> teamListView;
 
-    private Team selectedTeam;
+   private Team selectedTeam;
 
-    public LeagueTeamsPanel(String id, LeagueDetailsPage leagueDetailsPage) {
-        super(id);
-        this.leagueDetailsPage = leagueDetailsPage;
+   public LeagueTeamsPanel(String id, LeagueDetailsPage leagueDetailsPage)
+   {
+      super(id);
+      this.leagueDetailsPage = leagueDetailsPage;
 
-        mainContainer = new WebMarkupContainer("mainContainer");
-        mainContainer.setOutputMarkupId(true);
-        leftContainer = new WebMarkupContainer("leftContainer");
-        leftContainer.setOutputMarkupId(true);
-        rightContainer = new WebMarkupContainer("rightContainer");
-        rightContainer.setOutputMarkupId(true);
+      mainContainer = new WebMarkupContainer("mainContainer");
+      mainContainer.setOutputMarkupId(true);
+      leftContainer = new WebMarkupContainer("leftContainer");
+      leftContainer.setOutputMarkupId(true);
+      rightContainer = new WebMarkupContainer("rightContainer");
+      rightContainer.setOutputMarkupId(true);
 
-        initView();
-    }
+      initView();
+   }
 
-    private void initView() {
-        leftContainer.add(createNewTeamWindow());
-        leftContainer.add(createTeamTable());
-        createLeaguePropertiesForm(rightContainer);
+   private void initView()
+   {
+      leftContainer.add(createNewTeamWindow());
+      leftContainer.add(createTeamTable());
+      createLeaguePropertiesForm(rightContainer);
 
-        mainContainer.add(leftContainer);
-        mainContainer.add(rightContainer);
-        add(mainContainer);
-    }
+      mainContainer.add(leftContainer);
+      mainContainer.add(rightContainer);
+      add(mainContainer);
+   }
 
-    private CreateNewTeamModal createNewTeamWindow() {
-        return new CreateNewTeamModal("myModal", leagueDetailsPage.getSelectedLeague());
-    }
+   private CreateNewTeamModal createNewTeamWindow()
+   {
+      return new CreateNewTeamModal("myModal", leagueDetailsPage.getSelectedLeague());
+   }
 
-    private ListView<Team> createTeamTable() {
-        teamList = teamService.findTeamsFromLeague(leagueDetailsPage.getSelectedLeague());
-        teamListView = new ListView<Team>("teams", teamList) {
-            @Override
-            protected void populateItem(ListItem<Team> item) {
-                final Team team = item.getModelObject();
-                item.add(new Label("name", new PropertyModel<String>(team, Team.FIELD_NAME)));
-                item.add(new Label("account", new PropertyModel<String>(team, Team.FIELD_ACCOUNT)));
-            }
-        };
-        return teamListView;
-    }
+   private ListView<Team> createTeamTable()
+   {
+      teamList = teamService.findTeamsFromLeague(leagueDetailsPage.getSelectedLeague());
+      teamListView = new ListView<Team>("teams", teamList)
+      {
+         @Override
+         protected void populateItem(ListItem<Team> item)
+         {
+            final Team team = item.getModelObject();
+            item.add(new Label("name", new PropertyModel<String>(team, Team.FIELD_NAME)));
+            item.add(new Label("account", new PropertyModel<String>(team, Team.FIELD_ACCOUNT)));
+         }
+      };
+      return teamListView;
+   }
 
-    private void createLeaguePropertiesForm(WebMarkupContainer container) {
-        Form form = new Form<Void>("leaguePropertiesForm");
-        final TextField leagueNameField = new TextField("leagueNameField",
-                new PropertyModel(leagueDetailsPage, "selectedLeague.name"));
-        form.add(leagueNameField);
-        form.add(new AjaxButton("submitButton", form) {
-            @Override
-            protected void onSubmit(AjaxRequestTarget target, Form<?> form) {
-                League selectedLeague = leagueDetailsPage.getSelectedLeague();
-                leagueService.update(selectedLeague);
-                success((new ResourceModel("successfully.updated.league.properties")).getObject());
-                target.add(leagueDetailsPage.getMainContainer());
-            }
-        });
-        CssFeedbackPanel feedbackPanel = new CssFeedbackPanel("feedback");
-        feedbackPanel.setOutputMarkupId(true);
-        form.add(feedbackPanel);
-        container.add(form);
-    }
+   private void createLeaguePropertiesForm(WebMarkupContainer container)
+   {
+      Form form = new Form<Void>("leaguePropertiesForm");
+      final TextField leagueNameField = new TextField("leagueNameField",
+              new PropertyModel(leagueDetailsPage, "selectedLeague.name"));
+      form.add(leagueNameField);
+      form.add(new AjaxButton("submitButton", form)
+      {
+         @Override
+         protected void onSubmit(AjaxRequestTarget target, Form<?> form)
+         {
+            League selectedLeague = leagueDetailsPage.getSelectedLeague();
+            leagueService.update(selectedLeague);
+            success((new ResourceModel("successfully.updated.league.properties")).getObject());
+            target.add(leagueDetailsPage.getMainContainer());
+         }
+      });
+      CssFeedbackPanel feedbackPanel = new CssFeedbackPanel("feedback");
+      feedbackPanel.setOutputMarkupId(true);
+      form.add(feedbackPanel);
+      container.add(form);
+   }
 }

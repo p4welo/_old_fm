@@ -11,4 +11,7 @@
     <!-- WEB -->
     <import resource="classpath:spring/server-configuration-context.xml"/>
 
+    <!-- WICKET -->
+    <bean id="wicketApplication" class="com.football.manager.admin.AdminApplication"/>
+
 </beans>       
