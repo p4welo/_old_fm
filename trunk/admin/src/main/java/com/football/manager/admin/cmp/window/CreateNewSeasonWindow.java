@@ -101,7 +101,7 @@ public class CreateNewSeasonWindow extends AbstractWindow
          teams.setOutputMarkupId(true);
 
          form.add(teams);
-          CssFeedbackPanel feedbackPanel = new CssFeedbackPanel("feedback");
+         CssFeedbackPanel feedbackPanel = new CssFeedbackPanel("feedback");
          feedbackPanel.setOutputMarkupId(true);
          form.add(feedbackPanel);
          form.add(createSaveButton(form, feedbackPanel));

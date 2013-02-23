@@ -6,9 +6,10 @@ import org.apache.wicket.Page;
 import org.apache.wicket.authroles.authentication.AbstractAuthenticatedWebSession;
 import org.apache.wicket.authroles.authentication.AuthenticatedWebApplication;
 import org.apache.wicket.markup.html.WebPage;
-import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.settings.IRequestCycleSettings;
 import org.apache.wicket.spring.injection.annot.SpringComponentInjector;
+import org.springframework.beans.BeansException;
+import org.springframework.context.ApplicationContext;
 import org.wicketstuff.annotation.scan.AnnotatedMountScanner;
 
 /**
@@ -18,13 +19,15 @@ import org.wicketstuff.annotation.scan.AnnotatedMountScanner;
  */
 public class AdminApplication extends AuthenticatedWebApplication
 {
+   private ApplicationContext ctx;
+
    @Override
    public Class<? extends Page> getHomePage()
    {
       return LeagueListPage.class;
    }
 
-    //http://wicket.wordpress.com/2010/01/08/template-for-building-authenticated-webapplication/
+   //http://wicket.wordpress.com/2010/01/08/template-for-building-authenticated-webapplication/
 
    @Override
    protected void init()
@@ -36,13 +39,35 @@ public class AdminApplication extends AuthenticatedWebApplication
       getRequestCycleSettings().setRenderStrategy(IRequestCycleSettings.RenderStrategy.ONE_PASS_RENDER);
    }
 
-    @Override
-    protected Class<? extends AbstractAuthenticatedWebSession> getWebSessionClass() {
-        return AdminSession.class;
-    }
+   public static AdminApplication get()
+   {
+      return (AdminApplication) AdminApplication.get();
+   }
 
-    @Override
-    protected Class<? extends WebPage> getSignInPageClass() {
-        return LoginPage.class;
-    }
+   public static Object getSpringBean(String bean)
+   {
+      return get().ctx.getBean(bean);
+   }
+
+   public static <T> T getSpringBean(Class<T> bean)
+   {
+      return get().ctx.getBean(bean);
+   }
+
+   @Override
+   protected Class<? extends AbstractAuthenticatedWebSession> getWebSessionClass()
+   {
+      return AdminSession.class;
+   }
+
+   @Override
+   protected Class<? extends WebPage> getSignInPageClass()
+   {
+      return LoginPage.class;
+   }
+
+   public void setApplicationContext(ApplicationContext applicationContext) throws BeansException
+   {
+      this.ctx = applicationContext;
+   }
 }

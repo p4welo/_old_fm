@@ -88,7 +88,7 @@ public class CreateNewLeagueWindow extends AbstractWindow
          CheckBox generateTeamsField = new CheckBox("generateTeamsField",
                  new PropertyModel<Boolean>(CreateNewLeagueWindow.this, "generateTeams"));
          form.add(generateTeamsField);
-          CssFeedbackPanel feedbackPanel = new CssFeedbackPanel("feedback");
+         CssFeedbackPanel feedbackPanel = new CssFeedbackPanel("feedback");
          feedbackPanel.setOutputMarkupId(true);
          form.add(feedbackPanel);
          form.add(createSaveButton(form, feedbackPanel));

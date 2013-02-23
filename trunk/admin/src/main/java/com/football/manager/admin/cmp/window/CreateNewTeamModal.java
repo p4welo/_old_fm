@@ -15,56 +15,63 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
  * Time: 20:49
  * To change this template use File | Settings | File Templates.
  */
-public class CreateNewTeamModal extends AbstractModal {
+public class CreateNewTeamModal extends AbstractModal
+{
 
-    @SpringBean
-    private ITeamService teamService;
+   @SpringBean
+   private ITeamService teamService;
 
-    private String name;
+   private String name;
 
-    private Integer account;
+   private Integer account;
 
-    private League league;
+   private League league;
 
-    public CreateNewTeamModal(String id, League league) {
-        super(id);
-    }
+   public CreateNewTeamModal(String id, League league)
+   {
+      super(id);
+   }
 
-    @Override
-    public void onConfirm(AjaxRequestTarget target) {
-        Team team = new Team();
-        team.setName(name);
-        team.setAccount(account);
-        team.setLeague(league);
-        team = teamService.save(team);
-    }
+   @Override
+   public void onConfirm(AjaxRequestTarget target)
+   {
+      Team team = new Team();
+      team.setName(name);
+      team.setAccount(account);
+      team.setLeague(league);
+      team = teamService.save(team);
+   }
 
-    @Override
-    protected void initView() {
-        TextField name = new TextField<String>("name", new PropertyModel(
-                this, "name"));
-        name.setRequired(true);
-        form.add(name);
-        TextField account = new TextField<String>("account", new PropertyModel(
-                this, "account"));
-        account.setRequired(true);
-        form.add(account);
-    }
+   @Override
+   protected void initView()
+   {
+      TextField name = new TextField<String>("name", new PropertyModel(
+              this, "name"));
+      name.setRequired(true);
+      form.add(name);
+      TextField account = new TextField<String>("account", new PropertyModel(
+              this, "account"));
+      account.setRequired(true);
+      form.add(account);
+   }
 
+   public String getName()
+   {
+      return name;
+   }
 
-    public String getName() {
-        return name;
-    }
+   public void setName(String name)
+   {
+      this.name = name;
+   }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+   public Integer getAccount()
+   {
+      return account;
+   }
 
-    public Integer getAccount() {
-        return account;
-    }
-
-    public void setAccount(Integer account) {
-        this.account = account;
-    }
+   public void setAccount(Integer account)
+   {
+      this.account = account;
+   }
 }

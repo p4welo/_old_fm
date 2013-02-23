@@ -87,7 +87,7 @@ public class CreateNewTeamWindow extends AbstractWindow
                  CreateNewTeamWindow.this, "teamAccount"));
          accountField.setRequired(true);
          form.add(accountField);
-          CssFeedbackPanel feedbackPanel = new CssFeedbackPanel("feedback");
+         CssFeedbackPanel feedbackPanel = new CssFeedbackPanel("feedback");
          feedbackPanel.setOutputMarkupId(true);
          form.add(feedbackPanel);
          form.add(createSaveButton(form, feedbackPanel));
