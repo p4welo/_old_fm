@@ -3,6 +3,7 @@ package com.football.manager.admin;
 import com.football.manager.domain.UserEntity;
 import com.football.manager.service.IUserEntityService;
 import com.football.manager.service.IUserRoleService;
+import org.apache.wicket.Session;
 import org.apache.wicket.authroles.authentication.AuthenticatedWebSession;
 import org.apache.wicket.authroles.authorization.strategies.role.Roles;
 import org.apache.wicket.injection.Injector;
@@ -68,5 +69,10 @@ public class AdminSession extends AuthenticatedWebSession
    public UserEntity getUser()
    {
       return user;
+   }
+
+   public static AdminSession get()
+   {
+      return (AdminSession) Session.get();
    }
 }

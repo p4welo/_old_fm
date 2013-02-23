@@ -43,15 +43,10 @@ public class AdminApplication extends AuthenticatedWebApplication
       return (AdminApplication) AdminApplication.get();
    }
 
-//   public static Object getSpringBean(String bean)
-//   {
-//      return get().ctx.getBean(bean);
-//   }
-//
-//   public static <T> T getSpringBean(Class<T> bean)
-//   {
-//      return get().ctx.getBean(bean);
-//   }
+   public static AdminSession getSession()
+   {
+      return AdminSession.get();
+   }
 
    @Override
    protected Class<? extends AbstractAuthenticatedWebSession> getWebSessionClass()
@@ -64,9 +59,4 @@ public class AdminApplication extends AuthenticatedWebApplication
    {
       return LoginPage.class;
    }
-
-//   public void setApplicationContext(ApplicationContext applicationContext) throws BeansException
-//   {
-//      this.ctx = applicationContext;
-//   }
 }
