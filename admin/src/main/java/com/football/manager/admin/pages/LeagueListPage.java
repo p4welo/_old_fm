@@ -27,7 +27,7 @@ import java.util.List;
  * Time: 15:00
  */
 @MountPath(AdminApiMappings.LEAGUE_LIST_PAGE)
-@AuthorizeInstantiation("ROOT")
+@AuthorizeInstantiation("ROLE_ADMIN")
 public class LeagueListPage extends AbstractPage
 {
    @SpringBean

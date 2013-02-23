@@ -13,4 +13,6 @@ import java.util.List;
 public interface IUserRoleService extends IAbstractService<UserRole>
 {
    List<UserRole> getUserRoles(UserEntity userEntity);
+
+   List<String> getRoles(UserEntity user);
 }
