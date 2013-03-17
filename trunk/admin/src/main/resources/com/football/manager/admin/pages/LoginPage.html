@@ -1,14 +1,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:wicket="http://wicket.apache.org">
 <head>
     <title>
-        <wicket:message key="page.title"/>
+        <!--<wicket:message key="page.title"/>-->
     </title>
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="css/new_style.css" rel="stylesheet" media="screen">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 </head>
 <body>
-<wicket:extend>
-    <!--<div id="main_content" wicket:id="mainContainer">-->
-    <div wicket:id="signInPanel"/>
-    <!--</div>-->
-</wicket:extend>
+<div class="container">
+    <div wicket:id="loginPanel"/>
+</div>
 </body>
 </html>

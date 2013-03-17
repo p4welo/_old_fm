@@ -30,6 +30,7 @@ public class CreateNewTeamModal extends AbstractModal
    public CreateNewTeamModal(String id, League league)
    {
       super(id);
+      this.league = league;
    }
 
    @Override
@@ -39,7 +40,7 @@ public class CreateNewTeamModal extends AbstractModal
       team.setName(name);
       team.setAccount(account);
       team.setLeague(league);
-      team = teamService.save(team);
+      teamService.save(team);
    }
 
    @Override

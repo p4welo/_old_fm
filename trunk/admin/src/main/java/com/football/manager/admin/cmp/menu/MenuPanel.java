@@ -1,5 +1,6 @@
 package com.football.manager.admin.cmp.menu;
 
+import com.football.manager.admin.AdminApplication;
 import com.football.manager.admin.pages.Index;
 import com.football.manager.admin.pages.LeagueListPage;
 import com.football.manager.domain.UserEntity;
@@ -26,7 +27,7 @@ public class MenuPanel extends Panel implements MenuKeys
       menu.add(MENU_ADMIN_USERS_PAGE, Index.class);
       menu.add(MENU_ADMIN_RULES_PAGE, Index.class);
       add(menu);
-//      entity = AdminApplication.get().getSession().getUser();
+      entity = ((AdminApplication) getApplication()).getSession().getUser();
 //      add(new Label("user", new PropertyModel(this, "entity.login")));
    }
 

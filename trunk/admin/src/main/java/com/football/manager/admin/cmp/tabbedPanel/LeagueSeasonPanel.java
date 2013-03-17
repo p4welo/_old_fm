@@ -1,14 +1,16 @@
 package com.football.manager.admin.cmp.tabbedPanel;
 
+import com.football.manager.admin.cmp.window.CreateNewSeasonModal;
 import com.football.manager.admin.cmp.window.CreateNewSeasonWindow;
 import com.football.manager.admin.pages.LeagueDetailsPage;
 import com.football.manager.domain.Season;
+import com.football.manager.domain.Team;
 import com.football.manager.domain.TeamRecord;
 import com.football.manager.service.ISeasonService;
 import com.football.manager.service.ITeamRecordService;
+import com.football.manager.service.ITeamService;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.form.AjaxFormComponentUpdatingBehavior;
-import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.ChoiceRenderer;
@@ -33,6 +35,9 @@ public class LeagueSeasonPanel extends Panel
 
    @SpringBean
    private ITeamRecordService teamRecordService;
+
+   @SpringBean
+   private ITeamService teamService;
 
    private final WebMarkupContainer mainContainer;
 
@@ -72,11 +77,10 @@ public class LeagueSeasonPanel extends Panel
    {
       setOutputMarkupId(true);
       mainContainer.setOutputMarkupId(true);
+      leftContainer.add(createNewSeasonWindow());
       leftContainer.setOutputMarkupId(true);
       rightContainer.setOutputMarkupId(true);
 
-      createNewSeasonWindow();
-      createTableToolbar(leftContainer);
       createSeasonsCombo(leftContainer);
       createTeamRecordTable(leftContainer);
 
@@ -85,27 +89,14 @@ public class LeagueSeasonPanel extends Panel
       add(mainContainer);
    }
 
-   private void createNewSeasonWindow()
+   private CreateNewSeasonModal createNewSeasonWindow()
    {
-      createNewSeasonWindow = new CreateNewSeasonWindow("createNewSeasonWindow", leagueDetailsPage.getSelectedLeague())
-      {
-         @Override
-         protected void onConfirm(AjaxRequestTarget target)
-         {
-            Season season = new Season();
-            season.setLeague(leagueDetailsPage.getSelectedLeague());
-            selectedSeason = seasonService.save(season);
-            allSeasons = seasonService.getLeagueSeasons(leagueDetailsPage.getSelectedLeague());
-            teamRecords = teamRecordService.findTeamRecordsBySeason(selectedSeason);
-            target.add(leagueDetailsPage.getMainContainer());
-         }
-      };
-      add(createNewSeasonWindow);
+      List<Team> teams = teamService.findTeamsFromLeague(selectedSeason.getLeague());
+      return new CreateNewSeasonModal("myModal", leagueDetailsPage.getSelectedLeague(), teams);
    }
 
    private void createSeasonsCombo(WebMarkupContainer container)
    {
-
       seasons = new DropDownChoice<Season>(
               "seasons",
               new PropertyModel<Season>(this, "selectedSeason"),
@@ -146,18 +137,6 @@ public class LeagueSeasonPanel extends Panel
          }
       };
       container.add(teamListView);
-   }
-
-   private void createTableToolbar(WebMarkupContainer container)
-   {
-      container.add(new AjaxLink<Void>("newSeasonLink")
-      {
-         @Override
-         public void onClick(AjaxRequestTarget ajaxRequestTarget)
-         {
-            createNewSeasonWindow.show(ajaxRequestTarget);
-         }
-      });
    }
 
    public Season getSelectedSeason()
