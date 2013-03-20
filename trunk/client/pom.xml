@@ -9,9 +9,9 @@
         <artifactId>fm</artifactId>
         <version>${project.version}</version>
     </parent>
-    <artifactId>core</artifactId>
+    <artifactId>client</artifactId>
     <version>${project.version}</version>
-    <name>Core Module</name>
+    <name>Client Module</name>
     <packaging>jar</packaging>
 
     <build>
@@ -32,4 +32,17 @@
             </testResource>
         </testResources>
     </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.football.manager</groupId>
+            <artifactId>core</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.football.manager</groupId>
+            <artifactId>service</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
 </project>

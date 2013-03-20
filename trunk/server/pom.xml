@@ -57,7 +57,12 @@
     <dependencies>
         <dependency>
             <groupId>com.football.manager</groupId>
-            <artifactId>service</artifactId>
+            <artifactId>admin</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.football.manager</groupId>
+            <artifactId>client</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
