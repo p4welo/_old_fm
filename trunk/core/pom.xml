@@ -9,24 +9,10 @@
         <artifactId>fm</artifactId>
         <version>${project.version}</version>
     </parent>
-    <artifactId>resources</artifactId>
+    <artifactId>core</artifactId>
     <version>${project.version}</version>
-    <name>Resources Module</name>
+    <name>Core Module</name>
     <packaging>jar</packaging>
 
-    <build>
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-            </resource>
-        </resources>
-    </build>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-webmvc</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
-    </dependencies>
 </project>
