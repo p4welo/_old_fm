@@ -1,7 +1,8 @@
 package com.football.manager.server.pages;
 
-import com.football.manager.server.cmp.authorization.LoginPanel;
+import com.football.manager.server.cmp.authorization.LoginForm;
 import org.apache.wicket.markup.html.WebPage;
+import org.wicketstuff.annotation.mount.MountPath;
 
 /**
  * Created with IntelliJ IDEA.
@@ -10,11 +11,13 @@ import org.apache.wicket.markup.html.WebPage;
  * Time: 21:51
  * To change this template use File | Settings | File Templates.
  */
+@MountPath("/login")
 public class LoginPage extends WebPage
 {
    public LoginPage()
    {
 //      super();
-      add(new LoginPanel("loginPanel"));
+//      add(new LoginPanel("loginPanel"));
+      add(new LoginForm("signInForm"));
    }
 }
