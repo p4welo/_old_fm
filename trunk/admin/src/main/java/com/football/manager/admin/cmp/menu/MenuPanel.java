@@ -1,6 +1,7 @@
 package com.football.manager.admin.cmp.menu;
 
 import com.football.manager.admin.cmp.authorization.LogoutLink;
+import com.football.manager.admin.pages.GameConfigPage;
 import com.football.manager.admin.pages.Index;
 import com.football.manager.admin.pages.LeagueListPage;
 import com.football.manager.domain.UserEntity;
@@ -27,11 +28,9 @@ public class MenuPanel extends Panel implements MenuKeys
       menu = new MenuPlugin("menu");
       menu.add(MENU_ADMIN_LEAGUE_LIST_PAGE, LeagueListPage.class);
       menu.add(MENU_ADMIN_USERS_PAGE, Index.class);
-      menu.add(MENU_ADMIN_RULES_PAGE, Index.class);
+      menu.add(MENU_ADMIN_RULES_PAGE, GameConfigPage.class);
       add(menu);
       add(new LogoutLink("logout", LeagueListPage.class));
-//      entity = ((AdminApplication) getApplication()).getSession().getUser();
-//      add(new Label("user", new PropertyModel(this, "entity.login")));
    }
 
    public List<Class> getTargetClasses()
