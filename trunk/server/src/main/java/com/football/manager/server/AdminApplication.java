@@ -1,6 +1,6 @@
 package com.football.manager.server;
 
-import com.football.manager.server.pages.LeagueListPage;
+import com.football.manager.admin.pages.LeagueListPage;
 import com.football.manager.server.pages.LoginPage;
 import org.apache.wicket.Page;
 import org.apache.wicket.authroles.authentication.AbstractAuthenticatedWebSession;
@@ -23,6 +23,7 @@ public class AdminApplication extends AuthenticatedWebApplication
    @Override
    public Class<? extends Page> getHomePage()
    {
+//      return SamplePage.class;
       return LeagueListPage.class;
    }
 
