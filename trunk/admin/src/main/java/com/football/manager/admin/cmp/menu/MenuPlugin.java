@@ -32,14 +32,14 @@ public class MenuPlugin extends Panel
    {
       super(id);
 
-      add(new Link("homeLink")
-      {
-         @Override
-         public void onClick()
-         {
-//            setResponsePage(AdminApplication.get().getHomePage());
-         }
-      });
+//      add(new Link("homeLink")
+//      {
+//         @Override
+//         public void onClick()
+//         {
+////            setResponsePage(AdminApplication.get().getHomePage());
+//         }
+//      });
 
       ListView listview = new ListView("menuItem", menuItemList)
       {

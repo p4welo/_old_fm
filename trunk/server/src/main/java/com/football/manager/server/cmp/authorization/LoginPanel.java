@@ -1,6 +1,6 @@
 package com.football.manager.server.cmp.authorization;
 
-import com.football.manager.server.cmp.feedback.CssFeedbackPanel;
+import com.football.manager.admin.cmp.feedback.CssFeedbackPanel;
 import org.apache.wicket.RestartResponseException;
 import org.apache.wicket.authentication.IAuthenticationStrategy;
 import org.apache.wicket.authroles.authentication.AuthenticatedWebSession;
