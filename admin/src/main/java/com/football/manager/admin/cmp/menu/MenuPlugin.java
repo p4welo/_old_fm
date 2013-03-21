@@ -32,15 +32,6 @@ public class MenuPlugin extends Panel
    {
       super(id);
 
-//      add(new Link("homeLink")
-//      {
-//         @Override
-//         public void onClick()
-//         {
-////            setResponsePage(AdminApplication.get().getHomePage());
-//         }
-//      });
-
       ListView listview = new ListView("menuItem", menuItemList)
       {
          private static final long serialVersionUID = -7597884223556472130L;
