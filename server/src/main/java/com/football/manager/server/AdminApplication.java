@@ -37,6 +37,7 @@ public class AdminApplication extends AuthenticatedWebApplication
       new AnnotatedMountScanner().scanPackage(AdminApplication.class.getPackage().getName()).mount(this);
       getDebugSettings().setAjaxDebugModeEnabled(false);
       getRequestCycleSettings().setRenderStrategy(IRequestCycleSettings.RenderStrategy.ONE_PASS_RENDER);
+      new AnnotatedMountScanner().scanPackage("com.football.manager.admin").mount(this);
    }
 
    public static AdminApplication get()

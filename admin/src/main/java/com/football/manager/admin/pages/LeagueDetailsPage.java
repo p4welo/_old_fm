@@ -2,13 +2,14 @@ package com.football.manager.admin.pages;
 
 import com.football.manager.admin.api.AdminApiMappings;
 import com.football.manager.admin.cmp.tabbedPanel.BootstrapTabbedPanel;
-import com.football.manager.admin.cmp.tabbedPanel.LeagueInfoPanel;
-import com.football.manager.admin.cmp.tabbedPanel.LeagueSeasonPanel;
-import com.football.manager.admin.cmp.tabbedPanel.LeagueTeamsPanel;
+import com.football.manager.admin.cmp.tabbedPanel.leagueDetailTabs.LeagueInfoPanel;
+import com.football.manager.admin.cmp.tabbedPanel.leagueDetailTabs.LeagueSeasonPanel;
+import com.football.manager.admin.cmp.tabbedPanel.leagueDetailTabs.LeagueTeamsPanel;
 import com.football.manager.domain.League;
 import com.football.manager.service.ILeagueService;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.wicket.RestartResponseAtInterceptPageException;
+import org.apache.wicket.authroles.authorization.strategies.role.annotations.AuthorizeInstantiation;
 import org.apache.wicket.extensions.markup.html.tabs.AbstractTab;
 import org.apache.wicket.extensions.markup.html.tabs.ITab;
 import org.apache.wicket.markup.html.WebMarkupContainer;
@@ -26,7 +27,9 @@ import java.util.List;
  * Date: 27.01.13
  * Time: 00:05
  */
+
 @MountPath(AdminApiMappings.LEAGUE_DETAILS_PAGE)
+@AuthorizeInstantiation("ROLE_ADMIN")
 public class LeagueDetailsPage extends AbstractPage
 {
    @SpringBean
@@ -97,6 +100,7 @@ public class LeagueDetailsPage extends AbstractPage
          {
             return new LeagueSeasonPanel(panelId, LeagueDetailsPage.this);
          }
+
       });
 
       container.add(new BootstrapTabbedPanel("tabs", tabs));
