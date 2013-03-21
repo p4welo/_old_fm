@@ -23,5 +23,4 @@ public class BootstrapTabbedPanel extends AjaxTabbedPanel
    {
       return "active";
    }
-
 }
