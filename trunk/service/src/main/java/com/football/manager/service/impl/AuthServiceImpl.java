@@ -27,7 +27,7 @@ public class AuthServiceImpl implements IAuthService
    public UserEntity getLoggedInUserEntity()
    {
       User user = getLoggedInUser();
-      return userEntityService.findByLogin(user.getUsername());
+      return userEntityService.getByLogin(user.getUsername());
    }
 
    public User getLoggedInUser()
