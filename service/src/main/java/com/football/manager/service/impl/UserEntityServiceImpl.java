@@ -30,7 +30,7 @@ public class UserEntityServiceImpl extends AbstractServiceImpl<UserEntity> imple
 
    @Override
    @Transactional
-   public UserEntity findByLogin(String login)
+   public UserEntity getByLogin(String login)
    {
       return userEntityDao.findByLogin(login);
    }

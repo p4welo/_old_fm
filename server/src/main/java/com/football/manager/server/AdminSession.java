@@ -1,6 +1,7 @@
 package com.football.manager.server;
 
 import com.football.manager.domain.UserEntity;
+import com.football.manager.security.service.ISecurityService;
 import com.football.manager.service.IUserEntityService;
 import com.football.manager.service.IUserRoleService;
 import org.apache.wicket.Session;
@@ -9,6 +10,11 @@ import org.apache.wicket.authroles.authorization.strategies.role.Roles;
 import org.apache.wicket.injection.Injector;
 import org.apache.wicket.request.Request;
 import org.apache.wicket.spring.injection.annot.SpringBean;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -23,7 +29,11 @@ import java.util.List;
 @Component
 public class AdminSession extends AuthenticatedWebSession
 {
-   private UserEntity user;
+   @SpringBean(name = "authenticationManager")
+   private AuthenticationManager authenticationManager;
+
+   @SpringBean
+   private ISecurityService securityService;
 
    @SpringBean
    private IUserEntityService userEntityService;
@@ -40,21 +50,85 @@ public class AdminSession extends AuthenticatedWebSession
    @Override
    public boolean authenticate(String userName, String password)
    {
-      boolean success = userEntityService.authenticate(userName, password);
-      if (success)
+//      boolean success = userEntityService.authenticate(userName, password);
+//      if (success)
+//      {
+//         this.user = userEntityService.getByLogin(userName);
+//      }
+//      return success;
+      boolean authenticated = false;
+      try
       {
-         this.user = userEntityService.findByLogin(userName);
+         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
+                 userName,
+                 password));
+         SecurityContextHolder.getContext().setAuthentication(authentication);
+         authenticated = authentication.isAuthenticated();
       }
-      return success;
+      catch (AuthenticationException e)
+      {
+         authenticated = false;
+      }
+      return authenticated;
+   }
+
+   //   @Override
+//   public Roles getRoles()
+//   {
+//      Roles roles = new Roles();
+//      if (isSignedIn() && user != null)
+//      {
+//         List<String> list = userRoleService.getRoles(user);
+//         if (list != null)
+//         {
+//            for (String role : list)
+//            {
+//               roles.add(role);
+//            }
+//         }
+//      }
+//      return roles;
+//   }
+//
+//   public UserEntity getUser()
+//   {
+//      return user;
+//   }
+//
+   public static AdminSession get()
+   {
+      return (AdminSession) Session.get();
    }
 
    @Override
    public Roles getRoles()
    {
       Roles roles = new Roles();
-      if (isSignedIn() && user != null)
+      getRolesIfSignedIn(roles);
+      return roles;
+   }
+
+   @Override
+   public void invalidate()
+   {
+      super.invalidate();
+      SecurityContextHolder.getContext().setAuthentication(null);
+   }
+
+   private void getRolesIfSignedIn(Roles roles)
+   {
+      if (isSignedIn())
       {
-         List<String> list = userRoleService.getRoles(user);
+         addRolesFromAuthentication(roles);
+      }
+   }
+
+   private void addRolesFromAuthentication(Roles roles)
+   {
+      UserEntity loggedInUser = securityService.getLoggedInUser();
+      if (isSignedIn() && loggedInUser != null)
+      {
+         List<String> list = userRoleService.getRoles(loggedInUser);
          if (list != null)
          {
             for (String role : list)
@@ -63,16 +137,5 @@ public class AdminSession extends AuthenticatedWebSession
             }
          }
       }
-      return roles;
-   }
-
-   public UserEntity getUser()
-   {
-      return user;
-   }
-
-   public static AdminSession get()
-   {
-      return (AdminSession) Session.get();
    }
 }

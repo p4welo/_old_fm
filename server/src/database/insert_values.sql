@@ -18,8 +18,8 @@ INSERT INTO position VALUES
 (15, 'N', 'Napastnik');
 
 INSERT INTO user (id, login, password, email) VALUES
-    (1, 'root', md5('root'), 'root@mail.com'),
-    (2, 'user', md5('user'), 'user@mail.com');
+    (1, 'root', '35bfe5fe27bd8fa134bfb2399e28620758076b2e91e6f6275fd87f767e0991a8', 'root@mail.com'),
+    (2, 'user', '35bfe5fe27bd8fa134bfb2399e28620758076b2e91e6f6275fd87f767e0991a8', 'user@mail.com');
 
 INSERT INTO user_role (user_id, role) VALUES
     (1, 'ROLE_ADMIN'),

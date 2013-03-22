@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+				http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+				http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd">
+
+    <security:global-method-security secured-annotations="enabled"/>
+    <context:component-scan base-package="com.football.manager.security.service.impl"/>
+
+    <bean id="userDetailsCache"
+          class="org.springframework.security.core.userdetails.cache.EhCacheBasedUserCache">
+        <property name="cache">
+            <bean class="org.springframework.cache.ehcache.EhCacheFactoryBean">
+                <property name="cacheManager" ref="ehCacheManager"/>
+                <property name="cacheName" value="userDetailsCache"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="ehCacheManager"
+          class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean"
+          destroy-method="destroy">
+        <property name="configLocation" value="classpath:configuration/security-ehcache.xml"/>
+        <property name="cacheManagerName" value="spring-security-cache"/>
+        <property name="shared" value="false"/>
+    </bean>
+
+    <bean id="userSaltSource" class="com.football.manager.security.UserSaltSource"/>
+
+    <bean id="userDetailsService" class="com.football.manager.security.service.impl.UserDetailsServiceImpl">
+        <property name="userService" ref="userEntityService"/>
+        <property name="authorityService" ref="userRoleService"/>
+    </bean>
+
+    <bean id="authenticationProvider" class="com.football.manager.security.service.impl.AuthenticationProviderImpl">
+        <property name="passwordEncoder" ref="passwordEncoder"/>
+        <property name="saltSource" ref="userSaltSource"/>
+        <property name="userDetailsService" ref="userDetailsService"/>
+        <property name="userCache" ref="userDetailsCache"/>
+    </bean>
+
+    <bean id="passwordEncoder" class="org.springframework.security.authentication.encoding.ShaPasswordEncoder">
+        <constructor-arg index="0" value="256"/>
+    </bean>
+
+    <!--<bean id="pluginFactory" class="pl.solsoft.common.dao.impl.PluginFactoryImpl">-->
+    <!--<property name="basePackage" value="plugin"/>-->
+    <!--<property name="pluginPattern" value="*.xml"/>-->
+    <!--</bean>-->
+
+    <security:http create-session="never" auto-config="true">
+        <!--<security:remember-me/>-->
+        <security:intercept-url pattern="/**"/>
+        <security:anonymous enabled="false"/>
+    </security:http>
+
+    <security:authentication-manager alias="authenticationManager">
+        <security:authentication-provider ref="authenticationProvider">
+        </security:authentication-provider>
+    </security:authentication-manager>
+
+</beans>
