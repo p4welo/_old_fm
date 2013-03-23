@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.football.manager</groupId>
+        <groupId>com.fm</groupId>
         <artifactId>fm</artifactId>
         <version>${project.version}</version>
     </parent>
@@ -35,7 +35,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.football.manager</groupId>
+            <groupId>com.fm</groupId>
             <artifactId>domain</artifactId>
             <version>${project.version}</version>
         </dependency>
