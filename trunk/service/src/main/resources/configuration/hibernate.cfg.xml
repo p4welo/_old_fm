@@ -5,18 +5,18 @@
 
 <hibernate-configuration>
     <session-factory>
-        <mapping class="com.football.manager.domain.League"/>
-        <mapping class="com.football.manager.domain.Manager"/>
-        <mapping class="com.football.manager.domain.MatchGame"/>
-        <mapping class="com.football.manager.domain.Name"/>
-        <mapping class="com.football.manager.domain.PlayerStats"/>
-        <mapping class="com.football.manager.domain.Player"/>
-        <mapping class="com.football.manager.domain.Position"/>
-        <mapping class="com.football.manager.domain.Season"/>
-        <mapping class="com.football.manager.domain.Surname"/>
-        <mapping class="com.football.manager.domain.Team"/>
-        <mapping class="com.football.manager.domain.TeamRecord"/>
-        <mapping class="com.football.manager.domain.UserEntity"/>
-        <mapping class="com.football.manager.domain.UserRole"/>
+        <mapping class="com.fm.domain.League"/>
+        <mapping class="com.fm.domain.Manager"/>
+        <mapping class="com.fm.domain.MatchGame"/>
+        <mapping class="com.fm.domain.Name"/>
+        <mapping class="com.fm.domain.PlayerStats"/>
+        <mapping class="com.fm.domain.Player"/>
+        <mapping class="com.fm.domain.Position"/>
+        <mapping class="com.fm.domain.Season"/>
+        <mapping class="com.fm.domain.Surname"/>
+        <mapping class="com.fm.domain.Team"/>
+        <mapping class="com.fm.domain.TeamRecord"/>
+        <mapping class="com.fm.domain.UserEntity"/>
+        <mapping class="com.fm.domain.UserRole"/>
     </session-factory>
 </hibernate-configuration>

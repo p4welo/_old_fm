@@ -9,7 +9,7 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
     <context:annotation-config/>
-    <context:component-scan base-package="com.football.manager.dao"/>
+    <context:component-scan base-package="com.fm.dao"/>
 
     <bean id="validatorFactory" class="javax.validation.Validation"
           factory-method="buildDefaultValidatorFactory"/>

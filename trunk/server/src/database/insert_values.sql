@@ -3,18 +3,18 @@ USE fm;
 INSERT INTO position VALUES
 (1, 'BR', 'Bramkarz'),
 (2, 'LB', 'Libero'),
-(3, 'OL', 'Lewy obrońca'),
-(4, 'OŚ', 'Środkowy obrońca'),
-(5, 'OP', 'Prawy obrońca'),
+(3, 'OL', 'Lewy obronca'),
+(4, 'OS', 'Srodkowy obronca'),
+(5, 'OP', 'Prawy obronca'),
 (6, 'DPL', 'Lewy defensywny pomocnik'),
-(7, 'DPŚ', 'Środkowy defensywny pomocnik'),
+(7, 'DPS', 'Srodkowy defensywny pomocnik'),
 (8, 'DPP', 'Prawy defensywny pomocnik'),
 (9, 'PL', 'Lewy pomocnik'),
-(10, 'PŚ', 'Środkowy pomocnik'),
+(10, 'PS', 'Srodkowy pomocnik'),
 (11, 'PP', 'Prawy pomocnik'),
-(12, 'OPL', 'Lewy skrzydłowy'),
-(13, 'OPŚ', 'Środkowy ofensywny pomocnik'),
-(14, 'OPP', 'Prawy skrzydłowy'),
+(12, 'OPL', 'Lewy skrzydlowy'),
+(13, 'OPS', 'Srodkowy ofensywny pomocnik'),
+(14, 'OPP', 'Prawy skrzydlowy'),
 (15, 'N', 'Napastnik');
 
 INSERT INTO user (id, login, password, email) VALUES

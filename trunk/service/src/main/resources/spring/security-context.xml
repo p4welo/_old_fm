@@ -8,7 +8,7 @@
 				http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd">
 
     <security:global-method-security secured-annotations="enabled"/>
-    <context:component-scan base-package="com.football.manager.security.service.impl"/>
+    <context:component-scan base-package="com.fm.security.service.impl"/>
 
     <bean id="userDetailsCache"
           class="org.springframework.security.core.userdetails.cache.EhCacheBasedUserCache">
@@ -28,14 +28,14 @@
         <property name="shared" value="false"/>
     </bean>
 
-    <bean id="userSaltSource" class="com.football.manager.security.UserSaltSource"/>
+    <bean id="userSaltSource" class="com.fm.security.UserSaltSource"/>
 
-    <bean id="userDetailsService" class="com.football.manager.security.service.impl.UserDetailsServiceImpl">
+    <bean id="userDetailsService" class="com.fm.security.service.impl.UserDetailsServiceImpl">
         <property name="userService" ref="userEntityService"/>
         <property name="authorityService" ref="userRoleService"/>
     </bean>
 
-    <bean id="authenticationProvider" class="com.football.manager.security.service.impl.AuthenticationProviderImpl">
+    <bean id="authenticationProvider" class="com.fm.security.service.impl.AuthenticationProviderImpl">
         <property name="passwordEncoder" ref="passwordEncoder"/>
         <property name="saltSource" ref="userSaltSource"/>
         <property name="userDetailsService" ref="userDetailsService"/>
