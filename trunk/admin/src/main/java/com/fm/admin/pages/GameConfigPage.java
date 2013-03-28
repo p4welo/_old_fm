@@ -13,10 +13,16 @@ import org.wicketstuff.annotation.mount.MountPath;
  */
 @MountPath(AdminApiMappings.GAME_CONFIG_PAGE)
 @AuthorizeInstantiation("ROLE_ADMIN")
-public class GameConfigPage extends AbstractPage
+public class GameConfigPage extends AdminAbstractPage
 {
    public GameConfigPage()
    {
       super();
+   }
+
+   @Override
+   protected String provideHeaderKey()
+   {
+      return "page.header";
    }
 }

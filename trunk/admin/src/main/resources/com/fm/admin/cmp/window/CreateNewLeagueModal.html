@@ -2,31 +2,33 @@
     <div id="CreateNewLeagueModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
          aria-hidden="true">
         <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                <i class="icon-remove"></i>
+            </button>
             <h3 id="myModalLabel">
                 <wicket:message key="new.league.header"/>
             </h3>
         </div>
         <div class="modal-body">
-            <form wicket:id="form">
-                <table class="modal_table">
-                    <tr>
-                        <td class="field_label">
-                            <wicket:message key="league.name.label"/>
-                        </td>
-                        <td class="field_value">
-                            <input type="text" wicket:id="nameField"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="field_label">
-                            <wicket:message key="generate.teams.label"/>
-                        </td>
-                        <td class="field_value">
-                            <input type="checkbox" wicket:id="generateTeamsField"/>
-                        </td>
-                    </tr>
-                </table>
+            <form wicket:id="form" class="form-horizontal">
+                <div class="control-group">
+                    <label class="control-label">
+                        <wicket:message key="league.name.label"/>
+                    </label>
+
+                    <div class="controls">
+                        <input type="text" wicket:id="nameField"/>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">
+                        <wicket:message key="generate.teams.label"/>
+                    </label>
+
+                    <div class="controls">
+                        <input type="checkbox" wicket:id="generateTeamsField"/>
+                    </div>
+                </div>
                 <div wicket:id="feedback" class="feedback"></div>
             </form>
         </div>
@@ -34,7 +36,7 @@
             <button class="btn" data-dismiss="modal" aria-hidden="true">
                 <wicket:message key="cancel.label"/>
             </button>
-            <button wicket:id="saveButton" class="btn btn-primary">
+            <button wicket:id="saveButton" class="btn btn-success">
                 <wicket:message key="save.label"/>
             </button>
         </div>
