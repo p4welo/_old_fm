@@ -26,7 +26,12 @@
                     </label>
 
                     <div class="controls">
-                        <input type="checkbox" wicket:id="generateTeamsField"/>
+                        <div class="checker focus" id="uniform-undefined">
+                            <span class="checked">
+                                <input wicket:id="generateTeamsField" type="checkbox" name="radios"
+                                       style="opacity: 0;"/>
+                            </span>
+                        </div>
                     </div>
                 </div>
                 <div wicket:id="feedback" class="feedback"></div>
