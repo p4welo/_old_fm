@@ -1,6 +1,6 @@
 package com.fm.server.cmp.authorization;
 
-import com.fm.admin.cmp.feedback.CssFeedbackPanel;
+import com.fm.core.cmp.feedback.CssFeedbackPanel;
 import org.apache.wicket.RestartResponseException;
 import org.apache.wicket.authentication.IAuthenticationStrategy;
 import org.apache.wicket.authroles.authentication.AuthenticatedWebSession;

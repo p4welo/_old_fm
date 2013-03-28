@@ -1,6 +1,7 @@
 package com.fm.admin.cmp.window;
 
 import com.fm.admin.navigation.NavigateToLeagueDetailsPage;
+import com.fm.core.cmp.window.AbstractModal;
 import com.fm.domain.League;
 import com.fm.service.ILeagueService;
 import org.apache.wicket.ajax.AjaxRequestTarget;

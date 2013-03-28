@@ -1,21 +1,12 @@
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:wicket="http://wicket.apache.org">
-<head>
-    <title>
-        <wicket:message key="page.title"/>
-    </title>
-</head>
-<body>
-<wicket:extend>
-    <div id="main_content" wicket:id="mainContainer">
-        <h3>
-            <wicket:message key="page.header"/>
-        </h3>
-        <wicket:container wicket:id="myModal"/>
-        <a href="#CreateNewLeagueModal" role="button" class="btn btn-success" data-toggle="modal">
+<wicket:extend xmlns="http://www.w3.org/1999/xhtml" xmlns:wicket="http://wicket.apache.org">
+    <!--<div id="main_content" wicket:id="mainContainer">-->
+    <wicket:container wicket:id="myModal"/>
+
+    <div class="btn-group">
+        <a href="#CreateNewLeagueModal" role="button" class="btn" data-toggle="modal">
             <wicket:message key="new.league.link.label"/>
         </a>
-        <table class="table table-striped table-hover table-condensed" wicket:id="table"></table>
     </div>
+    <table class="table table-bordered table-striped table-hover" wicket:id="table"></table>
+    <!--</div>-->
 </wicket:extend>
-</body>
-</html>
