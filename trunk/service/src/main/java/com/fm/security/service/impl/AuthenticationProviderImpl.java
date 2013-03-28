@@ -1,5 +1,6 @@
 package com.fm.security.service.impl;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -46,7 +47,7 @@ public class AuthenticationProviderImpl extends DaoAuthenticationProvider
       String presentedPassword = authentication.getCredentials().toString();
 
       String encoded = passwordEncoder.encodePassword(presentedPassword, salt);
-      if (!userDetails.getPassword().equals(encoded))
+      if (!StringUtils.equals(userDetails.getPassword(), encoded))
       {
 //      if (!passwordEncoder.isPasswordValid(userDetails.getPassword(), presentedPassword, salt)) {
          logger.debug("Authentication failed: password does not match stored value");

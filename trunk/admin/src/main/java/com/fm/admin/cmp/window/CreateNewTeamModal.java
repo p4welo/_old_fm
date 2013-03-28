@@ -1,5 +1,6 @@
 package com.fm.admin.cmp.window;
 
+import com.fm.core.cmp.window.AbstractModal;
 import com.fm.domain.League;
 import com.fm.domain.Team;
 import com.fm.service.ITeamService;

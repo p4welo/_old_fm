@@ -1,7 +1,7 @@
 package com.fm.admin.pages;
 
 import com.fm.admin.api.AdminApiMappings;
-import com.fm.admin.cmp.menu.MenuPanel;
+import com.fm.admin.cmp.menu.AdminMenuPanel;
 import org.apache.wicket.markup.html.WebPage;
 
 import java.io.Serializable;
@@ -15,6 +15,6 @@ public abstract class AbstractPage extends WebPage implements AdminApiMappings, 
 {
    protected AbstractPage()
    {
-      add(new MenuPanel("menu"));
+      add(new AdminMenuPanel("menu"));
    }
 }

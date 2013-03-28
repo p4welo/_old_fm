@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:wicket="http://wicket.apache.org">
+<head>
+    <title>FM Admin</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="static/fm/css/custom.css">
+    <link rel="stylesheet" href="static/fm/css/bootstra.css">
+    <link rel="stylesheet" href="static/fm/css/bootstrb.css">
+    <link rel="stylesheet" href="static/fm/css/fullcale.css">
+    <link rel="stylesheet" href="static/fm/css/unicorn0.css">
+    <link rel="stylesheet" href="static/fm/css/unicorn1.css" class="skin-color">
+</head>
+<body>
+<div id="header">
+    <h1><a href="#">FM Admin</a></h1>
+</div>
+<div id="user-nav" class="navbar navbar-inverse">
+    <ul class="nav btn-group">
+        <li class="btn btn-inverse">
+            <a href="#" wicket:id="logout">
+                <i class="icon icon-share-alt"></i>
+                <span class="text">
+                    <wicket:message key="logout.link"/>
+                </span>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<!--<div id="sidebar">-->
+<div wicket:id="menu"></div>
+<!--<ul>-->
+<!--<li class="active">-->
+<!--<a href="#"><i class="icon icon-list-alt"></i>&nbsp;<span>Liga</span></a>-->
+<!--</li>-->
+<!--<li>-->
+<!--<a href="#" class="lsf-icon" title="friend">&nbsp;&nbsp;<span>Gracze</span></a>-->
+<!--</li>-->
+<!--<li class="submenu">-->
+<!--<a href="#"><i class="icon icon-wrench"></i>&nbsp;<span>Mechanika gry</span> <span-->
+<!--class="label">4</span></a>-->
+<!--<ul>-->
+<!--<li><a href="#">Pozycje</a></li>-->
+<!--<li><a href="#">Baza imion</a></li>-->
+<!--<li><a href="#">Baza nazwisk</a></li>-->
+<!--<li><a href="#">Parametry systemowe</a></li>-->
+<!--</ul>-->
+<!--</li>-->
+<!--<li>-->
+<!--<a href="#"><i class="icon icon-signal"></i>&nbsp;<span>Statystyki</span></a>-->
+<!--</li>-->
+<!--</ul>-->
+
+<!--</div>-->
+
+<div id="content">
+    <div id="content-header">
+        <h1 wicket:id="header">[page.header]</h1>
+
+        <!--<div class="btn-group">
+                      <a class="btn btn-large tip-bottom" title="Manage Files"><i class="icon-file"></i></a>
+                      <a class="btn btn-large tip-bottom" title="Manage Users"><i class="icon-user"></i></a>
+                      <a class="btn btn-large tip-bottom" title="Manage Comments"><i class="icon-comment"></i><span class="label label-important">5</span></a>
+                      <a class="btn btn-large tip-bottom" title="Manage Orders"><i class="icon-shopping-cart"></i></a>
+                  </div>-->
+    </div>
+    <div id="breadcrumb">
+        <a href="#" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a>
+        <a href="#" class="current">Liga</a>
+    </div>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <wicket:child/>
+        </div>
+        <div class="row-fluid">
+            <div id="footer" class="span12">
+                <wicket:message key="footer"/>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="static/fm/js/excanvas.js"></script>
+<script src="static/fm/js/jquery00.js"></script>
+<script src="static/fm/js/jquery01.js"></script>
+<script src="static/fm/js/bootstra.js"></script>
+<script src="static/fm/js/jquery02.js"></script>
+<script src="static/fm/js/jquery03.js"></script>
+<script src="static/fm/js/jquery04.js"></script>
+<script src="static/fm/js/fullcale.js"></script>
+<script src="static/fm/js/unicorn0.js"></script>
+<script src="static/fm/js/unicorn1.js"></script>
+</body>
+</html>

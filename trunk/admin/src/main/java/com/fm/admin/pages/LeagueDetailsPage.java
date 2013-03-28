@@ -1,10 +1,10 @@
 package com.fm.admin.pages;
 
 import com.fm.admin.api.AdminApiMappings;
-import com.fm.admin.cmp.tabbedPanel.BootstrapTabbedPanel;
-import com.fm.admin.cmp.tabbedPanel.leagueDetailTabs.LeagueInfoPanel;
-import com.fm.admin.cmp.tabbedPanel.leagueDetailTabs.LeagueSeasonPanel;
-import com.fm.admin.cmp.tabbedPanel.leagueDetailTabs.LeagueTeamsPanel;
+import com.fm.admin.cmp.tabbedPanel.LeagueInfoPanel;
+import com.fm.admin.cmp.tabbedPanel.LeagueSeasonPanel;
+import com.fm.admin.cmp.tabbedPanel.LeagueTeamsPanel;
+import com.fm.core.cmp.tabbedPanel.BootstrapTabbedPanel;
 import com.fm.domain.League;
 import com.fm.service.ILeagueService;
 import org.apache.commons.lang3.StringUtils;

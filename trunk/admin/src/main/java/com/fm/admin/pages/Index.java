@@ -1,8 +1,8 @@
 package com.fm.admin.pages;
 
 import com.fm.admin.api.AdminApiMappings;
-import com.fm.admin.cmp.table.AjaxDataTable;
-import com.fm.admin.cmp.table.DataProvider;
+import com.fm.core.cmp.table.AjaxDataTable;
+import com.fm.core.cmp.table.DataProvider;
 import com.fm.domain.DataEntity;
 import com.fm.domain.Position;
 import com.fm.service.IPositionService;
@@ -21,7 +21,7 @@ import java.util.List;
  * Time: 13:02
  */
 @MountPath(AdminApiMappings.INDEX_PAGE)
-public class Index extends AbstractPage
+public class Index extends AdminAbstractPage
 {
    @SpringBean
    private IPositionService positionService;
@@ -41,5 +41,11 @@ public class Index extends AbstractPage
 
       add(new AjaxDataTable<Position>("table", columns,
               new DataProvider<Position>(positionService), 8));
+   }
+
+   @Override
+   protected String provideHeaderKey()
+   {
+      return "page.header";
    }
 }
