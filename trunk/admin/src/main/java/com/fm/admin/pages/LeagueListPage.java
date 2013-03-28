@@ -27,19 +27,14 @@ import java.util.List;
  */
 @MountPath(AdminApiMappings.LEAGUE_LIST_PAGE)
 @AuthorizeInstantiation("ROLE_ADMIN")
-public class LeagueListPage extends AdminAbstractPage//AbstractPage
+public class LeagueListPage extends AdminAbstractPage
 {
    @SpringBean
    private ILeagueService leagueService;
 
-//   private final WebMarkupContainer mainContainer;
-
    public LeagueListPage()
    {
       super();
-//      mainContainer = new WebMarkupContainer("mainContainer");
-//      mainContainer.setOutputMarkupId(true);
-
       initView();
    }
 
