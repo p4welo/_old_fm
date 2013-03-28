@@ -34,7 +34,6 @@
         <module>resources</module>
         <module>core</module>
         <module>admin</module>
-        <module>admin-gui</module>
         <!--<module>client</module>-->
         <module>server</module>
     </modules>
