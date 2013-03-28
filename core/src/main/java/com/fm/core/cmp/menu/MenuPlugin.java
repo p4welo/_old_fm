@@ -2,7 +2,6 @@ package com.fm.core.cmp.menu;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.wicket.AttributeModifier;
-import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.list.ListItem;
@@ -58,36 +57,31 @@ public class MenuPlugin extends Panel
                   setResponsePage(menuItem.getTarget());
                }
             };
-
             if (menuItem.getTarget().toString().equals(selectedItem))
             {
                item.add(new AttributeModifier("class", new Model("active")));
             }
 
             Label label = new Label("label", new ResourceModel(menuItem.getResourceKey()));
-            link.add(label);
             Label icon = new Label("icon");
             icon.add(AttributeModifier.append("class", menuItem.getIconKey()));
+
+            link.add(label);
             link.add(icon);
+
             item.add(link);
          }
       };
       add(listview);
    }
 
-   public void add(String label, String iconKey, Class<? extends WebPage> target)
+   public void add(MenuItem menuItem)
    {
-      MenuItem menuItem = new MenuItem(label, iconKey, target);
       menuItemList.add(menuItem);
       if (StringUtils.isBlank(selectedItem))
       {
          selectedItem = menuItem.getTarget().toString();
       }
-   }
-
-   public void add(String label, Class<? extends WebPage> target)
-   {
-      add(label, "", target);
    }
 
    public List<Class> getTargetClasses()
@@ -97,7 +91,14 @@ public class MenuPlugin extends Panel
       {
          targetClasses.add(menuItem.getTarget());
       }
-
       return targetClasses;
+   }
+
+   public void add(List<MenuItem> menuItems)
+   {
+      for (MenuItem item : menuItems)
+      {
+         add(item);
+      }
    }
 }
