@@ -11,5 +11,5 @@ public interface AdminMenuKeys
 
    public static final String MENU_ADMIN_USERS_PAGE = "menu.admin.users.page";
 
-   public static final String MENU_ADMIN_RULES_PAGE = "menu.admin.rules.page";
+   public static final String MENU_ADMIN_CONFIG_PAGE = "menu.admin.config.page";
 }
