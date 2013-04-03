@@ -62,16 +62,6 @@
         </dependency>
         <dependency>
             <groupId>com.fm</groupId>
-            <artifactId>admin-gui</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <!--<dependency>-->
-        <!--<groupId>com.football.manager</groupId>-->
-        <!--<artifactId>client</artifactId>-->
-        <!--<version>${project.version}</version>-->
-        <!--</dependency>-->
-        <dependency>
-            <groupId>com.fm</groupId>
             <artifactId>resources</artifactId>
             <version>${project.version}</version>
         </dependency>
