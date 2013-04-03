@@ -1,6 +1,8 @@
 package com.fm.admin.pages;
 
 import com.fm.admin.api.AdminApiMappings;
+import com.fm.admin.cmp.breadcrumb.LeagueListBreadcrumb;
+import com.fm.core.cmp.breadcrumb.BreadCrumb;
 import com.fm.service.IPositionService;
 import org.apache.wicket.authroles.authorization.strategies.role.annotations.AuthorizeInstantiation;
 import org.apache.wicket.markup.html.basic.Label;
@@ -45,5 +47,11 @@ public class GameConfigPage extends AdminAbstractPage
    protected String provideHeaderKey()
    {
       return "page.header";
+   }
+
+   @Override
+   protected BreadCrumb provideBreadcrumb(String id)
+   {
+      return new LeagueListBreadcrumb(id);
    }
 }

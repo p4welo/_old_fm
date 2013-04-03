@@ -1,9 +1,10 @@
 package com.fm.core.cmp.window;
 
-import com.fm.core.cmp.feedback.CssFeedbackPanel;
+import com.fm.core.cmp.feedback.NotifyFeedbackPanel;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.markup.html.form.Form;
+import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.markup.html.panel.Panel;
 
 /**
@@ -18,7 +19,7 @@ public abstract class AbstractModal extends Panel
 
    protected Form form;
 
-   protected CssFeedbackPanel feedbackPanel;
+   protected FeedbackPanel feedbackPanel;
 
    public AbstractModal(String id)
    {
@@ -33,7 +34,7 @@ public abstract class AbstractModal extends Panel
    {
       form = new Form<Void>("form");
       form.setOutputMarkupId(true);
-      feedbackPanel = new CssFeedbackPanel("feedback");
+      feedbackPanel = new NotifyFeedbackPanel("feedback");
       feedbackPanel.setOutputMarkupId(true);
       form.add(feedbackPanel);
       add(form);

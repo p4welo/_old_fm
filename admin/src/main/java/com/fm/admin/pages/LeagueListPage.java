@@ -1,8 +1,11 @@
 package com.fm.admin.pages;
 
 import com.fm.admin.api.AdminApiMappings;
+import com.fm.admin.cmp.breadcrumb.LeagueListBreadcrumb;
 import com.fm.admin.cmp.window.CreateNewLeagueModal;
 import com.fm.admin.navigation.NavigateToLeagueDetailsPage;
+import com.fm.core.cmp.authorization.UserRoles;
+import com.fm.core.cmp.breadcrumb.BreadCrumb;
 import com.fm.core.cmp.table.AjaxDataTable;
 import com.fm.core.cmp.table.DataProvider;
 import com.fm.domain.DataEntity;
@@ -26,7 +29,7 @@ import java.util.List;
  * Time: 15:00
  */
 @MountPath(AdminApiMappings.LEAGUE_LIST_PAGE)
-@AuthorizeInstantiation("ROLE_ADMIN")
+@AuthorizeInstantiation(UserRoles.ADMIN)
 public class LeagueListPage extends AdminAbstractPage
 {
    @SpringBean
@@ -44,6 +47,12 @@ public class LeagueListPage extends AdminAbstractPage
       return "page.header";
    }
 
+   @Override
+   protected BreadCrumb provideBreadcrumb(String id)
+   {
+      return new LeagueListBreadcrumb(id);
+   }
+
    private void initView()
    {
       createNewLeagueWindow();
@@ -52,7 +61,7 @@ public class LeagueListPage extends AdminAbstractPage
 
    private void createNewLeagueWindow()
    {
-      add(new CreateNewLeagueModal("myModal"));
+      addToPage(new CreateNewLeagueModal("myModal"));
    }
 
    private void createLeagueTable()
@@ -70,7 +79,7 @@ public class LeagueListPage extends AdminAbstractPage
               League.FIELD_NAME
       ));
 
-      add(new AjaxDataTable<League>("table", columns, new DataProvider<League>(leagueService), 10)
+      addToPage(new AjaxDataTable<League>("table", columns, new DataProvider<League>(leagueService), 10)
       {
          @Override
          protected void executeOnClick(AjaxRequestTarget target, IModel<League> model)
