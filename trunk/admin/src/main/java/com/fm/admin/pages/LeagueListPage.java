@@ -61,7 +61,7 @@ public class LeagueListPage extends AdminAbstractPage
 
    private void createNewLeagueWindow()
    {
-      addToPage(new CreateNewLeagueModal("myModal"));
+      add(new CreateNewLeagueModal("myModal"));
    }
 
    private void createLeagueTable()
@@ -79,7 +79,7 @@ public class LeagueListPage extends AdminAbstractPage
               League.FIELD_NAME
       ));
 
-      addToPage(new AjaxDataTable<League>("table", columns, new DataProvider<League>(leagueService), 10)
+      add(new AjaxDataTable<League>("table", columns, new DataProvider<League>(leagueService), 10)
       {
          @Override
          protected void executeOnClick(AjaxRequestTarget target, IModel<League> model)
