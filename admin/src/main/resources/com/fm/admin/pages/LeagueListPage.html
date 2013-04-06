@@ -1,9 +1,17 @@
 <wicket:extend xmlns="http://www.w3.org/1999/xhtml" xmlns:wicket="http://wicket.apache.org">
-    <wicket:container wicket:id="myModal"/>
+    <!--<wicket:container wicket:id="myModal"/>-->
+    <div wicket:id="newLeagueWindow"></div>
+    <div wicket:id="feedback"></div>
     <div class="row-fluid">
         <div class="widget-content">
-            <a href="#CreateNewLeagueModal" role="button" class="btn btn-success" data-toggle="modal">
-                <wicket:message key="new.league.link.label"/>
+            <!--<a href="#CreateNewLeagueModal" role="button" class="btn btn-success" data-toggle="modal">-->
+            <!--<wicket:message key="new.league.link.label"/>-->
+            <!--</a>-->
+
+            <a class="btn" wicket:id="createLeagueLink">
+                <i class="icon-fire"></i>
+                <!--<wicket:message key="action.create.reclamation"/>-->
+                Nowa liga
             </a>
         </div>
         <div class="widget-content">
