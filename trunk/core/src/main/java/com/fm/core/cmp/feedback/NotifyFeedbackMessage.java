@@ -81,7 +81,6 @@ public class NotifyFeedbackMessage implements IClusterable
 
    public String toJavaScript()
    {
-
       final StringBuilder javaScript = new StringBuilder();
       javaScript.append("$.pnotify({text: '");
       javaScript.append(message);

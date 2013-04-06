@@ -3,18 +3,22 @@ package com.fm.admin.pages;
 import com.fm.admin.api.AdminApiMappings;
 import com.fm.admin.cmp.breadcrumb.LeagueListBreadcrumb;
 import com.fm.admin.cmp.window.CreateNewLeagueModal;
+import com.fm.admin.cmp.window.NewLeagueWindow;
 import com.fm.admin.navigation.NavigateToLeagueDetailsPage;
 import com.fm.core.cmp.authorization.UserRoles;
 import com.fm.core.cmp.breadcrumb.BreadCrumb;
+import com.fm.core.cmp.feedback.NotifyFeedbackPanel;
 import com.fm.core.cmp.table.AjaxDataTable;
 import com.fm.core.cmp.table.DataProvider;
 import com.fm.domain.DataEntity;
 import com.fm.domain.League;
 import com.fm.service.ILeagueService;
 import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.authroles.authorization.strategies.role.annotations.AuthorizeInstantiation;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.IColumn;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.PropertyColumn;
+import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.ResourceModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
@@ -38,6 +42,7 @@ public class LeagueListPage extends AdminAbstractPage
    public LeagueListPage()
    {
       super();
+      setOutputMarkupId(true);
       initView();
    }
 
@@ -55,7 +60,27 @@ public class LeagueListPage extends AdminAbstractPage
 
    private void initView()
    {
-      createNewLeagueWindow();
+//      createNewLeagueWindow();
+      final NewLeagueWindow window = new NewLeagueWindow("newLeagueWindow", "dupa")
+      {
+         @Override
+         public void onSubmit(AjaxRequestTarget target, Form<?> form)
+         {
+            success("DUPA");
+            target.add(this);
+         }
+      };
+      add(window);
+      add(new NotifyFeedbackPanel("feedback"));
+      add(new AjaxLink<Void>("createLeagueLink")
+      {
+         @Override
+         public void onClick(AjaxRequestTarget target)
+         {
+            success("dasdasd");
+            window.show(target);
+         }
+      });
       createLeagueTable();
    }
 
