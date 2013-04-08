@@ -29,7 +29,7 @@ public class AdminMenuPanel extends AbstractMenuPanel implements AdminMenuKeys
    {
       return Arrays.asList(
               new MenuItem(MENU_ADMIN_LEAGUE_LIST_PAGE, FmIconTypes.LIST, LeagueListPage.class),
-              new MenuItem(MENU_ADMIN_USERS_PAGE, FmIconTypes.USER, Index.class),
+              new MenuItem(MENU_ADMIN_USERS_PAGE, FmIconTypes.GROUP, Index.class),
               new MenuItem(MENU_ADMIN_CONFIG_PAGE, FmIconTypes.CONFIG, GameConfigPage.class)
       );
    }

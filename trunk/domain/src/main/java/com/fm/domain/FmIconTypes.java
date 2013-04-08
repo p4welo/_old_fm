@@ -13,5 +13,7 @@ public interface FmIconTypes
 
    public static final String USER = "icon-user";
 
+   public static final String GROUP = "icon-group";
+
    public static final String CONFIG = "icon-wrench";
 }
