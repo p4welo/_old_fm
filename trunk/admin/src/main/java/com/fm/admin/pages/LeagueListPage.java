@@ -6,7 +6,7 @@ import com.fm.admin.cmp.window.CreateNewLeagueModal;
 import com.fm.admin.cmp.window.NewLeagueWindow;
 import com.fm.admin.navigation.NavigateToLeagueDetailsPage;
 import com.fm.core.cmp.authorization.UserRoles;
-import com.fm.core.cmp.breadcrumb.BreadCrumb;
+import com.fm.core.cmp.breadcrumb.BootstrapBreadcrumbPanel;
 import com.fm.core.cmp.feedback.NotifyFeedbackPanel;
 import com.fm.core.cmp.table.AjaxDataTable;
 import com.fm.core.cmp.table.DataProvider;
@@ -53,7 +53,7 @@ public class LeagueListPage extends AdminAbstractPage
    }
 
    @Override
-   protected BreadCrumb provideBreadcrumb(String id)
+   protected BootstrapBreadcrumbPanel provideBreadcrumb(String id)
    {
       return new LeagueListBreadcrumb(id);
    }
