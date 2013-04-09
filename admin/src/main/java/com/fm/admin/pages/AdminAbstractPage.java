@@ -3,8 +3,7 @@ package com.fm.admin.pages;
 import com.fm.admin.api.AdminApiMappings;
 import com.fm.admin.cmp.menu.AdminMenuPanel;
 import com.fm.core.cmp.authorization.LogoutLink;
-import com.fm.core.cmp.breadcrumb.BreadCrumb;
-import org.apache.wicket.markup.html.WebMarkupContainer;
+import com.fm.core.cmp.breadcrumb.BootstrapBreadcrumbPanel;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.model.ResourceModel;
@@ -20,8 +19,6 @@ import java.io.Serializable;
  */
 public abstract class AdminAbstractPage extends WebPage implements AdminApiMappings, Serializable
 {
-   protected WebMarkupContainer webpage;
-
    public AdminAbstractPage()
    {
       setOutputMarkupId(true);
@@ -33,5 +30,5 @@ public abstract class AdminAbstractPage extends WebPage implements AdminApiMappi
 
    protected abstract String provideHeaderKey();
 
-   protected abstract BreadCrumb provideBreadcrumb(String id);
+   protected abstract BootstrapBreadcrumbPanel provideBreadcrumb(String id);
 }
