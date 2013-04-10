@@ -24,7 +24,8 @@
     <div class="navbar-inner">
         <a style="font-family: 'Sanchez', serif; color: #FFFFFF" class="brand" href="#">
             <i class="icon-group"></i>
-            &nbsp;FM Admin
+            &nbsp;
+            <wicket:message key="page.name"/>
         </a>
         <ul class="nav btn-group pull-right" style="margin-top: 5px;">
             <li class="btn btn-inverse">
@@ -37,21 +38,18 @@
     </div>
 </div>
 
-<div wicket:id="menu"></div>
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span3" wicket:id="menu"></div>
 
-<div id="content">
-    <div wicket:id="breadcrumb"></div>
-    <div id="content-header">
-        <h1 wicket:id="header">[page.header]</h1>
+        <div class="span9">
+            <div wicket:id="breadcrumb"></div>
+            <wicket:child/>
+        </div>
     </div>
-
-    <div class="container-fluid">
-        <wicket:child/>
-
-        <div class="row-fluid" style="position: fixed; bottom: 0">
-            <div id="footer" class="span12">
-                <wicket:message key="footer"/>
-            </div>
+    <div class="row-fluid" style="position: fixed; bottom: 0">
+        <div id="footer" class="span12">
+            <wicket:message key="footer"/>
         </div>
     </div>
 </div>

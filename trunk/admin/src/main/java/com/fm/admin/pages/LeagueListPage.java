@@ -2,7 +2,6 @@ package com.fm.admin.pages;
 
 import com.fm.admin.api.AdminApiMappings;
 import com.fm.admin.cmp.breadcrumb.LeagueListBreadcrumb;
-import com.fm.admin.cmp.window.CreateNewLeagueModal;
 import com.fm.admin.cmp.window.NewLeagueWindow;
 import com.fm.admin.navigation.NavigateToLeagueDetailsPage;
 import com.fm.core.cmp.authorization.UserRoles;
@@ -18,6 +17,7 @@ import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.authroles.authorization.strategies.role.annotations.AuthorizeInstantiation;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.IColumn;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.PropertyColumn;
+import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.ResourceModel;
@@ -39,10 +39,13 @@ public class LeagueListPage extends AdminAbstractPage
    @SpringBean
    private ILeagueService leagueService;
 
+   private WebMarkupContainer main;
+
    public LeagueListPage()
    {
       super();
-      setOutputMarkupId(true);
+      main = new WebMarkupContainer("main");
+      main.setOutputMarkupId(true);
       initView();
    }
 
@@ -60,33 +63,31 @@ public class LeagueListPage extends AdminAbstractPage
 
    private void initView()
    {
-//      createNewLeagueWindow();
-      final NewLeagueWindow window = new NewLeagueWindow("newLeagueWindow", "dupa")
+      final NewLeagueWindow window = new NewLeagueWindow("newLeagueWindow", getString("create.league"))
       {
          @Override
          public void onSubmit(AjaxRequestTarget target, Form<?> form)
          {
-            success("DUPA");
-            target.add(this);
+            League league = getLeague();
+            leagueService.save(league, getGenerateTeams());
+            success(getString("league.successfully.saved"));
+
+            resetState();
+            target.add(main);
          }
       };
-      add(window);
-      add(new NotifyFeedbackPanel("feedback"));
-      add(new AjaxLink<Void>("createLeagueLink")
+      main.add(window);
+      main.add(new NotifyFeedbackPanel("feedback"));
+      main.add(new AjaxLink<Void>("createLeagueLink")
       {
          @Override
          public void onClick(AjaxRequestTarget target)
          {
-            success("dasdasd");
             window.show(target);
          }
       });
       createLeagueTable();
-   }
-
-   private void createNewLeagueWindow()
-   {
-      add(new CreateNewLeagueModal("myModal"));
+      add(main);
    }
 
    private void createLeagueTable()
@@ -104,7 +105,7 @@ public class LeagueListPage extends AdminAbstractPage
               League.FIELD_NAME
       ));
 
-      add(new AjaxDataTable<League>("table", columns, new DataProvider<League>(leagueService), 10)
+      main.add(new AjaxDataTable<League>("table", columns, new DataProvider<League>(leagueService), 10)
       {
          @Override
          protected void executeOnClick(AjaxRequestTarget target, IModel<League> model)

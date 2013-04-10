@@ -5,8 +5,6 @@ import com.fm.admin.cmp.menu.AdminMenuPanel;
 import com.fm.core.cmp.authorization.LogoutLink;
 import com.fm.core.cmp.breadcrumb.BootstrapBreadcrumbPanel;
 import org.apache.wicket.markup.html.WebPage;
-import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.model.ResourceModel;
 
 import java.io.Serializable;
 
@@ -24,7 +22,7 @@ public abstract class AdminAbstractPage extends WebPage implements AdminApiMappi
       setOutputMarkupId(true);
       add(new AdminMenuPanel("menu"));
       add(new LogoutLink("logout", LeagueListPage.class));
-      add(new Label("header", new ResourceModel(provideHeaderKey())));
+//      add(new Label("header", new ResourceModel(provideHeaderKey())));
       add(provideBreadcrumb("breadcrumb"));
    }
 

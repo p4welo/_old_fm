@@ -22,13 +22,14 @@ public class NewLeagueWindow extends AbstractWindow
    @SpringBean
    private ILeagueService leagueService;
 
-   private League league = new League();
+   private League league;
 
    private Boolean generateTeams;
 
    public NewLeagueWindow(String id, String header)
    {
       super(id, header);
+      resetState();
       initView();
    }
 
@@ -43,10 +44,15 @@ public class NewLeagueWindow extends AbstractWindow
       form.add(checkBox);
    }
 
+   public void resetState()
+   {
+      setLeague(new League());
+      setGenerateTeams(Boolean.FALSE);
+   }
+
    @Override
    public void onSubmit(AjaxRequestTarget target, Form<?> form)
    {
-
    }
 
    @Override
