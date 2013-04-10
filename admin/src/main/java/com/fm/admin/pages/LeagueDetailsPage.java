@@ -1,9 +1,11 @@
 package com.fm.admin.pages;
 
 import com.fm.admin.api.AdminApiMappings;
+import com.fm.admin.cmp.breadcrumb.LeagueDetailsBreadcrumb;
 import com.fm.admin.cmp.tabbedPanel.LeagueInfoPanel;
 import com.fm.admin.cmp.tabbedPanel.LeagueSeasonPanel;
 import com.fm.admin.cmp.tabbedPanel.LeagueTeamsPanel;
+import com.fm.core.cmp.breadcrumb.BootstrapBreadcrumbPanel;
 import com.fm.core.cmp.tabbedPanel.BootstrapTabbedPanel;
 import com.fm.domain.League;
 import com.fm.service.ILeagueService;
@@ -30,7 +32,7 @@ import java.util.List;
 
 @MountPath(AdminApiMappings.LEAGUE_DETAILS_PAGE)
 @AuthorizeInstantiation("ROLE_ADMIN")
-public class LeagueDetailsPage extends AbstractPage
+public class LeagueDetailsPage extends AdminAbstractPage
 {
    @SpringBean
    private ILeagueService leagueService;
@@ -119,5 +121,17 @@ public class LeagueDetailsPage extends AbstractPage
    public WebMarkupContainer getMainContainer()
    {
       return mainContainer;
+   }
+
+   @Override
+   protected String provideHeaderKey()
+   {
+      return "page.header";
+   }
+
+   @Override
+   protected BootstrapBreadcrumbPanel provideBreadcrumb(String id)
+   {
+      return new LeagueDetailsBreadcrumb(id);
    }
 }

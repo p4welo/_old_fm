@@ -279,3 +279,8 @@ input.column_header {
 table {
     table-layout: fixed;
 }
+
+.ui-pnotify.stack-bottomright {
+    bottom: 25px !important;
+    top: auto !important;
+}
