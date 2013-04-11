@@ -22,11 +22,8 @@ public abstract class AdminAbstractPage extends WebPage implements AdminApiMappi
       setOutputMarkupId(true);
       add(new AdminMenuPanel("menu"));
       add(new LogoutLink("logout", LeagueListPage.class));
-//      add(new Label("header", new ResourceModel(provideHeaderKey())));
       add(provideBreadcrumb("breadcrumb"));
    }
-
-   protected abstract String provideHeaderKey();
 
    protected abstract BootstrapBreadcrumbPanel provideBreadcrumb(String id);
 }

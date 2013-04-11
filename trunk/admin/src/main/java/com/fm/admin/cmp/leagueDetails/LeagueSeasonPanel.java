@@ -1,4 +1,4 @@
-package com.fm.admin.cmp.tabbedPanel;
+package com.fm.admin.cmp.leagueDetails;
 
 import com.fm.admin.cmp.window.CreateNewSeasonModal;
 import com.fm.admin.pages.LeagueDetailsPage;
@@ -60,8 +60,8 @@ public class LeagueSeasonPanel extends Panel
    {
       super(id);
       this.leagueDetailsPage = leagueDetailsPage;
-      allSeasons = seasonService.getLeagueSeasons(leagueDetailsPage.getSelectedLeague());
-      selectedSeason = seasonService.getActiveSeason(leagueDetailsPage.getSelectedLeague());
+      allSeasons = seasonService.getLeagueSeasons(leagueDetailsPage.getLeague());
+      selectedSeason = seasonService.getActiveSeason(leagueDetailsPage.getLeague());
 
       mainContainer = new WebMarkupContainer("mainContainer");
       leftContainer = new WebMarkupContainer("leftContainer");
@@ -89,7 +89,7 @@ public class LeagueSeasonPanel extends Panel
    private CreateNewSeasonModal createNewSeasonWindow()
    {
       List<Team> teams = teamService.findTeamsFromLeague(selectedSeason.getLeague());
-      return new CreateNewSeasonModal("myModal", leagueDetailsPage.getSelectedLeague(), teams);
+      return new CreateNewSeasonModal("myModal", leagueDetailsPage.getLeague(), teams);
    }
 
    private void createSeasonsCombo(WebMarkupContainer container)

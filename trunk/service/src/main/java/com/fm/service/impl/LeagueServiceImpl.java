@@ -3,10 +3,9 @@ package com.fm.service.impl;
 import com.fm.dao.IAbstractDao;
 import com.fm.dao.ILeagueDao;
 import com.fm.domain.League;
-import com.fm.domain.Team;
 import com.fm.service.ILeagueService;
 import com.fm.service.ISeasonService;
-import com.fm.service.ITeamService;
+import com.fm.service.ITeamGenerationStrategy;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -27,7 +26,7 @@ public class LeagueServiceImpl extends AbstractServiceImpl<League> implements IL
    private ISeasonService seasonService;
 
    @Resource
-   private ITeamService teamService;
+   private ITeamGenerationStrategy teamGenerationStrategy;
 
    @Override
    protected IAbstractDao<League> getDao()
@@ -42,17 +41,8 @@ public class LeagueServiceImpl extends AbstractServiceImpl<League> implements IL
       league = save(league);
       if (generateTeams)
       {
-         for (int i = 0; i < 15; i++)
-         {
-            Team team = teamService.generate();
-            team.setLeague(league);
-            teamService.save(team);
-         }
+         teamGenerationStrategy.generate(league);
       }
-//      Season season = new Season();
-//      season.setNumber(1);
-//      season.setLeague(league);
-//      seasonService.save(season);
       return league;
    }
 }

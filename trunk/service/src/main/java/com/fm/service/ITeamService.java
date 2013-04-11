@@ -12,9 +12,9 @@ import java.util.List;
  */
 public interface ITeamService extends IAbstractService<Team>
 {
-   Team generate();
-
    List<Team> findTeamsFromLeague(League league);
 
    Integer getLeagueTeamsCount(League league);
+
+   Long getNextId();
 }

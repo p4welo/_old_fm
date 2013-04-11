@@ -36,7 +36,7 @@ public class NewLeagueWindow extends AbstractWindow
    private void initView()
    {
       BootstrapTextFieldPanel name = new BootstrapTextFieldPanel("name",
-              new PropertyModel(this, "league." + League.FIELD_NAME));
+              new PropertyModel(this, "league." + League.FIELD_NAME), "span10");
       name.setValidation();
       form.add(name);
       BootstrapCheckBoxPanel checkBox = new BootstrapCheckBoxPanel("generateTeams",

@@ -1,5 +1,29 @@
 <wicket:extend xmlns="http://www.w3.org/1999/xhtml" xmlns:wicket="http://wicket.apache.org">
+    <script type='text/javascript'>
+        $(document).ready(function () {
+            $('.tooltipLink').tooltip();
+        });
+    </script>
     <div id="main_content" wicket:id="mainContainer">
-        <div wicket:id="tabs" class="tabPanel"></div>
+        <fieldset class="span6">
+            <legend>
+                <i class="icon-info-sign"></i>
+                &nbsp;
+                <wicket:message key="league.info"/>
+            </legend>
+            <div wicket:id="info"></div>
+        </fieldset>
+        <fieldset class="span6">
+            <legend>
+                <i class="icon-comments-alt"></i>
+                &nbsp;
+                <wicket:message key="league.teams"/>
+                <a class="btn pull-right tooltipLink" href="#" style="margin-top: 5px;" data-toggle="tooltip"
+                   wicket:message="title:create.team">
+                    <i class="icon-plus"></i>
+                </a>
+            </legend>
+            <div wicket:id="teams"></div>
+        </fieldset>
     </div>
 </wicket:extend>
