@@ -10,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
-import java.util.Random;
 
 /**
  * UserEntity: pawel
@@ -33,28 +32,6 @@ public class TeamServiceImpl extends AbstractServiceImpl<Team> implements ITeamS
 
    @Override
    @Transactional
-   public Team generate()
-   {
-      Random generator = new Random();
-
-      Team team = new Team();
-
-      team.setAccount(generator.nextInt(100));
-      Long nextId = teamDao.getNextId();
-      if (nextId != null)
-      {
-         team.setName("PC_" + String.valueOf(nextId));
-      }
-      else
-      {
-         team.setName("PC_First");
-      }
-
-      return team;
-   }
-
-   @Override
-   @Transactional
    public List<Team> findTeamsFromLeague(League league)
    {
       return teamDao.findTeamsFromLeague(league);
@@ -65,5 +42,12 @@ public class TeamServiceImpl extends AbstractServiceImpl<Team> implements ITeamS
    public Integer getLeagueTeamsCount(League league)
    {
       return teamDao.getLeagueTeamsCount(league);
+   }
+
+   @Override
+   @Transactional
+   public Long getNextId()
+   {
+      return teamDao.getNextId();
    }
 }

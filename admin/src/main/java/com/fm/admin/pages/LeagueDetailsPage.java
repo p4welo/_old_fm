@@ -2,27 +2,18 @@ package com.fm.admin.pages;
 
 import com.fm.admin.api.AdminApiMappings;
 import com.fm.admin.cmp.breadcrumb.LeagueDetailsBreadcrumb;
-import com.fm.admin.cmp.tabbedPanel.LeagueInfoPanel;
-import com.fm.admin.cmp.tabbedPanel.LeagueSeasonPanel;
-import com.fm.admin.cmp.tabbedPanel.LeagueTeamsPanel;
+import com.fm.admin.cmp.leagueDetails.LeagueInfoPanel;
+import com.fm.admin.cmp.leagueDetails.LeagueTeamsPanel;
 import com.fm.core.cmp.breadcrumb.BootstrapBreadcrumbPanel;
-import com.fm.core.cmp.tabbedPanel.BootstrapTabbedPanel;
 import com.fm.domain.League;
 import com.fm.service.ILeagueService;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.wicket.RestartResponseAtInterceptPageException;
 import org.apache.wicket.authroles.authorization.strategies.role.annotations.AuthorizeInstantiation;
-import org.apache.wicket.extensions.markup.html.tabs.AbstractTab;
-import org.apache.wicket.extensions.markup.html.tabs.ITab;
 import org.apache.wicket.markup.html.WebMarkupContainer;
-import org.apache.wicket.markup.html.panel.Panel;
-import org.apache.wicket.model.ResourceModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.wicketstuff.annotation.mount.MountPath;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * User: pawel
@@ -37,7 +28,7 @@ public class LeagueDetailsPage extends AdminAbstractPage
    @SpringBean
    private ILeagueService leagueService;
 
-   private League selectedLeague;
+   private League league;
 
    private final WebMarkupContainer mainContainer;
 
@@ -47,21 +38,22 @@ public class LeagueDetailsPage extends AdminAbstractPage
       mainContainer = new WebMarkupContainer("mainContainer");
       mainContainer.setOutputMarkupId(true);
 
-      handleIncomingParameters(parameters);
+      league = getLeague(parameters);
       initView();
    }
 
-   private void handleIncomingParameters(PageParameters parameters)
+   private League getLeague(PageParameters parameters)
    {
       String idString = parameters.get(SELECTED_LEAGUE_ID_KEY).toString();
       if (StringUtils.isNotBlank(idString))
       {
          Long id = Long.valueOf(idString);
-         selectedLeague = leagueService.getById(id);
-         if (selectedLeague == null)
+         league = leagueService.getById(id);
+         if (league == null)
          {
             throw new RestartResponseAtInterceptPageException(LeagueListPage.class);
          }
+         return league;
       }
       else
       {
@@ -71,62 +63,24 @@ public class LeagueDetailsPage extends AdminAbstractPage
 
    private void initView()
    {
-      createTabbedPanel(mainContainer);
+      mainContainer.add(new LeagueInfoPanel("info", league));
+      mainContainer.add(new LeagueTeamsPanel("teams", league));
       add(mainContainer);
    }
 
-   private void createTabbedPanel(WebMarkupContainer container)
+   public League getLeague()
    {
-      List<ITab> tabs = new ArrayList<ITab>();
-
-      tabs.add(new AbstractTab(new ResourceModel("league.info.tab.header"))
-      {
-         @Override
-         public Panel getPanel(String panelId)
-         {
-            return new LeagueInfoPanel(panelId, selectedLeague);
-         }
-      });
-      tabs.add(new AbstractTab(new ResourceModel("league.teams.tab.header"))
-      {
-         @Override
-         public Panel getPanel(String panelId)
-         {
-            return new LeagueTeamsPanel(panelId, LeagueDetailsPage.this);
-         }
-      });
-      tabs.add(new AbstractTab(new ResourceModel("league.season.tab.header"))
-      {
-         @Override
-         public Panel getPanel(String panelId)
-         {
-            return new LeagueSeasonPanel(panelId, LeagueDetailsPage.this);
-         }
-
-      });
-
-      container.add(new BootstrapTabbedPanel("tabs", tabs));
+      return league;
    }
 
-   public League getSelectedLeague()
+   public void setLeague(League league)
    {
-      return selectedLeague;
-   }
-
-   public void setSelectedLeague(League selectedLeague)
-   {
-      this.selectedLeague = selectedLeague;
+      this.league = league;
    }
 
    public WebMarkupContainer getMainContainer()
    {
       return mainContainer;
-   }
-
-   @Override
-   protected String provideHeaderKey()
-   {
-      return "page.header";
    }
 
    @Override

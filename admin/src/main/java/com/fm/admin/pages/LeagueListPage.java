@@ -50,12 +50,6 @@ public class LeagueListPage extends AdminAbstractPage
    }
 
    @Override
-   protected String provideHeaderKey()
-   {
-      return "page.header";
-   }
-
-   @Override
    protected BootstrapBreadcrumbPanel provideBreadcrumb(String id)
    {
       return new LeagueListBreadcrumb(id);
