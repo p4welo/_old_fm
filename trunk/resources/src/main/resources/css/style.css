@@ -284,3 +284,15 @@ table {
     bottom: 25px !important;
     top: auto !important;
 }
+
+.ui-pnotify-container.alert {
+    background: #333;
+    border: 0;
+    text-shadow: none;
+    color: #fff;
+}
+
+.ui-pnotify-container.alert .icon-exclamation-sign {
+    font-size: 15px;
+    margin-top: 2px;
+}
