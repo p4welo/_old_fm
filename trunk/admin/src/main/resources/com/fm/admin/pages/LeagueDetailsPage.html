@@ -4,6 +4,7 @@
             $('.tooltipLink').tooltip();
         });
     </script>
+    <div wicket:id="window"></div>
     <div id="main_content" wicket:id="mainContainer">
         <fieldset class="span6">
             <legend>
@@ -18,7 +19,8 @@
                 <i class="icon-comments-alt"></i>
                 &nbsp;
                 <wicket:message key="league.teams"/>
-                <a class="btn pull-right tooltipLink" href="#" style="margin-top: 5px;" data-toggle="tooltip"
+                <a wicket:id="newTeam" class="btn pull-right tooltipLink" href="#" style="margin-top: 5px;"
+                   data-toggle="tooltip"
                    wicket:message="title:create.team">
                     <i class="icon-plus"></i>
                 </a>
