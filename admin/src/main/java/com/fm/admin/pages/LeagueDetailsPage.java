@@ -55,11 +55,10 @@ public class LeagueDetailsPage extends AdminAbstractPage
 
    private League getLeague(PageParameters parameters)
    {
-      String idString = parameters.get(SELECTED_LEAGUE_ID_KEY).toString();
-      if (StringUtils.isNotBlank(idString))
+      String sid = parameters.get(SELECTED_LEAGUE_SID_KEY).toString();
+      if (StringUtils.isNotBlank(sid))
       {
-         Long id = Long.valueOf(idString);
-         league = leagueService.getById(id);
+         league = leagueService.getBySid(sid);
          if (league == null)
          {
             throw new RestartResponseAtInterceptPageException(LeagueListPage.class);

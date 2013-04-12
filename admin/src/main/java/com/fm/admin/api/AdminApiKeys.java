@@ -7,5 +7,5 @@ package com.fm.admin.api;
  */
 public interface AdminApiKeys
 {
-   public static final String SELECTED_LEAGUE_ID_KEY = "selectedLeagueId";
+   public static final String SELECTED_LEAGUE_SID_KEY = "selectedLeagueSId";
 }

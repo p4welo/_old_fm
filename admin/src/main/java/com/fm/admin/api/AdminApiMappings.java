@@ -11,7 +11,7 @@ public interface AdminApiMappings extends AdminApiKeys
 
    public static final String LEAGUE_LIST_PAGE = "/admin/league/list";
 
-   public static final String LEAGUE_DETAILS_PAGE = "/admin/league/${" + SELECTED_LEAGUE_ID_KEY + "}/details";
+   public static final String LEAGUE_DETAILS_PAGE = "/admin/league/${" + SELECTED_LEAGUE_SID_KEY + "}/details";
 
    public static final String GAME_CONFIG_PAGE = "/admin/game/config";
 }

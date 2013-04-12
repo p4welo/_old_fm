@@ -28,4 +28,6 @@ public interface IAbstractService<T extends DataEntity>
    public List<T> find(int first, int count, String property, boolean ascending);
 
    public long getCount();
+
+   public T getBySid(String sid);
 }

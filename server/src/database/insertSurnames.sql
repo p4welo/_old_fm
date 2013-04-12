@@ -1,0 +1,1 @@
+LOAD DATA INFILE '/home/pawel/sampleSurnames.txt' INTO TABLE `fm`.`Surnames` (surnameValue);
