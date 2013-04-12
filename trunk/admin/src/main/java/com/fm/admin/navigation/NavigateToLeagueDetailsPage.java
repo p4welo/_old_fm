@@ -25,7 +25,7 @@ public class NavigateToLeagueDetailsPage extends NavigateAction
    public PageParameters getPageParameters()
    {
       PageParameters pageParameters = new PageParameters();
-      pageParameters.add(AdminApiKeys.SELECTED_LEAGUE_ID_KEY, league.getId());
+      pageParameters.add(AdminApiKeys.SELECTED_LEAGUE_SID_KEY, league.getSid());
       return pageParameters;
    }
 }

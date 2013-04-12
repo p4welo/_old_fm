@@ -3,6 +3,7 @@ package com.fm.service.impl;
 import com.fm.dao.IAbstractDao;
 import com.fm.domain.DataEntity;
 import com.fm.service.IAbstractService;
+import com.fm.service.util.SidUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,6 +23,7 @@ public abstract class AbstractServiceImpl<T extends DataEntity> implements IAbst
    @Transactional
    public T save(T obj)
    {
+      obj.setSid(SidUtils.generate());
       return getDao().save(obj);
    }
 
@@ -75,4 +77,9 @@ public abstract class AbstractServiceImpl<T extends DataEntity> implements IAbst
       return getDao().findAll();
    }
 
+   @Transactional
+   public T getBySid(String sid)
+   {
+      return getDao().getBySid(sid);
+   }
 }
