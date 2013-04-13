@@ -2,6 +2,7 @@ package com.fm.dao.impl;
 
 import com.fm.dao.IAbstractDao;
 import com.fm.domain.DataEntity;
+import com.fm.domain.IdentifiableEntity;
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Order;
@@ -83,7 +84,7 @@ public abstract class AbstractDaoImpl<T extends DataEntity> implements IAbstract
    public T getBySid(String sid)
    {
       Criteria criteria = createCriteria();
-      criteria.add(Restrictions.eq(DataEntity.FIELD_SID, sid));
+      criteria.add(Restrictions.eq(IdentifiableEntity.FIELD_SID, sid));
       criteria.setMaxResults(1);
       return (T) criteria.uniqueResult();
    }

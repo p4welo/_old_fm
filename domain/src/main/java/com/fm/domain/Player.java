@@ -6,7 +6,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = Player.TABLE_NAME)
-public class Player extends DataEntity
+public class Player extends IdentifiableEntity
 {
    public static final String TABLE_NAME = "player";
 

@@ -5,7 +5,7 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = Manager.TABLE_NAME)
-public class Manager extends DataEntity
+public class Manager extends IdentifiableEntity
 {
    public static final String TABLE_NAME = "manager";
 
