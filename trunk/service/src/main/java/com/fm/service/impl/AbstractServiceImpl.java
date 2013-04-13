@@ -34,6 +34,7 @@ public abstract class AbstractServiceImpl<T extends IdentifiableEntity> implemen
    }
 
    @Transactional
+   @Deprecated
    public T getById(Long id)
    {
       return getDao().getById(id);

@@ -4,12 +4,9 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = Position.TABLE_NAME)
+@Table(name = "position")
 public class Position extends IdentifiableEntity
 {
-
-   public static final String TABLE_NAME = "position";
-
    public static final String FIELD_SHORT_NAME = "shortName";
 
    public static final String FIELD_FULL_NAME = "fullName";
