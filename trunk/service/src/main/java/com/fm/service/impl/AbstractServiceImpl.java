@@ -17,7 +17,6 @@ import java.util.List;
 @Service
 public abstract class AbstractServiceImpl<T extends IdentifiableEntity> implements IAbstractService<T>
 {
-
    protected abstract IAbstractDao<T> getDao();
 
    @Transactional
