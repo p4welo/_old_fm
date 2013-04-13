@@ -1,6 +1,6 @@
 package com.fm.admin.navigation;
 
-import com.fm.admin.pages.GameConfigPage;
+import com.fm.admin.pages.ConfigPage;
 import com.fm.core.navigation.NavigateAction;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 
@@ -13,7 +13,7 @@ public class TestNavigation extends NavigateAction
 {
    public TestNavigation()
    {
-      super(GameConfigPage.class);
+      super(ConfigPage.class);
    }
 
    @Override

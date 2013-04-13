@@ -29,18 +29,6 @@ public class Main
       player.setName("Pawel");
       player.setSurname("Radomski");
 
-      playerService.save(player);
-
-//      ActiveFormFilter filter = new ActiveFormFilter();
-//      filter.setName("tuptus");
-//
-//      OpenSearchDescription<ActiveForm> osd = new OpenSearchDescription<ActiveForm>();
-//      osd.setFilter(filter);
-//      osd.setSortFilterChain(new SortFilterChain(ActiveForm.FIELD_NAME, false).append(new SortFilterChain(
-//              ActiveForm.FIELD_OBJECT_STATE,
-//              true)));
-//
-//      osd.setItems(activeFormService.find(osd.getFilter(), osd.getPagingFilter(), osd.getSortFilterChain()));
-//      System.out.println(osd);
+//      playerService.save(player);
    }
 }

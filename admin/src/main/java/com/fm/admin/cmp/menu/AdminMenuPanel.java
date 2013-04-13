@@ -1,6 +1,6 @@
 package com.fm.admin.cmp.menu;
 
-import com.fm.admin.pages.GameConfigPage;
+import com.fm.admin.pages.ConfigPage;
 import com.fm.admin.pages.Index;
 import com.fm.admin.pages.LeagueListPage;
 import com.fm.core.cmp.menu.AbstractMenuPanel;
@@ -28,9 +28,9 @@ public class AdminMenuPanel extends AbstractMenuPanel implements AdminMenuKeys
    protected List<MenuItem> provideMenuItems()
    {
       return Arrays.asList(
-              new MenuItem(MENU_ADMIN_LEAGUE_LIST_PAGE, FmIconTypes.LIST, LeagueListPage.class),
-              new MenuItem(MENU_ADMIN_USERS_PAGE, FmIconTypes.GROUP, Index.class),
-              new MenuItem(MENU_ADMIN_CONFIG_PAGE, FmIconTypes.CONFIG, GameConfigPage.class)
+              new MenuItem(LEAGUE_LIST_PAGE, FmIconTypes.LIST, LeagueListPage.class),
+              new MenuItem(USERS_PAGE, FmIconTypes.GROUP, Index.class),
+              new MenuItem(CONFIG_PAGE, FmIconTypes.CONFIG, ConfigPage.class)
       );
    }
 }

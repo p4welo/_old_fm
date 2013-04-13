@@ -4,7 +4,7 @@ import com.fm.admin.api.AdminApiMappings;
 import com.fm.admin.cmp.breadcrumb.LeagueDetailsBreadcrumb;
 import com.fm.admin.cmp.leagueDetails.LeagueInfoPanel;
 import com.fm.admin.cmp.leagueDetails.LeagueTeamsPanel;
-import com.fm.admin.cmp.window.NewTeamWindow;
+import com.fm.admin.cmp.leagueDetails.window.NewTeamWindow;
 import com.fm.core.cmp.breadcrumb.BootstrapBreadcrumbPanel;
 import com.fm.domain.League;
 import com.fm.domain.Team;
