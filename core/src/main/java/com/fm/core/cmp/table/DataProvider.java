@@ -1,6 +1,7 @@
 package com.fm.core.cmp.table;
 
 import com.fm.domain.DataEntity;
+import com.fm.domain.IdentifiableEntity;
 import com.fm.service.IAbstractService;
 import org.apache.wicket.extensions.markup.html.repeater.data.sort.SortOrder;
 import org.apache.wicket.extensions.markup.html.repeater.util.SortableDataProvider;
@@ -13,7 +14,7 @@ import java.util.Iterator;
  * Date: 26.01.13
  * Time: 13:04
  */
-public class DataProvider<T extends DataEntity> extends SortableDataProvider<T, String>
+public class DataProvider<T extends IdentifiableEntity> extends SortableDataProvider<T, String>
 {
    private IAbstractService<T> service;
 
@@ -38,6 +39,6 @@ public class DataProvider<T extends DataEntity> extends SortableDataProvider<T, 
    @Override
    public IModel<T> model(T entity)
    {
-      return new DetachableModel<T>(entity.getId(), service);
+      return new DetachableModel<T>(entity.getSid(), service);
    }
 }

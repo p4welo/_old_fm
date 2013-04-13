@@ -1,7 +1,8 @@
 package com.fm.core.cmp.table;
 
-import com.fm.domain.DataEntity;
+import com.fm.domain.IdentifiableEntity;
 import com.fm.service.IAbstractService;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.wicket.model.LoadableDetachableModel;
 
 /**
@@ -9,19 +10,19 @@ import org.apache.wicket.model.LoadableDetachableModel;
  * Date: 26.01.13
  * Time: 13:14
  */
-public class DetachableModel<T extends DataEntity> extends LoadableDetachableModel<T>
+public class DetachableModel<T extends IdentifiableEntity> extends LoadableDetachableModel<T>
 {
-   private final long id;
+   private final String sid;
 
    private IAbstractService<T> service;
 
-   public DetachableModel(long id, IAbstractService<T> service)
+   public DetachableModel(String sid, IAbstractService<T> service)
    {
-      if (id == 0 || service == null)
+      if (StringUtils.isBlank(sid) || service == null)
       {
          throw new IllegalArgumentException();
       }
-      this.id = id;
+      this.sid = sid;
       this.service = service;
    }
 
@@ -29,13 +30,13 @@ public class DetachableModel<T extends DataEntity> extends LoadableDetachableMod
 
    protected T load()
    {
-      return service.getById(id);
+      return service.getBySid(sid);
    }
 
    @Override
    public int hashCode()
    {
-      return Long.valueOf(id).hashCode();
+      return sid.hashCode();
    }
 
    @Override
@@ -52,7 +53,7 @@ public class DetachableModel<T extends DataEntity> extends LoadableDetachableMod
       else if (obj instanceof DetachableModel)
       {
          DetachableModel other = (DetachableModel) obj;
-         return other.id == id;
+         return StringUtils.equals(other.sid, sid);
       }
       return false;
    }
