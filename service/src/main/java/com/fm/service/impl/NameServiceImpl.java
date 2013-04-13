@@ -13,9 +13,11 @@ import javax.annotation.Resource;
  * Date: 01.12.12
  * Time: 00:24
  */
-@Service
+@Service(NameServiceImpl.BEAN_NAME)
 public class NameServiceImpl extends AbstractServiceImpl<Name> implements INameService
 {
+   public static final String BEAN_NAME = "nameService";
+
    @Resource
    private INameDao nameDao;
 
