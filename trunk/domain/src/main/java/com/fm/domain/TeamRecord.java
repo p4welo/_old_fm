@@ -10,7 +10,7 @@ import javax.validation.constraints.NotNull;
  */
 @Entity
 @Table(name = TeamRecord.TABLE_NAME)
-public class TeamRecord extends DataEntity
+public class TeamRecord extends IdentifiableEntity
 {
    public static final String TABLE_NAME = "team_record";
 

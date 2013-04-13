@@ -10,7 +10,7 @@ import javax.validation.constraints.NotNull;
  */
 @Entity
 @Table(name = Season.TABLE_NAME)
-public class Season extends DataEntity
+public class Season extends IdentifiableEntity
 {
    public static final String TABLE_NAME = "season";
 

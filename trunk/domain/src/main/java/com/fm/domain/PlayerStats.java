@@ -9,7 +9,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = PlayerStats.TABLE_NAME)
-public class PlayerStats extends DataEntity
+public class PlayerStats extends IdentifiableEntity
 {
    public static final String TABLE_NAME = "player_stats";
 

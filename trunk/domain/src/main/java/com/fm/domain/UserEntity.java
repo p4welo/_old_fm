@@ -10,7 +10,7 @@ import javax.validation.constraints.NotNull;
  */
 @Entity
 @Table(name = UserEntity.TABLE_NAME)
-public class UserEntity extends DataEntity
+public class UserEntity extends IdentifiableEntity
 {
    public static final String TABLE_NAME = "user";
 

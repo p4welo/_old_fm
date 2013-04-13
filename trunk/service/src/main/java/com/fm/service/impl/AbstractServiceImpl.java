@@ -1,7 +1,7 @@
 package com.fm.service.impl;
 
 import com.fm.dao.IAbstractDao;
-import com.fm.domain.DataEntity;
+import com.fm.domain.IdentifiableEntity;
 import com.fm.service.IAbstractService;
 import com.fm.service.util.SidUtils;
 import org.springframework.stereotype.Service;
@@ -15,7 +15,7 @@ import java.util.List;
  * Time: 00:24
  */
 @Service
-public abstract class AbstractServiceImpl<T extends DataEntity> implements IAbstractService<T>
+public abstract class AbstractServiceImpl<T extends IdentifiableEntity> implements IAbstractService<T>
 {
 
    protected abstract IAbstractDao<T> getDao();

@@ -10,7 +10,7 @@ import javax.validation.constraints.NotNull;
  */
 @Entity
 @Table(name = League.TABLE_NAME)
-public class League extends DataEntity
+public class League extends IdentifiableEntity
 {
    public static final String TABLE_NAME = "league";
 

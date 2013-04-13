@@ -11,7 +11,7 @@ import java.util.Date;
  */
 @Entity
 @Table(name = MatchGame.TABLE_NAME)
-public class MatchGame extends DataEntity
+public class MatchGame extends IdentifiableEntity
 {
    public static final String TABLE_NAME = "match_game";
 

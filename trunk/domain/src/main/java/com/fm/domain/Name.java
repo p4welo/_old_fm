@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = Name.TABLE_NAME)
-public class Name extends DataEntity
+public class Name extends IdentifiableEntity
 {
    public static final String TABLE_NAME = "name";
 
