@@ -1,6 +1,6 @@
 package com.fm.admin.cmp.leagueDetails;
 
-import com.fm.admin.cmp.window.CreateNewSeasonModal;
+import com.fm.admin.cmp.leagueDetails.window.CreateNewSeasonModal;
 import com.fm.admin.pages.LeagueDetailsPage;
 import com.fm.domain.Season;
 import com.fm.domain.Team;

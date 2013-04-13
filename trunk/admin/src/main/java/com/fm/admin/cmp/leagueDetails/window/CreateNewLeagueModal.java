@@ -1,4 +1,4 @@
-package com.fm.admin.cmp.window;
+package com.fm.admin.cmp.leagueDetails.window;
 
 import com.fm.admin.navigation.NavigateToLeagueDetailsPage;
 import com.fm.core.cmp.window.AbstractModal;

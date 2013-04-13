@@ -7,9 +7,9 @@ package com.fm.admin.cmp.menu;
  */
 public interface AdminMenuKeys
 {
-   public static final String MENU_ADMIN_LEAGUE_LIST_PAGE = "menu.admin.league.list.page";
+   public static final String LEAGUE_LIST_PAGE = "league.list.page";
 
-   public static final String MENU_ADMIN_USERS_PAGE = "menu.admin.users.page";
+   public static final String USERS_PAGE = "users.page";
 
-   public static final String MENU_ADMIN_CONFIG_PAGE = "menu.admin.config.page";
+   public static final String CONFIG_PAGE = "config.page";
 }
