@@ -9,11 +9,9 @@ import javax.validation.constraints.NotNull;
  * Time: 23:57
  */
 @Entity
-@Table(name = Season.TABLE_NAME)
+@Table(name = "season")
 public class Season extends IdentifiableEntity
 {
-   public static final String TABLE_NAME = "season";
-
    public static final String FIELD_NUMBER = "number";
 
    public static final String FIELD_LEAGUE = "league";

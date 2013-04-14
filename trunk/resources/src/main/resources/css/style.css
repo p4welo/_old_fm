@@ -296,3 +296,7 @@ table {
     font-size: 15px;
     margin-top: 2px;
 }
+
+.selectedRow {
+    color: #9acd32;
+}

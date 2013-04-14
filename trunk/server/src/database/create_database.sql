@@ -25,6 +25,13 @@ CREATE TABLE position (
     full_name varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+CREATE TABLE position_area (
+    id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    sid VARCHAR(32) NOT NULL,
+    area INT(5),
+    position_id int(11) NOT NULL,
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 CREATE TABLE player_stats (
 	id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	sid VARCHAR(32) NOT NULL

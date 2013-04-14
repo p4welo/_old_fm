@@ -12,6 +12,7 @@
         <mapping class="com.fm.domain.PlayerStats"/>
         <mapping class="com.fm.domain.Player"/>
         <mapping class="com.fm.domain.Position"/>
+        <mapping class="com.fm.domain.PositionArea"/>
         <mapping class="com.fm.domain.Season"/>
         <mapping class="com.fm.domain.Surname"/>
         <mapping class="com.fm.domain.Team"/>
