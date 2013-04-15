@@ -18,6 +18,14 @@ public class PlayerStats extends IdentifiableEntity
    @Column
    private Long id;
 
+   private Integer goalkeeping;
+
+   private Integer defence;
+
+   private Integer passing;
+
+   private Integer strike;
+
    public Long getId()
    {
       return id;
