@@ -1,6 +1,8 @@
 package com.fm.service;
 
 import com.fm.domain.DataEntity;
+import com.fm.domain.filter.AbstractFilter;
+import com.fm.domain.filter.SortFilterChain;
 
 import java.util.List;
 
@@ -11,23 +13,27 @@ import java.util.List;
  */
 public interface IAbstractService<T extends DataEntity>
 {
-   public T save(T obj);
+   T save(T obj);
 
-   public T update(T obj);
+   T update(T obj);
 
-   public void delete(T obj);
+   void delete(T obj);
 
-   public void delete(List<T> obj);
+   void delete(List<T> obj);
 
-   public List<T> findAll();
+   List<T> findAll();
 
-   public T getRandom();
+   T getRandom();
 
-   public T getById(Long id);
+   T getById(Long id);
 
-   public List<T> find(int first, int count, String property, boolean ascending);
+   List<T> find(int first, int count, String property, boolean ascending);
 
-   public long getCount();
+   long getCount();
 
-   public T getBySid(String sid);
+   T getBySid(String sid);
+
+   List<T> findBySearchParams(AbstractFilter filter, SortFilterChain sortFilterChain, int offset, int limit);
+
+   long countBySearchParams(AbstractFilter filter);
 }
