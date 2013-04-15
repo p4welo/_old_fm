@@ -30,6 +30,7 @@ CREATE TABLE position_area (
     sid VARCHAR(32) NOT NULL,
     area INT(5),
     position_id int(11) NOT NULL,
+    FOREIGN KEY (position_id) REFERENCES position (id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE player_stats (
