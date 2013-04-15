@@ -16,4 +16,8 @@ import java.util.Map;
 public interface IPositionAreaService extends IAbstractService<PositionArea>
 {
    Map<Position, List<Integer>> findAllByPositions(List<Position> positions);
+
+   PositionArea addPositionArea(Position position, int area);
+
+   void removePositionArea(Position position, int area);
 }

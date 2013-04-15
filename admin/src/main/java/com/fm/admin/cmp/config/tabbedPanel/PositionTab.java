@@ -17,6 +17,7 @@ import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.springframework.util.CollectionUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -109,10 +110,12 @@ public class PositionTab extends Panel
          final int finalI = i;
          add(new AjaxLink<Void>("area" + finalI)
          {
+            boolean selected;
+
             @Override
             protected void onConfigure()
             {
-               boolean selected = false;
+               selected = false;
                if (selectedPosition != null)
                {
                   List<Integer> list = areas.get(selectedPosition);
@@ -127,7 +130,6 @@ public class PositionTab extends Panel
                      }
                   }
                }
-//               setVisible(visible);
                if (selected)
                {
                   add(AttributeModifier.replace("class", "selected-position"));
@@ -141,8 +143,57 @@ public class PositionTab extends Panel
             @Override
             public void onClick(AjaxRequestTarget target)
             {
+               if (selectedPosition != null)
+               {
+                  if (selected)
+                  {
+                     removePositionArea(selectedPosition, finalI);
+                  }
+                  else
+                  {
+                     addPositionArea(selectedPosition, finalI);
+                  }
+                  target.add(PositionTab.this);
+               }
             }
          });
       }
+   }
+
+   public void addPositionArea(Position position, int area)
+   {
+      List<Integer> list = areas.get(position);
+      if (list == null)
+      {
+         list = new ArrayList<Integer>();
+      }
+      list.add(area);
+      areas.put(position, list);
+
+      positionAreaService.addPositionArea(position, area);
+      success(getString("position.updated.successfully"));
+   }
+
+   public void removePositionArea(Position position, int area)
+   {
+      List<Integer> list = areas.get(position);
+      if (!CollectionUtils.isEmpty(list))
+      {
+         for (int i = 0; i < list.size(); i++)
+         {
+            if (list.get(i) == area)
+            {
+               list.remove(i);
+            }
+         }
+      }
+      else
+      {
+         list = new ArrayList<Integer>();
+      }
+      areas.put(position, list);
+
+      positionAreaService.removePositionArea(position, area);
+      success(getString("position.updated.successfully"));
    }
 }
