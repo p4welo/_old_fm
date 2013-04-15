@@ -300,3 +300,31 @@ table {
 .selectedRow {
     color: #9acd32;
 }
+
+.selected-position {
+    background: yellow !important;
+}
+
+.position-pitch a {
+    display: block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50px;
+    font-size: 14px;
+    color: #fff;
+    line-height: 20px;
+    text-align: center;
+    background: #004600;
+    border: 2px solid #004600;
+}
+
+.position-pitch a:hover {
+    border: 2px solid yellow;
+}
+
+.position-pitch {
+    height: 500px;
+    width: 312px;
+    background-repeat: no-repeat;
+    background-image: url("../img/pitch2.jpg");
+}
