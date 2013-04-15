@@ -5,6 +5,7 @@ import com.fm.dao.IPositionAreaDao;
 import com.fm.domain.Position;
 import com.fm.domain.PositionArea;
 import com.fm.service.IPositionAreaService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
@@ -58,5 +59,33 @@ public class PositionAreaServiceImpl extends AbstractServiceImpl<PositionArea> i
          }
       }
       return areas;
+   }
+
+   @Override
+   @Transactional
+   public PositionArea addPositionArea(Position position, int area)
+   {
+      PositionArea positionArea = new PositionArea();
+      positionArea.setArea(area);
+      positionArea.setPosition(position);
+      return save(positionArea);
+   }
+
+   @Override
+   @Transactional
+   public void removePositionArea(Position position, int area)
+   {
+      List<PositionArea> positionAreas = positionAreaDao.findByPosition(position);
+      if (!CollectionUtils.isEmpty(positionAreas))
+      {
+         for (PositionArea positionArea : positionAreas)
+         {
+            if (StringUtils.equals(positionArea.getPosition().getSid(), position.getSid())
+                    && positionArea.getArea() == area)
+            {
+               delete(positionArea);
+            }
+         }
+      }
    }
 }
