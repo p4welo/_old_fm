@@ -78,25 +78,6 @@ public class PositionTab extends Panel
             item.add(new Label("name", new PropertyModel(position, Position.FIELD_FULL_NAME)));
             item.add(new Label("shortName", new PropertyModel(position, Position.FIELD_SHORT_NAME)));
             item.add(new Label("areaCount", areaCount));
-
-//            item.add(new AjaxEventBehavior("mouseover")
-//            {
-//               @Override
-//               protected void onEvent(AjaxRequestTarget target)
-//               {
-//                  hoveredPosition = position;
-//                  target.add(PositionTab.this);
-//               }
-//            });
-//            item.add(new AjaxEventBehavior("mouseout")
-//            {
-//               @Override
-//               protected void onEvent(AjaxRequestTarget target)
-//               {
-//                  hoveredPosition = null;
-//                  target.add(PositionTab.this);
-//               }
-//            });
             item.add(new AjaxEventBehavior("onclick")
             {
                @Override

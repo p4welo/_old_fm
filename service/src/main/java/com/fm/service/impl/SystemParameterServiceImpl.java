@@ -18,7 +18,7 @@ import javax.annotation.Resource;
 @Service(SystemParameterServiceImpl.BEAN_NAME)
 public class SystemParameterServiceImpl extends AbstractServiceImpl<SystemParameter> implements ISystemParameterService
 {
-   public static final String BEAN_NAME = "surnameService";
+   public static final String BEAN_NAME = "systemParameterService";
 
    @Resource
    private ISystemParameterDao systemParameterDao;
