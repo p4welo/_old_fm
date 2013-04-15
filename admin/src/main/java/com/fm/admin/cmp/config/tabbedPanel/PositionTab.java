@@ -70,12 +70,15 @@ public class PositionTab extends Panel
          protected void populateItem(ListItem<Position> item)
          {
             final Position position = item.getModelObject();
+            int areaCount = positionAreaService.countAreasByPosition(position);
             if (selectedPosition != null && StringUtils.equals(selectedPosition.getSid(), position.getSid()))
             {
                item.add(AttributeModifier.append("class", "selectedRow"));
             }
             item.add(new Label("name", new PropertyModel(position, Position.FIELD_FULL_NAME)));
             item.add(new Label("shortName", new PropertyModel(position, Position.FIELD_SHORT_NAME)));
+            item.add(new Label("areaCount", areaCount));
+
 //            item.add(new AjaxEventBehavior("mouseover")
 //            {
 //               @Override
@@ -153,8 +156,12 @@ public class PositionTab extends Panel
                   {
                      addPositionArea(selectedPosition, finalI);
                   }
-                  target.add(PositionTab.this);
                }
+               else
+               {
+                  error(getString("no.position.selected"));
+               }
+               target.add(PositionTab.this);
             }
          });
       }
