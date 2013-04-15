@@ -20,4 +20,6 @@ public interface IPositionAreaService extends IAbstractService<PositionArea>
    PositionArea addPositionArea(Position position, int area);
 
    void removePositionArea(Position position, int area);
+
+   int countAreasByPosition(Position position);
 }

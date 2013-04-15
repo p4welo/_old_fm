@@ -88,4 +88,16 @@ public class PositionAreaServiceImpl extends AbstractServiceImpl<PositionArea> i
          }
       }
    }
+
+   @Override
+   @Transactional
+   public int countAreasByPosition(Position position)
+   {
+      List<PositionArea> areas = positionAreaDao.findByPosition(position);
+      if (!CollectionUtils.isEmpty(areas))
+      {
+         return areas.size();
+      }
+      return 0;
+   }
 }
