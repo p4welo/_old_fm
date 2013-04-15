@@ -130,11 +130,11 @@ public class PositionTab extends Panel
 //               setVisible(visible);
                if (selected)
                {
-                  add(AttributeModifier.replace("class", "selectedRow"));
+                  add(AttributeModifier.replace("class", "selected-position"));
                }
                else
                {
-                  add(AttributeModifier.replace("class", "unselectedRow"));
+                  add(AttributeModifier.replace("class", "unselected-position"));
                }
             }
 
