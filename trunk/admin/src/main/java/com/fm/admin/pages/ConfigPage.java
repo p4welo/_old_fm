@@ -5,6 +5,7 @@ import com.fm.admin.cmp.breadcrumb.ConfigBreadcrumb;
 import com.fm.admin.cmp.config.tabbedPanel.NameTab;
 import com.fm.admin.cmp.config.tabbedPanel.ParameterTab;
 import com.fm.admin.cmp.config.tabbedPanel.PositionTab;
+import com.fm.admin.cmp.config.tabbedPanel.SurnameTab;
 import com.fm.core.cmp.breadcrumb.BootstrapBreadcrumbPanel;
 import com.fm.core.cmp.tabbedPanel.BootstrapTabbedPanel;
 import com.fm.service.IPositionService;
@@ -51,6 +52,14 @@ public class ConfigPage extends AdminAbstractPage
          public WebMarkupContainer getPanel(String panelId)
          {
             return new NameTab(panelId);
+         }
+      });
+      tabs.add(new AbstractTab(new ResourceModel("surname.tab"))
+      {
+         @Override
+         public WebMarkupContainer getPanel(String panelId)
+         {
+            return new SurnameTab(panelId);
          }
       });
       tabs.add(new AbstractTab(new ResourceModel("parameter.tab"))

@@ -3,9 +3,13 @@ package com.fm.dao.impl;
 import com.fm.dao.IAbstractDao;
 import com.fm.domain.DataEntity;
 import com.fm.domain.IdentifiableEntity;
+import com.fm.domain.filter.AbstractFilter;
+import com.fm.domain.filter.SortFilterChain;
+import org.apache.commons.lang3.StringUtils;
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 
 import javax.annotation.Resource;
@@ -127,5 +131,100 @@ public abstract class AbstractDaoImpl<T extends DataEntity> implements IAbstract
    public SessionFactory getSessionFactory()
    {
       return sessionFactory;
+   }
+
+   @Override
+   public int countBySearchParams(AbstractFilter filter)
+   {
+      Criteria criteria = createCriteriaFromSearchParams(filter);
+      criteria.setProjection(Projections.rowCount());
+      return (Integer) criteria.uniqueResult();
+   }
+
+   @Override
+   public List<T> findBySearchParams(AbstractFilter filter, SortFilterChain sortFilterChain, int offset, int limit)
+   {
+      Criteria criteria = createCriteriaFromSearchParams(filter);
+      addOrder(criteria, sortFilterChain);
+      applyPaging(criteria, offset, limit);
+      return criteria.list();
+   }
+
+   protected void applyPaging(Criteria criteria, int offset, int limit)
+   {
+      criteria.setMaxResults(limit);
+      criteria.setFirstResult(offset);
+   }
+
+   public Criteria createCriteriaFromSearchParams(AbstractFilter abstractFilter)
+   {
+      return createCriteria();
+   }
+
+   protected String[] getAllowedSortFields()
+   {
+      return null;
+   }
+
+   public boolean isSortFieldAllowed(SortFilterChain sortFilterChain)
+   {
+      if (!StringUtils.isBlank(sortFilterChain.getField()))
+      {
+         String[] sortFields = getAllowedSortFields();
+         if (sortFields == null)
+         {
+            return true;
+         }
+         else
+         {
+            for (String sortField : sortFields)
+            {
+               if (sortFilterChain.getField().equals(sortField))
+               {
+                  return true;
+               }
+            }
+         }
+      }
+      return false;
+   }
+
+   private void addOrder(Criteria criteria, SortFilterChain sortFilterChain)
+   {
+      if (sortFilterChain != null)
+      {
+         while (sortFilterChain != null)
+         {
+            if (isSortFieldAllowed(sortFilterChain))
+            {
+               criteria.addOrder(sortFilterChain.isAscending() ? Order.asc(sortFilterChain.getField()) : Order
+                       .desc(sortFilterChain.getField()));
+            }
+            sortFilterChain = sortFilterChain.getNext();
+         }
+      }
+      else
+      {
+         if (getOrderFields() != null && getOrderFields().length > 0)
+         {
+            for (String sortField : getOrderFields())
+            {
+               criteria.addOrder(isOrderAsc() ? Order.asc(sortField) : Order.desc(sortField));
+            }
+         }
+      }
+   }
+
+   protected boolean isOrderAsc()
+   {
+      return true;
+   }
+
+   protected String[] getOrderFields()
+   {
+      return new String[]
+              {
+                      DataEntity.FIELD_ID
+              };
    }
 }

@@ -1,0 +1,28 @@
+<wicket:panel>
+    <div class="pagination pagination-centered">
+        <ul>
+            <li><a wicket:id="first">
+                <wicket:message key="first"/>
+            </a></li>
+            <li><a wicket:id="prev">
+                <wicket:message key="previous"/>
+            </a></li>
+            <li wicket:id="navigation">
+                <a wicket:id="pageLink" href="#">
+                    <wicket:message wicket:id="pageNumber">5</wicket:message>
+                </a>
+            </li>
+            <li>
+                <a wicket:id="next">
+                    <wicket:message key="next"/>
+                </a>
+            </li>
+            <li>
+                <a wicket:id="last">
+                    <wicket:message key="last"/>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+</wicket:panel>

@@ -2,10 +2,10 @@ package com.fm.admin.cmp.config.tabbedPanel;
 
 import com.fm.core.cmp.newTable.AjaxDataTable;
 import com.fm.core.cmp.newTable.DataProvider;
-import com.fm.domain.Name;
+import com.fm.domain.Surname;
 import com.fm.domain.filter.FmFilter;
 import com.fm.domain.filter.OpenSearchDescription;
-import com.fm.service.INameService;
+import com.fm.service.ISurnameService;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.IColumn;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.PropertyColumn;
 import org.apache.wicket.markup.html.panel.Panel;
@@ -18,16 +18,16 @@ import java.util.List;
 /**
  * Created with IntelliJ IDEA.
  * User: Barbara
- * Date: 13.04.13
- * Time: 11:17
+ * Date: 15.04.13
+ * Time: 22:52
  * To change this template use File | Settings | File Templates.
  */
-public class NameTab extends Panel
+public class SurnameTab extends Panel
 {
    @SpringBean
-   private INameService nameService;
+   private ISurnameService surnameService;
 
-   public NameTab(String id)
+   public SurnameTab(String id)
    {
       super(id);
       initView();
@@ -35,12 +35,13 @@ public class NameTab extends Panel
 
    private void initView()
    {
-      OpenSearchDescription<Name> osd = new OpenSearchDescription<Name>();
+      OpenSearchDescription<Surname> osd = new OpenSearchDescription<Surname>();
       FmFilter filter = new FmFilter();
       osd.setFilter(filter);
-      DataProvider<Name> dataProvider = new DataProvider<Name>(nameService, osd);
-      List<IColumn<Name, String>> columns = new ArrayList<IColumn<Name, String>>();
-      columns.add(new PropertyColumn<Name, String>(new ResourceModel("name"), Name.FIELD_VALUE, Name.FIELD_VALUE));
-      add(new AjaxDataTable<Name>("table", columns, dataProvider));
+      DataProvider<Surname> dataProvider = new DataProvider<Surname>(surnameService, osd);
+      List<IColumn<Surname, String>> columns = new ArrayList<IColumn<Surname, String>>();
+      columns.add(new PropertyColumn<Surname, String>(new ResourceModel("surname"), Surname.FIELD_VALUE,
+              Surname.FIELD_VALUE));
+      add(new AjaxDataTable<Surname>("table", columns, dataProvider));
    }
 }

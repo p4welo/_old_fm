@@ -1,6 +1,8 @@
 package com.fm.dao;
 
 import com.fm.domain.DataEntity;
+import com.fm.domain.filter.AbstractFilter;
+import com.fm.domain.filter.SortFilterChain;
 
 import java.util.List;
 
@@ -11,25 +13,29 @@ import java.util.List;
  */
 public interface IAbstractDao<T extends DataEntity>
 {
-   public T save(T entity);
+   T save(T entity);
 
-   public T update(T entity);
+   T update(T entity);
 
-   public void delete(T entity);
+   void delete(T entity);
 
-   public void delete(List<T> entities);
+   void delete(List<T> entities);
 
-   public void flush();
+   void flush();
 
-   public List<T> findAll();
+   List<T> findAll();
 
-   public T getRandom();
+   T getRandom();
 
-   public T getById(Long id);
+   T getById(Long id);
 
-   public List<T> find(int first, int count, String property, boolean ascending);
+   List<T> find(int first, int count, String property, boolean ascending);
 
-   public long getCount();
+   long getCount();
 
-   public T getBySid(String sid);
+   T getBySid(String sid);
+
+   int countBySearchParams(AbstractFilter filter);
+
+   List<T> findBySearchParams(AbstractFilter filter, SortFilterChain sortFilterChain, int offset, int limit);
 }

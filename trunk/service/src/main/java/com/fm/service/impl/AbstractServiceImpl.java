@@ -2,6 +2,8 @@ package com.fm.service.impl;
 
 import com.fm.dao.IAbstractDao;
 import com.fm.domain.IdentifiableEntity;
+import com.fm.domain.filter.AbstractFilter;
+import com.fm.domain.filter.SortFilterChain;
 import com.fm.service.IAbstractService;
 import com.fm.service.util.SidUtils;
 import org.springframework.stereotype.Service;
@@ -81,5 +83,19 @@ public abstract class AbstractServiceImpl<T extends IdentifiableEntity> implemen
    public T getBySid(String sid)
    {
       return getDao().getBySid(sid);
+   }
+
+   @Override
+   @Transactional(readOnly = true)
+   public List<T> findBySearchParams(AbstractFilter filter, SortFilterChain sortFilterChain, int offset, int limit)
+   {
+      return getDao().findBySearchParams(filter, sortFilterChain, offset, limit);
+   }
+
+   @Override
+   @Transactional(readOnly = true)
+   public long countBySearchParams(AbstractFilter filter)
+   {
+      return getDao().countBySearchParams(filter);
    }
 }
