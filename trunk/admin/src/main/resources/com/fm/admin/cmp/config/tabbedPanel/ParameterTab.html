@@ -1,3 +1,26 @@
 <wicket:panel xmlns:wicket="http://wicket.apache.org">
-    [parameter tab]
+    <div wicket:id="feedback"></div>
+    <div class="span6">
+        <table>
+            <tr wicket:id="list">
+                <td class="label label-info" wicket:id="key" style="margin-right: 50px;margin-top:5px;"></td>
+                <td>
+                    <input type="text" wicket:id="value" style="margin: 0 !important;"/>
+                </td>
+                <td>
+                    <span class="badge badge-success">
+                        <i class="icon-ok-sign"></i>
+                    </span>
+                </td>
+                <!--<td>-->
+                <!--<a wicket:id="submit" class="btn">-->
+                <!--<i class="icon-ok-sign"></i>-->
+                <!--</a>-->
+                <!--</td>-->
+                <!--<td>-->
+                <!--<span wicket:id="state"></span>-->
+                <!--</td>-->
+            </tr>
+        </table>
+    </div>
 </wicket:panel>
