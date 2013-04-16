@@ -9,4 +9,15 @@ package com.fm.domain.filter;
  */
 public class FmFilter extends AbstractFilter
 {
+   private String name;
+
+   public String getName()
+   {
+      return name;
+   }
+
+   public void setName(String name)
+   {
+      this.name = name;
+   }
 }
