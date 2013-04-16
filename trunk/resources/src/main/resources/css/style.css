@@ -331,3 +331,7 @@ tr.selectedRow {
     background-repeat: no-repeat;
     background-image: url("../img/pitch2.jpg");
 }
+
+.itemsPP {
+    min-height: 10px !important;
+}
