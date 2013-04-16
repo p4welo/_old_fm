@@ -335,3 +335,7 @@ tr.selectedRow {
 .itemsPP {
     min-height: 10px !important;
 }
+
+.legend .tooltip {
+    line-height: 20px !important;
+}

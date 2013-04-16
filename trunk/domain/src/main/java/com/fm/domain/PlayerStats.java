@@ -8,11 +8,9 @@ import javax.persistence.*;
  * Time: 23:14
  */
 @Entity
-@Table(name = PlayerStats.TABLE_NAME)
+@Table(name = "player_stats")
 public class PlayerStats extends IdentifiableEntity
 {
-   public static final String TABLE_NAME = "player_stats";
-
    @Id
    @GeneratedValue
    @Column

@@ -4,11 +4,9 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = Team.TABLE_NAME)
+@Table(name = "team")
 public class Team extends IdentifiableEntity
 {
-   public static final String TABLE_NAME = "team";
-
    public static final String FIELD_NAME = "name";
 
    public static final String FIELD_ACCOUNT = "account";

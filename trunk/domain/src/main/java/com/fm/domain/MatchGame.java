@@ -10,11 +10,9 @@ import java.util.Date;
  * Time: 00:22
  */
 @Entity
-@Table(name = MatchGame.TABLE_NAME)
+@Table(name = "match_game")
 public class MatchGame extends IdentifiableEntity
 {
-   public static final String TABLE_NAME = "match_game";
-
    public static final String FIELD_MATCH_DATE = "matchDate";
 
    public static final String FIELD_SEASON = "season";
@@ -28,6 +26,9 @@ public class MatchGame extends IdentifiableEntity
    @Column
    private Long id;
 
+   @Column(name = "match_date", nullable = false)
+   @NotNull
+//   @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
    private Date matchDate;
 
    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)

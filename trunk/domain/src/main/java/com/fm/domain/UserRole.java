@@ -9,11 +9,9 @@ import javax.validation.constraints.NotNull;
  * Time: 19:37
  */
 @Entity
-@Table(name = UserRole.TABLE_NAME)
+@Table(name = "user_role")
 public class UserRole extends IdentifiableEntity
 {
-   public static final String TABLE_NAME = "user_role";
-
    public static final String FIELD_USER_ENTITY = "userEntity";
 
    public static final String FIELD_ROLE = "role";

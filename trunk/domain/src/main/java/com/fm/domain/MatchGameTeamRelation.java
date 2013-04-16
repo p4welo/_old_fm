@@ -9,11 +9,9 @@ import javax.validation.constraints.NotNull;
  * Time: 16:22
  */
 @Entity
-@Table(name = MatchGame.TABLE_NAME)
+@Table(name = "match_game_team_relation")
 public class MatchGameTeamRelation extends IdentifiableEntity
 {
-   public static final String TABLE_NAME = "match_game_team_relation";
-
    public static final String FIELD_MATCH_GAME = "matchGame";
 
    public static final String FIELD_TEAM = "team";
