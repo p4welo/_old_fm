@@ -1,8 +1,8 @@
 package com.fm.admin.cmp.menu;
 
 import com.fm.admin.pages.ConfigPage;
-import com.fm.admin.pages.Index;
 import com.fm.admin.pages.LeagueListPage;
+import com.fm.admin.pages.ManagerListPage;
 import com.fm.core.cmp.menu.AbstractMenuPanel;
 import com.fm.core.cmp.menu.MenuItem;
 import com.fm.domain.FmIconTypes;
@@ -29,7 +29,7 @@ public class AdminMenuPanel extends AbstractMenuPanel implements AdminMenuKeys
    {
       return Arrays.asList(
               new MenuItem(LEAGUE_LIST_PAGE, FmIconTypes.LIST, LeagueListPage.class),
-              new MenuItem(USERS_PAGE, FmIconTypes.GROUP, Index.class),
+              new MenuItem(USERS_PAGE, FmIconTypes.GROUP, ManagerListPage.class),
               new MenuItem(CONFIG_PAGE, FmIconTypes.CONFIG, ConfigPage.class)
       );
    }

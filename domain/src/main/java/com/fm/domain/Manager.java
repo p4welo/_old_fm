@@ -4,16 +4,16 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = Manager.TABLE_NAME)
+@Table(name = "manager")
 public class Manager extends IdentifiableEntity
 {
-   public static final String TABLE_NAME = "manager";
-
    public static final String FIELD_NAME = "name";
 
    public static final String FIELD_SURNAME = "surname";
 
    public static final String FIELD_TEAM = "team";
+
+   public static final String FIELD_USER = "user";
 
    @Id
    @GeneratedValue
@@ -31,6 +31,11 @@ public class Manager extends IdentifiableEntity
    @OneToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST}, fetch = FetchType.EAGER)
    @JoinColumn(nullable = true)
    private Team team;
+
+   @OneToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST}, fetch = FetchType.EAGER)
+   @JoinColumn(nullable = false)
+   @NotNull
+   private UserEntity user;
 
    public Long getId()
    {
@@ -70,5 +75,15 @@ public class Manager extends IdentifiableEntity
    public void setTeam(Team team)
    {
       this.team = team;
+   }
+
+   public UserEntity getUser()
+   {
+      return user;
+   }
+
+   public void setUser(UserEntity user)
+   {
+      this.user = user;
    }
 }

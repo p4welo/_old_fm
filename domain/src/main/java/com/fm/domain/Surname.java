@@ -3,12 +3,9 @@ package com.fm.domain;
 import javax.persistence.*;
 
 @Entity
-@Table(name = Surname.TABLE_NAME)
+@Table(name = "surname")
 public class Surname extends IdentifiableEntity
 {
-
-   public static final String TABLE_NAME = "surname";
-
    public static final String FIELD_VALUE = "value";
 
    /* Constructors */

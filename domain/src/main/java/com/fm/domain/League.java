@@ -9,12 +9,12 @@ import javax.validation.constraints.NotNull;
  * Time: 22:59
  */
 @Entity
-@Table(name = League.TABLE_NAME)
+@Table(name = "league")
 public class League extends IdentifiableEntity
 {
-   public static final String TABLE_NAME = "league";
-
    public static final String FIELD_NAME = "name";
+
+   public static final String FIELD_KEY = "key";
 
    @Id
    @GeneratedValue
@@ -24,6 +24,10 @@ public class League extends IdentifiableEntity
    @Column(nullable = false)
    @NotNull
    private String name;
+
+   @Column(name = "lkey", nullable = false)
+   @NotNull
+   private String key;
 
    public Long getId()
    {

@@ -5,11 +5,9 @@ import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Entity
-@Table(name = Player.TABLE_NAME)
+@Table(name = "player")
 public class Player extends IdentifiableEntity
 {
-   public static final String TABLE_NAME = "player";
-
    public static final String FIELD_NAME = "name";
 
    public static final String FIELD_SURNAME = "surname";
