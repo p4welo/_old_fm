@@ -7,10 +7,12 @@ import com.fm.admin.navigation.NavigateToLeagueDetailsPage;
 import com.fm.core.cmp.authorization.UserRoles;
 import com.fm.core.cmp.breadcrumb.BootstrapBreadcrumbPanel;
 import com.fm.core.cmp.feedback.NotifyFeedbackPanel;
-import com.fm.core.cmp.table.AjaxDataTable;
-import com.fm.core.cmp.table.DataProvider;
+import com.fm.core.cmp.newTable.AjaxDataTable;
+import com.fm.core.cmp.newTable.DataProvider;
 import com.fm.domain.DataEntity;
 import com.fm.domain.League;
+import com.fm.domain.filter.FmFilter;
+import com.fm.domain.filter.OpenSearchDescription;
 import com.fm.service.ILeagueService;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
@@ -86,6 +88,7 @@ public class LeagueListPage extends AdminAbstractPage
 
    private void createLeagueTable()
    {
+
       List<IColumn<League, String>> columns = new ArrayList<IColumn<League, String>>();
 
       columns.add(new PropertyColumn<League, String>(
@@ -98,11 +101,15 @@ public class LeagueListPage extends AdminAbstractPage
               League.FIELD_NAME,
               League.FIELD_NAME
       ));
+      OpenSearchDescription<League> osd = new OpenSearchDescription<League>();
+      FmFilter filter = new FmFilter();
+      osd.setFilter(filter);
+      DataProvider dataProvider = new DataProvider(leagueService, osd);
 
-      main.add(new AjaxDataTable<League>("table", columns, new DataProvider<League>(leagueService), 10)
+      main.add(new AjaxDataTable<League>("table", columns, dataProvider)
       {
          @Override
-         protected void executeOnClick(AjaxRequestTarget target, IModel<League> model)
+         public void executeOnClick(AjaxRequestTarget target, IModel<League> model)
          {
             new NavigateToLeagueDetailsPage(model.getObject()).navigate();
          }
