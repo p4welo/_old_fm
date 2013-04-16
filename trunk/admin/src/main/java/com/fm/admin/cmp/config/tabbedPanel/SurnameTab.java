@@ -1,5 +1,6 @@
 package com.fm.admin.cmp.config.tabbedPanel;
 
+import com.fm.admin.cmp.config.table.SurnameFilterToolbar;
 import com.fm.core.cmp.newTable.AjaxDataTable;
 import com.fm.core.cmp.newTable.DataProvider;
 import com.fm.domain.Surname;
@@ -42,6 +43,8 @@ public class SurnameTab extends Panel
       List<IColumn<Surname, String>> columns = new ArrayList<IColumn<Surname, String>>();
       columns.add(new PropertyColumn<Surname, String>(new ResourceModel("surname"), Surname.FIELD_VALUE,
               Surname.FIELD_VALUE));
-      add(new AjaxDataTable<Surname>("table", columns, dataProvider));
+      AjaxDataTable<Surname> dataTable = new AjaxDataTable<Surname>("table", columns, dataProvider);
+      dataTable.addFilterToolbar(new SurnameFilterToolbar(dataTable));
+      add(dataTable);
    }
 }
