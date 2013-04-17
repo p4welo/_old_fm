@@ -1,0 +1,57 @@
+<wicket:panel xmlns:wicket="http://wicket.apache.org">
+    <script type='text/javascript'>
+        $(document).ready(function () {
+            $('.tooltipLink').tooltip();
+        });
+    </script>
+    <div wicket:id="main">
+        <div class="row-fluid table_toolbar">
+            <div class="btn-group">
+                <button class="btn tooltipLink" data-toggle="tooltip" title="zmiana hasła">
+                    <i class="icon-key"></i>
+                </button>
+                <button class="btn tooltipLink" data-toggle="tooltip" title="blokada konta">
+                    <i class="icon-lock"></i>
+                </button>
+                <button class="btn tooltipLink" data-toggle="tooltip" title="prywatna wiadomość">
+                    <i class="icon-envelope"></i>
+                </button>
+            </div>
+        </div>
+        <div class="row-fluid">
+            <div class="span6">
+                <wicket:message key="name"/>
+            </div>
+            <div class="span6">
+                <span wicket:id="name"></span>
+            </div>
+        </div>
+
+        <div class="row-fluid">
+            <div class="span6">
+                <wicket:message key="surname"/>
+            </div>
+            <div class="span6">
+                <span wicket:id="surname"></span>
+            </div>
+        </div>
+
+        <div class="row-fluid">
+            <div class="span6">
+                <wicket:message key="team"/>
+            </div>
+            <div class="span6">
+                <span wicket:id="team"></span>
+            </div>
+        </div>
+
+        <div class="row-fluid">
+            <div class="span6">
+                <wicket:message key="email"/>
+            </div>
+            <div class="span6">
+                <span wicket:id="email"></span>
+            </div>
+        </div>
+    </div>
+</wicket:panel>
