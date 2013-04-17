@@ -1,26 +1,28 @@
 <wicket:panel xmlns:wicket="http://wicket.apache.org">
     <div wicket:id="feedback"></div>
     <div class="span6">
-        <table>
-            <tr wicket:id="list">
-                <td class="label label-info" wicket:id="key" style="margin-right: 50px;margin-top:5px;"></td>
-                <td>
-                    <input type="text" wicket:id="value" style="margin: 0 !important;"/>
-                </td>
-                <td>
-                    <span class="badge badge-success">
-                        <i class="icon-ok-sign"></i>
-                    </span>
-                </td>
-                <!--<td>-->
-                <!--<a wicket:id="submit" class="btn">-->
-                <!--<i class="icon-ok-sign"></i>-->
-                <!--</a>-->
-                <!--</td>-->
-                <!--<td>-->
-                <!--<span wicket:id="state"></span>-->
-                <!--</td>-->
-            </tr>
-        </table>
+        <form wicket:id="form">
+            <table>
+                <tr wicket:id="list">
+                    <td class="label label-info" wicket:id="key" style="margin-right: 50px;margin-top:5px;"></td>
+                    <td>
+                        <input type="text" wicket:id="value" style="margin: 0 !important;"/>
+                    </td>
+                    <td>
+                        <span wicket:id="stateLabel" class="badge badge-success">
+                            <i wicket:id="state" class="icon-ok-sign"></i>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input wicket:id="submit" class="btn pull-right" type="submit"
+                               wicket:message="value:save.label"/>
+                    </td>
+                </tr>
+            </table>
+
+        </form>
     </div>
 </wicket:panel>
