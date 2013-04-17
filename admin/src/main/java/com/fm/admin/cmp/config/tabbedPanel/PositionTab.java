@@ -38,8 +38,6 @@ public class PositionTab extends Panel
 
    private List<Position> positions;
 
-   private Position hoveredPosition;
-
    private Position selectedPosition;
 
    private Map<Position, List<Integer>> areas;

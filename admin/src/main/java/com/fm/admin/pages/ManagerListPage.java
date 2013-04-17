@@ -2,11 +2,12 @@ package com.fm.admin.pages;
 
 import com.fm.admin.api.AdminApiMappings;
 import com.fm.admin.cmp.breadcrumb.ManagerListBreadcrumb;
-import com.fm.admin.navigation.NavigateToManagerDetailsPage;
+import com.fm.admin.cmp.managerList.ManagerDetailsPanel;
 import com.fm.core.cmp.authorization.UserRoles;
 import com.fm.core.cmp.breadcrumb.BootstrapBreadcrumbPanel;
 import com.fm.core.cmp.newTable.AjaxDataTable;
 import com.fm.core.cmp.newTable.DataProvider;
+import com.fm.core.cmp.newTable.SelectionChangeCallback;
 import com.fm.domain.Manager;
 import com.fm.domain.UserEntity;
 import com.fm.domain.filter.FmFilter;
@@ -18,6 +19,7 @@ import org.apache.wicket.extensions.markup.html.repeater.data.table.IColumn;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.PropertyColumn;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.model.ResourceModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.wicketstuff.annotation.mount.MountPath;
@@ -38,6 +40,8 @@ public class ManagerListPage extends AdminAbstractPage
    private IManagerService managerService;
 
    private WebMarkupContainer main;
+
+   private Manager selected;
 
    public ManagerListPage()
    {
@@ -81,14 +85,18 @@ public class ManagerListPage extends AdminAbstractPage
       osd.setFilter(filter);
       DataProvider dataProvider = new DataProvider(managerService, osd);
 
-      main.add(new AjaxDataTable<Manager>("table", columns, dataProvider)
+      AjaxDataTable<Manager> table = new AjaxDataTable<Manager>("table", columns, dataProvider);
+      table.setSelectionChangeCallback(new SelectionChangeCallback<Manager>()
       {
          @Override
-         public void executeOnClick(AjaxRequestTarget target, IModel<Manager> model)
+         public void onSelectionChange(AjaxRequestTarget target, IModel<Manager> model)
          {
-            new NavigateToManagerDetailsPage(model.getObject()).navigate();
+            selected = model.getObject();
+            target.add(main);
          }
       });
+      main.add(table);
+      main.add(new ManagerDetailsPanel("details", new PropertyModel<Manager>(this, "selected")));
    }
 
    @Override
