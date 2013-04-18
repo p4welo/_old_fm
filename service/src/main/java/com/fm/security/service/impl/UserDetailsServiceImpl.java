@@ -1,10 +1,11 @@
 package com.fm.security.service.impl;
 
+import com.fm.domain.Authority;
 import com.fm.domain.UserEntity;
-import com.fm.domain.UserRole;
+import com.fm.service.IAuthorityService;
 import com.fm.service.IUserEntityService;
-import com.fm.service.IUserRoleService;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -13,9 +14,9 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.util.Assert;
 
 import javax.annotation.Resource;
-import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
-import java.util.Set;
 
 public class UserDetailsServiceImpl implements UserDetailsService, InitializingBean
 {
@@ -23,7 +24,7 @@ public class UserDetailsServiceImpl implements UserDetailsService, InitializingB
    private IUserEntityService userService;
 
    @Resource
-   private IUserRoleService authorityService;
+   private IAuthorityService authorityService;
 
    @Override
    public void afterPropertiesSet() throws Exception
@@ -41,16 +42,16 @@ public class UserDetailsServiceImpl implements UserDetailsService, InitializingB
          throw new UsernameNotFoundException("user '" + login + "' not found!");
       }
 
-      List<UserRole> authorities = authorityService.getUserRoles(user);
-      Set<SimpleGrantedAuthority> roles = new HashSet<SimpleGrantedAuthority>();
-      for (UserRole authority : authorities)
+      Collection<GrantedAuthority> grantedAuthorities = new ArrayList<GrantedAuthority>();
+      List<Authority> userAuthorities = authorityService.getUserAuthorities(user);
+      for (Authority authority : userAuthorities)
       {
-         roles.add(new SimpleGrantedAuthority(authority.getRole()));
+         grantedAuthorities.add(new SimpleGrantedAuthority(authority.getAuthority()));
       }
       User result = new User(
               login,
               user.getPassword(),
-              roles);
+              grantedAuthorities);
       return result;
    }
 
@@ -59,7 +60,7 @@ public class UserDetailsServiceImpl implements UserDetailsService, InitializingB
       this.userService = userService;
    }
 
-   public void setAuthorityService(IUserRoleService authorityService)
+   public void setAuthorityService(IAuthorityService authorityService)
    {
       this.authorityService = authorityService;
    }

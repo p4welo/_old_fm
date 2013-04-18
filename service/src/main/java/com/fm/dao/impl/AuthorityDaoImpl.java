@@ -1,8 +1,8 @@
 package com.fm.dao.impl;
 
-import com.fm.dao.IUserRoleDao;
+import com.fm.dao.IAuthorityDao;
+import com.fm.domain.Authority;
 import com.fm.domain.UserEntity;
-import com.fm.domain.UserRole;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
@@ -15,12 +15,12 @@ import java.util.List;
  * Time: 19:40
  */
 @Repository
-public class UserRoleDaoImpl extends AbstractDaoImpl<UserRole> implements IUserRoleDao
+public class AuthorityDaoImpl extends AbstractDaoImpl<Authority> implements IAuthorityDao
 {
-   public List<UserRole> getRolesByUser(UserEntity userEntity)
+   public List<Authority> getAuthoritiesByUser(UserEntity userEntity)
    {
       Criteria criteria = createCriteria();
-      criteria.add(Restrictions.eq(UserRole.FIELD_USER_ENTITY, userEntity));
+      criteria.add(Restrictions.eq(Authority.FIELD_USER_ENTITY, userEntity));
       return criteria.list();
    }
 }

@@ -4,7 +4,7 @@ import com.fm.admin.api.AdminApiMappings;
 import com.fm.admin.cmp.breadcrumb.LeagueListBreadcrumb;
 import com.fm.admin.cmp.leagueDetails.window.NewLeagueWindow;
 import com.fm.admin.navigation.NavigateToLeagueDetailsPage;
-import com.fm.core.cmp.authorization.UserRoles;
+import com.fm.core.cmp.authorization.UserAuthorities;
 import com.fm.core.cmp.breadcrumb.BootstrapBreadcrumbPanel;
 import com.fm.core.cmp.feedback.NotifyFeedbackPanel;
 import com.fm.core.cmp.newTable.AjaxDataTable;
@@ -35,7 +35,7 @@ import java.util.List;
  * Time: 15:00
  */
 @MountPath(AdminApiMappings.LEAGUE_LIST_PAGE)
-@AuthorizeInstantiation(UserRoles.ADMIN)
+@AuthorizeInstantiation(UserAuthorities.ADMIN)
 public class LeagueListPage extends AdminAbstractPage
 {
    @SpringBean

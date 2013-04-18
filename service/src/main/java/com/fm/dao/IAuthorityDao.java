@@ -1,7 +1,7 @@
 package com.fm.dao;
 
+import com.fm.domain.Authority;
 import com.fm.domain.UserEntity;
-import com.fm.domain.UserRole;
 
 import java.util.List;
 
@@ -10,7 +10,7 @@ import java.util.List;
  * Date: 17.12.12
  * Time: 19:39
  */
-public interface IUserRoleDao
+public interface IAuthorityDao
 {
-   List<UserRole> getRolesByUser(UserEntity userEntity);
+   List<Authority> getAuthoritiesByUser(UserEntity userEntity);
 }

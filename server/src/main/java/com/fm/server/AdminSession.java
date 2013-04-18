@@ -2,8 +2,8 @@ package com.fm.server;
 
 import com.fm.domain.UserEntity;
 import com.fm.security.service.ISecurityService;
+import com.fm.service.IAuthorityService;
 import com.fm.service.IUserEntityService;
-import com.fm.service.IUserRoleService;
 import org.apache.wicket.Session;
 import org.apache.wicket.authroles.authentication.AuthenticatedWebSession;
 import org.apache.wicket.authroles.authorization.strategies.role.Roles;
@@ -16,6 +16,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
+import org.springframework.util.CollectionUtils;
 
 import java.util.List;
 
@@ -39,7 +40,7 @@ public class AdminSession extends AuthenticatedWebSession
    private IUserEntityService userEntityService;
 
    @SpringBean
-   private IUserRoleService userRoleService;
+   private IAuthorityService authorityService;
 
    public AdminSession(Request request)
    {
@@ -73,12 +74,12 @@ public class AdminSession extends AuthenticatedWebSession
    }
 
    //   @Override
-//   public Roles getRoles()
+//   public Roles getAuthorities()
 //   {
 //      Roles roles = new Roles();
 //      if (isSignedIn() && user != null)
 //      {
-//         List<String> list = userRoleService.getRoles(user);
+//         List<String> list = authorityService.getAuthorities(user);
 //         if (list != null)
 //         {
 //            for (String role : list)
@@ -128,13 +129,10 @@ public class AdminSession extends AuthenticatedWebSession
       UserEntity loggedInUser = securityService.getLoggedInUser();
       if (isSignedIn() && loggedInUser != null)
       {
-         List<String> list = userRoleService.getRoles(loggedInUser);
-         if (list != null)
+         List<String> list = authorityService.getAuthorities(loggedInUser);
+         if (!CollectionUtils.isEmpty(list))
          {
-            for (String role : list)
-            {
-               roles.add(role);
-            }
+            roles.addAll(list);
          }
       }
    }

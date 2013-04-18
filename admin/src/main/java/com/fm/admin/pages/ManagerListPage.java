@@ -3,7 +3,7 @@ package com.fm.admin.pages;
 import com.fm.admin.api.AdminApiMappings;
 import com.fm.admin.cmp.breadcrumb.ManagerListBreadcrumb;
 import com.fm.admin.cmp.managerList.ManagerDetailsPanel;
-import com.fm.core.cmp.authorization.UserRoles;
+import com.fm.core.cmp.authorization.UserAuthorities;
 import com.fm.core.cmp.breadcrumb.BootstrapBreadcrumbPanel;
 import com.fm.core.cmp.newTable.AjaxDataTable;
 import com.fm.core.cmp.newTable.DataProvider;
@@ -33,7 +33,7 @@ import java.util.List;
  * Time: 15:12
  */
 @MountPath(AdminApiMappings.MANAGER_LIST_PAGE)
-@AuthorizeInstantiation(UserRoles.ADMIN)
+@AuthorizeInstantiation(UserAuthorities.ADMIN)
 public class ManagerListPage extends AdminAbstractPage
 {
    @SpringBean
