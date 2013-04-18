@@ -1,7 +1,7 @@
 package com.fm.service.impl;
 
-import com.fm.dao.IUserEntityDao;
-import com.fm.domain.UserEntity;
+import com.fm.dao.IUserDao;
+import com.fm.domain.User;
 import com.fm.service.IAssemblerService;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.Resource;
 
 /**
- * UserEntity: pawel
+ * User: pawel
  * Date: 17.12.12
  * Time: 19:15
  */
@@ -22,7 +22,7 @@ public class UserDetailServiceImpl implements UserDetailsService
    public static final String BEAN_NAME = "userDetailService";
 
    @Resource
-   private IUserEntityDao userEntityDao;
+   private IUserDao userDao;
 
    @Resource
    private IAssemblerService assemblerService;
@@ -30,12 +30,12 @@ public class UserDetailServiceImpl implements UserDetailsService
    @Transactional(readOnly = true)
    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException
    {
-      UserEntity userEntity = userEntityDao.findByLogin(username);
-      if (userEntity == null)
+      User user = userDao.findByLogin(username);
+      if (user == null)
       {
-         throw new UsernameNotFoundException("userEntity not found");
+         throw new UsernameNotFoundException("user not found");
       }
 
-      return assemblerService.buildUserFromUserEntity(userEntity);
+      return assemblerService.buildUserFromUserEntity(user);
    }
 }

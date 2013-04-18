@@ -1,13 +1,12 @@
 package com.fm.security.service.impl;
 
 import com.fm.domain.Authority;
-import com.fm.domain.UserEntity;
+import com.fm.domain.User;
 import com.fm.service.IAuthorityService;
-import com.fm.service.IUserEntityService;
+import com.fm.service.IUserService;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -21,7 +20,7 @@ import java.util.List;
 public class UserDetailsServiceImpl implements UserDetailsService, InitializingBean
 {
    @Resource
-   private IUserEntityService userService;
+   private IUserService userService;
 
    @Resource
    private IAuthorityService authorityService;
@@ -36,7 +35,7 @@ public class UserDetailsServiceImpl implements UserDetailsService, InitializingB
    @Override
    public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException
    {
-      UserEntity user = userService.getByLogin(login);
+      User user = userService.getByLogin(login);
       if (user == null)
       {
          throw new UsernameNotFoundException("user '" + login + "' not found!");
@@ -48,14 +47,14 @@ public class UserDetailsServiceImpl implements UserDetailsService, InitializingB
       {
          grantedAuthorities.add(new SimpleGrantedAuthority(authority.getAuthority()));
       }
-      User result = new User(
+      org.springframework.security.core.userdetails.User result = new org.springframework.security.core.userdetails.User(
               login,
               user.getPassword(),
               grantedAuthorities);
       return result;
    }
 
-   public void setUserService(IUserEntityService userService)
+   public void setUserService(IUserService userService)
    {
       this.userService = userService;
    }

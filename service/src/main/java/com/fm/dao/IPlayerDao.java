@@ -1,7 +1,7 @@
 package com.fm.dao;
 
 /**
- * UserEntity: pawel
+ * User: pawel
  * Date: 30.11.12
  * Time: 23:58
  */

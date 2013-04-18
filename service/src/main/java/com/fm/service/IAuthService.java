@@ -1,6 +1,6 @@
 package com.fm.service;
 
-import com.fm.domain.UserEntity;
+import com.fm.domain.User;
 
 /**
  * User: pawel
@@ -9,7 +9,7 @@ import com.fm.domain.UserEntity;
  */
 public interface IAuthService
 {
-   UserEntity getLoggedInUserEntity();
+   User getLoggedInUserEntity();
 
    boolean hasAuthority(String role);
 }

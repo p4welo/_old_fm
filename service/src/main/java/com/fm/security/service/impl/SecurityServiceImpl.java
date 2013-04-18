@@ -1,14 +1,13 @@
 package com.fm.security.service.impl;
 
 import com.fm.domain.Authority;
-import com.fm.domain.UserEntity;
+import com.fm.domain.User;
 import com.fm.security.service.ISecurityService;
 import com.fm.service.IAuthorityService;
-import com.fm.service.IUserEntityService;
+import com.fm.service.IUserService;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -20,13 +19,13 @@ public class SecurityServiceImpl implements ISecurityService
    public static final String BEAN_NAME = "securityService";
 
    @Resource
-   private IUserEntityService userService;
+   private IUserService userService;
 
    @Resource
    private IAuthorityService authorityService;
 
    @Override
-   public UserEntity getLoggedInUser()
+   public User getLoggedInUser()
    {
       SecurityContext ctx = SecurityContextHolder.getContext();
       Authentication authentication = ctx.getAuthentication();
@@ -34,7 +33,8 @@ public class SecurityServiceImpl implements ISecurityService
       {
          return null;
       }
-      User userDetails = (User) authentication.getPrincipal();
+      org.springframework.security.core.userdetails.User userDetails = (org.springframework.security.core.userdetails.User) authentication
+              .getPrincipal();
       return userService.getByLogin(userDetails.getUsername());
    }
 

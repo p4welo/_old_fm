@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.Resource;
 
 /**
- * UserEntity: pawel
+ * User: pawel
  * Date: 13.12.12
  * Time: 23:09
  */

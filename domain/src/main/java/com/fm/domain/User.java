@@ -4,13 +4,13 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 /**
- * UserEntity: pawel
+ * User: pawel
  * Date: 17.12.12
  * Time: 19:16
  */
 @Entity
 @Table(name = "user")
-public class UserEntity extends IdentifiableEntity
+public class User extends IdentifiableEntity
 {
    public static final String FIELD_LOGIN = "login";
 

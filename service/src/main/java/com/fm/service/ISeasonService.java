@@ -6,7 +6,7 @@ import com.fm.domain.Season;
 import java.util.List;
 
 /**
- * UserEntity: pawel
+ * User: pawel
  * Date: 14.12.12
  * Time: 00:03
  */

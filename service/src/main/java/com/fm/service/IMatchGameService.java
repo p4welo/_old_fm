@@ -3,7 +3,7 @@ package com.fm.service;
 import com.fm.domain.MatchGame;
 
 /**
- * UserEntity: pawel
+ * User: pawel
  * Date: 14.12.12
  * Time: 01:24
  */

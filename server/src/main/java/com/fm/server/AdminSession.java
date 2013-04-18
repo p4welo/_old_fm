@@ -1,9 +1,9 @@
 package com.fm.server;
 
-import com.fm.domain.UserEntity;
+import com.fm.domain.User;
 import com.fm.security.service.ISecurityService;
 import com.fm.service.IAuthorityService;
-import com.fm.service.IUserEntityService;
+import com.fm.service.IUserService;
 import org.apache.wicket.Session;
 import org.apache.wicket.authroles.authentication.AuthenticatedWebSession;
 import org.apache.wicket.authroles.authorization.strategies.role.Roles;
@@ -37,7 +37,7 @@ public class AdminSession extends AuthenticatedWebSession
    private ISecurityService securityService;
 
    @SpringBean
-   private IUserEntityService userEntityService;
+   private IUserService userService;
 
    @SpringBean
    private IAuthorityService authorityService;
@@ -51,10 +51,10 @@ public class AdminSession extends AuthenticatedWebSession
    @Override
    public boolean authenticate(String userName, String password)
    {
-//      boolean success = userEntityService.authenticate(userName, password);
+//      boolean success = userService.authenticate(userName, password);
 //      if (success)
 //      {
-//         this.user = userEntityService.getByLogin(userName);
+//         this.user = userService.getByLogin(userName);
 //      }
 //      return success;
       boolean authenticated = false;
@@ -91,7 +91,7 @@ public class AdminSession extends AuthenticatedWebSession
 //      return roles;
 //   }
 //
-//   public UserEntity getUser()
+//   public User getUser()
 //   {
 //      return user;
 //   }
@@ -126,7 +126,7 @@ public class AdminSession extends AuthenticatedWebSession
 
    private void addRolesFromAuthentication(Roles roles)
    {
-      UserEntity loggedInUser = securityService.getLoggedInUser();
+      User loggedInUser = securityService.getLoggedInUser();
       if (isSignedIn() && loggedInUser != null)
       {
          List<String> list = authorityService.getAuthorities(loggedInUser);

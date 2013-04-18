@@ -1,14 +1,14 @@
 package com.fm.service;
 
-import com.fm.domain.UserEntity;
+import com.fm.domain.User;
 import org.springframework.security.core.userdetails.UserDetails;
 
 /**
- * UserEntity: pawel
+ * User: pawel
  * Date: 17.12.12
  * Time: 19:20
  */
 public interface IAssemblerService
 {
-   UserDetails buildUserFromUserEntity(UserEntity userEntity);
+   UserDetails buildUserFromUserEntity(User user);
 }

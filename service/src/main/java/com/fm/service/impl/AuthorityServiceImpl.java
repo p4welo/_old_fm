@@ -3,7 +3,7 @@ package com.fm.service.impl;
 import com.fm.dao.IAbstractDao;
 import com.fm.dao.IAuthorityDao;
 import com.fm.domain.Authority;
-import com.fm.domain.UserEntity;
+import com.fm.domain.User;
 import com.fm.service.IAuthorityService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * UserEntity: pawel
+ * User: pawel
  * Date: 17.12.12
  * Time: 19:41
  */
@@ -33,14 +33,14 @@ public class AuthorityServiceImpl extends AbstractServiceImpl<Authority> impleme
 
    @Override
    @Transactional
-   public List<Authority> getUserAuthorities(UserEntity userEntity)
+   public List<Authority> getUserAuthorities(User user)
    {
-      return authorityDao.getAuthoritiesByUser(userEntity);
+      return authorityDao.getAuthoritiesByUser(user);
    }
 
    @Override
    @Transactional
-   public List<String> getAuthorities(UserEntity user)
+   public List<String> getAuthorities(User user)
    {
       List<String> roles = new ArrayList<String>();
       List<Authority> authorities = authorityDao.getAuthoritiesByUser(user);

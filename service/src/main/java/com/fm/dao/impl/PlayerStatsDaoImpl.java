@@ -5,7 +5,7 @@ import com.fm.domain.PlayerStats;
 import org.springframework.stereotype.Repository;
 
 /**
- * UserEntity: pawel
+ * User: pawel
  * Date: 13.12.12
  * Time: 23:16
  */

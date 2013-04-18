@@ -35,7 +35,7 @@ public class Manager extends IdentifiableEntity
    @OneToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST}, fetch = FetchType.EAGER)
    @JoinColumn(nullable = false)
    @NotNull
-   private UserEntity user;
+   private User user;
 
    public Long getId()
    {
@@ -77,12 +77,12 @@ public class Manager extends IdentifiableEntity
       this.team = team;
    }
 
-   public UserEntity getUser()
+   public User getUser()
    {
       return user;
    }
 
-   public void setUser(UserEntity user)
+   public void setUser(User user)
    {
       this.user = user;
    }
