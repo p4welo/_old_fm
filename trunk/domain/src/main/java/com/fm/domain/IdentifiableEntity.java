@@ -1,5 +1,6 @@
 package com.fm.domain;
 
+import org.apache.commons.lang3.StringUtils;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.Column;
@@ -29,5 +30,22 @@ public abstract class IdentifiableEntity extends DataEntity
    public void setSid(String sid)
    {
       this.sid = sid;
+   }
+
+   @Override
+   public boolean equals(Object obj)
+   {
+      if (obj instanceof IdentifiableEntity)
+      {
+         return StringUtils.equals(sid, ((IdentifiableEntity) obj).getSid());
+      }
+      else if (obj instanceof DataEntity)
+      {
+         return getId() == ((DataEntity) obj).getId();
+      }
+      else
+      {
+         return super.equals(obj);
+      }
    }
 }
