@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 
 /**
- * UserEntity: pawel
+ * User: pawel
  * Date: 14.12.12
  * Time: 01:24
  */

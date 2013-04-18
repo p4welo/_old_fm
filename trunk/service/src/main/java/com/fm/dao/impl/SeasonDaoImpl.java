@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 /**
- * UserEntity: pawel
+ * User: pawel
  * Date: 14.12.12
  * Time: 00:01
  */

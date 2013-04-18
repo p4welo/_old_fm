@@ -7,7 +7,7 @@ import com.fm.service.IPlayerStatsService;
 import org.springframework.stereotype.Service;
 
 /**
- * UserEntity: pawel
+ * User: pawel
  * Date: 13.12.12
  * Time: 23:18
  */

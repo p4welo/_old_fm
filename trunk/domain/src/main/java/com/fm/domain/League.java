@@ -4,7 +4,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 /**
- * UserEntity: pawel
+ * User: pawel
  * Date: 13.12.12
  * Time: 22:59
  */

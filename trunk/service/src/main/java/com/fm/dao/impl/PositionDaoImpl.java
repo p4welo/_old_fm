@@ -5,7 +5,7 @@ import com.fm.domain.Position;
 import org.springframework.stereotype.Repository;
 
 /**
- * UserEntity: pawel
+ * User: pawel
  * Date: 01.12.12
  * Time: 00:05
  */

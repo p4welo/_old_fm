@@ -1,11 +1,10 @@
 package com.fm.service.impl;
 
-import com.fm.domain.UserEntity;
+import com.fm.domain.User;
 import com.fm.service.IAuthService;
-import com.fm.service.IUserEntityService;
+import com.fm.service.IUserService;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,23 +20,24 @@ import java.util.Collection;
 public class AuthServiceImpl implements IAuthService
 {
    @Resource
-   private IUserEntityService userEntityService;
+   private IUserService userService;
 
    @Transactional
-   public UserEntity getLoggedInUserEntity()
+   public User getLoggedInUserEntity()
    {
-      User user = getLoggedInUser();
-      return userEntityService.getByLogin(user.getUsername());
+      org.springframework.security.core.userdetails.User user = getLoggedInUser();
+      return userService.getByLogin(user.getUsername());
    }
 
-   public User getLoggedInUser()
+   public org.springframework.security.core.userdetails.User getLoggedInUser()
    {
-      return (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+      return (org.springframework.security.core.userdetails.User) SecurityContextHolder.getContext().getAuthentication()
+              .getPrincipal();
    }
 
    public boolean hasAuthority(String role)
    {
-      User user = getLoggedInUser();
+      org.springframework.security.core.userdetails.User user = getLoggedInUser();
       Collection<GrantedAuthority> authorities = user.getAuthorities();
       for (GrantedAuthority authority : authorities)
       {

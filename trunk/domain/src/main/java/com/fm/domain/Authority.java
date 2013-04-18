@@ -6,7 +6,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 /**
- * UserEntity: pawel
+ * User: pawel
  * Date: 17.12.12
  * Time: 19:37
  */
@@ -14,7 +14,7 @@ import javax.validation.constraints.NotNull;
 @Table(name = "authority")
 public class Authority extends IdentifiableEntity
 {
-   public static final String FIELD_USER_ENTITY = "userEntity";
+   public static final String FIELD_USER_ENTITY = "user";
 
    public static final String FIELD_ROLE = "role";
 
@@ -26,7 +26,7 @@ public class Authority extends IdentifiableEntity
    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
    @JoinColumn(nullable = false, name = "user_id")
    @NotNull
-   private UserEntity userEntity;
+   private User user;
 
    @Column(nullable = false)
    @NotNull
@@ -47,14 +47,14 @@ public class Authority extends IdentifiableEntity
       this.id = id;
    }
 
-   public UserEntity getUserEntity()
+   public User getUser()
    {
-      return userEntity;
+      return user;
    }
 
-   public void setUserEntity(UserEntity userEntity)
+   public void setUser(User user)
    {
-      this.userEntity = userEntity;
+      this.user = user;
    }
 
    public String getAuthority()

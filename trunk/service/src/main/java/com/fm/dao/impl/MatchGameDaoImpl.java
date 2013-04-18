@@ -5,7 +5,7 @@ import com.fm.domain.MatchGame;
 import org.springframework.stereotype.Repository;
 
 /**
- * UserEntity: pawel
+ * User: pawel
  * Date: 14.12.12
  * Time: 01:23
  */

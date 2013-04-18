@@ -9,7 +9,7 @@ import com.fm.core.cmp.newTable.AjaxDataTable;
 import com.fm.core.cmp.newTable.DataProvider;
 import com.fm.core.cmp.newTable.SelectionChangeCallback;
 import com.fm.domain.Manager;
-import com.fm.domain.UserEntity;
+import com.fm.domain.User;
 import com.fm.domain.filter.FmFilter;
 import com.fm.domain.filter.OpenSearchDescription;
 import com.fm.service.IManagerService;
@@ -74,11 +74,11 @@ public class ManagerListPage extends AdminAbstractPage
       ));
       columns.add(new PropertyColumn<Manager, String>(
               new ResourceModel("user.login"),
-              Manager.FIELD_USER + "." + UserEntity.FIELD_LOGIN
+              Manager.FIELD_USER + "." + User.FIELD_LOGIN
       ));
       columns.add(new PropertyColumn<Manager, String>(
               new ResourceModel("user.email"),
-              Manager.FIELD_USER + "." + UserEntity.FIELD_EMAIL
+              Manager.FIELD_USER + "." + User.FIELD_EMAIL
       ));
       OpenSearchDescription<Manager> osd = new OpenSearchDescription<Manager>();
       FmFilter filter = new FmFilter();

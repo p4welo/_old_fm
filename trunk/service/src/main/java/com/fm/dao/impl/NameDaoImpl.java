@@ -11,7 +11,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 /**
- * UserEntity: pawel
+ * User: pawel
  * Date: 01.12.12
  * Time: 00:05
  */

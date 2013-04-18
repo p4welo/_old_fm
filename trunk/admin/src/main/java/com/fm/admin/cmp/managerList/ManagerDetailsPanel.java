@@ -2,7 +2,7 @@ package com.fm.admin.cmp.managerList;
 
 import com.fm.domain.Manager;
 import com.fm.domain.Team;
-import com.fm.domain.UserEntity;
+import com.fm.domain.User;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.panel.Panel;
@@ -45,7 +45,7 @@ public class ManagerDetailsPanel extends Panel
       main.add(new Label("surname", new PropertyModel(this, "selected." + Manager.FIELD_SURNAME)));
       main.add(new Label("team", new PropertyModel(this, "selected." + Manager.FIELD_TEAM + "." + Team.FIELD_NAME)));
       main.add(new Label("email",
-              new PropertyModel(this, "selected." + Manager.FIELD_USER + "." + UserEntity.FIELD_EMAIL)));
+              new PropertyModel(this, "selected." + Manager.FIELD_USER + "." + User.FIELD_EMAIL)));
       add(main);
    }
 

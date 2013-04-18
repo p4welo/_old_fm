@@ -1,10 +1,10 @@
 package com.fm.security.service;
 
-import com.fm.domain.UserEntity;
+import com.fm.domain.User;
 
 public interface ISecurityService
 {
-   UserEntity getLoggedInUser();
+   User getLoggedInUser();
 
    boolean hasRole(String... roles);
 }

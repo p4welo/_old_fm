@@ -7,7 +7,7 @@ import com.fm.domain.filter.SortFilterChain;
 import java.util.List;
 
 /**
- * UserEntity: pawel
+ * User: pawel
  * Date: 01.12.12
  * Time: 00:22
  */
