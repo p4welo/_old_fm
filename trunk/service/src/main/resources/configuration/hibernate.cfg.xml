@@ -18,7 +18,7 @@
         <mapping class="com.fm.domain.Team"/>
         <mapping class="com.fm.domain.TeamRecord"/>
         <mapping class="com.fm.domain.UserEntity"/>
-        <mapping class="com.fm.domain.UserRole"/>
+        <mapping class="com.fm.domain.Authority"/>
         <mapping class="com.fm.domain.SystemParameter"/>
     </session-factory>
 </hibernate-configuration>

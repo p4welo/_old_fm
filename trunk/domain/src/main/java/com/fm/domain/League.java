@@ -14,8 +14,6 @@ public class League extends IdentifiableEntity
 {
    public static final String FIELD_NAME = "name";
 
-   public static final String FIELD_KEY = "key";
-
    @Id
    @GeneratedValue
    @Column
@@ -24,10 +22,6 @@ public class League extends IdentifiableEntity
    @Column(nullable = false)
    @NotNull
    private String name;
-
-   @Column(name = "lkey", nullable = false)
-   @NotNull
-   private String key;
 
    public Long getId()
    {

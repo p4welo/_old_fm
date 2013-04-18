@@ -1,10 +1,10 @@
 package com.fm.security.service.impl;
 
+import com.fm.domain.Authority;
 import com.fm.domain.UserEntity;
-import com.fm.domain.UserRole;
 import com.fm.security.service.ISecurityService;
+import com.fm.service.IAuthorityService;
 import com.fm.service.IUserEntityService;
-import com.fm.service.IUserRoleService;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -23,7 +23,7 @@ public class SecurityServiceImpl implements ISecurityService
    private IUserEntityService userService;
 
    @Resource
-   private IUserRoleService authorityService;
+   private IAuthorityService authorityService;
 
    @Override
    public UserEntity getLoggedInUser()
@@ -43,12 +43,12 @@ public class SecurityServiceImpl implements ISecurityService
    {
       if (roles != null)
       {
-         List<UserRole> authorities = authorityService.getUserRoles(getLoggedInUser());
-         for (UserRole authority : authorities)
+         List<Authority> authorities = authorityService.getUserAuthorities(getLoggedInUser());
+         for (Authority authority : authorities)
          {
             for (String role : roles)
             {
-               if (authority.getRole().equals(role))
+               if (authority.equals(role))
                {
                   return true;
                }
@@ -57,5 +57,4 @@ public class SecurityServiceImpl implements ISecurityService
       }
       return false;
    }
-
 }

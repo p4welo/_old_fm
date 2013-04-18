@@ -5,6 +5,7 @@ import com.fm.admin.cmp.breadcrumb.LeagueDetailsBreadcrumb;
 import com.fm.admin.cmp.leagueDetails.LeagueInfoPanel;
 import com.fm.admin.cmp.leagueDetails.LeagueTeamsPanel;
 import com.fm.admin.cmp.leagueDetails.window.NewTeamWindow;
+import com.fm.core.cmp.authorization.UserAuthorities;
 import com.fm.core.cmp.breadcrumb.BootstrapBreadcrumbPanel;
 import com.fm.domain.League;
 import com.fm.domain.Team;
@@ -28,7 +29,7 @@ import org.wicketstuff.annotation.mount.MountPath;
  */
 
 @MountPath(AdminApiMappings.LEAGUE_DETAILS_PAGE)
-@AuthorizeInstantiation("ROLE_ADMIN")
+@AuthorizeInstantiation(UserAuthorities.ADMIN)
 public class LeagueDetailsPage extends AdminAbstractPage
 {
    @SpringBean

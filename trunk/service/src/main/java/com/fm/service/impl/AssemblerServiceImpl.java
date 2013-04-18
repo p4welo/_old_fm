@@ -1,11 +1,11 @@
 package com.fm.service.impl;
 
+import com.fm.domain.Authority;
 import com.fm.domain.UserEntity;
-import com.fm.domain.UserRole;
 import com.fm.service.IAssemblerService;
-import com.fm.service.IUserRoleService;
+import com.fm.service.IAuthorityService;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.GrantedAuthorityImpl;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,28 +26,27 @@ public class AssemblerServiceImpl implements IAssemblerService
    public static final String BEAN_NAME = "assemblerService";
 
    @Resource
-   private IUserRoleService userRoleService;
+   private IAuthorityService authorityService;
 
    @Transactional
    public User buildUserFromUserEntity(UserEntity userEntity)
    {
-
       String username = userEntity.getLogin();
       String password = userEntity.getPassword();
       boolean enabled = true;//userEntity.getActive();
       boolean accountNonExpired = true;//userEntity.getActive();
       boolean credentialsNonExpired = true;//userEntity.getActive();
       boolean accountNonLocked = true;//userEntity.getActive();
-      Collection<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-      List<UserRole> userRoleEntities = userRoleService.getUserRoles(userEntity);
 
-      for (int i = 0; i < userRoleEntities.size(); i++)
+      Collection<GrantedAuthority> grantedAuthorities = new ArrayList<GrantedAuthority>();
+      List<Authority> userAuthorities = authorityService.getUserAuthorities(userEntity);
+      for (Authority authority : userAuthorities)
       {
-         authorities.add(new GrantedAuthorityImpl(userRoleEntities.get(i).getRole()));
+         grantedAuthorities.add(new SimpleGrantedAuthority(authority.getAuthority()));
       }
 
       User user = new User(username, password, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked,
-              authorities);
+              grantedAuthorities);
 
       return user;
    }

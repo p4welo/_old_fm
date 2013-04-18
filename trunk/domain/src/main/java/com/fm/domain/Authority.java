@@ -1,5 +1,7 @@
 package com.fm.domain;
 
+import org.apache.commons.lang3.StringUtils;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
@@ -9,8 +11,8 @@ import javax.validation.constraints.NotNull;
  * Time: 19:37
  */
 @Entity
-@Table(name = "user_role")
-public class UserRole extends IdentifiableEntity
+@Table(name = "authority")
+public class Authority extends IdentifiableEntity
 {
    public static final String FIELD_USER_ENTITY = "userEntity";
 
@@ -28,7 +30,12 @@ public class UserRole extends IdentifiableEntity
 
    @Column(nullable = false)
    @NotNull
-   private String role;
+   private String authority;
+
+   public boolean equals(String role)
+   {
+      return StringUtils.equals(authority, role);
+   }
 
    public Long getId()
    {
@@ -50,13 +57,13 @@ public class UserRole extends IdentifiableEntity
       this.userEntity = userEntity;
    }
 
-   public String getRole()
+   public String getAuthority()
    {
-      return role;
+      return authority;
    }
 
-   public void setRole(String role)
+   public void setAuthority(String authority)
    {
-      this.role = role;
+      this.authority = authority;
    }
 }

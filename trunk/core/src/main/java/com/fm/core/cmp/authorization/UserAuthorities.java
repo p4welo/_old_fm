@@ -7,7 +7,7 @@ package com.fm.core.cmp.authorization;
  * Time: 21:56
  * To change this template use File | Settings | File Templates.
  */
-public interface UserRoles
+public interface UserAuthorities
 {
    public static final String ADMIN = "ROLE_ADMIN";
 
