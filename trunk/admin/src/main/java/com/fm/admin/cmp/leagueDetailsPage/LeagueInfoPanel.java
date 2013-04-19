@@ -1,9 +1,12 @@
 package com.fm.admin.cmp.leagueDetailsPage;
 
+import com.fm.admin.navigation.NavigateToLeagueSeasonsPage;
 import com.fm.domain.League;
 import com.fm.domain.Season;
 import com.fm.service.ISeasonService;
 import com.fm.service.ITeamService;
+import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.PropertyModel;
@@ -49,5 +52,13 @@ public class LeagueInfoPanel extends Panel
       add(new Label("name", new PropertyModel(this, "league." + League.FIELD_NAME)));
       add(new Label("teamCount", new PropertyModel(this, "teamCount")));
       add(new Label("activeSeason", new PropertyModel(this, "activeSeason." + Season.FIELD_NUMBER)));
+      add(new AjaxLink<Void>("manageSeason")
+      {
+         @Override
+         public void onClick(AjaxRequestTarget target)
+         {
+            new NavigateToLeagueSeasonsPage(league).navigate();
+         }
+      });
    }
 }

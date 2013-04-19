@@ -1,19 +1,36 @@
 package com.fm.admin.pages;
 
+import com.fm.admin.api.AdminApiMappings;
 import com.fm.admin.cmp.breadcrumb.LeagueDetailsBreadcrumb;
+import com.fm.admin.cmp.leagueSeasonsPage.tabbedPanel.ActualSeasonTab;
+import com.fm.admin.cmp.leagueSeasonsPage.tabbedPanel.PreviousSeasonsTab;
+import com.fm.core.cmp.authorization.UserAuthorities;
 import com.fm.core.cmp.breadcrumb.BootstrapBreadcrumbPanel;
+import com.fm.core.cmp.tabbedPanel.BootstrapTabbedPanel;
 import com.fm.domain.League;
 import com.fm.service.ILeagueService;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.wicket.RestartResponseAtInterceptPageException;
+import org.apache.wicket.authroles.authorization.strategies.role.annotations.AuthorizeInstantiation;
+import org.apache.wicket.extensions.markup.html.tabs.AbstractTab;
+import org.apache.wicket.extensions.markup.html.tabs.ITab;
+import org.apache.wicket.markup.html.WebMarkupContainer;
+import org.apache.wicket.model.PropertyModel;
+import org.apache.wicket.model.ResourceModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.spring.injection.annot.SpringBean;
+import org.wicketstuff.annotation.mount.MountPath;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * User: pawel.radomski
  * Date: 19.04.13
  * Time: 16:22
  */
+@MountPath(AdminApiMappings.LEAGUE_SEASON_PAGE)
+@AuthorizeInstantiation(UserAuthorities.ADMIN)
 public class LeagueSeasonsPage extends AdminAbstractPage
 {
    @SpringBean
@@ -29,7 +46,24 @@ public class LeagueSeasonsPage extends AdminAbstractPage
 
    private void initView()
    {
-      //To change body of created methods use File | Settings | File Templates.
+      List<ITab> tabs = new ArrayList<ITab>();
+      tabs.add(new AbstractTab(new ResourceModel("active.tab"))
+      {
+         @Override
+         public WebMarkupContainer getPanel(String id)
+         {
+            return new ActualSeasonTab(id, new PropertyModel<League>(LeagueSeasonsPage.this, "league"));
+         }
+      });
+      tabs.add(new AbstractTab(new ResourceModel("previous.tab"))
+      {
+         @Override
+         public WebMarkupContainer getPanel(String id)
+         {
+            return new PreviousSeasonsTab(id, new PropertyModel<League>(LeagueSeasonsPage.this, "league"));
+         }
+      });
+      add(new BootstrapTabbedPanel("tabs", tabs));
    }
 
    private League getLeague(PageParameters parameters)
