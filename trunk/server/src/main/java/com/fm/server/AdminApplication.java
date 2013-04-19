@@ -2,6 +2,7 @@ package com.fm.server;
 
 import com.fm.admin.pages.LeagueListPage;
 import com.fm.server.pages.LoginPage;
+import org.apache.wicket.Application;
 import org.apache.wicket.Page;
 import org.apache.wicket.authroles.authentication.AbstractAuthenticatedWebSession;
 import org.apache.wicket.authroles.authentication.AuthenticatedWebApplication;
@@ -23,11 +24,8 @@ public class AdminApplication extends AuthenticatedWebApplication
    @Override
    public Class<? extends Page> getHomePage()
    {
-//      return SamplePage.class;
       return LeagueListPage.class;
    }
-
-   //http://wicket.wordpress.com/2010/01/08/template-for-building-authenticated-webapplication/
 
    @Override
    protected void init()
@@ -42,7 +40,7 @@ public class AdminApplication extends AuthenticatedWebApplication
 
    public static AdminApplication get()
    {
-      return (AdminApplication) AdminApplication.get();
+      return (AdminApplication) Application.get();
    }
 
    public static AdminSession getSession()

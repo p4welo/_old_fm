@@ -51,18 +51,13 @@ public class AdminSession extends AuthenticatedWebSession
    @Override
    public boolean authenticate(String userName, String password)
    {
-//      boolean success = userService.authenticate(userName, password);
-//      if (success)
-//      {
-//         this.user = userService.getByLogin(userName);
-//      }
-//      return success;
       boolean authenticated = false;
       try
       {
-         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
-                 userName,
-                 password));
+         Authentication authentication = authenticationManager.authenticate(
+                 new UsernamePasswordAuthenticationToken(
+                         userName,
+                         password));
          SecurityContextHolder.getContext().setAuthentication(authentication);
          authenticated = authentication.isAuthenticated();
       }
@@ -73,29 +68,6 @@ public class AdminSession extends AuthenticatedWebSession
       return authenticated;
    }
 
-   //   @Override
-//   public Roles getAuthorities()
-//   {
-//      Roles roles = new Roles();
-//      if (isSignedIn() && user != null)
-//      {
-//         List<String> list = authorityService.getAuthorities(user);
-//         if (list != null)
-//         {
-//            for (String role : list)
-//            {
-//               roles.add(role);
-//            }
-//         }
-//      }
-//      return roles;
-//   }
-//
-//   public User getUser()
-//   {
-//      return user;
-//   }
-//
    public static AdminSession get()
    {
       return (AdminSession) Session.get();
