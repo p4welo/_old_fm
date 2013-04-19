@@ -1,4 +1,4 @@
-package com.fm.admin.cmp.managerList;
+package com.fm.admin.cmp.managerListPage;
 
 import com.fm.domain.Manager;
 import com.fm.domain.Team;

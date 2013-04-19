@@ -1,4 +1,4 @@
-package com.fm.admin.cmp.leagueDetails;
+package com.fm.admin.cmp.leagueDetailsPage;
 
 import com.fm.domain.League;
 import com.fm.domain.Team;
