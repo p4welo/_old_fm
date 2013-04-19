@@ -1,4 +1,4 @@
-package com.fm.admin.cmp.config.masterDetail;
+package com.fm.admin.cmp.configPage.masterDetail;
 
 import com.fm.core.cmp.masterDetail.DetailsPanel;
 import com.fm.domain.Position;

@@ -1,6 +1,6 @@
-package com.fm.admin.cmp.config.tabbedPanel;
+package com.fm.admin.cmp.configPage.tabbedPanel;
 
-import com.fm.admin.cmp.config.masterDetail.NameMasterDetail;
+import com.fm.admin.cmp.configPage.masterDetail.PositionMasterDetail;
 import org.apache.wicket.markup.html.panel.Panel;
 
 /**
@@ -10,11 +10,11 @@ import org.apache.wicket.markup.html.panel.Panel;
  * Time: 11:17
  * To change this template use File | Settings | File Templates.
  */
-public class NameTab extends Panel
+public class PositionTab extends Panel
 {
-   public NameTab(String id)
+   public PositionTab(String id)
    {
       super(id);
-      add(new NameMasterDetail("masterDetail"));
+      add(new PositionMasterDetail("masterDetail"));
    }
 }

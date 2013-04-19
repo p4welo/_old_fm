@@ -1,6 +1,6 @@
-package com.fm.admin.cmp.config.tabbedPanel;
+package com.fm.admin.cmp.configPage.tabbedPanel;
 
-import com.fm.admin.cmp.config.masterDetail.SurnameMasterDetail;
+import com.fm.admin.cmp.configPage.masterDetail.SurnameMasterDetail;
 import org.apache.wicket.markup.html.panel.Panel;
 
 /**

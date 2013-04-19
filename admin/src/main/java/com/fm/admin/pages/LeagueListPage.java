@@ -2,7 +2,7 @@ package com.fm.admin.pages;
 
 import com.fm.admin.api.AdminApiMappings;
 import com.fm.admin.cmp.breadcrumb.LeagueListBreadcrumb;
-import com.fm.admin.cmp.leagueDetails.window.NewLeagueWindow;
+import com.fm.admin.cmp.leagueDetailsPage.window.NewLeagueWindow;
 import com.fm.admin.navigation.NavigateToLeagueDetailsPage;
 import com.fm.core.cmp.authorization.UserAuthorities;
 import com.fm.core.cmp.breadcrumb.BootstrapBreadcrumbPanel;

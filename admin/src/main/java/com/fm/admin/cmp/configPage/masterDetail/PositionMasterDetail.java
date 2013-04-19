@@ -1,4 +1,4 @@
-package com.fm.admin.cmp.config.masterDetail;
+package com.fm.admin.cmp.configPage.masterDetail;
 
 import com.fm.core.cmp.masterDetail.MasterDetailPanel;
 import com.fm.core.cmp.newTable.AjaxDataTable;
@@ -49,10 +49,8 @@ public class PositionMasterDetail extends MasterDetailPanel<Position>
       DataProvider<Position> dataProvider = new DataProvider<Position>(positionService, osd);
 
       List<IColumn<Position, String>> columns = new ArrayList<IColumn<Position, String>>();
-      columns.add(new PropertyColumn<Position, String>(new ResourceModel("name"), Position.FIELD_FULL_NAME,
-              Position.FIELD_FULL_NAME));
-      columns.add(new PropertyColumn<Position, String>(new ResourceModel("shortName"), Position.FIELD_SHORT_NAME,
-              Position.FIELD_SHORT_NAME));
+      columns.add(new PropertyColumn<Position, String>(new ResourceModel("name"), Position.FIELD_FULL_NAME));
+      columns.add(new PropertyColumn<Position, String>(new ResourceModel("shortName"), Position.FIELD_SHORT_NAME));
 
       AjaxDataTable<Position> dataTable = new AjaxDataTable<Position>(id, columns, dataProvider, 25);
       return dataTable;
