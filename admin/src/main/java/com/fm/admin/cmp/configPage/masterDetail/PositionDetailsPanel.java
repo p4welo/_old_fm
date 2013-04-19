@@ -30,8 +30,6 @@ public class PositionDetailsPanel extends DetailsPanel<Position>
 
    private List<Position> positions;
 
-//   private Map<Position, List<Integer>> areas;
-
    private PositionMasterDetail masterDetail;
 
    public PositionDetailsPanel(String id, IModel<Position> model, PositionMasterDetail masterDetail)
@@ -40,19 +38,11 @@ public class PositionDetailsPanel extends DetailsPanel<Position>
       this.masterDetail = masterDetail;
       initView();
       positions = positionService.findAll();
-//      areas = positionAreaService.findAllByPositions(positions);
    }
 
    @Override
    protected void onConfigure()
    {
-   }
-
-   @Override
-   protected void onBeforeRender()
-   {
-//      areas = positionAreaService.findAllByPositions(positions);
-      super.onBeforeRender();
    }
 
    private void initView()
