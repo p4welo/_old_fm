@@ -22,4 +22,6 @@ public interface IPositionAreaService extends IAbstractService<PositionArea>
    void removePositionArea(Position position, int area);
 
    int countAreasByPosition(Position position);
+
+   List<Integer> findByPosition(Position position);
 }
