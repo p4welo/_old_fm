@@ -5,7 +5,7 @@ import com.fm.admin.pages.LeagueListPage;
 import com.fm.admin.pages.ManagerListPage;
 import com.fm.core.cmp.menu.AbstractMenuPanel;
 import com.fm.core.cmp.menu.MenuItem;
-import com.fm.domain.FmIconTypes;
+import com.fm.domain.defined.FmIconTypes;
 
 import java.util.Arrays;
 import java.util.List;

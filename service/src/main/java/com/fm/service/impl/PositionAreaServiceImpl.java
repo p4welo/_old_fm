@@ -63,6 +63,22 @@ public class PositionAreaServiceImpl extends AbstractServiceImpl<PositionArea> i
 
    @Override
    @Transactional
+   public List<Integer> findByPosition(Position position)
+   {
+      List<PositionArea> list = positionAreaDao.findByPosition(position);
+      List<Integer> integers = new ArrayList<Integer>();
+      if (!CollectionUtils.isEmpty(list))
+      {
+         for (PositionArea area : list)
+         {
+            integers.add(area.getArea());
+         }
+      }
+      return integers;
+   }
+
+   @Override
+   @Transactional
    public PositionArea addPositionArea(Position position, int area)
    {
       PositionArea positionArea = new PositionArea();

@@ -1,5 +1,6 @@
 package com.fm.admin.cmp.config.tabbedPanel;
 
+import com.fm.admin.cmp.config.masterDetail.NameMasterDetail;
 import org.apache.wicket.markup.html.panel.Panel;
 
 /**

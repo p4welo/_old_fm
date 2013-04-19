@@ -1,4 +1,4 @@
-package com.fm.admin.cmp.config.tabbedPanel;
+package com.fm.admin.cmp.config.masterDetail;
 
 import com.fm.core.cmp.masterDetail.DetailsPanel;
 import com.fm.domain.Position;
@@ -11,10 +11,7 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.springframework.util.CollectionUtils;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 /**
  * Created with IntelliJ IDEA.
@@ -33,17 +30,17 @@ public class PositionDetailsPanel extends DetailsPanel<Position>
 
    private List<Position> positions;
 
-   private Map<Position, List<Integer>> areas;
+//   private Map<Position, List<Integer>> areas;
 
-   private PositionTab positionTab;
+   private PositionMasterDetail masterDetail;
 
-   public PositionDetailsPanel(String id, IModel<Position> model, PositionTab positionTab)
+   public PositionDetailsPanel(String id, IModel<Position> model, PositionMasterDetail masterDetail)
    {
       super(id, model);
-      this.positionTab = positionTab;
+      this.masterDetail = masterDetail;
       initView();
       positions = positionService.findAll();
-      areas = positionAreaService.findAllByPositions(positions);
+//      areas = positionAreaService.findAllByPositions(positions);
    }
 
    @Override
@@ -54,7 +51,7 @@ public class PositionDetailsPanel extends DetailsPanel<Position>
    @Override
    protected void onBeforeRender()
    {
-      areas = positionAreaService.findAllByPositions(positions);
+//      areas = positionAreaService.findAllByPositions(positions);
       super.onBeforeRender();
    }
 
@@ -74,15 +71,8 @@ public class PositionDetailsPanel extends DetailsPanel<Position>
                Position position = getSelected();
                if (position != null)
                {
-                  List<Integer> list = new ArrayList<Integer>();
-                  Set<Position> keys = areas.keySet();
-                  for (Position key : keys)
-                  {
-                     if (key.equals(position))
-                     {
-                        list = areas.get(key);
-                     }
-                  }
+                  List<Integer> list = positionAreaService.findByPosition(position);
+
                   if (!CollectionUtils.isEmpty(list))
                   {
                      for (int j : list)
@@ -122,7 +112,7 @@ public class PositionDetailsPanel extends DetailsPanel<Position>
                {
                   error(getString("no.position.selected"));
                }
-               target.add(positionTab);
+               target.add(masterDetail);
             }
          });
       }
@@ -130,37 +120,12 @@ public class PositionDetailsPanel extends DetailsPanel<Position>
 
    public void addPositionArea(Position position, int area)
    {
-//      List<Integer> list = areas.get(position);
-//      if (list == null)
-//      {
-//         list = new ArrayList<Integer>();
-//      }
-//      list.add(area);
-//      areas.put(position, list);
-
       positionAreaService.addPositionArea(position, area);
       success(getString("position.updated.successfully"));
    }
 
    public void removePositionArea(Position position, int area)
    {
-//      List<Integer> list = areas.get(position);
-//      if (!CollectionUtils.isEmpty(list))
-//      {
-//         for (int i = 0; i < list.size(); i++)
-//         {
-//            if (list.get(i) == area)
-//            {
-//               list.remove(i);
-//            }
-//         }
-//      }
-//      else
-//      {
-//         list = new ArrayList<Integer>();
-//      }
-//      areas.put(position, list);
-
       positionAreaService.removePositionArea(position, area);
       success(getString("position.updated.successfully"));
    }

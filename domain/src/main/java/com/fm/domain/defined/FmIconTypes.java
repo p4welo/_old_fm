@@ -1,4 +1,4 @@
-package com.fm.domain;
+package com.fm.domain.defined;
 
 /**
  * Created with IntelliJ IDEA.

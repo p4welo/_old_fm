@@ -1,4 +1,4 @@
-package com.fm.admin.cmp.config.tabbedPanel;
+package com.fm.admin.cmp.config.masterDetail;
 
 import com.fm.admin.cmp.config.table.NameFilterToolbar;
 import com.fm.core.cmp.masterDetail.MasterDetailPanel;
