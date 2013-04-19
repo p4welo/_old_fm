@@ -6,6 +6,7 @@ import com.fm.admin.cmp.config.tabbedPanel.NameTab;
 import com.fm.admin.cmp.config.tabbedPanel.ParameterTab;
 import com.fm.admin.cmp.config.tabbedPanel.PositionTab;
 import com.fm.admin.cmp.config.tabbedPanel.SurnameTab;
+import com.fm.core.cmp.authorization.UserAuthorities;
 import com.fm.core.cmp.breadcrumb.BootstrapBreadcrumbPanel;
 import com.fm.core.cmp.tabbedPanel.BootstrapTabbedPanel;
 import com.fm.service.IPositionService;
@@ -28,7 +29,7 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 @MountPath(AdminApiMappings.GAME_CONFIG_PAGE)
-@AuthorizeInstantiation("ROLE_ADMIN")
+@AuthorizeInstantiation(UserAuthorities.ADMIN)
 public class ConfigPage extends AdminAbstractPage
 {
    @SpringBean
