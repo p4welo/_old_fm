@@ -1,66 +1,68 @@
 <wicket:panel xmlns:wicket="http://wicket.apache.org">
-    <table class="table table-striped table-hover table-condensed">
-        <thead style="border: 1px solid #d3d3d3">
-        <tr>
-            <th>
-                <wicket:message key="name.column.header"/>
-            </th>
-            <th>
-                <wicket:message key="round.column.header"/>
-            </th>
-            <th>
-                <wicket:message key="points.column.header"/>
-            </th>
-            <th>
-                <wicket:message key="wins.column.header"/>
-            </th>
-            <th>
-                <wicket:message key="draws.column.header"/>
-            </th>
-            <th>
-                <wicket:message key="loses.column.header"/>
-            </th>
-            <th>
-                <wicket:message key="goals.scored.column.header"/>
-            </th>
-            <th>
-                <wicket:message key="goals.allowed.column.header"/>
-            </th>
-            <th>
-                <wicket:message key="goals.difference.column.header"/>
-            </th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr wicket:id="teams" class="table_body_row">
-            <td>
-                <span wicket:id="name">[name]</span>
-            </td>
-            <td>
-                <span wicket:id="round">[round]</span>
-            </td>
-            <td>
-                <span wicket:id="points">[points]</span>
-            </td>
-            <td>
-                <span wicket:id="wins">[wins]</span>
-            </td>
-            <td>
-                <span wicket:id="draws">[draws]</span>
-            </td>
-            <td>
-                <span wicket:id="loses">[loses]</span>
-            </td>
-            <td>
-                <span wicket:id="goalsScored">[goals scored]</span>
-            </td>
-            <td>
-                <span wicket:id="goalsAllowed">[goals allowed]</span>
-            </td>
-            <td>
-                <span wicket:id="goalsDifference">[goals difference]</span>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+    <div class="span7">
+        <table class="table table-striped table-hover table-condensed">
+            <thead style="border: 1px solid #d3d3d3">
+            <tr>
+                <th style="width: 70px">
+                    <wicket:message key="name.column.header"/>
+                </th>
+                <th style="width: 5px">
+                    <wicket:message key="round.column.header"/>
+                </th>
+                <th style="width: 5px">
+                    <wicket:message key="points.column.header"/>
+                </th>
+                <th style="width: 5px">
+                    <wicket:message key="wins.column.header"/>
+                </th>
+                <th style="width: 5px">
+                    <wicket:message key="draws.column.header"/>
+                </th>
+                <th style="width: 5px">
+                    <wicket:message key="loses.column.header"/>
+                </th>
+                <th style="width: 5px">
+                    <wicket:message key="goals.scored.column.header"/>
+                </th>
+                <th style="width: 5px">
+                    <wicket:message key="goals.allowed.column.header"/>
+                </th>
+                <th style="width: 5px">
+                    <wicket:message key="goals.difference.column.header"/>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr wicket:id="teams" class="table_body_row">
+                <td>
+                    <span wicket:id="name">[name]</span>
+                </td>
+                <td>
+                    <span wicket:id="round">[round]</span>
+                </td>
+                <td>
+                    <span wicket:id="points">[points]</span>
+                </td>
+                <td>
+                    <span wicket:id="wins">[wins]</span>
+                </td>
+                <td>
+                    <span wicket:id="draws">[draws]</span>
+                </td>
+                <td>
+                    <span wicket:id="loses">[loses]</span>
+                </td>
+                <td>
+                    <span wicket:id="goalsScored">[goals scored]</span>
+                </td>
+                <td>
+                    <span wicket:id="goalsAllowed">[goals allowed]</span>
+                </td>
+                <td>
+                    <span wicket:id="goalsDifference">[goals difference]</span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </wicket:panel>
