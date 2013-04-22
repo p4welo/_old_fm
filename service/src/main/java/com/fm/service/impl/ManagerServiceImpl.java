@@ -5,10 +5,9 @@ import com.fm.dao.IManagerDao;
 import com.fm.domain.Manager;
 import com.fm.domain.Team;
 import com.fm.domain.User;
-import com.fm.service.IManagerService;
-import com.fm.service.ITeamService;
-import com.fm.service.IUserService;
+import com.fm.service.*;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 
@@ -27,7 +26,13 @@ public class ManagerServiceImpl extends AbstractServiceImpl<Manager> implements 
    private ITeamService teamService;
 
    @Resource
+   private IAuthorityService authorityService;
+
+   @Resource
    private IUserService userService;
+
+   @Resource
+   private ITeamGenerationStrategy teamGenerationStrategy;
 
    @Override
    protected IAbstractDao getDao()
@@ -36,12 +41,21 @@ public class ManagerServiceImpl extends AbstractServiceImpl<Manager> implements 
    }
 
    @Override
-   public Manager save(Manager manager)
+   @Transactional
+   public Manager createNewManager(Manager manager)
    {
       Team team = manager.getTeam();
-      manager.setTeam(teamService.save(team));
+      if (team != null)
+      {
+         team = teamGenerationStrategy.generateHumanTeam(team);
+         manager.setTeam(teamService.save(team));
+      }
       User user = manager.getUser();
-      manager.setUser(userService.save(user));
-      return super.save(manager);
+      if (user != null)
+      {
+         manager.setUser(userService.save(user));
+         authorityService.addUserAuthority(user, "ROLE_USER");
+      }
+      return save(manager);
    }
 }

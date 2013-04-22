@@ -2,6 +2,9 @@ package com.fm.dao.impl;
 
 import com.fm.dao.ISystemParameterDao;
 import com.fm.domain.SystemParameter;
+import org.hibernate.Criteria;
+import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -14,4 +17,13 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class SystemParameterDaoImpl extends AbstractDaoImpl<SystemParameter> implements ISystemParameterDao
 {
+   @Override
+   public String getByKey(String key)
+   {
+      Criteria criteria = createCriteria();
+      criteria.add(Restrictions.eq(SystemParameter.FIELD_KEY, key));
+      criteria.setMaxResults(1);
+      criteria.setProjection(Projections.property(SystemParameter.FIELD_VALUE));
+      return (String) criteria.uniqueResult();
+   }
 }

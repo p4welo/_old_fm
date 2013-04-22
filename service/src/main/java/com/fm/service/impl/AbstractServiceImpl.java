@@ -2,6 +2,7 @@ package com.fm.service.impl;
 
 import com.fm.dao.IAbstractDao;
 import com.fm.domain.IdentifiableEntity;
+import com.fm.domain.ObjectStateEnum;
 import com.fm.domain.filter.AbstractFilter;
 import com.fm.domain.filter.SortFilterChain;
 import com.fm.service.IAbstractService;
@@ -24,7 +25,14 @@ public abstract class AbstractServiceImpl<T extends IdentifiableEntity> implemen
    @Transactional
    public T save(T obj)
    {
-      obj.setSid(SidUtils.generate());
+      if (obj.getSid() == null)
+      {
+         obj.setSid(SidUtils.generate());
+      }
+      if (obj.getObjectState() == null)
+      {
+         obj.setObjectState(ObjectStateEnum.INACTIVE);
+      }
       return getDao().save(obj);
    }
 

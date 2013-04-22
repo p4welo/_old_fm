@@ -13,7 +13,7 @@ import javax.validation.constraints.NotNull;
  * Time: 23:16
  */
 @MappedSuperclass
-public abstract class IdentifiableEntity extends DataEntity
+public abstract class IdentifiableEntity extends StatefulEntity
 {
    public static final String FIELD_SID = "sid";
 

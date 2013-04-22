@@ -18,7 +18,7 @@ public class User extends IdentifiableEntity
 
    public static final String FIELD_EMAIL = "email";
 
-   public static final String FIELD_OBJECT_STATE = "objectState";
+//   public static final String FIELD_OBJECT_STATE = "objectState";
 
    @Id
    @GeneratedValue
@@ -35,11 +35,6 @@ public class User extends IdentifiableEntity
 
    @Column
    private String email;
-
-   @Column(name = "object_state", nullable = false)
-   @Enumerated(value = EnumType.STRING)
-   @NotNull
-   private ObjectStateEnum objectState;
 
    public Long getId()
    {
@@ -79,15 +74,5 @@ public class User extends IdentifiableEntity
    public void setEmail(String email)
    {
       this.email = email;
-   }
-
-   public ObjectStateEnum getObjectState()
-   {
-      return objectState;
-   }
-
-   public void setObjectState(ObjectStateEnum objectState)
-   {
-      this.objectState = objectState;
    }
 }

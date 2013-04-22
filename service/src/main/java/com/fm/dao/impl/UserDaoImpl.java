@@ -3,7 +3,6 @@ package com.fm.dao.impl;
 import com.fm.dao.IUserDao;
 import com.fm.domain.User;
 import org.hibernate.Criteria;
-import org.hibernate.Query;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
@@ -24,15 +23,15 @@ public class UserDaoImpl extends AbstractDaoImpl<User> implements IUserDao
       return (User) criteria.uniqueResult();
    }
 
-   @Override
-   public User authenticate(String login, String password)
-   {
-      Query query = getSessionFactory().getCurrentSession().createSQLQuery(
-              "select * from user u where u.login = :login and u.password = md5(:password)")
-              .addEntity(User.class)
-              .setParameter(User.FIELD_LOGIN, login)
-              .setParameter(User.FIELD_PASSWORD, password);
-      User result = (User) query.uniqueResult();
-      return result;
-   }
+//   @Override
+//   public User authenticate(String login, String password)
+//   {
+//      Query query = getSessionFactory().getCurrentSession().createSQLQuery(
+//              "select * from user u where u.login = :login and u.password = md5(:password)")
+//              .addEntity(User.class)
+//              .setParameter(User.FIELD_LOGIN, login)
+//              .setParameter(User.FIELD_PASSWORD, password);
+//      User result = (User) query.uniqueResult();
+//      return result;
+//   }
 }

@@ -11,4 +11,5 @@ import com.fm.domain.SystemParameter;
  */
 public interface ISystemParameterService extends IAbstractService<SystemParameter>
 {
+   String getByKey(String key);
 }

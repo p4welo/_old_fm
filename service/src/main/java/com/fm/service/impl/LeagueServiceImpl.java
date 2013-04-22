@@ -2,6 +2,7 @@ package com.fm.service.impl;
 
 import com.fm.dao.IAbstractDao;
 import com.fm.dao.ILeagueDao;
+import com.fm.dao.ITeamDao;
 import com.fm.domain.League;
 import com.fm.service.ILeagueService;
 import com.fm.service.ISeasonService;
@@ -23,6 +24,9 @@ public class LeagueServiceImpl extends AbstractServiceImpl<League> implements IL
    private ILeagueDao leagueDao;
 
    @Resource
+   private ITeamDao teamDao;
+
+   @Resource
    private ISeasonService seasonService;
 
    @Resource
@@ -41,7 +45,7 @@ public class LeagueServiceImpl extends AbstractServiceImpl<League> implements IL
       league = save(league);
       if (generateTeams)
       {
-         teamGenerationStrategy.generate(league);
+         teamGenerationStrategy.generateLeagueCpuTeams(league);
       }
       return league;
    }

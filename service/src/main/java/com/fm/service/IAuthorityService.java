@@ -15,4 +15,6 @@ public interface IAuthorityService extends IAbstractService<Authority>
    List<Authority> getUserAuthorities(User user);
 
    List<String> getAuthorities(User user);
+
+   Authority addUserAuthority(User user, String role_user);
 }

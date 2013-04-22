@@ -31,8 +31,8 @@
     <bean id="userSaltSource" class="com.fm.security.UserSaltSource"/>
 
     <bean id="userDetailsService" class="com.fm.security.service.impl.UserDetailsServiceImpl">
-        <property name="userService" ref="userEntityService"/>
-        <property name="authorityService" ref="userRoleService"/>
+        <property name="userService" ref="userService"/>
+        <property name="authorityService" ref="authorityService"/>
     </bean>
 
     <bean id="authenticationProvider" class="com.fm.security.service.impl.AuthenticationProviderImpl">

@@ -10,4 +10,6 @@ public interface SystemParameters
    public static final String INIT_BUDGET_AMOUNT = "init.budget.amount";
 
    public static final String INIT_PLAYERS_COUNT = "init.players.count";
+
+   public static final String TEAM_COUNT_PER_LEAGUE = "team.count.per.league";
 }

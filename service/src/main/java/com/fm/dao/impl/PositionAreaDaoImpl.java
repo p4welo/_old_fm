@@ -1,6 +1,7 @@
 package com.fm.dao.impl;
 
 import com.fm.dao.IPositionAreaDao;
+import com.fm.domain.ObjectStateEnum;
 import com.fm.domain.Position;
 import com.fm.domain.PositionArea;
 import org.hibernate.Criteria;
@@ -22,7 +23,7 @@ public class PositionAreaDaoImpl extends AbstractDaoImpl<PositionArea> implement
    @Override
    public List<PositionArea> findByPosition(Position position)
    {
-      Criteria criteria = createCriteria();
+      Criteria criteria = createCriteria(ObjectStateEnum.ACTIVE);
       criteria.add(Restrictions.eq(PositionArea.FIELD_POSITION, position));
       return criteria.list();
    }

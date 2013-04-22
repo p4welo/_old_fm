@@ -2,6 +2,8 @@ package com.fm.server.pages;
 
 import com.fm.server.api.ServerApiMapping;
 import com.fm.server.cmp.authorization.LoginForm;
+import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.markup.html.WebPage;
 import org.wicketstuff.annotation.mount.MountPath;
 
@@ -17,8 +19,15 @@ public class LoginPage extends WebPage
 {
    public LoginPage()
    {
-//      super();
-//      add(new LoginPanel("loginPanel"));
-      add(new LoginForm("signInForm"));
+      LoginForm form = new LoginForm("signInForm");
+      add(form);
+      form.add(new AjaxLink<Void>("register")
+      {
+         @Override
+         public void onClick(AjaxRequestTarget target)
+         {
+            setResponsePage(RegisterPage.class);
+         }
+      });
    }
 }

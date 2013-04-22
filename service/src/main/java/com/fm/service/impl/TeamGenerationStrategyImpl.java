@@ -2,6 +2,10 @@ package com.fm.service.impl;
 
 import com.fm.domain.League;
 import com.fm.domain.Team;
+import com.fm.domain.TeamTypeEnum;
+import com.fm.domain.defined.SystemParameters;
+import com.fm.service.ILeagueService;
+import com.fm.service.ISystemParameterService;
 import com.fm.service.ITeamGenerationStrategy;
 import com.fm.service.ITeamService;
 import org.springframework.stereotype.Service;
@@ -20,20 +24,31 @@ import java.util.Random;
 @Service(TeamGenerationStrategyImpl.BEAN_NAME)
 public class TeamGenerationStrategyImpl implements ITeamGenerationStrategy
 {
+   public static final String BEAN_NAME = "teamGenerationStrategy";
+
    @Resource
    private ITeamService teamService;
 
-   public static final String BEAN_NAME = "teamGenerationStrategy";
+   @Resource
+   private ILeagueService leagueService;
 
-   public static final Integer TEAMS_IN_LEAGUE = 15;
+   @Resource
+   private ISystemParameterService systemParameterService;
 
    @Override
-   public void generate(League league)
+   public void generateLeagueCpuTeams(League league)
    {
-      for (int i = 0; i < TEAMS_IN_LEAGUE; i++)
+      Integer teamCount = 15;
+      String value = systemParameterService.getByKey(SystemParameters.TEAM_COUNT_PER_LEAGUE);
+      if (value != null)
+      {
+         teamCount = Integer.valueOf(value);
+      }
+      for (int i = 0; i < teamCount; i++)
       {
          Team team = generateTeam();
          team.setLeague(league);
+         team.setType(TeamTypeEnum.CPU);
          teamService.save(team);
       }
    }
@@ -42,20 +57,49 @@ public class TeamGenerationStrategyImpl implements ITeamGenerationStrategy
    @Transactional
    public Team generateTeam()
    {
-      Random generator = new Random();
-
       Team team = new Team();
 
-      team.setAccount(generator.nextInt(80) + 10);
+      team.setAccount(generateTeamAccount());
+      team.setName(generateCpuTeamName());
+
+      return team;
+   }
+
+   @Override
+   public String generateCpuTeamName()
+   {
       Long nextId = teamService.getNextId();
       if (nextId != null)
       {
-         team.setName("PC_" + String.valueOf(nextId));
+         return "PC_" + String.valueOf(nextId);
       }
       else
       {
-         team.setName("PC_First");
+         return "PC_First";
       }
+   }
+
+   @Override
+   @Transactional
+   public Integer generateTeamAccount()
+   {
+      Random generator = new Random();
+      Integer account = generator.nextInt(40000) + 10000;
+      return account;
+   }
+
+   @Override
+   @Transactional
+   public Team generateHumanTeam(Team team)
+   {
+      Integer initialAccount = 50000;
+      String value = systemParameterService.getByKey(SystemParameters.INIT_BUDGET_AMOUNT);
+      if (value != null)
+      {
+         initialAccount = Integer.valueOf(value);
+      }
+      team.setAccount(initialAccount);
+      team.setType(TeamTypeEnum.HUMAN);
 
       return team;
    }

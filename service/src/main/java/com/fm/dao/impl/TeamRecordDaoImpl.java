@@ -1,6 +1,7 @@
 package com.fm.dao.impl;
 
 import com.fm.dao.ITeamRecordDao;
+import com.fm.domain.ObjectStateEnum;
 import com.fm.domain.Season;
 import com.fm.domain.TeamRecord;
 import org.hibernate.Criteria;
@@ -21,7 +22,7 @@ public class TeamRecordDaoImpl extends AbstractDaoImpl<TeamRecord> implements IT
    @Override
    public List<TeamRecord> findTeamRecordsBySeason(Season season)
    {
-      Criteria criteria = createCriteria();
+      Criteria criteria = createCriteria(ObjectStateEnum.ACTIVE);
       criteria.add(Restrictions.eq(TeamRecord.FIELD_SEASON, season));
       criteria.addOrder(Order.desc(TeamRecord.FIELD_POINTS_COUNT));
       return criteria.list();

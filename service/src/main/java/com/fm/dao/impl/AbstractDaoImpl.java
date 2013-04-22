@@ -3,6 +3,8 @@ package com.fm.dao.impl;
 import com.fm.dao.IAbstractDao;
 import com.fm.domain.DataEntity;
 import com.fm.domain.IdentifiableEntity;
+import com.fm.domain.ObjectStateEnum;
+import com.fm.domain.StatefulEntity;
 import com.fm.domain.filter.AbstractFilter;
 import com.fm.domain.filter.SortFilterChain;
 import org.apache.commons.lang3.StringUtils;
@@ -42,6 +44,13 @@ public abstract class AbstractDaoImpl<T extends DataEntity> implements IAbstract
    protected Criteria createCriteria()
    {
       return createCriteria(aClass);
+   }
+
+   protected Criteria createCriteria(ObjectStateEnum objectState)
+   {
+      Criteria criteria = createCriteria(aClass);
+      criteria.add(Restrictions.eq(StatefulEntity.FIELD_OBJECT_STATE, objectState));
+      return criteria;
    }
 
    public T getRandom()
