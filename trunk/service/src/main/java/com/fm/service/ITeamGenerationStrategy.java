@@ -12,7 +12,13 @@ import com.fm.domain.Team;
  */
 public interface ITeamGenerationStrategy
 {
-   void generate(League league);
+   void generateLeagueCpuTeams(League league);
 
    Team generateTeam();
+
+   Team generateHumanTeam(Team team);
+
+   String generateCpuTeamName();
+
+   Integer generateTeamAccount();
 }

@@ -17,4 +17,6 @@ public interface ITeamService extends IAbstractService<Team>
    Integer getLeagueTeamsCount(League league);
 
    Long getNextId();
+
+   Team findRandomCpuTeam();
 }

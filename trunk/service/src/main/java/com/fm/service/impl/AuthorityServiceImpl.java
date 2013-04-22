@@ -3,8 +3,10 @@ package com.fm.service.impl;
 import com.fm.dao.IAbstractDao;
 import com.fm.dao.IAuthorityDao;
 import com.fm.domain.Authority;
+import com.fm.domain.ObjectStateEnum;
 import com.fm.domain.User;
 import com.fm.service.IAuthorityService;
+import com.fm.service.util.SidUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,7 +22,7 @@ import java.util.List;
 @Service(AuthorityServiceImpl.BEAN_NAME)
 public class AuthorityServiceImpl extends AbstractServiceImpl<Authority> implements IAuthorityService
 {
-   public static final String BEAN_NAME = "userRoleService";
+   public static final String BEAN_NAME = "authorityService";
 
    @Resource
    private IAuthorityDao authorityDao;
@@ -52,5 +54,16 @@ public class AuthorityServiceImpl extends AbstractServiceImpl<Authority> impleme
          }
       }
       return roles;
+   }
+
+   @Override
+   public Authority addUserAuthority(User user, String role_user)
+   {
+      Authority authority = new Authority();
+      authority.setUser(user);
+      authority.setAuthority("ROLE_USER");
+      authority.setObjectState(ObjectStateEnum.ACTIVE);
+      authority.setSid(SidUtils.generate());
+      return getDao().save(authority);
    }
 }

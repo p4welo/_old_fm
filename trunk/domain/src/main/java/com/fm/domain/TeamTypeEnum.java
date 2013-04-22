@@ -1,13 +1,14 @@
-package com.fm.dao;
+package com.fm.domain;
 
 /**
  * Created with IntelliJ IDEA.
  * User: Barbara
- * Date: 15.04.13
- * Time: 18:06
+ * Date: 22.04.13
+ * Time: 20:21
  * To change this template use File | Settings | File Templates.
  */
-public interface ISystemParameterDao
+public enum TeamTypeEnum
 {
-   String getByKey(String key);
+   HUMAN,
+   CPU
 }

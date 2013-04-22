@@ -2,7 +2,6 @@ package com.fm.service.impl;
 
 import com.fm.dao.IAbstractDao;
 import com.fm.dao.IUserDao;
-import com.fm.domain.ObjectStateEnum;
 import com.fm.domain.User;
 import com.fm.service.IUserService;
 import org.springframework.security.authentication.encoding.PasswordEncoder;
@@ -19,7 +18,7 @@ import javax.annotation.Resource;
 @Service(UserServiceImpl.BEAN_NAME)
 public class UserServiceImpl extends AbstractServiceImpl<User> implements IUserService
 {
-   public static final String BEAN_NAME = "userEntityService";
+   public static final String BEAN_NAME = "userService";
 
    @Resource
    private PasswordEncoder passwordEncoder;
@@ -36,10 +35,6 @@ public class UserServiceImpl extends AbstractServiceImpl<User> implements IUserS
    @Override
    public User save(User user)
    {
-      if (user.getObjectState() == null)
-      {
-         user.setObjectState(ObjectStateEnum.INACTIVE);
-      }
       user.setPassword(passwordEncoder.encodePassword(user.getPassword(), user.getLogin()));
       return super.save(user);
    }
@@ -49,13 +44,5 @@ public class UserServiceImpl extends AbstractServiceImpl<User> implements IUserS
    public User getByLogin(String login)
    {
       return userDao.findByLogin(login);
-   }
-
-   @Override
-   @Transactional
-   public boolean authenticate(String login, String password)
-   {
-      User entity = userDao.authenticate(login, password);
-      return entity != null;
    }
 }

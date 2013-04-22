@@ -10,6 +10,4 @@ import com.fm.domain.User;
 public interface IUserService extends IAbstractService<User>
 {
    User getByLogin(String login);
-
-   boolean authenticate(String login, String password);
 }

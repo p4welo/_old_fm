@@ -11,7 +11,7 @@ import java.io.Serializable;
  * To change this template use File | Settings | File Templates.
  */
 @MappedSuperclass
-public abstract class DataEntity implements IDataBean, Serializable
+public abstract class DataEntity implements Serializable
 {
    public static final String FIELD_ID = "id";
 

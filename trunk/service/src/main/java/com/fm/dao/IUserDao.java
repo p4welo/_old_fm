@@ -11,5 +11,5 @@ public interface IUserDao
 {
    User findByLogin(String login);
 
-   User authenticate(String login, String password);
+//   User authenticate(String login, String password);
 }

@@ -13,6 +13,8 @@ public class Team extends IdentifiableEntity
 
    public static final String FIELD_LEAGUE = "league";
 
+   public static final String FIELD_TYPE = "type";
+
    @Id
    @GeneratedValue
    @Column
@@ -29,6 +31,11 @@ public class Team extends IdentifiableEntity
    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
    @JoinColumn(nullable = true)
    private League league;
+
+   @Column(nullable = false)
+   @Enumerated(value = EnumType.STRING)
+   @NotNull
+   private TeamTypeEnum type;
 
    public Long getId()
    {
@@ -68,5 +75,15 @@ public class Team extends IdentifiableEntity
    public void setLeague(League league)
    {
       this.league = league;
+   }
+
+   public TeamTypeEnum getType()
+   {
+      return type;
+   }
+
+   public void setType(TeamTypeEnum type)
+   {
+      this.type = type;
    }
 }

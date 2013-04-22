@@ -9,4 +9,5 @@ import com.fm.domain.Manager;
  */
 public interface IManagerService extends IAbstractService<Manager>
 {
+   Manager createNewManager(Manager manager);
 }

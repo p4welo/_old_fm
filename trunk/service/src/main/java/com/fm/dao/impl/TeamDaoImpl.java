@@ -1,9 +1,7 @@
 package com.fm.dao.impl;
 
 import com.fm.dao.ITeamDao;
-import com.fm.domain.DataEntity;
-import com.fm.domain.League;
-import com.fm.domain.Team;
+import com.fm.domain.*;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Property;
 import org.hibernate.criterion.Restrictions;
@@ -22,7 +20,7 @@ public class TeamDaoImpl extends AbstractDaoImpl<Team> implements ITeamDao
 {
    public Long getNextId()
    {
-      Criteria criteria = createCriteria();
+      Criteria criteria = createCriteria(ObjectStateEnum.ACTIVE);
       criteria.addOrder(Property.forName(DataEntity.FIELD_ID).desc());
       criteria.setMaxResults(1);
 
@@ -42,7 +40,7 @@ public class TeamDaoImpl extends AbstractDaoImpl<Team> implements ITeamDao
    @Override
    public List<Team> findTeamsFromLeague(League league)
    {
-      Criteria criteria = createCriteria();
+      Criteria criteria = createCriteria(ObjectStateEnum.ACTIVE);
       criteria.add(Restrictions.eq(Team.FIELD_LEAGUE, league));
       return criteria.list();
    }
@@ -50,7 +48,7 @@ public class TeamDaoImpl extends AbstractDaoImpl<Team> implements ITeamDao
    @Override
    public Integer getLeagueTeamsCount(League league)
    {
-      Criteria criteria = createCriteria();
+      Criteria criteria = createCriteria(ObjectStateEnum.ACTIVE);
       criteria.add(Restrictions.eq(Team.FIELD_LEAGUE, league));
       List<Team> result = criteria.list();
       if (result != null && result.size() > 0)
@@ -61,5 +59,15 @@ public class TeamDaoImpl extends AbstractDaoImpl<Team> implements ITeamDao
       {
          return 0;
       }
+   }
+
+   @Override
+   public Team findRandomCpuTeam()
+   {
+      Criteria criteria = createCriteria(ObjectStateEnum.ACTIVE);
+      criteria.add(Restrictions.eq(Team.FIELD_TYPE, TeamTypeEnum.CPU));
+      criteria.add(Restrictions.sqlRestriction("1=1 order by rand()"));
+      criteria.setMaxResults(1);
+      return (Team) criteria.uniqueResult();
    }
 }

@@ -30,7 +30,7 @@ public class RegisterPage extends WebPage
 
    private Manager manager;
 
-   private String confirmPassword;
+   private String confirmedPassword;
 
    public RegisterPage()
    {
@@ -42,33 +42,56 @@ public class RegisterPage extends WebPage
       Form form = new Form("registerForm");
       form.setOutputMarkupId(true);
       form.add(new CssFeedbackPanel("feedback"));
-      form.add(new BootstrapTextFieldPanel("login",
-              new PropertyModel(this, "manager." + Manager.FIELD_USER + "." + User.FIELD_LOGIN), "span4"));
-      form.add(new BootstrapPasswordFieldPanel("password",
-              new PropertyModel(this, "manager." + Manager.FIELD_USER + "." + User.FIELD_PASSWORD), "span4"));
-      form.add(new BootstrapPasswordFieldPanel("confirmPassword", new PropertyModel(this, "confirmPassword"), "span4"));
-      form.add(new BootstrapTextFieldPanel("email",
-              new PropertyModel(this, "manager." + Manager.FIELD_USER + "." + User.FIELD_EMAIL), "span4"));
 
-      form.add(new BootstrapTextFieldPanel("name", new PropertyModel(this, "manager." + Manager.FIELD_NAME), "span4"));
-      form.add(new BootstrapTextFieldPanel("surname", new PropertyModel(this, "manager." + Manager.FIELD_SURNAME),
-              "span4"));
+      BootstrapTextFieldPanel login = new BootstrapTextFieldPanel("login",
+              new PropertyModel(this, "manager." + Manager.FIELD_USER + "." + User.FIELD_LOGIN), "span4");
+      login.setValidation();
+      form.add(login);
 
-      form.add(new BootstrapTextFieldPanel("team",
-              new PropertyModel(this, "manager." + Manager.FIELD_TEAM + "." + Team.FIELD_NAME), "span4"));
+      BootstrapPasswordFieldPanel password = new BootstrapPasswordFieldPanel("password",
+              new PropertyModel(this, "manager." + Manager.FIELD_USER + "." + User.FIELD_PASSWORD), "span4");
+      password.setValidation();
+      form.add(password);
+
+      BootstrapPasswordFieldPanel confirmPassword = new BootstrapPasswordFieldPanel("confirmPassword",
+              new PropertyModel(this, "confirmedPassword"), "span4");
+      confirmPassword.setValidation();
+      form.add(confirmPassword);
+
+      BootstrapTextFieldPanel email = new BootstrapTextFieldPanel("email",
+              new PropertyModel(this, "manager." + Manager.FIELD_USER + "." + User.FIELD_EMAIL), "span4");
+      email.setValidation();
+      form.add(email);
+
+      BootstrapTextFieldPanel name = new BootstrapTextFieldPanel("name",
+              new PropertyModel(this, "manager." + Manager.FIELD_NAME), "span4");
+      name.setValidation();
+      form.add(name);
+
+      BootstrapTextFieldPanel surname = new BootstrapTextFieldPanel("surname",
+              new PropertyModel(this, "manager." + Manager.FIELD_SURNAME),
+              "span4");
+      surname.setValidation();
+      form.add(surname);
+
+      BootstrapTextFieldPanel team = new BootstrapTextFieldPanel("team",
+              new PropertyModel(this, "manager." + Manager.FIELD_TEAM + "." + Team.FIELD_NAME), "span4");
+      team.setValidation();
+      form.add(team);
 
       form.add(new AjaxSubmitLink("submit")
       {
          @Override
          protected void onSubmit(AjaxRequestTarget target, Form<?> form)
          {
-            if (!StringUtils.equals(manager.getUser().getPassword(), confirmPassword))
+            if (!StringUtils.equals(manager.getUser().getPassword(), confirmedPassword))
             {
                error(getString("password.does.not.match"));
             }
             else
             {
-               managerService.save(manager);
+               managerService.createNewManager(manager);
+               success(getString("registration.success"));
             }
 
             target.add(form);

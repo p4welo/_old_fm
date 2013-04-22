@@ -80,6 +80,10 @@ public class ManagerListPage extends AdminAbstractPage
               new ResourceModel("user.email"),
               Manager.FIELD_USER + "." + User.FIELD_EMAIL
       ));
+      columns.add(new PropertyColumn<Manager, String>(
+              new ResourceModel("object.state"),
+              Manager.FIELD_OBJECT_STATE
+      ));
       OpenSearchDescription<Manager> osd = new OpenSearchDescription<Manager>();
       FmFilter filter = new FmFilter();
       osd.setFilter(filter);

@@ -14,6 +14,8 @@ public class League extends IdentifiableEntity
 {
    public static final String FIELD_NAME = "name";
 
+   public static final String FIELD_LEVEL = "level";
+
    @Id
    @GeneratedValue
    @Column
@@ -22,6 +24,10 @@ public class League extends IdentifiableEntity
    @Column(nullable = false)
    @NotNull
    private String name;
+
+   @Column(nullable = false)
+   @NotNull
+   private Integer level;
 
    public Long getId()
    {
@@ -41,5 +47,15 @@ public class League extends IdentifiableEntity
    public void setName(String name)
    {
       this.name = name;
+   }
+
+   public Integer getLevel()
+   {
+      return level;
+   }
+
+   public void setLevel(Integer level)
+   {
+      this.level = level;
    }
 }
