@@ -1,5 +1,6 @@
 package com.fm.server.pages;
 
+import com.fm.server.api.ServerApiMapping;
 import com.fm.server.cmp.authorization.LoginForm;
 import org.apache.wicket.markup.html.WebPage;
 import org.wicketstuff.annotation.mount.MountPath;
@@ -11,7 +12,7 @@ import org.wicketstuff.annotation.mount.MountPath;
  * Time: 21:51
  * To change this template use File | Settings | File Templates.
  */
-@MountPath("/login")
+@MountPath(ServerApiMapping.LOGIN_PAGE)
 public class LoginPage extends WebPage
 {
    public LoginPage()
