@@ -3,6 +3,7 @@ package com.fm.admin.pages;
 import com.fm.admin.api.AdminApiMappings;
 import com.fm.admin.cmp.breadcrumb.ManagerListBreadcrumb;
 import com.fm.admin.cmp.managerListPage.ManagerDetailsPanel;
+import com.fm.admin.cmp.managerListPage.table.ManagerFilterToolbar;
 import com.fm.core.cmp.authorization.UserAuthorities;
 import com.fm.core.cmp.breadcrumb.BootstrapBreadcrumbPanel;
 import com.fm.core.cmp.newTable.AjaxDataTable;
@@ -104,6 +105,7 @@ public class ManagerListPage extends AdminAbstractPage
          }
       });
       main.add(table);
+      table.addFilterToolbar(new ManagerFilterToolbar(table));
       main.add(new ManagerDetailsPanel("details", new PropertyModel<Manager>(this, "selected")));
    }
 

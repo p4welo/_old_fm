@@ -10,4 +10,6 @@ import com.fm.domain.User;
 public interface IUserService extends IAbstractService<User>
 {
    User getByLogin(String login);
+
+   User changePassword(User user, String password);
 }

@@ -1,5 +1,7 @@
 package com.fm.domain.filter;
 
+import com.fm.domain.ObjectStateEnum;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Barbara
@@ -12,6 +14,8 @@ public class FmFilter extends AbstractFilter
    private String name;
 
    private String surname;
+
+   private ObjectStateEnum objectState;
 
    public String getSurname()
    {
@@ -31,5 +35,15 @@ public class FmFilter extends AbstractFilter
    public void setName(String name)
    {
       this.name = name;
+   }
+
+   public ObjectStateEnum getObjectState()
+   {
+      return objectState;
+   }
+
+   public void setObjectState(ObjectStateEnum objectState)
+   {
+      this.objectState = objectState;
    }
 }

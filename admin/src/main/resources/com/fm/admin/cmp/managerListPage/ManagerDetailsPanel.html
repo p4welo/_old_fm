@@ -1,11 +1,12 @@
 <wicket:panel xmlns:wicket="http://wicket.apache.org">
     <div wicket:id="main">
+        <div wicket:id="feedback"></div>
         <div class="row-fluid table_toolbar">
             <div class="btn-group">
                 <button class="btn tooltipLink" wicket:message="title:change.password">
                     <i class="icon-key"></i>
                 </button>
-                <button class="btn tooltipLink" wicket:message="title:account.activation">
+                <button wicket:id="accountActivation" class="btn tooltipLink" wicket:message="title:account.activation">
                     <i class="icon-lock"></i>
                 </button>
                 <button class="btn tooltipLink" wicket:message="title:private.message">
