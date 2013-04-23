@@ -5,7 +5,9 @@ import com.fm.domain.Manager;
 import com.fm.domain.ObjectStateEnum;
 import com.fm.domain.filter.AbstractFilter;
 import com.fm.domain.filter.FmFilter;
+import org.apache.commons.lang3.StringUtils;
 import org.hibernate.Criteria;
+import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
@@ -27,6 +29,18 @@ public class ManagerDaoImpl extends AbstractDaoImpl<Manager> implements IManager
       if (objectState != null)
       {
          criteria.add(Restrictions.eq(Manager.FIELD_OBJECT_STATE, objectState));
+      }
+
+      String name = filter.getName();
+      if (StringUtils.isNotBlank(name))
+      {
+         criteria.add(Restrictions.like(Manager.FIELD_NAME, name, MatchMode.ANYWHERE));
+      }
+
+      String surname = filter.getSurname();
+      if (StringUtils.isNotBlank(surname))
+      {
+         criteria.add(Restrictions.like(Manager.FIELD_SURNAME, surname, MatchMode.ANYWHERE));
       }
 
       return criteria;
