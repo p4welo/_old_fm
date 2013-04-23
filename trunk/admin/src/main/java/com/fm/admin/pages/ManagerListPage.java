@@ -8,7 +8,9 @@ import com.fm.core.cmp.breadcrumb.BootstrapBreadcrumbPanel;
 import com.fm.core.cmp.newTable.AjaxDataTable;
 import com.fm.core.cmp.newTable.DataProvider;
 import com.fm.core.cmp.newTable.SelectionChangeCallback;
+import com.fm.core.cmp.table.column.TranslatedColumn;
 import com.fm.domain.Manager;
+import com.fm.domain.ObjectStateEnum;
 import com.fm.domain.User;
 import com.fm.domain.filter.FmFilter;
 import com.fm.domain.filter.OpenSearchDescription;
@@ -80,9 +82,11 @@ public class ManagerListPage extends AdminAbstractPage
               new ResourceModel("user.email"),
               Manager.FIELD_USER + "." + User.FIELD_EMAIL
       ));
-      columns.add(new PropertyColumn<Manager, String>(
+      columns.add(new TranslatedColumn<Manager, String>(
               new ResourceModel("object.state"),
-              Manager.FIELD_OBJECT_STATE
+              null,
+              Manager.FIELD_USER + "." + User.FIELD_OBJECT_STATE,
+              ObjectStateEnum.class.getSimpleName()
       ));
       OpenSearchDescription<Manager> osd = new OpenSearchDescription<Manager>();
       FmFilter filter = new FmFilter();
