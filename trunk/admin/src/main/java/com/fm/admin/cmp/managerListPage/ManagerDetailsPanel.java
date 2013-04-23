@@ -1,14 +1,13 @@
 package com.fm.admin.cmp.managerListPage;
 
 import com.fm.core.cmp.feedback.NotifyFeedbackPanel;
+import com.fm.core.cmp.masterDetail.DetailsPanel;
 import com.fm.domain.Manager;
 import com.fm.domain.Team;
 import com.fm.domain.User;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
-import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.PropertyModel;
 
@@ -17,56 +16,32 @@ import org.apache.wicket.model.PropertyModel;
  * Date: 17.04.13
  * Time: 12:30
  */
-public class ManagerDetailsPanel extends Panel
+public class ManagerDetailsPanel extends DetailsPanel<Manager>
 {
-   private final IModel<Manager> model;
-
-   private WebMarkupContainer main;
-
-   private Manager selected;
-
    public ManagerDetailsPanel(String id, IModel<Manager> model)
    {
       super(id, model);
-      this.model = model;
-
       initView();
    }
 
    private void initView()
    {
-      main = new WebMarkupContainer("main")
-      {
-         @Override
-         protected void onConfigure()
-         {
-            setVisible(selected != null);
-         }
-      };
-      main.setOutputMarkupId(true);
-      main.add(new NotifyFeedbackPanel("feedback"));
-      main.add(new Label("name", new PropertyModel(this, "selected." + Manager.FIELD_NAME)));
-      main.add(new Label("surname", new PropertyModel(this, "selected." + Manager.FIELD_SURNAME)));
-      main.add(new Label("team", new PropertyModel(this, "selected." + Manager.FIELD_TEAM + "." + Team.FIELD_NAME)));
-      main.add(new Label("email",
+      add(new NotifyFeedbackPanel("feedback"));
+      add(new Label("name", new PropertyModel(this, "selected." + Manager.FIELD_NAME)));
+      add(new Label("surname", new PropertyModel(this, "selected." + Manager.FIELD_SURNAME)));
+      add(new Label("team", new PropertyModel(this, "selected." + Manager.FIELD_TEAM + "." + Team.FIELD_NAME)));
+      add(new Label("email",
               new PropertyModel(this, "selected." + Manager.FIELD_USER + "." + User.FIELD_EMAIL)));
 
-      main.add(new AjaxLink<Void>("accountActivation")
+      add(new AjaxLink<Void>("accountActivation")
       {
          @Override
          public void onClick(AjaxRequestTarget target)
          {
+
             success(getString("account.activated"));
-            target.add(main);
+            target.add(ManagerDetailsPanel.this);
          }
       });
-      add(main);
-   }
-
-   @Override
-   protected void onBeforeRender()
-   {
-      selected = model.getObject();
-      super.onBeforeRender();
    }
 }

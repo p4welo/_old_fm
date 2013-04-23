@@ -1,53 +1,51 @@
 <wicket:panel xmlns:wicket="http://wicket.apache.org">
-    <div wicket:id="main">
-        <div wicket:id="feedback"></div>
-        <div class="row-fluid table_toolbar">
-            <div class="btn-group">
-                <button class="btn tooltipLink" wicket:message="title:change.password">
-                    <i class="icon-key"></i>
-                </button>
-                <button wicket:id="accountActivation" class="btn tooltipLink" wicket:message="title:account.activation">
-                    <i class="icon-lock"></i>
-                </button>
-                <button class="btn tooltipLink" wicket:message="title:private.message">
-                    <i class="icon-envelope"></i>
-                </button>
-            </div>
+    <div wicket:id="feedback"></div>
+    <div class="row-fluid table_toolbar">
+        <div class="btn-group">
+            <button class="btn tooltipLink" wicket:message="title:change.password">
+                <i class="icon-key"></i>
+            </button>
+            <button wicket:id="accountActivation" class="btn tooltipLink" wicket:message="title:account.activation">
+                <i class="icon-lock"></i>
+            </button>
+            <button class="btn tooltipLink" wicket:message="title:private.message">
+                <i class="icon-envelope"></i>
+            </button>
         </div>
-        <div class="row-fluid">
-            <div class="span6">
-                <wicket:message key="name"/>
-            </div>
-            <div class="span6">
-                <span wicket:id="name"></span>
-            </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span6">
+            <wicket:message key="name"/>
         </div>
+        <div class="span6">
+            <span wicket:id="name"></span>
+        </div>
+    </div>
 
-        <div class="row-fluid">
-            <div class="span6">
-                <wicket:message key="surname"/>
-            </div>
-            <div class="span6">
-                <span wicket:id="surname"></span>
-            </div>
+    <div class="row-fluid">
+        <div class="span6">
+            <wicket:message key="surname"/>
         </div>
-
-        <div class="row-fluid">
-            <div class="span6">
-                <wicket:message key="team"/>
-            </div>
-            <div class="span6">
-                <span wicket:id="team"></span>
-            </div>
+        <div class="span6">
+            <span wicket:id="surname"></span>
         </div>
+    </div>
 
-        <div class="row-fluid">
-            <div class="span6">
-                <wicket:message key="email"/>
-            </div>
-            <div class="span6">
-                <span wicket:id="email"></span>
-            </div>
+    <div class="row-fluid">
+        <div class="span6">
+            <wicket:message key="team"/>
+        </div>
+        <div class="span6">
+            <span wicket:id="team"></span>
+        </div>
+    </div>
+
+    <div class="row-fluid">
+        <div class="span6">
+            <wicket:message key="email"/>
+        </div>
+        <div class="span6">
+            <span wicket:id="email"></span>
         </div>
     </div>
 </wicket:panel>
