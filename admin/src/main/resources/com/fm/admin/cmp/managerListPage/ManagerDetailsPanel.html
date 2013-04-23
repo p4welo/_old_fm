@@ -1,19 +1,14 @@
 <wicket:panel xmlns:wicket="http://wicket.apache.org">
-    <!--<script type='text/javascript'>-->
-    <!--$(document).ready(function () {-->
-    <!--$('.tooltipLink').tooltip();-->
-    <!--});-->
-    <!--</script>-->
     <div wicket:id="main">
         <div class="row-fluid table_toolbar">
             <div class="btn-group">
-                <button class="btn tooltipLink" data-toggle="tooltip" title="zmiana hasła">
+                <button class="btn tooltipLink" wicket:message="title:change.password">
                     <i class="icon-key"></i>
                 </button>
-                <button class="btn tooltipLink" data-toggle="tooltip" title="blokada konta">
+                <button class="btn tooltipLink" wicket:message="title:account.activation">
                     <i class="icon-lock"></i>
                 </button>
-                <button class="btn tooltipLink" data-toggle="tooltip" title="prywatna wiadomość">
+                <button class="btn tooltipLink" wicket:message="title:private.message">
                     <i class="icon-envelope"></i>
                 </button>
             </div>
