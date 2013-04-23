@@ -1,8 +1,11 @@
 package com.fm.admin.cmp.managerListPage;
 
+import com.fm.core.cmp.feedback.NotifyFeedbackPanel;
 import com.fm.domain.Manager;
 import com.fm.domain.Team;
 import com.fm.domain.User;
+import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.panel.Panel;
@@ -41,11 +44,22 @@ public class ManagerDetailsPanel extends Panel
          }
       };
       main.setOutputMarkupId(true);
+      main.add(new NotifyFeedbackPanel("feedback"));
       main.add(new Label("name", new PropertyModel(this, "selected." + Manager.FIELD_NAME)));
       main.add(new Label("surname", new PropertyModel(this, "selected." + Manager.FIELD_SURNAME)));
       main.add(new Label("team", new PropertyModel(this, "selected." + Manager.FIELD_TEAM + "." + Team.FIELD_NAME)));
       main.add(new Label("email",
               new PropertyModel(this, "selected." + Manager.FIELD_USER + "." + User.FIELD_EMAIL)));
+
+      main.add(new AjaxLink<Void>("accountActivation")
+      {
+         @Override
+         public void onClick(AjaxRequestTarget target)
+         {
+            success(getString("account.activated"));
+            target.add(main);
+         }
+      });
       add(main);
    }
 

@@ -54,7 +54,7 @@ public class ManagerServiceImpl extends AbstractServiceImpl<Manager> implements 
       if (user != null)
       {
          manager.setUser(userService.save(user));
-         authorityService.addUserAuthority(user, "ROLE_USER");
+//         authorityService.addUserAuthority(user, "ROLE_USER");
       }
       return save(manager);
    }

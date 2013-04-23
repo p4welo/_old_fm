@@ -33,10 +33,19 @@ public class UserServiceImpl extends AbstractServiceImpl<User> implements IUserS
    }
 
    @Override
+   @Transactional
    public User save(User user)
    {
       user.setPassword(passwordEncoder.encodePassword(user.getPassword(), user.getLogin()));
       return super.save(user);
+   }
+
+   @Override
+   @Transactional
+   public User changePassword(User user, String password)
+   {
+      user.setPassword(passwordEncoder.encodePassword(password, user.getLogin()));
+      return update(user);
    }
 
    @Override
