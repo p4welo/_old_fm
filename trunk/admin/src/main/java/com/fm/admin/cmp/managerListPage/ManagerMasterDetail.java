@@ -61,10 +61,10 @@ public class ManagerMasterDetail extends MasterDetailPanel<Manager>
               new ResourceModel("user.login"),
               Manager.FIELD_USER + "." + User.FIELD_LOGIN
       ));
-      columns.add(new PropertyColumn<Manager, String>(
-              new ResourceModel("user.email"),
-              Manager.FIELD_USER + "." + User.FIELD_EMAIL
-      ));
+//      columns.add(new PropertyColumn<Manager, String>(
+//              new ResourceModel("user.email"),
+//              Manager.FIELD_USER + "." + User.FIELD_EMAIL
+//      ));
       columns.add(new TranslatedColumn<Manager, String>(
               new ResourceModel("object.state"),
               null,

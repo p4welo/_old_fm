@@ -1,9 +1,11 @@
 <wicket:panel xmlns:wicket="http://wicket.apache.org">
     <tr>
-        <td wicket:id="filtersContainer">
+        <td wicket:id="filtersContainer" style="text-align: right">
             <div class="form-inline pull-right">
                 <div class="input-prepend input-append">
-                    <select wicket:id="objectState" class="span9"/>
+                    <input class="span3" type="text" wicket:id="name" wicket:message="placeholder:name"/>
+                    <input class="span3" type="text" wicket:id="surname" wicket:message="placeholder:surname"/>
+                    <select wicket:id="objectState" wicket:message="placeholder:objectState" class="span4"/>
 
                     <button type="submit" class="btn"> &nbsp;
                         <i class="icon-search"></i>
