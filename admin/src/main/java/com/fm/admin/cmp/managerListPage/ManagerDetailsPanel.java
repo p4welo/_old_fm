@@ -38,7 +38,7 @@ public class ManagerDetailsPanel extends DetailsPanel<Manager>
          public void onClick(AjaxRequestTarget target)
          {
 
-            Notification.success(getString("account.activated"), target);
+            Notification.success(getString("account.activated"));
             target.add(ManagerDetailsPanel.this);
          }
       });

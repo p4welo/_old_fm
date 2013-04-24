@@ -93,17 +93,17 @@ public class PositionDetailsPanel extends DetailsPanel<Position>
                   if (isSelected)
                   {
                      removePositionArea(getSelected(), finalI);
-                     Notification.success(getString("position.updated.successfully"), target);
+                     Notification.success(getString("position.updated.successfully"));
                   }
                   else
                   {
                      addPositionArea(getSelected(), finalI);
-                     Notification.success(getString("position.updated.successfully"), target);
+                     Notification.success(getString("position.updated.successfully"));
                   }
                }
                else
                {
-                  Notification.error(getString("no.position.selected"), target);
+                  Notification.error(getString("no.position.selected"));
                }
             }
          });

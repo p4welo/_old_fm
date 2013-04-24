@@ -41,7 +41,7 @@ public class NameDetailsPanel extends DetailsPanel<Name>
          protected void onSubmit(AjaxRequestTarget target, Form<?> form)
          {
             nameService.update(getSelected());
-            Notification.success(getString("name.successfully.saved"), target);
+            Notification.success(getString("name.successfully.saved"));
             target.add(masterDetail);
          }
       });

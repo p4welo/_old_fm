@@ -66,7 +66,7 @@ public class LeagueListPage extends AdminAbstractPage
          {
             League league = getLeague();
             leagueService.save(league, getGenerateTeams());
-            Notification.success(getString("league.successfully.saved"), target);
+            Notification.success(getString("league.successfully.saved"));
 
             resetState();
             target.add(main);

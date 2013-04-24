@@ -83,7 +83,7 @@ public class LeagueDetailsPage extends AdminAbstractPage
             Team team = getTeam();
             teamService.save(team);
 
-            Notification.success(getString("team.successfully.saved"), target);
+            Notification.success(getString("team.successfully.saved"));
 
             resetState();
             target.add(mainContainer);

@@ -99,7 +99,7 @@ public class ParameterTab extends Panel
             {
                systemParameterService.update(parameter);
             }
-            Notification.success(getString("parameters.successfully.updated"), target);
+            Notification.success(getString("parameters.successfully.updated"));
             target.add(ParameterTab.this);
          }
       });
