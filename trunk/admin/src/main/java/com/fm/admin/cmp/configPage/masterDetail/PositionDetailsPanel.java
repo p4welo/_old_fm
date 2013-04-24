@@ -105,6 +105,7 @@ public class PositionDetailsPanel extends DetailsPanel<Position>
                {
                   Notification.error(getString("no.position.selected"));
                }
+               target.add(PositionDetailsPanel.this);
             }
          });
       }

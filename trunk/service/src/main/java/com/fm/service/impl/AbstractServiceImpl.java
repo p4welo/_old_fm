@@ -31,7 +31,7 @@ public abstract class AbstractServiceImpl<T extends IdentifiableEntity> implemen
       }
       if (obj.getObjectState() == null)
       {
-         obj.setObjectState(ObjectStateEnum.INACTIVE);
+         obj.setObjectState(ObjectStateEnum.ACTIVE);
       }
       return getDao().save(obj);
    }

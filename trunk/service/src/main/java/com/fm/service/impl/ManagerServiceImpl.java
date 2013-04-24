@@ -3,6 +3,7 @@ package com.fm.service.impl;
 import com.fm.dao.IAbstractDao;
 import com.fm.dao.IManagerDao;
 import com.fm.domain.Manager;
+import com.fm.domain.ObjectStateEnum;
 import com.fm.domain.Team;
 import com.fm.domain.User;
 import com.fm.service.*;
@@ -56,6 +57,7 @@ public class ManagerServiceImpl extends AbstractServiceImpl<Manager> implements 
          manager.setUser(userService.save(user));
 //         authorityService.addUserAuthority(user, "ROLE_USER");
       }
+      manager.setObjectState(ObjectStateEnum.INACTIVE);
       return save(manager);
    }
 }
