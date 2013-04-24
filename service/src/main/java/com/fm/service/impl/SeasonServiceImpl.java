@@ -2,10 +2,7 @@ package com.fm.service.impl;
 
 import com.fm.dao.IAbstractDao;
 import com.fm.dao.ISeasonDao;
-import com.fm.domain.League;
-import com.fm.domain.Season;
-import com.fm.domain.Team;
-import com.fm.domain.TeamRecord;
+import com.fm.domain.*;
 import com.fm.service.ISeasonService;
 import com.fm.service.ITeamRecordService;
 import com.fm.service.ITeamService;
@@ -42,10 +39,27 @@ public class SeasonServiceImpl extends AbstractServiceImpl<Season> implements IS
 
    @Override
    @Transactional
-   public Season save(Season season)
+   public Season nextSeason(League league)
    {
-      season.setNumber(seasonDao.getNextSeasonNumber(season.getLeague()));
-      season = super.save(season);
+      Season season = new Season();
+      season.setLeague(league);
+
+      Season oldSeason = seasonDao.getActiveSeason(league);
+      if (oldSeason != null)
+      {
+         oldSeason.setObjectState(ObjectStateEnum.INACTIVE);
+         update(oldSeason);
+
+         season.setNumber(oldSeason.getNumber() + 1);
+      }
+      else
+      {
+         season.setNumber(1);
+      }
+
+      season.setObjectState(ObjectStateEnum.ACTIVE);
+      season = save(season);
+
       List<Team> teams = teamService.findTeamsFromLeague(season.getLeague());
       for (Team team : teams)
       {

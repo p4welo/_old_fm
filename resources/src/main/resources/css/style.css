@@ -414,7 +414,7 @@ tr.selectedRow {
 
 #body {
     background-color: #F7F7F7;
-    background-image: url('../img/bg-default.png') !important;
+    /*background-image: url('../img/bg-default.png') !important;*/
     border-bottom: 2px solid #DDDDDD;
     margin-left: 250px;
     min-height: 800px;

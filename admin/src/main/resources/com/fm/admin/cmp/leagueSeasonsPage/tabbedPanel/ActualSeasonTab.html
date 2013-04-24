@@ -1,5 +1,19 @@
 <wicket:panel xmlns:wicket="http://wicket.apache.org">
+    <script type='text/javascript'>
+        $(document).ready(function () {
+            $('.tooltipLink').tooltip();
+        });
+    </script>
+
     <div class="span7">
+        <div class="table_toolbar">
+            <a wicket:id="newSeason" class="btn tooltipLink" data-toggle="tooltip" wicket:message="title:new.season">
+                <i class="icon-plus-sign"></i>
+            </a>
+            <a class="btn tooltipLink" data-toggle="tooltip" wicket:message="title:next.round">
+                <i class="icon-random"></i>
+            </a>
+        </div>
         <table class="table table-striped table-hover table-condensed">
             <thead style="border: 1px solid #d3d3d3">
             <tr>
@@ -64,5 +78,8 @@
             </tr>
             </tbody>
         </table>
+    </div>
+    <div class="span4">
+        <div wicket:id="chartPanel"></div>
     </div>
 </wicket:panel>

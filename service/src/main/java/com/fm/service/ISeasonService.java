@@ -17,4 +17,6 @@ public interface ISeasonService extends IAbstractService<Season>
    Season getSeasonByNumber(League league, int number);
 
    List<Season> getLeagueSeasons(League league);
+
+   Season nextSeason(League league);
 }
