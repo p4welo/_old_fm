@@ -42,7 +42,7 @@ public class SurnameDetailsPanel extends DetailsPanel<Surname>
          protected void onSubmit(AjaxRequestTarget target, Form<?> form)
          {
             surnameService.update(getSelected());
-            Notification.success(getString("surname.successfully.saved"), target);
+            Notification.success(getString("surname.successfully.saved"));
             target.add(masterDetail);
          }
       });
