@@ -1,10 +1,14 @@
 package com.fm.admin.cmp.leagueSeasonsPage.tabbedPanel;
 
+import com.fm.admin.cmp.leagueSeasonsPage.chart.ChartPanel;
+import com.fm.core.cmp.notify.Notification;
 import com.fm.domain.League;
 import com.fm.domain.Season;
 import com.fm.domain.TeamRecord;
 import com.fm.service.ISeasonService;
 import com.fm.service.ITeamRecordService;
+import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
@@ -37,18 +41,27 @@ public class ActualSeasonTab extends Panel
    public ActualSeasonTab(String id, IModel<League> model)
    {
       super(id, model);
+      setOutputMarkupId(true);
       league = model.getObject();
       season = seasonService.getActiveSeason(league);
+      teamRecords = teamRecordService.findTeamRecordsBySeason(season);
 
       initView();
    }
 
    private void initView()
    {
-      teamRecords = teamRecordService.findTeamRecordsBySeason(season);
-      ListView<TeamRecord> teamListView = new ListView<TeamRecord>("teams",
+      final ListView<TeamRecord> teamListView = new ListView<TeamRecord>("teams",
               new PropertyModel<List<? extends TeamRecord>>(this, "teamRecords"))
       {
+
+         @Override
+         protected void onBeforeRender()
+         {
+            teamRecords = teamRecordService.findTeamRecordsBySeason(season);
+            super.onBeforeRender();
+         }
+
          @Override
          protected void populateItem(ListItem<TeamRecord> item)
          {
@@ -66,5 +79,17 @@ public class ActualSeasonTab extends Panel
          }
       };
       add(teamListView);
+
+      add(new AjaxLink<Void>("newSeason")
+      {
+         @Override
+         public void onClick(AjaxRequestTarget target)
+         {
+            season = seasonService.nextSeason(league);
+            Notification.success(getString("next.season.successfully.generated"));
+            target.add(ActualSeasonTab.this);
+         }
+      });
+      add(new ChartPanel("chartPanel"));
    }
 }

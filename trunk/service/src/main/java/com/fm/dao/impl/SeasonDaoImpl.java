@@ -2,6 +2,7 @@ package com.fm.dao.impl;
 
 import com.fm.dao.ISeasonDao;
 import com.fm.domain.League;
+import com.fm.domain.ObjectStateEnum;
 import com.fm.domain.Season;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Order;
@@ -24,8 +25,7 @@ public class SeasonDaoImpl extends AbstractDaoImpl<Season> implements ISeasonDao
    {
       Criteria criteria = createCriteria();
       criteria.add(Restrictions.eq(Season.FIELD_LEAGUE, league));
-//      TODO zmienić na uwzględnianie po statusie a nie numerze
-      criteria.addOrder(Order.desc(Season.FIELD_NUMBER));
+      criteria.add(Restrictions.eq(Season.FIELD_OBJECT_STATE, ObjectStateEnum.ACTIVE));
       criteria.setMaxResults(1);
       return (Season) criteria.uniqueResult();
    }
