@@ -7,6 +7,7 @@ import com.fm.admin.cmp.leagueDetailsPage.LeagueTeamsPanel;
 import com.fm.admin.cmp.leagueDetailsPage.window.NewTeamWindow;
 import com.fm.core.cmp.authorization.UserAuthorities;
 import com.fm.core.cmp.breadcrumb.BootstrapBreadcrumbPanel;
+import com.fm.core.cmp.notify.Notification;
 import com.fm.domain.League;
 import com.fm.domain.Team;
 import com.fm.service.ILeagueService;
@@ -82,7 +83,7 @@ public class LeagueDetailsPage extends AdminAbstractPage
             Team team = getTeam();
             teamService.save(team);
 
-            success(getString("team.successfully.saved"));
+            Notification.success(getString("team.successfully.saved"), target);
 
             resetState();
             target.add(mainContainer);

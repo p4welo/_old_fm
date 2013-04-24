@@ -42,11 +42,18 @@ public class LeagueServiceImpl extends AbstractServiceImpl<League> implements IL
    @Transactional
    public League save(League league, boolean generateTeams)
    {
+      league.setLevel(getAvailableLevel());
       league = save(league);
       if (generateTeams)
       {
          teamGenerationStrategy.generateLeagueCpuTeams(league);
       }
       return league;
+   }
+
+   public Integer getAvailableLevel()
+   {
+      Integer availableLevel = 1;
+      return availableLevel;
    }
 }

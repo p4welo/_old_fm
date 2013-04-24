@@ -1,6 +1,7 @@
 package com.fm.admin.cmp.configPage.masterDetail;
 
 import com.fm.core.cmp.masterDetail.DetailsPanel;
+import com.fm.core.cmp.notify.Notification;
 import com.fm.domain.Position;
 import com.fm.service.IPositionAreaService;
 import com.fm.service.IPositionService;
@@ -92,17 +93,18 @@ public class PositionDetailsPanel extends DetailsPanel<Position>
                   if (isSelected)
                   {
                      removePositionArea(getSelected(), finalI);
+                     Notification.success(getString("position.updated.successfully"), target);
                   }
                   else
                   {
                      addPositionArea(getSelected(), finalI);
+                     Notification.success(getString("position.updated.successfully"), target);
                   }
                }
                else
                {
-                  error(getString("no.position.selected"));
+                  Notification.error(getString("no.position.selected"), target);
                }
-               target.add(masterDetail);
             }
          });
       }
@@ -111,12 +113,10 @@ public class PositionDetailsPanel extends DetailsPanel<Position>
    public void addPositionArea(Position position, int area)
    {
       positionAreaService.addPositionArea(position, area);
-      success(getString("position.updated.successfully"));
    }
 
    public void removePositionArea(Position position, int area)
    {
       positionAreaService.removePositionArea(position, area);
-      success(getString("position.updated.successfully"));
    }
 }

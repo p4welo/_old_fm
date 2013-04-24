@@ -1,7 +1,7 @@
 package com.fm.admin.cmp.managerListPage;
 
-import com.fm.core.cmp.feedback.NotifyFeedbackPanel;
 import com.fm.core.cmp.masterDetail.DetailsPanel;
+import com.fm.core.cmp.notify.Notification;
 import com.fm.domain.Manager;
 import com.fm.domain.Team;
 import com.fm.domain.User;
@@ -26,7 +26,6 @@ public class ManagerDetailsPanel extends DetailsPanel<Manager>
 
    private void initView()
    {
-      add(new NotifyFeedbackPanel("feedback"));
       add(new Label("name", new PropertyModel(this, "selected." + Manager.FIELD_NAME)));
       add(new Label("surname", new PropertyModel(this, "selected." + Manager.FIELD_SURNAME)));
       add(new Label("team", new PropertyModel(this, "selected." + Manager.FIELD_TEAM + "." + Team.FIELD_NAME)));
@@ -39,7 +38,7 @@ public class ManagerDetailsPanel extends DetailsPanel<Manager>
          public void onClick(AjaxRequestTarget target)
          {
 
-            success(getString("account.activated"));
+            Notification.success(getString("account.activated"), target);
             target.add(ManagerDetailsPanel.this);
          }
       });
