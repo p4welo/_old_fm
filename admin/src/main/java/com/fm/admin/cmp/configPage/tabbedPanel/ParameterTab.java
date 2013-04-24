@@ -1,6 +1,6 @@
 package com.fm.admin.cmp.configPage.tabbedPanel;
 
-import com.fm.core.cmp.feedback.NotifyFeedbackPanel;
+import com.fm.core.cmp.notify.Notification;
 import com.fm.domain.SystemParameter;
 import com.fm.service.ISystemParameterService;
 import org.apache.wicket.AttributeModifier;
@@ -46,7 +46,6 @@ public class ParameterTab extends Panel
 
    private void initView()
    {
-      add(new NotifyFeedbackPanel("feedback"));
       Form form = new Form<SystemParameter>("form");
       final ListView listView = new ListView<SystemParameter>("list", systemParameters)
       {
@@ -100,7 +99,7 @@ public class ParameterTab extends Panel
             {
                systemParameterService.update(parameter);
             }
-            success(getString("parameters.successfully.updated"));
+            Notification.success(getString("parameters.successfully.updated"), target);
             target.add(ParameterTab.this);
          }
       });

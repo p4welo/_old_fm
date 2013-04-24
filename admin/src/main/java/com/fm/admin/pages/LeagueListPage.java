@@ -6,9 +6,9 @@ import com.fm.admin.cmp.leagueDetailsPage.window.NewLeagueWindow;
 import com.fm.admin.navigation.NavigateToLeagueDetailsPage;
 import com.fm.core.cmp.authorization.UserAuthorities;
 import com.fm.core.cmp.breadcrumb.BootstrapBreadcrumbPanel;
-import com.fm.core.cmp.feedback.NotifyFeedbackPanel;
 import com.fm.core.cmp.newTable.AjaxDataTable;
 import com.fm.core.cmp.newTable.DataProvider;
+import com.fm.core.cmp.notify.Notification;
 import com.fm.domain.DataEntity;
 import com.fm.domain.League;
 import com.fm.domain.filter.FmFilter;
@@ -66,14 +66,13 @@ public class LeagueListPage extends AdminAbstractPage
          {
             League league = getLeague();
             leagueService.save(league, getGenerateTeams());
-            success(getString("league.successfully.saved"));
+            Notification.success(getString("league.successfully.saved"), target);
 
             resetState();
             target.add(main);
          }
       };
       main.add(window);
-      main.add(new NotifyFeedbackPanel("feedback"));
       main.add(new AjaxLink<Void>("createLeagueLink")
       {
          @Override

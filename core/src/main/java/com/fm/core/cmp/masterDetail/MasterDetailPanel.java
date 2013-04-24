@@ -1,6 +1,5 @@
 package com.fm.core.cmp.masterDetail;
 
-import com.fm.core.cmp.feedback.NotifyFeedbackPanel;
 import com.fm.core.cmp.newTable.AjaxDataTable;
 import com.fm.core.cmp.newTable.SelectionChangeCallback;
 import com.fm.domain.IdentifiableEntity;
@@ -29,8 +28,6 @@ public abstract class MasterDetailPanel<T extends IdentifiableEntity> extends Pa
 
    private void initView()
    {
-      add(new NotifyFeedbackPanel("feedback"));
-
       AjaxDataTable<T> dataTable = provideMasterTable("master");
       dataTable.setSelectionChangeCallback(new SelectionChangeCallback<T>()
       {

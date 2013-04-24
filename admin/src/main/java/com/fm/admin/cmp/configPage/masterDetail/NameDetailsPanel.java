@@ -1,6 +1,7 @@
 package com.fm.admin.cmp.configPage.masterDetail;
 
 import com.fm.core.cmp.masterDetail.DetailsPanel;
+import com.fm.core.cmp.notify.Notification;
 import com.fm.core.cmp.web.BootstrapTextFieldPanel;
 import com.fm.domain.Name;
 import com.fm.service.INameService;
@@ -40,7 +41,7 @@ public class NameDetailsPanel extends DetailsPanel<Name>
          protected void onSubmit(AjaxRequestTarget target, Form<?> form)
          {
             nameService.update(getSelected());
-            success(getString("name.successfully.saved"));
+            Notification.success(getString("name.successfully.saved"), target);
             target.add(masterDetail);
          }
       });
