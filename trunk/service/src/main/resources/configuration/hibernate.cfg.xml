@@ -8,6 +8,7 @@
         <mapping class="com.fm.domain.League"/>
         <mapping class="com.fm.domain.Manager"/>
         <mapping class="com.fm.domain.MatchGame"/>
+        <mapping class="com.fm.domain.MatchGameTeamRelation"/>
         <mapping class="com.fm.domain.Name"/>
         <mapping class="com.fm.domain.PlayerStats"/>
         <mapping class="com.fm.domain.Player"/>

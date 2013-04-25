@@ -23,14 +23,17 @@ public class MatchGameTeamRelation extends IdentifiableEntity
    @Column
    private Long id;
 
-   @Column(nullable = false)
+   @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
+   @JoinColumn(nullable = false, name = "match_game_id")
    @NotNull
    private MatchGame matchGame;
 
-   @Column(nullable = false)
+   @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
+   @JoinColumn(nullable = false, name = "team_id")
+   @NotNull
    private Team team;
 
-   @Column
+   @Column(name = "is_host_team")
    private Boolean isHostTeam;
 
    public Long getId()

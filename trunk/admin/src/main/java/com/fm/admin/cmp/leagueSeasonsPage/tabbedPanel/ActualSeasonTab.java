@@ -47,7 +47,7 @@ public class ActualSeasonTab extends Panel
       setOutputMarkupId(true);
       league = model.getObject();
       season = seasonService.getActiveSeason(league);
-      teamRecords = teamRecordService.findTeamRecordsBySeason(season);
+      teamRecords = teamRecordService.findTeamRecordsBySeason(season, true);
 
       initView();
    }
@@ -61,7 +61,7 @@ public class ActualSeasonTab extends Panel
          @Override
          protected void onBeforeRender()
          {
-            teamRecords = teamRecordService.findTeamRecordsBySeason(season);
+            teamRecords = teamRecordService.findTeamRecordsBySeason(season, true);
             super.onBeforeRender();
          }
 
@@ -99,6 +99,16 @@ public class ActualSeasonTab extends Panel
          {
             season = seasonService.nextSeason(league);
             Notification.success(getString("next.season.successfully.generated"));
+            target.add(ActualSeasonTab.this);
+         }
+      });
+
+      add(new AjaxLink<Void>("nextRound")
+      {
+         @Override
+         public void onClick(AjaxRequestTarget target)
+         {
+            teamRecords = teamRecordService.simulateNextRound(season);
             target.add(ActualSeasonTab.this);
          }
       });
