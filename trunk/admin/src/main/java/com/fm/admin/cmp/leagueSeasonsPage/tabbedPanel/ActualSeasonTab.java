@@ -111,6 +111,12 @@ public class ActualSeasonTab extends Panel
             teamRecords = teamRecordService.simulateNextRound(season);
             target.add(ActualSeasonTab.this);
          }
+
+         @Override
+         protected void onConfigure()
+         {
+            setVisible(season != null);
+         }
       });
       chart = new ChartPanel("chartPanel");
       chart.setOutputMarkupId(true);
