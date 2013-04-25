@@ -18,4 +18,6 @@ public interface ITeamRecordService extends IAbstractService<TeamRecord>
    List<TeamRecord> findTeamRecordsBySeason(Season season, boolean orderByPlace);
 
    TeamRecord recalculateTeamRecord(TeamRecord oldRecord, MatchGame matchGame, Boolean isHost);
+
+   void recalculatePlaces(List<TeamRecord> newRecords);
 }
