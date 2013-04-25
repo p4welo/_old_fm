@@ -17,35 +17,33 @@
 <body>
 <script src="static/bootstrap/js/bootstrap.min.js"></script>
 <div class="container">
-    <div class="container">
-        <form wicket:id="registerForm" class="form-horizontal">
-            <div wicket:id="feedback"></div>
-            <fieldset>
-                <legend>
-                    <wicket:message key="account.data"/>
-                </legend>
-                <div wicket:id="login"></div>
-                <div wicket:id="password"></div>
-                <div wicket:id="confirmPassword"></div>
-                <div wicket:id="email"></div>
-            </fieldset>
-            <fieldset>
-                <legend>
-                    <wicket:message key="manager.data"/>
-                </legend>
-                <div wicket:id="name"></div>
-                <div wicket:id="surname"></div>
-            </fieldset>
-            <fieldset>
-                <legend>
-                    <wicket:message key="team.data"/>
-                </legend>
-                <div wicket:id="team"></div>
-            </fieldset>
-            <input wicket:id="submit" type="submit" class="btn btn-success pull-right"
-                   wicket:message="value:button.register"/>
-        </form>
-    </div>
+    <form wicket:id="registerForm" class="form-horizontal register_form">
+        <div wicket:id="feedback"></div>
+        <fieldset>
+            <legend>
+                <wicket:message key="account.data"/>
+            </legend>
+            <div wicket:id="login"></div>
+            <div wicket:id="password"></div>
+            <div wicket:id="confirmPassword"></div>
+            <div wicket:id="email"></div>
+        </fieldset>
+        <fieldset>
+            <legend>
+                <wicket:message key="manager.data"/>
+            </legend>
+            <div wicket:id="name"></div>
+            <div wicket:id="surname"></div>
+        </fieldset>
+        <fieldset>
+            <legend>
+                <wicket:message key="team.data"/>
+            </legend>
+            <div wicket:id="team"></div>
+        </fieldset>
+        <input wicket:id="submit" type="submit" class="btn btn-success pull-right"
+               wicket:message="value:button.register"/>
+    </form>
 </div>
 
 </body>
