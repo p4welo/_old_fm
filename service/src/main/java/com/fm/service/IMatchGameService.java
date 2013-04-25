@@ -1,6 +1,8 @@
 package com.fm.service;
 
 import com.fm.domain.MatchGame;
+import com.fm.domain.Season;
+import com.fm.domain.Team;
 
 /**
  * User: pawel
@@ -9,4 +11,5 @@ import com.fm.domain.MatchGame;
  */
 public interface IMatchGameService extends IAbstractService<MatchGame>
 {
+   MatchGame simulateMatch(Team hostTeam, Team guestTeam, Season season);
 }

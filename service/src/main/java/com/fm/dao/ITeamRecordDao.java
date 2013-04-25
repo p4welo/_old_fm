@@ -12,5 +12,5 @@ import java.util.List;
  */
 public interface ITeamRecordDao
 {
-   List<TeamRecord> findTeamRecordsBySeason(Season season);
+   List<TeamRecord> findTeamRecordsBySeason(Season season, boolean orderByPlace);
 }

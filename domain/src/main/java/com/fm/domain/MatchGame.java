@@ -36,11 +36,11 @@ public class MatchGame extends IdentifiableEntity
    @NotNull
    private Season season;
 
-   @Column(nullable = false)
+   @Column(name = "host_scores", nullable = false)
    @NotNull
    private int hostScores = 0;
 
-   @Column(nullable = false)
+   @Column(name = "guest_scores", nullable = false)
    @NotNull
    private int guestScores = 0;
 

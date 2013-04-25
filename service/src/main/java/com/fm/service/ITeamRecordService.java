@@ -1,5 +1,6 @@
 package com.fm.service;
 
+import com.fm.domain.MatchGame;
 import com.fm.domain.Season;
 import com.fm.domain.TeamRecord;
 
@@ -12,5 +13,9 @@ import java.util.List;
  */
 public interface ITeamRecordService extends IAbstractService<TeamRecord>
 {
-   List<TeamRecord> findTeamRecordsBySeason(Season selectedSeason);
+   List<TeamRecord> simulateNextRound(Season season);
+
+   List<TeamRecord> findTeamRecordsBySeason(Season season, boolean orderByPlace);
+
+   TeamRecord recalculateTeamRecord(TeamRecord oldRecord, MatchGame matchGame, Boolean isHost);
 }

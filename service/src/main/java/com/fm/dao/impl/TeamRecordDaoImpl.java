@@ -20,11 +20,18 @@ import java.util.List;
 public class TeamRecordDaoImpl extends AbstractDaoImpl<TeamRecord> implements ITeamRecordDao
 {
    @Override
-   public List<TeamRecord> findTeamRecordsBySeason(Season season)
+   public List<TeamRecord> findTeamRecordsBySeason(Season season, boolean orderByPlace)
    {
       Criteria criteria = createCriteria(ObjectStateEnum.ACTIVE);
       criteria.add(Restrictions.eq(TeamRecord.FIELD_SEASON, season));
-      criteria.addOrder(Order.asc(TeamRecord.FIELD_PLACE));
+      if (orderByPlace)
+      {
+         criteria.addOrder(Order.asc(TeamRecord.FIELD_PLACE));
+      }
+      else
+      {
+         criteria.add(Restrictions.sqlRestriction("1=1 order by rand()"));
+      }
       return criteria.list();
    }
 }
