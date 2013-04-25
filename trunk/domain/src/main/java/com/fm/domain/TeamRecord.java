@@ -18,6 +18,8 @@ public class TeamRecord extends IdentifiableEntity
 
    public static final String FIELD_TEAM_NAME = "teamName";
 
+   public static final String FIELD_PLACE = "place";
+
    public static final String FIELD_ROUND_NUMBER = "roundNumber";
 
    public static final String FIELD_POINTS_COUNT = "pointsCount";
@@ -39,11 +41,11 @@ public class TeamRecord extends IdentifiableEntity
    @Column
    private Long id;
 
-   @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+   @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
    @JoinColumn()
    private Team team;
 
-   @OneToOne(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
+   @ManyToOne(cascade = {CascadeType.REFRESH}, fetch = FetchType.EAGER)
    @JoinColumn(nullable = false)
    @NotNull
    private Season season;
@@ -51,6 +53,10 @@ public class TeamRecord extends IdentifiableEntity
    @Column(name = "team_name", nullable = false)
    @NotNull
    private String teamName;
+
+   @Column(nullable = false)
+   @NotNull
+   private Integer place = 0;
 
    @Column(name = "round_number", nullable = false)
    @NotNull
@@ -202,5 +208,15 @@ public class TeamRecord extends IdentifiableEntity
    public void setLosesCount(Integer losesCount)
    {
       this.losesCount = losesCount;
+   }
+
+   public Integer getPlace()
+   {
+      return place;
+   }
+
+   public void setPlace(Integer place)
+   {
+      this.place = place;
    }
 }

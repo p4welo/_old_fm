@@ -24,7 +24,7 @@ public class TeamRecordDaoImpl extends AbstractDaoImpl<TeamRecord> implements IT
    {
       Criteria criteria = createCriteria(ObjectStateEnum.ACTIVE);
       criteria.add(Restrictions.eq(TeamRecord.FIELD_SEASON, season));
-      criteria.addOrder(Order.desc(TeamRecord.FIELD_POINTS_COUNT));
+      criteria.addOrder(Order.asc(TeamRecord.FIELD_PLACE));
       return criteria.list();
    }
 }

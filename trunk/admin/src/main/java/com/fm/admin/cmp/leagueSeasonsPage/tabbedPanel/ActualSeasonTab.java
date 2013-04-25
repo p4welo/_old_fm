@@ -66,6 +66,7 @@ public class ActualSeasonTab extends Panel
          protected void populateItem(ListItem<TeamRecord> item)
          {
             final TeamRecord teamRecord = item.getModelObject();
+            item.add(new Label("place", new PropertyModel<String>(teamRecord, TeamRecord.FIELD_PLACE)));
             item.add(new Label("name", new PropertyModel<String>(teamRecord, TeamRecord.FIELD_TEAM_NAME)));
             item.add(new Label("round", new PropertyModel<String>(teamRecord, TeamRecord.FIELD_ROUND_NUMBER)));
             item.add(new Label("points", new PropertyModel<String>(teamRecord, TeamRecord.FIELD_POINTS_COUNT)));

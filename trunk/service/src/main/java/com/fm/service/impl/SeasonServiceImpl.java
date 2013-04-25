@@ -61,12 +61,13 @@ public class SeasonServiceImpl extends AbstractServiceImpl<Season> implements IS
       season = save(season);
 
       List<Team> teams = teamService.findTeamsFromLeague(season.getLeague());
-      for (Team team : teams)
+      for (int i = 0; i < teams.size(); i++)
       {
          TeamRecord teamRecord = new TeamRecord();
+         teamRecord.setPlace(i + 1);
          teamRecord.setSeason(season);
-         teamRecord.setTeam(team);
-         teamRecord.setTeamName(team.getName());
+         teamRecord.setTeam(teams.get(i));
+         teamRecord.setTeamName(teams.get(i).getName());
          teamRecordService.save(teamRecord);
       }
 

@@ -15,6 +15,16 @@ public class NameTab extends Panel
    public NameTab(String id)
    {
       super(id);
+//      setOutputMarkupId(true);
+//      add(new AjaxLink<Void>("load")
+//      {
+//         @Override
+//         public void onClick(AjaxRequestTarget target)
+//         {
+//            NameImport.main(null);
+//            target.add(NameTab.this);
+//         }
+//      });
       add(new NameMasterDetail("masterDetail"));
    }
 }
