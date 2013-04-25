@@ -421,6 +421,10 @@ tr.selectedRow {
     margin-top: -20px
 }
 
+.register_form {
+    background-color: #F7F7F7 !important;
+}
+
 .breadcrumb {
     -moz-border-bottom-colors: none !important;
     -moz-border-image: none !important;
@@ -545,6 +549,11 @@ tr.selectedRow {
 
 }
 
-/*a {*/
-/*color: #D12610 !important;*/
-/*}*/
+.team-record-table a {
+    color: #FFFFFF !important;
+}
+
+.team-record-table a:hover {
+    color: #FFFFFF !important;
+    text-decoration: none;
+}

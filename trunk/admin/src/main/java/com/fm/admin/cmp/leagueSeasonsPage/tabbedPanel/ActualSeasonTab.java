@@ -7,6 +7,7 @@ import com.fm.domain.Season;
 import com.fm.domain.TeamRecord;
 import com.fm.service.ISeasonService;
 import com.fm.service.ITeamRecordService;
+import org.apache.wicket.ajax.AjaxEventBehavior;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.markup.html.basic.Label;
@@ -38,6 +39,8 @@ public class ActualSeasonTab extends Panel
 
    private List<TeamRecord> teamRecords;
 
+   private ChartPanel chart;
+
    public ActualSeasonTab(String id, IModel<League> model)
    {
       super(id, model);
@@ -63,7 +66,7 @@ public class ActualSeasonTab extends Panel
          }
 
          @Override
-         protected void populateItem(ListItem<TeamRecord> item)
+         protected void populateItem(final ListItem<TeamRecord> item)
          {
             final TeamRecord teamRecord = item.getModelObject();
             item.add(new Label("place", new PropertyModel<String>(teamRecord, TeamRecord.FIELD_PLACE)));
@@ -77,6 +80,14 @@ public class ActualSeasonTab extends Panel
             item.add(new Label("wins", new PropertyModel<String>(teamRecord, TeamRecord.FIELD_WINS_COUNT)));
             item.add(new Label("draws", new PropertyModel<String>(teamRecord, TeamRecord.FIELD_DRAWS_COUNT)));
             item.add(new Label("loses", new PropertyModel<String>(teamRecord, TeamRecord.FIELD_LOSES_COUNT)));
+            item.add(new AjaxEventBehavior("onclick")
+            {
+               @Override
+               protected void onEvent(AjaxRequestTarget target)
+               {
+                  executeOnClick(target, item.getModel());
+               }
+            });
          }
       };
       add(teamListView);
@@ -91,6 +102,13 @@ public class ActualSeasonTab extends Panel
             target.add(ActualSeasonTab.this);
          }
       });
-      add(new ChartPanel("chartPanel"));
+      chart = new ChartPanel("chartPanel");
+      chart.setOutputMarkupId(true);
+      add(chart);
+   }
+
+   private void executeOnClick(AjaxRequestTarget target, IModel<TeamRecord> model)
+   {
+      target.add(chart);
    }
 }

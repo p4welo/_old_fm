@@ -7,7 +7,7 @@
         });
     </script>
 
-    <div class="span7">
+    <div class="span7" style="margin-left: 0">
         <div class="table_toolbar">
             <a wicket:id="newSeason" class="btn tooltipLink" data-toggle="tooltip" wicket:message="title:new.season">
                 <i class="icon-plus-sign"></i>
@@ -16,7 +16,7 @@
                 <i class="icon-random"></i>
             </a>
         </div>
-        <table class="table table-striped table-hover table-condensed">
+        <table class="table table-striped table-hover table-condensed team-record-table">
             <thead style="border: 1px solid #d3d3d3">
             <tr>
                 <th style="width: 5px">
@@ -26,28 +26,44 @@
                     <wicket:message key="name.column.header"/>
                 </th>
                 <th style="width: 5px">
-                    <wicket:message key="round.column.header"/>
+                    <a class=" tooltipLink" data-toggle="tooltip" wicket:message="title:round.tooltip">
+                        <wicket:message key="round.column.header"/>
+                    </a>
                 </th>
                 <th style="width: 5px">
-                    <wicket:message key="points.column.header"/>
+                    <a class=" tooltipLink" data-toggle="tooltip" wicket:message="title:points.tooltip">
+                        <wicket:message key="points.column.header"/>
+                    </a>
                 </th>
                 <th style="width: 5px">
-                    <wicket:message key="wins.column.header"/>
+                    <a class=" tooltipLink" data-toggle="tooltip" wicket:message="title:wins.tooltip">
+                        <wicket:message key="wins.column.header"/>
+                    </a>
                 </th>
                 <th style="width: 5px">
-                    <wicket:message key="draws.column.header"/>
+                    <a class=" tooltipLink" data-toggle="tooltip" wicket:message="title:draws.tooltip">
+                        <wicket:message key="draws.column.header"/>
+                    </a>
                 </th>
                 <th style="width: 5px">
-                    <wicket:message key="loses.column.header"/>
+                    <a class=" tooltipLink" data-toggle="tooltip" wicket:message="title:loses.tooltip">
+                        <wicket:message key="loses.column.header"/>
+                    </a>
                 </th>
                 <th style="width: 5px">
-                    <wicket:message key="goals.scored.column.header"/>
+                    <a class=" tooltipLink" data-toggle="tooltip" wicket:message="title:goals.scored.tooltip">
+                        <wicket:message key="goals.scored.column.header"/>
+                    </a>
                 </th>
                 <th style="width: 5px">
-                    <wicket:message key="goals.allowed.column.header"/>
+                    <a class=" tooltipLink" data-toggle="tooltip" wicket:message="title:goals.allowed.tooltip">
+                        <wicket:message key="goals.allowed.column.header"/>
+                    </a>
                 </th>
                 <th style="width: 5px">
-                    <wicket:message key="goals.difference.column.header"/>
+                    <a class=" tooltipLink" data-toggle="tooltip" wicket:message="title:goals.difference.tooltip">
+                        <wicket:message key="goals.difference.column.header"/>
+                    </a>
                 </th>
             </tr>
             </thead>
@@ -95,6 +111,7 @@
             $("table").tablecloth({
                 theme:"stats",
                 striped:true,
+                customClass:"table-hover",
                 sortable:true,
                 condensed:true
             });
