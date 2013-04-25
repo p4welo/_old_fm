@@ -17,6 +17,9 @@
         <table class="table table-striped table-hover table-condensed">
             <thead style="border: 1px solid #d3d3d3">
             <tr>
+                <th style="width: 5px">
+                    <wicket:message key="place.column.header"/>
+                </th>
                 <th style="width: 70px">
                     <wicket:message key="name.column.header"/>
                 </th>
@@ -48,6 +51,9 @@
             </thead>
             <tbody>
             <tr wicket:id="teams" class="table_body_row">
+                <td>
+                    <span wicket:id="place">[place]</span>
+                </td>
                 <td>
                     <span wicket:id="name">[name]</span>
                 </td>
@@ -82,4 +88,14 @@
     <div class="span4">
         <div wicket:id="chartPanel"></div>
     </div>
+    <script type="text/javascript" charset="utf-8">
+        $(document).ready(function () {
+            $("table").tablecloth({
+                theme:"stats",
+                striped:true,
+                sortable:true,
+                condensed:true
+            });
+        });
+    </script>
 </wicket:panel>

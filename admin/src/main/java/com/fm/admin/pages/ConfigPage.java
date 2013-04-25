@@ -10,7 +10,9 @@ import com.fm.core.cmp.authorization.UserAuthorities;
 import com.fm.core.cmp.breadcrumb.BootstrapBreadcrumbPanel;
 import com.fm.core.cmp.tabbedPanel.BootstrapTabbedPanel;
 import com.fm.service.IPositionService;
+import org.apache.wicket.Component;
 import org.apache.wicket.authroles.authorization.strategies.role.annotations.AuthorizeInstantiation;
+import org.apache.wicket.extensions.ajax.markup.html.AjaxLazyLoadPanel;
 import org.apache.wicket.extensions.markup.html.tabs.AbstractTab;
 import org.apache.wicket.extensions.markup.html.tabs.ITab;
 import org.apache.wicket.markup.html.WebMarkupContainer;
@@ -44,7 +46,15 @@ public class ConfigPage extends AdminAbstractPage
          @Override
          public WebMarkupContainer getPanel(String panelId)
          {
-            return new PositionTab(panelId);
+            return new AjaxLazyLoadPanel(panelId)
+            {
+               @Override
+               public Component getLazyLoadComponent(String id)
+               {
+                  return new PositionTab(id);
+               }
+            };
+//            return new PositionTab(panelId);
          }
       });
       tabs.add(new AbstractTab(new ResourceModel("name.tab"))
@@ -52,7 +62,15 @@ public class ConfigPage extends AdminAbstractPage
          @Override
          public WebMarkupContainer getPanel(String panelId)
          {
-            return new NameTab(panelId);
+            return new AjaxLazyLoadPanel(panelId)
+            {
+               @Override
+               public Component getLazyLoadComponent(String id)
+               {
+                  return new NameTab(id);
+               }
+            };
+//            return new NameTab(panelId);
          }
       });
       tabs.add(new AbstractTab(new ResourceModel("surname.tab"))
@@ -60,7 +78,15 @@ public class ConfigPage extends AdminAbstractPage
          @Override
          public WebMarkupContainer getPanel(String panelId)
          {
-            return new SurnameTab(panelId);
+            return new AjaxLazyLoadPanel(panelId)
+            {
+               @Override
+               public Component getLazyLoadComponent(String id)
+               {
+                  return new SurnameTab(id);
+               }
+            };
+//            return new SurnameTab(panelId);
          }
       });
       tabs.add(new AbstractTab(new ResourceModel("parameter.tab"))
@@ -68,7 +94,15 @@ public class ConfigPage extends AdminAbstractPage
          @Override
          public WebMarkupContainer getPanel(String panelId)
          {
-            return new ParameterTab(panelId);
+            return new AjaxLazyLoadPanel(panelId)
+            {
+               @Override
+               public Component getLazyLoadComponent(String id)
+               {
+                  return new ParameterTab(id);
+               }
+            };
+//            return new ParameterTab(panelId);
          }
       });
 
