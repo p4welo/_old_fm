@@ -7,6 +7,7 @@ import com.fm.domain.Team;
 import com.fm.domain.TeamRecord;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
@@ -44,6 +45,16 @@ public class TeamRecordDaoImpl extends AbstractDaoImpl<TeamRecord> implements IT
       criteria.add(Restrictions.eq(TeamRecord.FIELD_SEASON, season));
       criteria.add(Restrictions.eq(TeamRecord.FIELD_TEAM, team));
       criteria.addOrder(Order.asc(TeamRecord.FIELD_ROUND_NUMBER));
+      return criteria.list();
+   }
+
+   @Override
+   public List<Integer> getPlayedRoundListBySeason(Season season)
+   {
+      Criteria criteria = createCriteria();
+      criteria.add(Restrictions.eq(TeamRecord.FIELD_SEASON, season));
+      criteria.add(Restrictions.ne(TeamRecord.FIELD_ROUND_NUMBER, 0));
+      criteria.setProjection(Projections.distinct(Projections.property(TeamRecord.FIELD_ROUND_NUMBER)));
       return criteria.list();
    }
 }

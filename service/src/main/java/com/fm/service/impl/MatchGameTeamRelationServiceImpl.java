@@ -2,11 +2,14 @@ package com.fm.service.impl;
 
 import com.fm.dao.IAbstractDao;
 import com.fm.dao.IMatchGameTeamRelationDao;
+import com.fm.domain.MatchGame;
 import com.fm.domain.MatchGameTeamRelation;
 import com.fm.service.IMatchGameTeamRelationService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * User: pawel.radomski
@@ -24,5 +27,12 @@ public class MatchGameTeamRelationServiceImpl extends AbstractServiceImpl<MatchG
    protected IAbstractDao<MatchGameTeamRelation> getDao()
    {
       return (IAbstractDao<MatchGameTeamRelation>) matchGameTeamRelationDao;
+   }
+
+   @Override
+   @Transactional
+   public List<MatchGameTeamRelation> getByGame(MatchGame game)
+   {
+      return matchGameTeamRelationDao.getByGame(game);
    }
 }

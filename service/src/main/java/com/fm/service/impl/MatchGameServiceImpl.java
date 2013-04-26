@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.Date;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -41,7 +42,7 @@ public class MatchGameServiceImpl extends AbstractServiceImpl<MatchGame> impleme
 
    @Override
    @Transactional
-   public MatchGame simulateMatch(Team hostTeam, Team guestTeam, Season s)
+   public MatchGame simulateMatch(Team hostTeam, Team guestTeam, Season s, int round)
    {
       Random random = new Random();
 
@@ -52,6 +53,7 @@ public class MatchGameServiceImpl extends AbstractServiceImpl<MatchGame> impleme
       matchGame.setHostScores(random.nextInt(4));
       matchGame.setMatchDate(new Date());
       matchGame.setSeason(season);
+      matchGame.setRound(round);
       matchGame = save(matchGame);
 
       MatchGameTeamRelation hostMatchTeamRelation = new MatchGameTeamRelation();
@@ -67,5 +69,12 @@ public class MatchGameServiceImpl extends AbstractServiceImpl<MatchGame> impleme
       matchGameTeamRelationService.save(guestMatchTeamRelation);
 
       return matchGame;
+   }
+
+   @Override
+   @Transactional
+   public List<MatchGame> getByRoundInSeason(Season season, Integer round)
+   {
+      return matchGameDao.getByRoundInSeason(season, round);
    }
 }

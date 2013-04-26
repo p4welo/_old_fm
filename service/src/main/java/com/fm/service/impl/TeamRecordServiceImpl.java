@@ -56,20 +56,17 @@ public class TeamRecordServiceImpl extends AbstractServiceImpl<TeamRecord> imple
          {
             TeamRecord hostRecord = oldRecords.get(i);
             TeamRecord guestRecord = oldRecords.get(i + 1);
-            MatchGame matchGame = matchGameService.simulateMatch(hostRecord.getTeam(), guestRecord.getTeam(), season);
+            MatchGame matchGame = matchGameService.simulateMatch(hostRecord.getTeam(), guestRecord.getTeam(), season,
+                    hostRecord.getRoundNumber() + 1);
 
             TeamRecord newHostRecord = recalculateTeamRecord(hostRecord, matchGame, true);
             hostRecord.setObjectState(ObjectStateEnum.INACTIVE);
             update(hostRecord);
-
-//            newHostRecord = save(newHostRecord);
             newRecords.add(newHostRecord);
 
             TeamRecord newGuestRecord = recalculateTeamRecord(guestRecord, matchGame, false);
             guestRecord.setObjectState(ObjectStateEnum.INACTIVE);
             update(guestRecord);
-
-//            newGuestRecord = save(newGuestRecord);
             newRecords.add(newGuestRecord);
          }
 
@@ -98,6 +95,13 @@ public class TeamRecordServiceImpl extends AbstractServiceImpl<TeamRecord> imple
    public List<TeamRecord> findAllTeamRecordsFromSeason(Team team, Season season)
    {
       return teamRecordDao.findAllTeamRecordsFromSeason(team, season);
+   }
+
+   @Override
+   @Transactional
+   public List<Integer> getPlayedRoundListBySeason(Season season)
+   {
+      return teamRecordDao.getPlayedRoundListBySeason(season);
    }
 
    @Override

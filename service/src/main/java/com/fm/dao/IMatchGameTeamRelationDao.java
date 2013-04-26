@@ -1,5 +1,10 @@
 package com.fm.dao;
 
+import com.fm.domain.MatchGame;
+import com.fm.domain.MatchGameTeamRelation;
+
+import java.util.List;
+
 /**
  * User: pawel.radomski
  * Date: 14.12.12
@@ -7,4 +12,5 @@ package com.fm.dao;
  */
 public interface IMatchGameTeamRelationDao
 {
+   List<MatchGameTeamRelation> getByGame(MatchGame game);
 }

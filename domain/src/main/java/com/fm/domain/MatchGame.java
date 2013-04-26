@@ -21,6 +21,8 @@ public class MatchGame extends IdentifiableEntity
 
    public static final String FIELD_GUEST_SCORES = "guestScores";
 
+   public static final String FIELD_ROUND = "round";
+
    @Id
    @GeneratedValue
    @Column
@@ -35,6 +37,10 @@ public class MatchGame extends IdentifiableEntity
    @JoinColumn(nullable = false)
    @NotNull
    private Season season;
+
+   @Column(nullable = true)
+   @NotNull
+   private Integer round;
 
    @Column(name = "host_scores", nullable = false)
    @NotNull
@@ -92,5 +98,15 @@ public class MatchGame extends IdentifiableEntity
    public void setGuestScores(int guestScores)
    {
       this.guestScores = guestScores;
+   }
+
+   public Integer getRound()
+   {
+      return round;
+   }
+
+   public void setRound(Integer round)
+   {
+      this.round = round;
    }
 }
