@@ -23,4 +23,6 @@ public interface ITeamRecordService extends IAbstractService<TeamRecord>
    void recalculatePlaces(List<TeamRecord> newRecords);
 
    List<TeamRecord> findAllTeamRecordsFromSeason(Team team, Season season);
+
+   List<Integer> getPlayedRoundListBySeason(Season season);
 }

@@ -1,6 +1,9 @@
 package com.fm.service;
 
+import com.fm.domain.MatchGame;
 import com.fm.domain.MatchGameTeamRelation;
+
+import java.util.List;
 
 /**
  * User: pawel.radomski
@@ -9,4 +12,5 @@ import com.fm.domain.MatchGameTeamRelation;
  */
 public interface IMatchGameTeamRelationService extends IAbstractService<MatchGameTeamRelation>
 {
+   List<MatchGameTeamRelation> getByGame(MatchGame game);
 }

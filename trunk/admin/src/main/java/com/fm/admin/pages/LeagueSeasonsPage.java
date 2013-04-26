@@ -3,7 +3,7 @@ package com.fm.admin.pages;
 import com.fm.admin.api.AdminApiMappings;
 import com.fm.admin.cmp.breadcrumb.LeagueDetailsBreadcrumb;
 import com.fm.admin.cmp.leagueSeasonsPage.tabbedPanel.ActualSeasonTab;
-import com.fm.admin.cmp.leagueSeasonsPage.tabbedPanel.PreviousSeasonsTab;
+import com.fm.admin.cmp.leagueSeasonsPage.tabbedPanel.SeasonMatchesTab;
 import com.fm.core.cmp.authorization.UserAuthorities;
 import com.fm.core.cmp.breadcrumb.BootstrapBreadcrumbPanel;
 import com.fm.core.cmp.tabbedPanel.BootstrapTabbedPanel;
@@ -55,12 +55,12 @@ public class LeagueSeasonsPage extends AdminAbstractPage
             return new ActualSeasonTab(id, new PropertyModel<League>(LeagueSeasonsPage.this, "league"));
          }
       });
-      tabs.add(new AbstractTab(new ResourceModel("previous.tab"))
+      tabs.add(new AbstractTab(new ResourceModel("matches.tab"))
       {
          @Override
          public WebMarkupContainer getPanel(String id)
          {
-            return new PreviousSeasonsTab(id, new PropertyModel<League>(LeagueSeasonsPage.this, "league"));
+            return new SeasonMatchesTab(id, new PropertyModel<League>(LeagueSeasonsPage.this, "league"));
          }
       });
       add(new BootstrapTabbedPanel("tabs", tabs));

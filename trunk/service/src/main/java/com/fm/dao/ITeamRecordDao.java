@@ -16,4 +16,6 @@ public interface ITeamRecordDao
    List<TeamRecord> findTeamRecordsBySeason(Season season, boolean orderByPlace);
 
    List<TeamRecord> findAllTeamRecordsFromSeason(Team team, Season season);
+
+   List<Integer> getPlayedRoundListBySeason(Season season);
 }
