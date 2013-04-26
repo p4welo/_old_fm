@@ -4,6 +4,7 @@ import com.fm.admin.cmp.leagueSeasonsPage.chart.ChartPanel;
 import com.fm.core.cmp.notify.Notification;
 import com.fm.domain.League;
 import com.fm.domain.Season;
+import com.fm.domain.Team;
 import com.fm.domain.TeamRecord;
 import com.fm.service.ISeasonService;
 import com.fm.service.ITeamRecordService;
@@ -40,6 +41,8 @@ public class ActualSeasonTab extends Panel
    private List<TeamRecord> teamRecords;
 
    private ChartPanel chart;
+
+   private Team selected;
 
    public ActualSeasonTab(String id, IModel<League> model)
    {
@@ -118,13 +121,14 @@ public class ActualSeasonTab extends Panel
             setVisible(season != null);
          }
       });
-      chart = new ChartPanel("chartPanel");
+      chart = new ChartPanel("chartPanel", new PropertyModel<Team>(this, "selected"), season);
       chart.setOutputMarkupId(true);
       add(chart);
    }
 
    private void executeOnClick(AjaxRequestTarget target, IModel<TeamRecord> model)
    {
+      selected = model.getObject().getTeam();
       target.add(chart);
    }
 }
