@@ -3,6 +3,7 @@ package com.fm.dao.impl;
 import com.fm.dao.ITeamRecordDao;
 import com.fm.domain.ObjectStateEnum;
 import com.fm.domain.Season;
+import com.fm.domain.Team;
 import com.fm.domain.TeamRecord;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Order;
@@ -32,6 +33,16 @@ public class TeamRecordDaoImpl extends AbstractDaoImpl<TeamRecord> implements IT
       {
          criteria.add(Restrictions.sqlRestriction("1=1 order by rand()"));
       }
+      return criteria.list();
+   }
+
+   @Override
+   public List<TeamRecord> findAllTeamRecordsFromSeason(Team team, Season season)
+   {
+      Criteria criteria = createCriteria();
+      criteria.add(Restrictions.eq(TeamRecord.FIELD_SEASON, season));
+      criteria.add(Restrictions.eq(TeamRecord.FIELD_TEAM, team));
+      criteria.addOrder(Order.asc(TeamRecord.FIELD_ROUND_NUMBER));
       return criteria.list();
    }
 }

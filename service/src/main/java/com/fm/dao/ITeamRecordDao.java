@@ -1,6 +1,7 @@
 package com.fm.dao;
 
 import com.fm.domain.Season;
+import com.fm.domain.Team;
 import com.fm.domain.TeamRecord;
 
 import java.util.List;
@@ -13,4 +14,6 @@ import java.util.List;
 public interface ITeamRecordDao
 {
    List<TeamRecord> findTeamRecordsBySeason(Season season, boolean orderByPlace);
+
+   List<TeamRecord> findAllTeamRecordsFromSeason(Team team, Season season);
 }

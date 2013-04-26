@@ -95,6 +95,13 @@ public class TeamRecordServiceImpl extends AbstractServiceImpl<TeamRecord> imple
 
    @Override
    @Transactional
+   public List<TeamRecord> findAllTeamRecordsFromSeason(Team team, Season season)
+   {
+      return teamRecordDao.findAllTeamRecordsFromSeason(team, season);
+   }
+
+   @Override
+   @Transactional
    public TeamRecord recalculateTeamRecord(TeamRecord oldRecord, MatchGame matchGame, Boolean isHost)
    {
       WinTypeEnum winType;
