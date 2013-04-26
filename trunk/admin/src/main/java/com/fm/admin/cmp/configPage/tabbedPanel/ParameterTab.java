@@ -73,6 +73,7 @@ public class ParameterTab extends Panel
             item.add(stateLabel);
 
             TextField valueField = new TextField("value", new PropertyModel(parameter, SystemParameter.FIELD_VALUE));
+
             valueField.add(new AjaxEventBehavior("onchange")
             {
                @Override
@@ -100,7 +101,7 @@ public class ParameterTab extends Panel
                systemParameterService.update(parameter);
             }
             Notification.success(getString("parameters.successfully.updated"));
-            target.add(ParameterTab.this);
+            target.add(form);
          }
       });
       form.setOutputMarkupId(true);

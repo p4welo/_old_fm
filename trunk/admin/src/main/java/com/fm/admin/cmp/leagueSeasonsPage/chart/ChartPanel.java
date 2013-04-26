@@ -66,6 +66,8 @@ public class ChartPanel extends Panel
       Options options = new Options();
       options.setChartOptions(new ChartOptions().setType(SeriesType.LINE));
 
+      options.setExporting(new ExportingOptions().setEnabled(false));
+
       List<String> xCategoryList = new ArrayList<String>();
       List<String> yCategoryList = new ArrayList<String>();
       List<Number> series = new ArrayList<Number>();

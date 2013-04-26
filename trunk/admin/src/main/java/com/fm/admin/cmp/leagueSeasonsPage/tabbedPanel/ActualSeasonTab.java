@@ -8,6 +8,7 @@ import com.fm.domain.Team;
 import com.fm.domain.TeamRecord;
 import com.fm.service.ISeasonService;
 import com.fm.service.ITeamRecordService;
+import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.ajax.AjaxEventBehavior;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
@@ -91,6 +92,10 @@ public class ActualSeasonTab extends Panel
                   executeOnClick(target, item.getModel());
                }
             });
+            if (teamRecord.getTeam().equals(selected))
+            {
+               item.add(AttributeModifier.append("class", "selectedElement"));
+            }
          }
       };
       add(teamListView);
@@ -129,6 +134,6 @@ public class ActualSeasonTab extends Panel
    private void executeOnClick(AjaxRequestTarget target, IModel<TeamRecord> model)
    {
       selected = model.getObject().getTeam();
-      target.add(chart);
+      target.add(ActualSeasonTab.this);
    }
 }

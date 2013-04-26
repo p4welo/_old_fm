@@ -40,6 +40,7 @@ public class TeamRecordDaoImpl extends AbstractDaoImpl<TeamRecord> implements IT
    public List<TeamRecord> findAllTeamRecordsFromSeason(Team team, Season season)
    {
       Criteria criteria = createCriteria();
+      criteria.add(Restrictions.ne(TeamRecord.FIELD_ROUND_NUMBER, 0));
       criteria.add(Restrictions.eq(TeamRecord.FIELD_SEASON, season));
       criteria.add(Restrictions.eq(TeamRecord.FIELD_TEAM, team));
       criteria.addOrder(Order.asc(TeamRecord.FIELD_ROUND_NUMBER));
