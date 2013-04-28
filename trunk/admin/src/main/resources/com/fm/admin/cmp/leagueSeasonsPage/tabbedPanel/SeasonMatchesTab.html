@@ -1,10 +1,19 @@
 <wicket:panel xmlns:wicket="http://wicket.apache.org">
-    <ul>
-        <li wicket:id="matches">
-            <span wicket:id="host"></span>
-            <span wicket:id="hostScore"></span> :
-            <span wicket:id="guestScore"></span>
-            <span wicket:id="guest"></span>
-        </li>
-    </ul>
+    <div class="table_toolbar" style="text-align: right">
+        <wicket:message key="round"/>
+        <select wicket:id="round"></select>
+    </div>
+    <table class="table table-hover">
+        <tr wicket:id="matches">
+            <td>
+                <span wicket:id="host"></span>
+            </td>
+            <td>
+                <span wicket:id="hostScore"></span>&nbsp;:&nbsp;<span wicket:id="guestScore"></span>
+            </td>
+            <td>
+                <span wicket:id="guest"></span>
+            </td>
+        </tr>
+    </table>
 </wicket:panel>

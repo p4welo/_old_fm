@@ -1,7 +1,7 @@
 package com.fm.admin.pages;
 
 import com.fm.admin.api.AdminApiMappings;
-import com.fm.admin.cmp.breadcrumb.LeagueDetailsBreadcrumb;
+import com.fm.admin.cmp.breadcrumb.LeagueSeasonBreadcrumb;
 import com.fm.admin.cmp.leagueSeasonsPage.tabbedPanel.ActualSeasonTab;
 import com.fm.admin.cmp.leagueSeasonsPage.tabbedPanel.SeasonMatchesTab;
 import com.fm.core.cmp.authorization.UserAuthorities;
@@ -40,6 +40,7 @@ public class LeagueSeasonsPage extends AdminAbstractPage
 
    public LeagueSeasonsPage(final PageParameters parameters)
    {
+      super();
       league = getLeague(parameters);
       initView();
    }
@@ -87,6 +88,6 @@ public class LeagueSeasonsPage extends AdminAbstractPage
    @Override
    protected BootstrapBreadcrumbPanel provideBreadcrumb(String id)
    {
-      return new LeagueDetailsBreadcrumb(id);
+      return new LeagueSeasonBreadcrumb(id);
    }
 }

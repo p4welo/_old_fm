@@ -118,7 +118,7 @@ CREATE TABLE match_game (
 	sid VARCHAR(32) NOT NULL,
 	match_date timestamp NOT NULL,
 	season_id INT(11) NOT NULL,
-	round_number INT NOT NULL DEFAULT 0,
+	round INT NOT NULL DEFAULT 0,
 	host_scores INT DEFAULT 0,
 	guest_scores INT DEFAULT 0,
 	FOREIGN KEY (season_id) REFERENCES season(id) ON DELETE CASCADE
