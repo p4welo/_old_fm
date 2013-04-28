@@ -5,7 +5,10 @@ import com.fm.service.IMatchGameService;
 import com.fm.service.IMatchGameTeamRelationService;
 import com.fm.service.ISeasonService;
 import com.fm.service.ITeamRecordService;
+import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.ajax.form.OnChangeAjaxBehavior;
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.markup.html.panel.Panel;
@@ -48,7 +51,7 @@ public class SeasonMatchesTab extends Panel
    public SeasonMatchesTab(String id, IModel<League> model)
    {
       super(id, model);
-
+      setOutputMarkupId(true);
       league = model.getObject();
       season = seasonService.getActiveSeason(league);
       if (season != null)
@@ -66,8 +69,26 @@ public class SeasonMatchesTab extends Panel
 
    private void initView()
    {
-      add(new ListView<MatchGame>("matches", matchGames)
+      DropDownChoice dropDownChoice = new DropDownChoice<Integer>("round", new PropertyModel<Integer>(this, "round"),
+              roundList);
+      dropDownChoice.add(new OnChangeAjaxBehavior()
       {
+         @Override
+         protected void onUpdate(AjaxRequestTarget target)
+         {
+            target.add(SeasonMatchesTab.this);
+         }
+      });
+      add(dropDownChoice);
+      add(new ListView<MatchGame>("matches", new PropertyModel<List<MatchGame>>(this, "matchGames"))
+      {
+         @Override
+         protected void onBeforeRender()
+         {
+            matchGames = matchGameService.getByRoundInSeason(season, round);
+            super.onBeforeRender();
+         }
+
          @Override
          protected void populateItem(ListItem<MatchGame> item)
          {
