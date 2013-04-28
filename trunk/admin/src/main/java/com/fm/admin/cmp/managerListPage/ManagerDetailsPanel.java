@@ -26,6 +26,7 @@ public class ManagerDetailsPanel extends DetailsPanel<Manager>
 
    private void initView()
    {
+
       add(new Label("name", new PropertyModel(this, "selected." + Manager.FIELD_NAME)));
       add(new Label("surname", new PropertyModel(this, "selected." + Manager.FIELD_SURNAME)));
       add(new Label("team", new PropertyModel(this, "selected." + Manager.FIELD_TEAM + "." + Team.FIELD_NAME)));
