@@ -29,14 +29,13 @@ public class LeagueSeasonBreadcrumb extends BootstrapBreadcrumbPanel
    {
       return Arrays.asList(
               new BreadCrumbAction(new SimpleNavigateAction(LeagueListPage.class), new ResourceModel("home.link")),
-              new BreadCrumbAction(new SimpleNavigateAction(LeagueListPage.class), new ResourceModel("league.list")),
-              new BreadCrumbAction(new SimpleNavigateAction(LeagueListPage.class), new ResourceModel("league.details"))
+              new BreadCrumbAction(new SimpleNavigateAction(LeagueListPage.class), new ResourceModel("league.list"))
       );
    }
 
    @Override
    public IModel provideActualLabelModel()
    {
-      return new ResourceModel("league.season");
+      return new ResourceModel("league.details");
    }
 }
