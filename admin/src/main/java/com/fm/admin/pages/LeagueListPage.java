@@ -3,7 +3,7 @@ package com.fm.admin.pages;
 import com.fm.admin.api.AdminApiMappings;
 import com.fm.admin.cmp.breadcrumb.LeagueListBreadcrumb;
 import com.fm.admin.cmp.leagueDetailsPage.window.NewLeagueWindow;
-import com.fm.admin.navigation.NavigateToLeagueDetailsPage;
+import com.fm.admin.navigation.NavigateToLeagueSeasonsPage;
 import com.fm.core.cmp.authorization.UserAuthorities;
 import com.fm.core.cmp.breadcrumb.BootstrapBreadcrumbPanel;
 import com.fm.core.cmp.newTable.AjaxDataTable;
@@ -110,7 +110,7 @@ public class LeagueListPage extends AdminAbstractPage
          @Override
          public void executeOnClick(AjaxRequestTarget target, IModel<League> model)
          {
-            new NavigateToLeagueDetailsPage(model.getObject()).navigate();
+            new NavigateToLeagueSeasonsPage(model.getObject()).navigate();
          }
       });
    }
