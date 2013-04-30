@@ -22,14 +22,17 @@
             &nbsp;
             <wicket:message key="page.name"/>
         </a>
-        <ul class="nav btn-group pull-right" style="margin-top: 5px;">
-            <li class="btn btn-inverse">
-                <a id="logout" href="#" style="padding: 0" wicket:id="logout">
-                    <i class="icon icon-share-alt"></i>
-                    <wicket:message key="logout.link"/>
-                </a>
-            </li>
-        </ul>
+
+        <div class="btn-group pull-right">
+            <a class="btn btn-small btn-inverse">
+                <i class="icon-envelope"></i>
+                <span class="caret"></span>
+            </a>
+            <a id="logout" class="btn btn-small btn-inverse" wicket:id="logout">
+                <i class="icon icon-share-alt"></i>
+                <wicket:message key="logout.link"/>
+            </a>
+        </div>
     </div>
 </div>
 
