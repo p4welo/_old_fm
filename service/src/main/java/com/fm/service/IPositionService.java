@@ -9,4 +9,5 @@ import com.fm.domain.Position;
  */
 public interface IPositionService extends IAbstractService<Position>
 {
+   Position getByShortName(String shortName);
 }

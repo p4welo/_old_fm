@@ -1,6 +1,15 @@
 package com.fm;
 
-import java.util.Random;
+import com.fm.domain.Player;
+import com.fm.service.INameService;
+import com.fm.service.IPositionService;
+import com.fm.service.ISurnameService;
+import com.fm.service.impl.NameServiceImpl;
+import com.fm.service.impl.PlayerGenerationStrategy;
+import com.fm.service.impl.PositionServiceImpl;
+import com.fm.service.impl.SurnameServiceImpl;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  * User: pawel
@@ -9,42 +18,32 @@ import java.util.Random;
  */
 public class Main
 {
-   public static int getPotential(int age)
-   {
-      int value;
-      double m = (3500 - 100 * age) / 17.0;
-      int s = 13;
-
-      Random r = new Random();
-      do
-      {
-         double val = r.nextGaussian() * s + m;
-         value = (int) Math.round(val);
-      }
-      while (value < 0 || value > 100);
-      return value;
-   }
-
    public static void main(String[] args) throws Exception
    {
+      ApplicationContext context = new ClassPathXmlApplicationContext(
+              "classpath:/spring/service-configuration-context.xml",
+              "classpath:/spring/dao-context.xml",
+              "classpath:/spring/service-context.xml");
+
+      INameService nameService = (INameService) context.getBean(NameServiceImpl.BEAN_NAME);
+      ISurnameService surnameService = (ISurnameService) context.getBean(SurnameServiceImpl.BEAN_NAME);
+      IPositionService positionService = (IPositionService) context.getBean(PositionServiceImpl.BEAN_NAME);
+      PlayerGenerationStrategy strategy = new PlayerGenerationStrategy();
+
       for (int i = 0; i < 20; i++)
       {
-         System.out.println("" + getPotential(18));
+         System.out.println(i + ": ======================================");
+         Player player = new Player();
+         player.setName(nameService.getRandom().toString());
+         player.setSurname(surnameService.getRandom().toString());
+
+         System.out.println(player.getName() + " " + player.getSurname());
+         int age = strategy.getAge();
+         System.out.println("Pozycja: " + positionService.getRandom().getFullName());
+         System.out.println("Wiek: " + age);
+         System.out.println("Potencjał: " + strategy.getPotential(age));
+
       }
 
-//      ApplicationContext context = new ClassPathXmlApplicationContext(
-//              "classpath:/spring/service-configuration-context.xml",
-//              "classpath:/spring/dao-context.xml",
-//              "classpath:/spring/service-context.xml");
-//
-//      PlayerServiceImpl playerService = (PlayerServiceImpl) context
-//              .getBean(PlayerServiceImpl.BEAN_NAME);
-//
-//      Player player = new Player();
-//      player.setBirth(new Date());
-//      player.setName("Pawel");
-//      player.setSurname("Radomski");
-
-//      playerService.save(player);
    }
 }

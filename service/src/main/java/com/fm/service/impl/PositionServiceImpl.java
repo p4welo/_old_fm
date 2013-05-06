@@ -5,6 +5,7 @@ import com.fm.dao.IPositionDao;
 import com.fm.domain.Position;
 import com.fm.service.IPositionService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 
@@ -25,5 +26,12 @@ public class PositionServiceImpl extends AbstractServiceImpl<Position> implement
    protected IAbstractDao<Position> getDao()
    {
       return (IAbstractDao<Position>) positionDao;
+   }
+
+   @Override
+   @Transactional
+   public Position getByShortName(String shortName)
+   {
+      return positionDao.getByShortName(shortName);
    }
 }

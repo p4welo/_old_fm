@@ -1,7 +1,10 @@
 package com.fm.service;
 
 import com.fm.domain.League;
+import com.fm.domain.Player;
 import com.fm.domain.Team;
+
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -21,4 +24,6 @@ public interface ITeamGenerationStrategy
    String generateCpuTeamName();
 
    Integer generateTeamAccount();
+
+   List<Player> generatePlayers(Team team);
 }
