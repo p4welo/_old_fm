@@ -29,7 +29,7 @@ public class Main
    {
       for (int i = 0; i < 20; i++)
       {
-         System.out.println("" + getPotential(35));
+         System.out.println("" + getPotential(18));
       }
 
 //      ApplicationContext context = new ClassPathXmlApplicationContext(

@@ -118,7 +118,7 @@ input.column_header {
 }
 
 .startScene.startPageBackground {
-    background: url('http://imperiumtapet.pl/site_media/wallpaper/44898/image/e0af1e1da69b8174fca9_1920x1200_cropromiar-niestandardowy.jpg') no-repeat center -117px;;
+    background: url('../img/login_bg.jpg') no-repeat center -117px;;
     height: 1000px;
 }
 
