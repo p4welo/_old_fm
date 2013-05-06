@@ -1,5 +1,7 @@
 package com.fm.dao;
 
+import com.fm.domain.Position;
+
 /**
  * User: pawel
  * Date: 01.12.12
@@ -7,4 +9,5 @@ package com.fm.dao;
  */
 public interface IPositionDao
 {
+   Position getByShortName(String shortName);
 }

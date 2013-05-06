@@ -1,17 +1,17 @@
 package com.fm.service.impl;
 
 import com.fm.domain.League;
+import com.fm.domain.Player;
 import com.fm.domain.Team;
 import com.fm.domain.TeamTypeEnum;
 import com.fm.domain.defined.SystemParameters;
-import com.fm.service.ILeagueService;
-import com.fm.service.ISystemParameterService;
-import com.fm.service.ITeamGenerationStrategy;
-import com.fm.service.ITeamService;
+import com.fm.service.*;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -26,6 +26,18 @@ public class TeamGenerationStrategyImpl implements ITeamGenerationStrategy
 {
    public static final String BEAN_NAME = "teamGenerationStrategy";
 
+   public static final int INIT_GK_COUNT = 2;
+
+   public static final int INIT_LB_COUNT = 3;
+
+   public static final int INIT_OB_COUNT = 6;
+
+   public static final int INIT_MIDDLE_P_COUNT = 4;
+
+   public static final int INIT_WING_P_COUNT = 4;
+
+   public static final int INIT_N_COUNT = 3;
+
    @Resource
    private ITeamService teamService;
 
@@ -33,7 +45,13 @@ public class TeamGenerationStrategyImpl implements ITeamGenerationStrategy
    private ILeagueService leagueService;
 
    @Resource
+   private IPlayerService playerService;
+
+   @Resource
    private ISystemParameterService systemParameterService;
+
+   @Resource
+   private IPlayerGenerationStrategy playerGenerationStrategy;
 
    @Override
    public void generateLeagueCpuTeams(League league)
@@ -89,6 +107,49 @@ public class TeamGenerationStrategyImpl implements ITeamGenerationStrategy
    }
 
    @Override
+   public List<Player> generatePlayers(Team team)
+   {
+      List<Player> players = new ArrayList<Player>();
+      for (int i = 0; i < INIT_GK_COUNT; i++)
+      {
+         Player player = playerGenerationStrategy.getGoalkeeper(team);
+         player = playerService.save(player);
+         players.add(player);
+      }
+      for (int i = 0; i < INIT_LB_COUNT; i++)
+      {
+         Player player = playerGenerationStrategy.getLibero(team);
+         player = playerService.save(player);
+         players.add(player);
+      }
+      for (int i = 0; i < INIT_OB_COUNT; i++)
+      {
+         Player player = playerGenerationStrategy.getDefender(team);
+         player = playerService.save(player);
+         players.add(player);
+      }
+      for (int i = 0; i < INIT_MIDDLE_P_COUNT; i++)
+      {
+         Player player = playerGenerationStrategy.getMiddleMidfielder(team);
+         player = playerService.save(player);
+         players.add(player);
+      }
+      for (int i = 0; i < INIT_WING_P_COUNT; i++)
+      {
+         Player player = playerGenerationStrategy.getWingMidfielder(team);
+         player = playerService.save(player);
+         players.add(player);
+      }
+      for (int i = 0; i < INIT_N_COUNT; i++)
+      {
+         Player player = playerGenerationStrategy.getStriker(team);
+         player = playerService.save(player);
+         players.add(player);
+      }
+      return players;
+   }
+
+   @Override
    @Transactional
    public Team generateHumanTeam(Team team)
    {
@@ -103,4 +164,5 @@ public class TeamGenerationStrategyImpl implements ITeamGenerationStrategy
 
       return team;
    }
+
 }

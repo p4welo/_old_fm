@@ -32,25 +32,29 @@ CREATE TABLE position (
     full_name varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE player_stats (
-	id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	object_state VARCHAR(30) NOT NULL DEFAULT 'ACTIVE',
-	sid VARCHAR(32) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
 CREATE TABLE player (
 	id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	object_state VARCHAR(30) NOT NULL DEFAULT 'ACTIVE',
 	sid VARCHAR(32) NOT NULL,
 	name varchar(15) NOT NULL,
     surname varchar(40) NOT NULL,
-    birth timestamp,
+	age int(11) NOT NULL DEFAULT 0,
 	position_id int(11) DEFAULT NULL,
-	player_stats_id int(11) NOT NULL,
 	team_id int(11) NOT NULL,
-	FOREIGN KEY (player_stats_id) REFERENCES player_stats (id) ON DELETE CASCADE,
-	FOREIGN KEY (team_id) REFERENCES team (id) ON DELETE CASCADE,
-	FOREIGN KEY (position_id) REFERENCES position (id) ON DELETE SET NULL
+	potential int(11) NOT NULL DEFAULT 0,
+	passing int(11) NOT NULL DEFAULT 0,
+	speed int(11) NOT NULL DEFAULT 0,
+	stamina int(11) NOT NULL DEFAULT 0,
+	energy int(11) NOT NULL DEFAULT 0,
+	crossing int(11) NOT NULL DEFAULT 0,
+	heading int(11) NOT NULL DEFAULT 0,
+    marking int(11) NOT NULL DEFAULT 0,
+    shots int(11) NOT NULL DEFAULT 0,
+    tackling int(11) NOT NULL DEFAULT 0,
+    dribbling int(11) NOT NULL DEFAULT 0,
+    goalkeeping int(11) NOT NULL DEFAULT 0,
+    FOREIGN KEY (team_id) REFERENCES team (id) ON DELETE CASCADE,
+    FOREIGN KEY (position_id) REFERENCES position (id) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE user (

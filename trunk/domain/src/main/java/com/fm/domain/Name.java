@@ -35,4 +35,10 @@ public class Name extends IdentifiableEntity
    {
       this.value = value;
    }
+
+   @Override
+   public String toString()
+   {
+      return this.value;
+   }
 }

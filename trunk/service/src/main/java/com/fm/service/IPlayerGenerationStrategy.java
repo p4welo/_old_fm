@@ -1,5 +1,8 @@
 package com.fm.service;
 
+import com.fm.domain.Player;
+import com.fm.domain.Team;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Barbara
@@ -9,5 +12,27 @@ package com.fm.service;
  */
 public interface IPlayerGenerationStrategy
 {
+   int getAge();
+
    int getPotential(int age);
+
+   int getHighAbility();
+
+   int getStandardAbility();
+
+   int getLowAbility();
+
+   Player getGoalkeeper(Team team);
+
+   Player getLibero(Team team);
+
+   Player getDefender(Team team);
+
+   Player getMiddleMidfielder(Team team);
+
+   Player getStriker(Team team);
+
+   Player getPlayer(Team team);
+
+   Player getWingMidfielder(Team team);
 }
