@@ -113,14 +113,69 @@ input.column_header {
     width: 120px !important;
 }
 
-.login-container {
-    background-color: #F7F7F7;
+.startScene {
+    overflow: hidden;
+}
+
+.startScene.startPageBackground {
+    background: url('http://imperiumtapet.pl/site_media/wallpaper/44898/image/e0af1e1da69b8174fca9_1920x1200_cropromiar-niestandardowy.jpg') no-repeat center -117px;;
+    height: 1000px;
+}
+
+.startScene.startPageBackground .contentWrapper {
+    padding-right: 615px;
+    padding-top: 200px;
+}
+
+.startScene.loginScene.startPageBackground .contentWrapper {
+    padding-right: 0;
+}
+
+.startScene.loginScene.startPageBackground .contentWrapper h3 {
+    text-align: center;
+    width: auto;
+}
+
+.startScene.loginScene.startPageBackground .contentWrapper h4 {
+    font-family: OpenSansLight, "Myriad Pro", sans-serif;
+    color: #fff;
+    text-align: center;
+    width: auto;
+    font-weight: normal;
+    text-shadow: 1px 1px 1px #222;
+    font-size: 20px;
+    line-height: 1;
+    margin-bottom: 2px;
+}
+
+.loginScene .login-container {
     margin-right: auto;
     margin-left: auto;
-    border: 2px solid #cccccc;
-    margin-top: 60px;
-    padding-top: 20px;
-    width: 500px;
+    padding: 20px;
+    width: 300px;
+    background: #fff;
+    border-radius: 3px;
+    -o-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    box-shadow: 0 0 15px black;
+    -webkit-box-shadow: 0 0 10px #333;
+    -moz-box-shadow: 0 0 10px #333;
+    -o-box-shadow: 0 0 10px #333;
+    -ms-box-shadow: 0 0 10px #333;
+}
+
+.loginScene .login-container .btn {
+    margin-right: 23px;
+}
+
+.loginScene .form-horizontal .control-label {
+    width: 47px;
+}
+
+.loginScene .form-horizontal .controls {
+    margin-left: 57px;
 }
 
 .group-unit {

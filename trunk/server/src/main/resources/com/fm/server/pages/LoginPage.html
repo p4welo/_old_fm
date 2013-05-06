@@ -9,47 +9,102 @@
 </head>
 <body>
 <script src="static/bootstrap/js/bootstrap.min.js"></script>
-<div class="container">
-    <form wicket:id="signInForm" class="form-horizontal">
-        <div class="login-container">
-            <div class="control-group">
-                <div class="controls">
-                    <div wicket:id="feedback"></div>
-                </div>
-            </div>
 
-            <div class="control-group">
-                <label class="control-label">
-                    <wicket:message key="username"/>
-                </label>
 
-                <div class="controls">
-                    <input wicket:id="username" type="text"/>
-                    <wicket:container wicket:id="usernameFeedback"/>
-                </div>
+<div class="startScene startPageBackground loginScene">
+    <div class="centered">
+        <div class="contentWrapper">
+            <!--<h3>-->
+            <!--header-->
+            <!--</h3>-->
+            <!--<h4>-->
+            <!--subheader-->
+            <!--</h4>-->
+            <form wicket:id="signInForm" class="form-horizontal login-form">
+                <div class="login-container">
+                    <div class="control-group">
+                        <div class="controls">
+                            <div wicket:id="feedback"></div>
+                        </div>
+                    </div>
 
-            </div>
-            <div class="control-group">
-                <label class="control-label">
-                    <wicket:message key="password"/>
-                </label>
+                    <div class="control-group">
+                        <label class="control-label">
+                            <wicket:message key="username"/>
+                        </label>
 
-                <div class="controls">
-                    <input wicket:id="password" type="password"/>
-                    <wicket:container wicket:id="passwordFeedback"/>
+                        <div class="controls">
+                            <input wicket:id="username" type="text"/>
+                            <wicket:container wicket:id="usernameFeedback"/>
+                        </div>
+
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">
+                            <wicket:message key="password"/>
+                        </label>
+
+                        <div class="controls">
+                            <input wicket:id="password" type="password"/>
+                            <wicket:container wicket:id="passwordFeedback"/>
+                        </div>
+                    </div>
+                    <div class="control-group" style="margin-bottom: 0px">
+                        <div class="controls">
+                            <input type="submit" class="btn btn-primary btn-action pull-right"
+                                   wicket:message="value:button.login">
+                            <a wicket:id="register" class="btn">
+                                <wicket:message key="button.register"/>
+                            </a>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="control-group">
-                <div class="controls">
-                    <input type="submit" class="btn btn-success" wicket:message="value:button.login"/>
-                    <a wicket:id="register" class="btn">
-                        <wicket:message key="button.register"/>
-                    </a>
-                </div>
-            </div>
+            </form>
         </div>
-    </form>
+    </div>
 </div>
+
+<!--<div class="container">-->
+<!--<form wicket:id="signInForm" class="form-horizontal">-->
+<!--<div class="login-container">-->
+<!--<div class="control-group">-->
+<!--<div class="controls">-->
+<!--<div wicket:id="feedback"></div>-->
+<!--</div>-->
+<!--</div>-->
+
+<!--<div class="control-group">-->
+<!--<label class="control-label">-->
+<!--<wicket:message key="username"/>-->
+<!--</label>-->
+
+<!--<div class="controls">-->
+<!--<input wicket:id="username" type="text"/>-->
+<!--<wicket:container wicket:id="usernameFeedback"/>-->
+<!--</div>-->
+
+<!--</div>-->
+<!--<div class="control-group">-->
+<!--<label class="control-label">-->
+<!--<wicket:message key="password"/>-->
+<!--</label>-->
+
+<!--<div class="controls">-->
+<!--<input wicket:id="password" type="password"/>-->
+<!--<wicket:container wicket:id="passwordFeedback"/>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="control-group">-->
+<!--<div class="controls">-->
+<!--<input type="submit" class="btn btn-success" wicket:message="value:button.login"/>-->
+<!--<a wicket:id="register" class="btn">-->
+<!--<wicket:message key="button.register"/>-->
+<!--</a>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</form>-->
+<!--</div>-->
 <!--</div>-->
 
 </body>
