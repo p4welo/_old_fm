@@ -1,46 +1,69 @@
-#background {
-    z-index: -999;
-    min-height: 100%;
-    min-width: 524px;
-    width: 100%;
-    height: auto;
-    position: fixed;
-    top: 0;
-    left: 0;
+header {
+    height: 61px;
+    background: url('http://img.geocaching.com/cache/large/5db4fab7-00d6-4aed-b6de-82cc819983e2.jpg');
+    box-shadow: 0 1px 12px #333;
+    overflow: hidden;
+    position: relative;
+    z-index: 1001;
 }
 
-.body-container {
-    margin-top: 60px;
-    background-color: white;
-    min-height: 500px;
-    border-radius: 17px 17px 17px 17px;
+header.appHeader {
+    box-shadow: none;
+    -o-box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    -ms-box-shadow: none;
 }
 
-.transparent {
-    zoom: 1;
-    filter: alpha(opacity = 80);
-    opacity: 0.8;
+header .navbar {
+    margin-top: 11px;
 }
 
-.not-transparent {
-    filter: alpha(opacity = 100);
-    opacity: 1.0;
+header .navbar .navbar-inner {
+    border: 0;
+    box-shadow: none;
+    -o-box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    -ms-box-shadow: none;
+    border-radius: 0;
+    -o-border-radius: 0;
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    -ms-border-radius: 0;
+    min-height: 0;
+    padding: 0 20px;
+    background: none;
 }
 
-.shadowed {
-    box-shadow: 0 0 7px black;
-    -o-box-shadow: 0 0 7px black;
-    -ms-box-shadow: 0 0 7px black;
-    -moz-box-shadow: 0 0 7px black;
-    -webkit-box-shadow: 0 0 7px black;
+.navbar .nav>li>a {
+    background: #113959;
+    margin-right: 5px;
+    text-shadow: none;
+    border-radius: 4px 4px 0 0;
+    -o-border-radius: 4px 4px 0 0;
+    -moz-border-radius: 4px 4px 0 0;
+    -webkit-border-radius: 4px 4px 0 0;
+    -ms-border-radius: 4px 4px 0 0;
+    color: #fff;
+    font-family: OpenSansLight, "Myriad Pro", sans-serif;
+    font-size: 14px;
+    margin-top: 10px;
 }
 
-.sub {
-    margin-top: 0px !important;
+.navbar .nav>li>a:hover {
+    background: #144c72;
+    color: #fff;
 }
 
-.position-pitch {
-    background-image: url("img/pitch2.jpg");
-    background-repeat: no-repeat;
-
+header .navbar .nav>.active>a, header .navbar .nav>.active>a:hover, header .navbar .nav>.active>a:focus {
+    box-shadow: none;
+    -o-box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    -ms-box-shadow: none;
+    background: #fff;
+    font-size: 16px;
+    padding: 15px 15px;
+    margin-top: 0;
 }
