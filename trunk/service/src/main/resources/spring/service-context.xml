@@ -7,6 +7,8 @@
 
     <context:component-scan base-package="com.fm.service"/>
 
+    <import resource="classpath:spring/mail-context.xml"/>
+
     <bean id="passwordEncoder" class="org.springframework.security.authentication.encoding.ShaPasswordEncoder">
         <constructor-arg index="0" value="256"/>
     </bean>

@@ -1,13 +1,7 @@
 package com.fm;
 
-import com.fm.domain.Player;
-import com.fm.service.INameService;
-import com.fm.service.IPositionService;
-import com.fm.service.ISurnameService;
-import com.fm.service.impl.NameServiceImpl;
-import com.fm.service.impl.PlayerGenerationStrategy;
-import com.fm.service.impl.PositionServiceImpl;
-import com.fm.service.impl.SurnameServiceImpl;
+import com.fm.service.IMailService;
+import com.fm.service.impl.MailServiceImpl;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -25,25 +19,29 @@ public class Main
               "classpath:/spring/dao-context.xml",
               "classpath:/spring/service-context.xml");
 
-      INameService nameService = (INameService) context.getBean(NameServiceImpl.BEAN_NAME);
-      ISurnameService surnameService = (ISurnameService) context.getBean(SurnameServiceImpl.BEAN_NAME);
-      IPositionService positionService = (IPositionService) context.getBean(PositionServiceImpl.BEAN_NAME);
-      PlayerGenerationStrategy strategy = new PlayerGenerationStrategy();
+//      INameService nameService = (INameService) context.getBean(NameServiceImpl.BEAN_NAME);
+      IMailService mailService = (IMailService) context.getBean(MailServiceImpl.BEAN_NAME);
+      mailService.testSend();
+      int i = 5;
 
-      for (int i = 0; i < 20; i++)
-      {
-         System.out.println(i + ": ======================================");
-         Player player = new Player();
-         player.setName(nameService.getRandom().toString());
-         player.setSurname(surnameService.getRandom().toString());
-
-         System.out.println(player.getName() + " " + player.getSurname());
-         int age = strategy.getAge();
-         System.out.println("Pozycja: " + positionService.getRandom().getFullName());
-         System.out.println("Wiek: " + age);
-         System.out.println("Potencjał: " + strategy.getPotential(age));
-
-      }
+//      ISurnameService surnameService = (ISurnameService) context.getBean(SurnameServiceImpl.BEAN_NAME);
+//      IPositionService positionService = (IPositionService) context.getBean(PositionServiceImpl.BEAN_NAME);
+//      PlayerGenerationStrategy strategy = new PlayerGenerationStrategy();
+//
+//      for (int i = 0; i < 20; i++)
+//      {
+//         System.out.println(i + ": ======================================");
+//         Player player = new Player();
+//         player.setName(nameService.getRandom().toString());
+//         player.setSurname(surnameService.getRandom().toString());
+//
+//         System.out.println(player.getName() + " " + player.getSurname());
+//         int age = strategy.getAge();
+//         System.out.println("Pozycja: " + positionService.getRandom().getFullName());
+//         System.out.println("Wiek: " + age);
+//         System.out.println("Potencjał: " + strategy.getPotential(age));
+//
+//      }
 
    }
 }
