@@ -16,7 +16,7 @@ import java.util.List;
  * Time: 14:59
  * To change this template use File | Settings | File Templates.
  */
-public class LeagueDaoImplTest extends AbstractDaoTest<League>
+public class LeagueDaoImplTest extends IdentifiableDaoTest<League>
 {
    @Resource
    private ILeagueDao leagueDao;

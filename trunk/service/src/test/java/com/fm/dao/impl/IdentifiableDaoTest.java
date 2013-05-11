@@ -8,11 +8,7 @@ import org.hibernate.SessionFactory;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.transaction.TransactionConfiguration;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import javax.validation.ConstraintViolation;
@@ -28,15 +24,12 @@ import static org.junit.Assert.*;
  * Date: 10.05.13
  * Time: 16:11
  */
-@RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations =
         {
                 "classpath:spring/test-dao-context.xml"
         })
-@TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = true)
-@Transactional()
 @Ignore
-public abstract class AbstractDaoTest<T extends IdentifiableEntity>
+public abstract class IdentifiableDaoTest<T extends IdentifiableEntity> extends AbstractDaoTest
 {
    @Resource
    protected SessionFactory sessionFactory;

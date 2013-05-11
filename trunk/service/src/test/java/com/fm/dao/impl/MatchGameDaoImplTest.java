@@ -19,7 +19,7 @@ import java.util.List;
  * Time: 17:29
  * To change this template use File | Settings | File Templates.
  */
-public class MatchGameDaoImplTest extends AbstractDaoTest<MatchGame>
+public class MatchGameDaoImplTest extends IdentifiableDaoTest<MatchGame>
 {
    @Resource
    private IMatchGameDao matchGameDao;

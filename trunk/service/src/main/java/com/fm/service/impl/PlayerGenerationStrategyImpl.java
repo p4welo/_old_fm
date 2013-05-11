@@ -20,8 +20,8 @@ import java.util.Random;
  * Time: 15:39
  * To change this template use File | Settings | File Templates.
  */
-@Service(PlayerGenerationStrategy.BEAN_NAME)
-public class PlayerGenerationStrategy implements IPlayerGenerationStrategy
+@Service(PlayerGenerationStrategyImpl.BEAN_NAME)
+public class PlayerGenerationStrategyImpl implements IPlayerGenerationStrategy
 {
    public static final String BEAN_NAME = "playerGenerationStrategy";
 

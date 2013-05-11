@@ -20,7 +20,7 @@ import java.util.List;
  * Time: 17:36
  * To change this template use File | Settings | File Templates.
  */
-public class TeamRecordDaoImplTest extends AbstractDaoTest<TeamRecord>
+public class TeamRecordDaoImplTest extends IdentifiableDaoTest<TeamRecord>
 {
    @Resource
    private ITeamRecordDao teamRecordDao;

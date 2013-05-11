@@ -18,7 +18,7 @@ import java.util.List;
  * Time: 17:32
  * To change this template use File | Settings | File Templates.
  */
-public class SeasonDaoImplTest extends AbstractDaoTest<Season>
+public class SeasonDaoImplTest extends IdentifiableDaoTest<Season>
 {
    @Resource
    private ISeasonDao seasonDao;
