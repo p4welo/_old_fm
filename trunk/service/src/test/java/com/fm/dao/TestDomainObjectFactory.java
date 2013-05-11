@@ -3,6 +3,8 @@ package com.fm.dao;
 import com.fm.domain.*;
 import com.fm.service.util.SidUtils;
 
+import java.util.Date;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Barbara
@@ -71,5 +73,69 @@ public class TestDomainObjectFactory
       manager.setTeam(team);
       manager.setUser(user);
       return manager;
+   }
+
+   public static MatchGame getMatchGame(Season season)
+   {
+      MatchGame game = new MatchGame();
+      game.setSid(SidUtils.generate());
+      game.setObjectState(ObjectStateEnum.ACTIVE);
+      game.setHostScores(1);
+      game.setGuestScores(0);
+      game.setMatchDate(new Date());
+      game.setSeason(season);
+      game.setRound(3);
+      return game;
+   }
+
+   public static Position getPosition()
+   {
+      Position position = new Position();
+      position.setSid(SidUtils.generate());
+      position.setObjectState(ObjectStateEnum.ACTIVE);
+      position.setFullName("Full Position Name");
+      position.setShortName("SN");
+      return position;
+   }
+
+   public static Season getSeason(League league)
+   {
+      Season season = new Season();
+      season.setSid(SidUtils.generate());
+      season.setObjectState(ObjectStateEnum.ACTIVE);
+      season.setLeague(league);
+      season.setNumber(1);
+      return season;
+   }
+
+   public static Team getTeam(League league)
+   {
+      Team team = new Team();
+      team.setSid(SidUtils.generate());
+      team.setObjectState(ObjectStateEnum.ACTIVE);
+      team.setLeague(league);
+      team.setName("FC Team");
+      team.setType(TeamTypeEnum.HUMAN);
+      team.setAccount(100000);
+      return team;
+   }
+
+   public static TeamRecord getTeamRecord(Team team, Season season)
+   {
+      TeamRecord teamRecord = new TeamRecord();
+      teamRecord.setSid(SidUtils.generate());
+      teamRecord.setObjectState(ObjectStateEnum.ACTIVE);
+      teamRecord.setTeam(team);
+      teamRecord.setSeason(season);
+      teamRecord.setTeamName(team.getName());
+      teamRecord.setPlace(2);
+      teamRecord.setWinsCount(3);
+      teamRecord.setDrawsCount(2);
+      teamRecord.setLosesCount(1);
+      teamRecord.setGoalsScored(11);
+      teamRecord.setGoalsAllowed(4);
+      teamRecord.setGoalsDifference(7);
+      teamRecord.setRoundNumber(3);
+      return teamRecord;
    }
 }
