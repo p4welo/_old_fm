@@ -16,7 +16,7 @@ import java.util.List;
  * Time: 17:31
  * To change this template use File | Settings | File Templates.
  */
-public class PositionDaoImplTest extends AbstractDaoTest<Position>
+public class PositionDaoImplTest extends IdentifiableDaoTest<Position>
 {
    @Resource
    private IPositionDao positionDao;

@@ -18,7 +18,7 @@ import java.util.List;
  * Time: 14:51
  * To change this template use File | Settings | File Templates.
  */
-public class AuthorityDaoImplTest extends AbstractDaoTest<Authority>
+public class AuthorityDaoImplTest extends IdentifiableDaoTest<Authority>
 {
    @Resource
    private IAuthorityDao authorityDao;

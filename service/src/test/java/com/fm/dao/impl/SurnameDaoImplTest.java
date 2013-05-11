@@ -16,7 +16,7 @@ import java.util.List;
  * Time: 15:19
  * To change this template use File | Settings | File Templates.
  */
-public class SurnameDaoImplTest extends AbstractDaoTest<Surname>
+public class SurnameDaoImplTest extends IdentifiableDaoTest<Surname>
 {
    @Resource
    private ISurnameDao surnameDao;

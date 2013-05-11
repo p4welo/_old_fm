@@ -20,7 +20,7 @@ import java.util.List;
  * Time: 17:23
  * To change this template use File | Settings | File Templates.
  */
-public class ManagerDaoImplTest extends AbstractDaoTest<Manager>
+public class ManagerDaoImplTest extends IdentifiableDaoTest<Manager>
 {
    @Resource
    private IManagerDao managerDao;
