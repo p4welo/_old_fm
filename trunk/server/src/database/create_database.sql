@@ -10,7 +10,8 @@ CREATE TABLE league (
 	object_state VARCHAR(30) NOT NULL DEFAULT 'ACTIVE',
 	sid VARCHAR(32) NOT NULL,
 	name VARCHAR(15) NOT NULL,
-	level INT(11) NOT NULL
+	level INT(11) NOT NULL,
+	UNIQUE (sid)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE team (
@@ -21,7 +22,8 @@ CREATE TABLE team (
 	account INT(11) NOT NULL,
 	league_id INT(11) DEFAULT NULL,
 	type VARCHAR(30) NOT NULL,
-	FOREIGN KEY (league_id) REFERENCES league(id) ON DELETE SET NULL
+	FOREIGN KEY (league_id) REFERENCES league(id) ON DELETE SET NULL,
+	UNIQUE (sid)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE position (
@@ -29,7 +31,8 @@ CREATE TABLE position (
 	object_state VARCHAR(30) NOT NULL DEFAULT 'ACTIVE',
     sid VARCHAR(32) NOT NULL,
     short_name varchar(5) NOT NULL,
-    full_name varchar(30) NOT NULL
+    full_name varchar(30) NOT NULL,
+	UNIQUE (sid)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE player (
@@ -54,7 +57,8 @@ CREATE TABLE player (
     dribbling int(11) NOT NULL DEFAULT 0,
     goalkeeping int(11) NOT NULL DEFAULT 0,
     FOREIGN KEY (team_id) REFERENCES team (id) ON DELETE CASCADE,
-    FOREIGN KEY (position_id) REFERENCES position (id) ON DELETE SET NULL
+    FOREIGN KEY (position_id) REFERENCES position (id) ON DELETE SET NULL,
+	UNIQUE (sid)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE user (
@@ -63,7 +67,8 @@ CREATE TABLE user (
 	sid VARCHAR(32) NOT NULL,
 	login VARCHAR(15) NOT NULL,
 	password VARCHAR(65) NOT NULL,
-	email VARCHAR(30) NOT NULL
+	email VARCHAR(30) NOT NULL,
+	UNIQUE (sid)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE manager (
@@ -75,7 +80,8 @@ CREATE TABLE manager (
 	team_id INT(11) DEFAULT NULL,
 	user_id INT(11) NOT NULL,
 	FOREIGN KEY (team_id) REFERENCES team(id) ON DELETE SET NULL,
-	FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE
+	FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE,
+	UNIQUE (sid)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE authority (
@@ -84,7 +90,8 @@ CREATE TABLE authority (
 	sid VARCHAR(32) NOT NULL,
 	user_id INT(11) NOT NULL,
 	authority VARCHAR(30) NOT NULL,
-	FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE
+	FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE,
+	UNIQUE (sid)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE season (
@@ -93,7 +100,8 @@ CREATE TABLE season (
 	sid VARCHAR(32) NOT NULL,
 	number INT(5),
 	league_id INT(11) NOT NULL,
-	FOREIGN KEY (league_id) REFERENCES league(id) ON DELETE CASCADE
+	FOREIGN KEY (league_id) REFERENCES league(id) ON DELETE CASCADE,
+	UNIQUE (sid)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE team_record (
@@ -113,7 +121,8 @@ CREATE TABLE team_record (
     draws_count INT NOT NULL DEFAULT 0,
     loses_count INT NOT NULL DEFAULT 0,
 	FOREIGN KEY (team_id) REFERENCES team(id) ON DELETE SET NULL,
-	FOREIGN KEY (season_id) REFERENCES season(id) ON DELETE CASCADE
+	FOREIGN KEY (season_id) REFERENCES season(id) ON DELETE CASCADE,
+	UNIQUE (sid)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE match_game (
@@ -125,7 +134,8 @@ CREATE TABLE match_game (
 	round INT NOT NULL DEFAULT 0,
 	host_scores INT DEFAULT 0,
 	guest_scores INT DEFAULT 0,
-	FOREIGN KEY (season_id) REFERENCES season(id) ON DELETE CASCADE
+	FOREIGN KEY (season_id) REFERENCES season(id) ON DELETE CASCADE,
+	UNIQUE (sid)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE match_game_team_relation (
@@ -136,7 +146,8 @@ CREATE TABLE match_game_team_relation (
 	team_id INT(11) NOT NULL,
 	is_host_team BOOLEAN,
 	FOREIGN KEY (match_game_id) REFERENCES match_game(id) ON DELETE CASCADE,
-	FOREIGN KEY (team_id) REFERENCES team(id) ON DELETE CASCADE
+	FOREIGN KEY (team_id) REFERENCES team(id) ON DELETE CASCADE,
+	UNIQUE (sid)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE match_story (
@@ -146,21 +157,24 @@ CREATE TABLE match_story (
 	match_game_id INT(11) NOT NULL,
 	story_line VARCHAR(40),
 	time timestamp,
-	FOREIGN KEY (match_game_id) REFERENCES match_game(id) ON DELETE CASCADE
+	FOREIGN KEY (match_game_id) REFERENCES match_game(id) ON DELETE CASCADE,
+	UNIQUE (sid)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE name (
     id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	object_state VARCHAR(30) NOT NULL DEFAULT 'ACTIVE',
     sid VARCHAR(32) NOT NULL,
-    value VARCHAR(30) DEFAULT NULL
+    value VARCHAR(30) DEFAULT NULL,
+	UNIQUE (sid)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE surname (
     id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	object_state VARCHAR(30) NOT NULL DEFAULT 'ACTIVE',
     sid VARCHAR(32) NOT NULL,
-    value VARCHAR(30) DEFAULT NULL
+    value VARCHAR(30) DEFAULT NULL,
+	UNIQUE (sid)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE position_area (
@@ -169,7 +183,8 @@ CREATE TABLE position_area (
     sid VARCHAR(32) NOT NULL,
     area INT(5),
     position_id int(11) NOT NULL,
-    FOREIGN KEY (position_id) REFERENCES position (id) ON DELETE CASCADE
+    FOREIGN KEY (position_id) REFERENCES position (id) ON DELETE CASCADE,
+	UNIQUE (sid)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE system_parameter (
@@ -177,5 +192,6 @@ CREATE TABLE system_parameter (
 	object_state VARCHAR(30) NOT NULL DEFAULT 'ACTIVE',
     sid VARCHAR(32) NOT NULL,
     pkey VARCHAR(30) NOT NULL,
-    value VARCHAR(30) DEFAULT NULL
+    value VARCHAR(30) DEFAULT NULL,
+	UNIQUE (sid)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
