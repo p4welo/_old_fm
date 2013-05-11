@@ -15,6 +15,8 @@ import javax.validation.constraints.NotNull;
 @MappedSuperclass
 public abstract class IdentifiableEntity extends StatefulEntity
 {
+   public static final String NON_UNIQUE_SID_MESSAGE = "sid.not.unique";
+
    public static final String FIELD_SID = "sid";
 
    @Column(nullable = false, length = 32)

@@ -3,12 +3,14 @@ package com.fm.core.cmp.breadcrumb;
 import com.fm.core.navigation.NavigateAction;
 import org.apache.wicket.model.IModel;
 
+import java.io.Serializable;
+
 /**
  * User: pawel.radomski
  * Date: 09.04.13
  * Time: 11:42
  */
-public class BreadCrumbAction
+public class BreadCrumbAction implements Serializable
 {
    protected NavigateAction navigateAction;
 
