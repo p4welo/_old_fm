@@ -15,10 +15,8 @@ INSERT INTO team (sid, name, account, league_id, type) VALUES ('9kvjjc822c05d1e4
 INSERT INTO team (sid, name, account, league_id, type) VALUES ('fkvjjc822c05s1e495078aed80a96s33', 'Kmicic Kruszyna', 1100, (SELECT id FROM league WHERE name = 'Ekstraklasa'), 'CPU');
 INSERT INTO team (sid, name, account, league_id, type) VALUES ('hkvjjc822c05a1e495078aed80a96s33', 'Vineta Wolin', 1200, (SELECT id FROM league WHERE name = 'Ekstraklasa'), 'CPU');
 INSERT INTO team (sid, name, account, league_id, type) VALUES ('jkvjjc822c05q1e495078aed80a96s33', 'Ogniwo Babinek', 3500, (SELECT id FROM league WHERE name = 'Ekstraklasa'), 'CPU');
-INSERT INTO team (sid, name, account, league_id, type) VALUES ('ykvjjc822c05w1e495078aed80a96s33', 'GKS Wisielec', 400, (SELECT id FROM league WHERE name = 'Ekstraklasa'), 'CPU');
 
 -- 1 LIGA
-INSERT INTO team (sid, name, account, league_id, type) VALUES ('kkvjjc822c0r41e491078aed80a96s33', 'Tur Turze Rogi', 5000, (SELECT id FROM league WHERE name = 'I liga'), 'CPU');
 INSERT INTO team (sid, name, account, league_id, type) VALUES ('qkvjjc822c0t41e490278aed80a96s33', 'Tytan Wisznice', 1100, (SELECT id FROM league WHERE name = 'I liga'), 'CPU');
 INSERT INTO team (sid, name, account, league_id, type) VALUES ('1kvjjc822c0g41e490738aed80a96s33', 'Ruch Ryki', 3200, (SELECT id FROM league WHERE name = 'I liga'), 'CPU');
 INSERT INTO team (sid, name, account, league_id, type) VALUES ('2kvjjc822c0f41e490784aed80a96s33', 'Absolwent Domaszewnica', 4000, (SELECT id FROM league WHERE name = 'I liga'), 'CPU');
