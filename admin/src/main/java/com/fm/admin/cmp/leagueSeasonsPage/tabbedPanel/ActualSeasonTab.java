@@ -1,6 +1,7 @@
 package com.fm.admin.cmp.leagueSeasonsPage.tabbedPanel;
 
 import com.fm.admin.cmp.leagueSeasonsPage.chart.ChartPanel;
+import com.fm.admin.navigation.NavigateToTeamDetailsPage;
 import com.fm.core.cmp.notify.Notification;
 import com.fm.domain.League;
 import com.fm.domain.Season;
@@ -61,12 +62,11 @@ public class ActualSeasonTab extends Panel
       final ListView<TeamRecord> teamListView = new ListView<TeamRecord>("teams",
               new PropertyModel<List<? extends TeamRecord>>(this, "teamRecords"))
       {
-
          @Override
-         protected void onBeforeRender()
+         protected void onConfigure()
          {
             teamRecords = teamRecordService.findTeamRecordsBySeason(season, true);
-            super.onBeforeRender();
+            super.onConfigure();
          }
 
          @Override
@@ -124,6 +124,21 @@ public class ActualSeasonTab extends Panel
          protected void onConfigure()
          {
             setVisible(season != null);
+         }
+      });
+      add(new AjaxLink<Void>("teamDetails")
+      {
+         @Override
+         protected void onConfigure()
+         {
+            setEnabled(league != null);
+            super.onConfigure();
+         }
+
+         @Override
+         public void onClick(AjaxRequestTarget target)
+         {
+            new NavigateToTeamDetailsPage(selected);
          }
       });
       chart = new ChartPanel("chartPanel", new PropertyModel<Team>(this, "selected"), season);

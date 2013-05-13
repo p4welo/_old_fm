@@ -50,10 +50,10 @@ public class LeagueTeamsPanel extends Panel
       ListView<Team> teamListView = new ListView<Team>("teams", new PropertyModel<List<Team>>(this, "teams"))
       {
          @Override
-         protected void onBeforeRender()
+         protected void onConfigure()
          {
             teams = teamService.findTeamsFromLeague(league);
-            super.onBeforeRender();
+            super.onConfigure();
          }
 
          @Override

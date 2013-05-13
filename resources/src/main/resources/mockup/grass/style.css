@@ -1,0 +1,112 @@
+header {
+    height: 61px;
+    background: url('http://sg.sea.123rf.com/400wm/400/400/punphoto/punphoto1203/punphoto120300222/12930005-green-grass-texture.jpg');
+    box-shadow: 0 1px 12px #333;
+    overflow: hidden;
+    position: relative;
+    /*z-index: 1001;*/
+}
+
+header.appHeader {
+    box-shadow: none;
+    -o-box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    -ms-box-shadow: none;
+}
+
+header .navbar {
+    margin-top: 11px;
+}
+
+header .navbar .navbar-inner {
+    border: 0;
+    box-shadow: none;
+    -o-box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    -ms-box-shadow: none;
+    border-radius: 0;
+    -o-border-radius: 0;
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    -ms-border-radius: 0;
+    min-height: 0;
+    padding: 0 20px;
+    background: none;
+}
+
+.navbar .nav>li>a {
+    background: #eee;
+    /*background: #113959;*/
+    margin-right: 5px;
+    text-shadow: none;
+    border-radius: 4px 4px 0 0;
+    -o-border-radius: 4px 4px 0 0;
+    -moz-border-radius: 4px 4px 0 0;
+    -webkit-border-radius: 4px 4px 0 0;
+    -ms-border-radius: 4px 4px 0 0;
+
+    z-index: 1;
+    /*-moz-box-shadow: inset 0px -1px 5px #888;*/
+    /*-webkit-box-shadow: inset 0px -1px 5px #888;*/
+    /*box-shadow: inset 0px -1px 5px #888;*/
+
+    color: #fff;
+    font-family: OpenSansLight, "Myriad Pro", sans-serif;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.navbar .nav>li>a:hover {
+    background: #eee !important;
+    /*background: #144c72;*/
+    /*color: #fff;*/
+    color: #fff;
+}
+
+header .navbar .nav>.active>a, header .navbar .nav>.active>a:hover, header .navbar .nav>.active>a:focus {
+    box-shadow: none;
+    -o-box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    -ms-box-shadow: none;
+    background: #fff;
+    z-index: 1001;
+    /*font-size: 16px;*/
+    /*padding: 15px 15px;*/
+    /*margin-top: 0;*/
+}
+
+#ppPage-Body {
+    box-shadow: 0 0 12px rgba(0, 0, 0, .75);
+    position: relative;
+    z-index: 100;
+    /* IMPORTANT PART */
+}
+
+#ppPage-BodyWrap {
+    background: #F4F4F4;
+    position: relative; /* IMPORTANT PART */
+    z-index: 4; /* IMPORTANT PART */
+}
+
+.ppList_PrimaryNavigation li a:hover {
+    background: #656565;
+    -webkit-border-radius: 6px 6px 0 0;
+    -moz-border-radius: 6px 6px 0 0;
+    border-radius: 6px 6px 0 0;
+}
+
+.ppList_PrimaryNavigation li a.ppStyle_Active {
+    background: #f4f4f4;
+    color: #222;
+    -webkit-border-radius: 6px 6px 0 0;
+    -moz-border-radius: 6px 6px 0 0;
+    border-radius: 6px 6px 0 0;
+    -webkit-box-shadow: 0 0 12px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0 0 12px rgba(0, 0, 0, 0.75);
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.75);
+    position: relative /* IMPORTANT PART */;
+    z-index: 3; /* IMPORTANT PART */
+}

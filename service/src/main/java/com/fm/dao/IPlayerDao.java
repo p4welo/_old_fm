@@ -1,5 +1,10 @@
 package com.fm.dao;
 
+import com.fm.domain.Player;
+import com.fm.domain.Team;
+
+import java.util.List;
+
 /**
  * User: pawel
  * Date: 30.11.12
@@ -7,4 +12,5 @@ package com.fm.dao;
  */
 public interface IPlayerDao
 {
+   List<Player> findTeamPlayers(Team team);
 }

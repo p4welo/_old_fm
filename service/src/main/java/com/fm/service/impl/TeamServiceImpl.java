@@ -3,7 +3,6 @@ package com.fm.service.impl;
 import com.fm.dao.IAbstractDao;
 import com.fm.dao.ITeamDao;
 import com.fm.domain.League;
-import com.fm.domain.ObjectStateEnum;
 import com.fm.domain.Team;
 import com.fm.service.ITeamService;
 import org.springframework.stereotype.Service;
@@ -57,12 +56,5 @@ public class TeamServiceImpl extends AbstractServiceImpl<Team> implements ITeamS
    public Team findRandomCpuTeam()
    {
       return teamDao.findRandomCpuTeam();
-   }
-
-   @Override
-   public Team save(Team obj)
-   {
-      obj.setObjectState(ObjectStateEnum.ACTIVE);
-      return super.save(obj);
    }
 }
