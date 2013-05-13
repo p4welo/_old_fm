@@ -7,6 +7,6 @@ package com.fm.service.impl;
  * Time: 17:56
  * To change this template use File | Settings | File Templates.
  */
-public class PlayerGenerationStrategyImplTest
+public class TeamGenerationStrategyImplTest
 {
 }

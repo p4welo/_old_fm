@@ -6,6 +6,7 @@ import com.fm.domain.Team;
 import com.fm.domain.TeamTypeEnum;
 import com.fm.domain.defined.SystemParameters;
 import com.fm.service.*;
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -53,10 +54,12 @@ public class TeamGenerationStrategyImpl implements ITeamGenerationStrategy
    @Resource
    private IPlayerGenerationStrategy playerGenerationStrategy;
 
+   private Logger logger = Logger.getLogger(TeamGenerationStrategyImpl.class);
+
    @Override
    public void generateLeagueCpuTeams(League league)
    {
-      Integer teamCount = 15;
+      Integer teamCount = 16;
       String value = systemParameterService.getByKey(SystemParameters.TEAM_COUNT_PER_LEAGUE);
       if (value != null)
       {
@@ -67,7 +70,8 @@ public class TeamGenerationStrategyImpl implements ITeamGenerationStrategy
          Team team = generateTeam();
          team.setLeague(league);
          team.setType(TeamTypeEnum.CPU);
-         teamService.save(team);
+         team = teamService.save(team);
+         generatePlayers(team);
       }
    }
 

@@ -3,6 +3,7 @@ package com.fm.service.impl;
 import com.fm.dao.IAbstractDao;
 import com.fm.dao.IPlayerDao;
 import com.fm.domain.Player;
+import com.fm.domain.Team;
 import com.fm.service.INameService;
 import com.fm.service.IPlayerService;
 import com.fm.service.IPositionService;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * User: pawel
@@ -50,5 +52,12 @@ public class PlayerServiceImpl extends AbstractServiceImpl<Player> implements IP
       player.setPosition(positionService.getRandom());
 
       return player;
+   }
+
+   @Override
+   @Transactional
+   public List<Player> findTeamPlayers(Team team)
+   {
+      return playerDao.findTeamPlayers(team);
    }
 }

@@ -9,12 +9,22 @@
 
     <div class="span7" style="margin-left: 0">
         <div class="table_toolbar">
-            <a wicket:id="newSeason" class="btn tooltipLink" data-toggle="tooltip" wicket:message="title:new.season">
-                <i class="icon-plus-sign"></i>
-            </a>
-            <a wicket:id="nextRound" class="btn tooltipLink" data-toggle="tooltip" wicket:message="title:next.round">
-                <i class="icon-random"></i>
-            </a>
+            <div class="btn-group">
+                <a wicket:id="newSeason" class="btn tooltipLink" data-toggle="tooltip"
+                   wicket:message="title:new.season">
+                    <i class="icon-plus-sign"></i>
+                </a>
+                <a wicket:id="nextRound" class="btn tooltipLink" data-toggle="tooltip"
+                   wicket:message="title:next.round">
+                    <i class="icon-random"></i>
+                </a>
+            </div>
+            <div class="btn-group">
+                <a wicket:id="teamDetails" class="btn tooltipLink" data-toggle="tooltip"
+                   wicket:message="title:details">
+                    <i class="icon-star-empty"></i>
+                </a>
+            </div>
         </div>
         <table class="table table-striped table-hover table-condensed team-record-table">
             <thead style="border: 1px solid #d3d3d3">
