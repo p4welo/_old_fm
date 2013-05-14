@@ -1,4 +1,4 @@
-package com.fm.admin.cmp.leagueSeasonsPage.chart;
+package com.fm.admin.pages.leagueDetailsPage.cmp.chart;
 
 import com.fm.domain.Season;
 import com.fm.domain.Team;

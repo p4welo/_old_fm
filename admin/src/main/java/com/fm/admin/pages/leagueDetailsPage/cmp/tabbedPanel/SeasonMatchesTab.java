@@ -1,4 +1,4 @@
-package com.fm.admin.cmp.leagueSeasonsPage.tabbedPanel;
+package com.fm.admin.pages.leagueDetailsPage.cmp.tabbedPanel;
 
 import com.fm.domain.*;
 import com.fm.service.IMatchGameService;

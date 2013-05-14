@@ -1,7 +1,7 @@
-package com.fm.admin.cmp.leagueSeasonsPage.tabbedPanel;
+package com.fm.admin.pages.leagueDetailsPage.cmp.tabbedPanel;
 
-import com.fm.admin.cmp.leagueSeasonsPage.chart.ChartPanel;
 import com.fm.admin.navigation.NavigateToTeamDetailsPage;
+import com.fm.admin.pages.leagueDetailsPage.cmp.chart.ChartPanel;
 import com.fm.core.cmp.notify.Notification;
 import com.fm.domain.League;
 import com.fm.domain.Season;

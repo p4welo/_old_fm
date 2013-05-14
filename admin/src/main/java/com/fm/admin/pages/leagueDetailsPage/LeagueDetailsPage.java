@@ -1,9 +1,10 @@
-package com.fm.admin.pages;
+package com.fm.admin.pages.leagueDetailsPage;
 
 import com.fm.admin.api.AdminApiMappings;
 import com.fm.admin.cmp.breadcrumb.LeagueSeasonBreadcrumb;
-import com.fm.admin.cmp.leagueSeasonsPage.tabbedPanel.ActualSeasonTab;
-import com.fm.admin.cmp.leagueSeasonsPage.tabbedPanel.SeasonMatchesTab;
+import com.fm.admin.pages.AdminAbstractPage;
+import com.fm.admin.pages.leagueDetailsPage.cmp.tabbedPanel.ActualSeasonTab;
+import com.fm.admin.pages.leagueDetailsPage.cmp.tabbedPanel.SeasonMatchesTab;
 import com.fm.admin.pages.leagueListPage.LeagueListPage;
 import com.fm.core.cmp.authorization.UserAuthorities;
 import com.fm.core.cmp.breadcrumb.BootstrapBreadcrumbPanel;
@@ -32,14 +33,14 @@ import java.util.List;
  */
 @MountPath(AdminApiMappings.LEAGUE_SEASON_PAGE)
 @AuthorizeInstantiation(UserAuthorities.ADMIN)
-public class LeagueSeasonsPage extends AdminAbstractPage
+public class LeagueDetailsPage extends AdminAbstractPage
 {
    @SpringBean
    private ILeagueService leagueService;
 
    private League league;
 
-   public LeagueSeasonsPage(final PageParameters parameters)
+   public LeagueDetailsPage(final PageParameters parameters)
    {
       super();
       league = getLeague(parameters);
@@ -54,7 +55,7 @@ public class LeagueSeasonsPage extends AdminAbstractPage
          @Override
          public WebMarkupContainer getPanel(String id)
          {
-            return new ActualSeasonTab(id, new PropertyModel<League>(LeagueSeasonsPage.this, "league"));
+            return new ActualSeasonTab(id, new PropertyModel<League>(LeagueDetailsPage.this, "league"));
          }
       });
       tabs.add(new AbstractTab(new ResourceModel("matches.tab"))
@@ -62,7 +63,7 @@ public class LeagueSeasonsPage extends AdminAbstractPage
          @Override
          public WebMarkupContainer getPanel(String id)
          {
-            return new SeasonMatchesTab(id, new PropertyModel<League>(LeagueSeasonsPage.this, "league"));
+            return new SeasonMatchesTab(id, new PropertyModel<League>(LeagueDetailsPage.this, "league"));
          }
       });
       add(new BootstrapTabbedPanel("tabs", tabs));

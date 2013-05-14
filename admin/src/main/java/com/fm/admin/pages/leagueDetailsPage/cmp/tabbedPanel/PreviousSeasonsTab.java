@@ -1,4 +1,4 @@
-package com.fm.admin.cmp.leagueSeasonsPage.tabbedPanel;
+package com.fm.admin.pages.leagueDetailsPage.cmp.tabbedPanel;
 
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
