@@ -1,11 +1,12 @@
-package com.fm.admin.pages;
+package com.fm.admin.pages.configPage;
 
 import com.fm.admin.api.AdminApiMappings;
 import com.fm.admin.cmp.breadcrumb.ConfigBreadcrumb;
-import com.fm.admin.cmp.configPage.tabbedPanel.NameTab;
-import com.fm.admin.cmp.configPage.tabbedPanel.ParameterTab;
-import com.fm.admin.cmp.configPage.tabbedPanel.PositionTab;
-import com.fm.admin.cmp.configPage.tabbedPanel.SurnameTab;
+import com.fm.admin.pages.AdminAbstractPage;
+import com.fm.admin.pages.configPage.cmp.tabbedPanel.NameTab;
+import com.fm.admin.pages.configPage.cmp.tabbedPanel.ParameterTab;
+import com.fm.admin.pages.configPage.cmp.tabbedPanel.PositionTab;
+import com.fm.admin.pages.configPage.cmp.tabbedPanel.SurnameTab;
 import com.fm.core.cmp.authorization.UserAuthorities;
 import com.fm.core.cmp.breadcrumb.BootstrapBreadcrumbPanel;
 import com.fm.core.cmp.tabbedPanel.BootstrapTabbedPanel;

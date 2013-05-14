@@ -1,6 +1,6 @@
 package com.fm.admin.navigation;
 
-import com.fm.admin.pages.ConfigPage;
+import com.fm.admin.pages.configPage.ConfigPage;
 import com.fm.core.navigation.NavigateAction;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 

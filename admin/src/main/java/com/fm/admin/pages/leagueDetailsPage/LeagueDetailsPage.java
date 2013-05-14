@@ -1,10 +1,12 @@
-package com.fm.admin.pages;
+package com.fm.admin.pages.leagueDetailsPage;
 
 import com.fm.admin.api.AdminApiMappings;
 import com.fm.admin.cmp.breadcrumb.LeagueDetailsBreadcrumb;
-import com.fm.admin.cmp.leagueDetailsPage.LeagueInfoPanel;
-import com.fm.admin.cmp.leagueDetailsPage.LeagueTeamsPanel;
-import com.fm.admin.cmp.leagueDetailsPage.window.NewTeamWindow;
+import com.fm.admin.pages.AdminAbstractPage;
+import com.fm.admin.pages.LeagueListPage;
+import com.fm.admin.pages.leagueDetailsPage.cmp.LeagueInfoPanel;
+import com.fm.admin.pages.leagueDetailsPage.cmp.LeagueTeamsPanel;
+import com.fm.admin.pages.leagueDetailsPage.cmp.window.NewTeamWindow;
 import com.fm.core.cmp.authorization.UserAuthorities;
 import com.fm.core.cmp.breadcrumb.BootstrapBreadcrumbPanel;
 import com.fm.core.cmp.notify.Notification;

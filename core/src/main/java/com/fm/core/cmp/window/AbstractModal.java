@@ -14,6 +14,7 @@ import org.apache.wicket.markup.html.panel.Panel;
  * Time: 20:52
  * To change this template use File | Settings | File Templates.
  */
+@Deprecated
 public abstract class AbstractModal extends Panel
 {
 

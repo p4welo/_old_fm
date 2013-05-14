@@ -1,4 +1,4 @@
-package com.fm.admin.cmp.configPage.masterDetail;
+package com.fm.admin.pages.configPage.cmp.masterDetail;
 
 import com.fm.core.cmp.masterDetail.DetailsPanel;
 import com.fm.core.cmp.notify.Notification;

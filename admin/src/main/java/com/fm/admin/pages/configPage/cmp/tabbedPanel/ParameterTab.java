@@ -1,4 +1,4 @@
-package com.fm.admin.cmp.configPage.tabbedPanel;
+package com.fm.admin.pages.configPage.cmp.tabbedPanel;
 
 import com.fm.core.cmp.notify.Notification;
 import com.fm.domain.SystemParameter;

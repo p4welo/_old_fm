@@ -3,6 +3,7 @@ package com.fm.admin.pages;
 import com.fm.admin.api.AdminApiKeys;
 import com.fm.admin.api.AdminApiMappings;
 import com.fm.admin.cmp.breadcrumb.LeagueDetailsBreadcrumb;
+import com.fm.admin.pages.leagueDetailsPage.LeagueDetailsPage;
 import com.fm.core.cmp.authorization.UserAuthorities;
 import com.fm.core.cmp.breadcrumb.BootstrapBreadcrumbPanel;
 import com.fm.domain.Player;

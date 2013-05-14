@@ -1,4 +1,4 @@
-package com.fm.admin.cmp.configPage.table;
+package com.fm.admin.pages.configPage.cmp.table;
 
 import com.fm.core.cmp.newTable.AjaxDataTable;
 import com.fm.core.cmp.newTable.toolbar.FilterToolbar;
