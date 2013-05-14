@@ -3,11 +3,9 @@ package com.fm.service.impl;
 import com.fm.dao.IAbstractDao;
 import com.fm.dao.IMatchGameDao;
 import com.fm.domain.MatchGame;
-import com.fm.domain.MatchGameTeamRelation;
 import com.fm.domain.Season;
 import com.fm.domain.Team;
 import com.fm.service.IMatchGameService;
-import com.fm.service.IMatchGameTeamRelationService;
 import com.fm.service.ISeasonService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -29,9 +27,6 @@ public class MatchGameServiceImpl extends AbstractServiceImpl<MatchGame> impleme
    private IMatchGameDao matchGameDao;
 
    @Resource
-   private IMatchGameTeamRelationService matchGameTeamRelationService;
-
-   @Resource
    private ISeasonService seasonService;
 
    @Override
@@ -50,23 +45,15 @@ public class MatchGameServiceImpl extends AbstractServiceImpl<MatchGame> impleme
 
       MatchGame matchGame = new MatchGame();
       matchGame.setGuestScores(random.nextInt(3));
+      matchGame.setGuestSid(guestTeam.getSid());
+      matchGame.setGuestName(guestTeam.getName());
       matchGame.setHostScores(random.nextInt(4));
+      matchGame.setHostSid(hostTeam.getSid());
+      matchGame.setHostName(hostTeam.getName());
       matchGame.setMatchDate(new Date());
       matchGame.setSeason(season);
       matchGame.setRound(round);
       matchGame = save(matchGame);
-
-      MatchGameTeamRelation hostMatchTeamRelation = new MatchGameTeamRelation();
-      hostMatchTeamRelation.setHostTeam(true);
-      hostMatchTeamRelation.setTeam(hostTeam);
-      hostMatchTeamRelation.setMatchGame(matchGame);
-      matchGameTeamRelationService.save(hostMatchTeamRelation);
-
-      MatchGameTeamRelation guestMatchTeamRelation = new MatchGameTeamRelation();
-      guestMatchTeamRelation.setHostTeam(false);
-      guestMatchTeamRelation.setTeam(guestTeam);
-      guestMatchTeamRelation.setMatchGame(matchGame);
-      matchGameTeamRelationService.save(guestMatchTeamRelation);
 
       return matchGame;
    }

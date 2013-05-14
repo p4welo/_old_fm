@@ -57,7 +57,7 @@ public class LeagueDetailsPage extends AdminAbstractPage
          @Override
          public WebMarkupContainer getPanel(String id)
          {
-            return new AjaxLazyLoadPanel(id)
+            AjaxLazyLoadPanel panel = new AjaxLazyLoadPanel(id)
             {
                @Override
                public Component getLazyLoadComponent(String id)
@@ -65,6 +65,9 @@ public class LeagueDetailsPage extends AdminAbstractPage
                   return new TableTab(id, new PropertyModel<League>(LeagueDetailsPage.this, "league"));
                }
             };
+//            panel.setOutputMarkupId(true);
+//            panel.add(new AjaxSelfUpdatingTimerBehavior(Duration.seconds(2)));
+            return panel;
          }
       });
       tabs.add(new AbstractTab(new ResourceModel("matches.tab"))
@@ -72,7 +75,7 @@ public class LeagueDetailsPage extends AdminAbstractPage
          @Override
          public WebMarkupContainer getPanel(String id)
          {
-            return new AjaxLazyLoadPanel(id)
+            AjaxLazyLoadPanel panel = new AjaxLazyLoadPanel(id)
             {
                @Override
                public Component getLazyLoadComponent(String id)
@@ -80,6 +83,7 @@ public class LeagueDetailsPage extends AdminAbstractPage
                   return new MatchesTab(id, new PropertyModel<League>(LeagueDetailsPage.this, "league"));
                }
             };
+            return panel;
          }
       });
       add(new BootstrapTabbedPanel("tabs", tabs));
