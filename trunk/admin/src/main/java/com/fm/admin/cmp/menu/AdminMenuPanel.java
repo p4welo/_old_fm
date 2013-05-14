@@ -1,8 +1,8 @@
 package com.fm.admin.cmp.menu;
 
-import com.fm.admin.pages.ManagerListPage;
 import com.fm.admin.pages.configPage.ConfigPage;
 import com.fm.admin.pages.leagueListPage.LeagueListPage;
+import com.fm.admin.pages.managerListPage.ManagerListPage;
 import com.fm.core.cmp.menu.AbstractMenuPanel;
 import com.fm.core.cmp.menu.MenuItem;
 import com.fm.domain.defined.FmIconTypes;

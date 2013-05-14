@@ -10,9 +10,11 @@ import com.fm.domain.TeamRecord;
 import com.fm.service.ISeasonService;
 import com.fm.service.ITeamRecordService;
 import org.apache.wicket.AttributeModifier;
+import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxEventBehavior;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
+import org.apache.wicket.extensions.ajax.markup.html.AjaxLazyLoadPanel;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
@@ -28,7 +30,7 @@ import java.util.List;
  * Date: 19.04.13
  * Time: 16:47
  */
-public class ActualSeasonTab extends Panel
+public class TableTab extends Panel
 {
    @SpringBean
    private ISeasonService seasonService;
@@ -46,7 +48,7 @@ public class ActualSeasonTab extends Panel
 
    private Team selected;
 
-   public ActualSeasonTab(String id, IModel<League> model)
+   public TableTab(String id, IModel<League> model)
    {
       super(id, model);
       setOutputMarkupId(true);
@@ -107,7 +109,7 @@ public class ActualSeasonTab extends Panel
          {
             season = seasonService.nextSeason(league);
             Notification.success(getString("next.season.successfully.generated"));
-            target.add(ActualSeasonTab.this);
+            target.add(TableTab.this);
          }
       });
 
@@ -117,7 +119,7 @@ public class ActualSeasonTab extends Panel
          public void onClick(AjaxRequestTarget target)
          {
             teamRecords = teamRecordService.simulateNextRound(season);
-            target.add(ActualSeasonTab.this);
+            target.add(TableTab.this);
          }
 
          @Override
@@ -138,17 +140,25 @@ public class ActualSeasonTab extends Panel
          @Override
          public void onClick(AjaxRequestTarget target)
          {
-            new NavigateToTeamDetailsPage(selected);
+            new NavigateToTeamDetailsPage(selected).navigate();
          }
       });
-      chart = new ChartPanel("chartPanel", new PropertyModel<Team>(this, "selected"), season);
-      chart.setOutputMarkupId(true);
-      add(chart);
+
+      add(new AjaxLazyLoadPanel("chartPanel")
+      {
+         @Override
+         public Component getLazyLoadComponent(String id)
+         {
+            chart = new ChartPanel(id, new PropertyModel<Team>(TableTab.this, "selected"), season);
+            chart.setOutputMarkupId(true);
+            return chart;
+         }
+      });
    }
 
    private void executeOnClick(AjaxRequestTarget target, IModel<TeamRecord> model)
    {
       selected = model.getObject().getTeam();
-      target.add(ActualSeasonTab.this);
+      target.add(TableTab.this);
    }
 }

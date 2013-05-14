@@ -1,8 +1,9 @@
-package com.fm.admin.pages;
+package com.fm.admin.pages.managerListPage;
 
 import com.fm.admin.api.AdminApiMappings;
 import com.fm.admin.cmp.breadcrumb.ManagerListBreadcrumb;
-import com.fm.admin.cmp.managerListPage.ManagerMasterDetail;
+import com.fm.admin.pages.AdminAbstractPage;
+import com.fm.admin.pages.managerListPage.cmp.ManagerMasterDetail;
 import com.fm.core.cmp.authorization.UserAuthorities;
 import com.fm.core.cmp.breadcrumb.BootstrapBreadcrumbPanel;
 import com.fm.domain.Manager;

@@ -55,7 +55,6 @@ public class ConfigPage extends AdminAbstractPage
                   return new PositionTab(id);
                }
             };
-//            return new PositionTab(panelId);
          }
       });
       tabs.add(new AbstractTab(new ResourceModel("name.tab"))
@@ -71,7 +70,6 @@ public class ConfigPage extends AdminAbstractPage
                   return new NameTab(id);
                }
             };
-//            return new NameTab(panelId);
          }
       });
       tabs.add(new AbstractTab(new ResourceModel("surname.tab"))
@@ -87,7 +85,6 @@ public class ConfigPage extends AdminAbstractPage
                   return new SurnameTab(id);
                }
             };
-//            return new SurnameTab(panelId);
          }
       });
       tabs.add(new AbstractTab(new ResourceModel("parameter.tab"))
@@ -103,7 +100,6 @@ public class ConfigPage extends AdminAbstractPage
                   return new ParameterTab(id);
                }
             };
-//            return new ParameterTab(panelId);
          }
       });
 
