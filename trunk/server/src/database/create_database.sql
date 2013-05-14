@@ -43,7 +43,7 @@ CREATE TABLE player (
     surname varchar(40) NOT NULL,
 	age int(11) NOT NULL DEFAULT 0,
 	position_id int(11) DEFAULT NULL,
-	team_id int(11) NOT NULL,
+	team_sid VARCHAR(32),
 	potential int(11) NOT NULL DEFAULT 0,
 	passing int(11) NOT NULL DEFAULT 0,
 	speed int(11) NOT NULL DEFAULT 0,
@@ -56,7 +56,6 @@ CREATE TABLE player (
     tackling int(11) NOT NULL DEFAULT 0,
     dribbling int(11) NOT NULL DEFAULT 0,
     goalkeeping int(11) NOT NULL DEFAULT 0,
-    FOREIGN KEY (team_id) REFERENCES team (id) ON DELETE CASCADE,
     FOREIGN KEY (position_id) REFERENCES position (id) ON DELETE SET NULL,
 	UNIQUE (sid)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -108,7 +107,7 @@ CREATE TABLE team_record (
 	id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	object_state VARCHAR(30) NOT NULL DEFAULT 'ACTIVE',
 	sid VARCHAR(32) NOT NULL,
-	team_id INT(11),
+	team_sid VARCHAR(32) NOT NULL,
 	season_id INT(11) NOT NULL,
 	team_name VARCHAR(30) NOT NULL,
 	place INT NOT NULL DEFAULT 0,
@@ -120,17 +119,9 @@ CREATE TABLE team_record (
     wins_count INT NOT NULL DEFAULT 0,
     draws_count INT NOT NULL DEFAULT 0,
     loses_count INT NOT NULL DEFAULT 0,
-	FOREIGN KEY (team_id) REFERENCES team(id) ON DELETE SET NULL,
 	FOREIGN KEY (season_id) REFERENCES season(id) ON DELETE CASCADE,
 	UNIQUE (sid)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-@Column(name = "host_sid", nullable = false)
-   @Column(name = "host_name", nullable = false)
-   @Column(name = "host_scores", nullable = false)
-   @Column(name = "guest_sid", nullable = false)
-   @Column(name = "guest_name", nullable = false)
-   @Column(name = "guest_scores", nullable = false)
 
 CREATE TABLE match_game (
 	id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,

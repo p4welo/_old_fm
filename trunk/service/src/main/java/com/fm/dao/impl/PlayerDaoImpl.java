@@ -23,7 +23,7 @@ public class PlayerDaoImpl extends AbstractDaoImpl<Player> implements IPlayerDao
    public List<Player> findTeamPlayers(Team team)
    {
       Criteria criteria = createCriteria();
-      criteria.add(Restrictions.eq(Player.FIELD_TEAM, team));
+      criteria.add(Restrictions.eq(Player.FIELD_TEAM_SID, team.getSid()));
       criteria.add(Restrictions.eq(Player.FIELD_OBJECT_STATE, ObjectStateEnum.ACTIVE));
       criteria.addOrder(Order.asc(Player.FIELD_POSITION));
       return criteria.list();

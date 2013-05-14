@@ -243,7 +243,7 @@ public class PlayerGenerationStrategyImpl implements IPlayerGenerationStrategy
    public Player getPlayer(Team team)
    {
       Player player = new Player();
-      player.setTeam(team);
+      player.setTeamSid(team.getSid());
 
       Name name = nameService.getRandom();
       player.setName(name != null ? name.getValue() : "Jan");
