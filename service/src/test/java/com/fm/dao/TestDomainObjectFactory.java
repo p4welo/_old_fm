@@ -125,7 +125,7 @@ public class TestDomainObjectFactory
       TeamRecord teamRecord = new TeamRecord();
       teamRecord.setSid(SidUtils.generate());
       teamRecord.setObjectState(ObjectStateEnum.ACTIVE);
-      teamRecord.setTeam(team);
+      teamRecord.setTeamSid(team.getSid());
       teamRecord.setSeason(season);
       teamRecord.setTeamName(team.getName());
       teamRecord.setPlace(2);

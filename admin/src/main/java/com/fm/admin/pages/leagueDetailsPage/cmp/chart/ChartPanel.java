@@ -1,7 +1,6 @@
 package com.fm.admin.pages.leagueDetailsPage.cmp.chart;
 
 import com.fm.domain.Season;
-import com.fm.domain.Team;
 import com.fm.domain.TeamRecord;
 import com.fm.domain.defined.SystemParameters;
 import com.fm.service.ISystemParameterService;
@@ -9,8 +8,9 @@ import com.fm.service.ITeamRecordService;
 import com.googlecode.wickedcharts.highcharts.options.*;
 import com.googlecode.wickedcharts.highcharts.options.series.SimpleSeries;
 import com.googlecode.wickedcharts.wicket6.highcharts.Chart;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.wicket.markup.html.panel.Panel;
-import org.apache.wicket.model.PropertyModel;
+import org.apache.wicket.model.IModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import java.util.ArrayList;
@@ -33,32 +33,29 @@ public class ChartPanel extends Panel
 
    private List<TeamRecord> records;
 
-   private final PropertyModel<Team> selectedModel;
-
    private final Season season;
 
    private Chart chart;
 
-   public ChartPanel(String id, PropertyModel<Team> selectedModel, Season season)
+   public ChartPanel(String id, IModel<String> model, Season season)
    {
-      super(id);
-      this.selectedModel = selectedModel;
+      super(id, model);
       this.season = season;
       setOutputMarkupId(true);
       initView();
    }
 
    @Override
-   protected void onBeforeRender()
+   protected void onConfigure()
    {
-      Team team = selectedModel.getObject();
-      if (team != null)
+      String teamSid = (String) getDefaultModelObject();
+      if (StringUtils.isNotEmpty(teamSid))
       {
-         records = teamRecordService.findAllTeamRecordsFromSeason(team, season);
+         records = teamRecordService.findAllTeamRecordsFromSeason(teamSid, season);
          Options options = prepareOptionsForChart(records);
          chart.setOptions(options);
       }
-      super.onBeforeRender();
+      super.onConfigure();
    }
 
    private Options prepareOptionsForChart(List<TeamRecord> records)
@@ -77,6 +74,7 @@ public class ChartPanel extends Panel
          series.add(records.get(i).getPlace());
       }
 
+//      TODO: Ale to jest głupie!!!!!!!!!
       int teamCount = Integer.valueOf(systemParameterService.getByKey(SystemParameters.TEAM_COUNT_PER_LEAGUE));
       for (int i = teamCount; i > 0; i--)
       {
@@ -103,7 +101,7 @@ public class ChartPanel extends Panel
          @Override
          protected void onConfigure()
          {
-            setVisible(selectedModel.getObject() != null);
+            setVisible(StringUtils.isNotEmpty((String) ChartPanel.this.getDefaultModelObject()));
          }
       };
       add(chart);

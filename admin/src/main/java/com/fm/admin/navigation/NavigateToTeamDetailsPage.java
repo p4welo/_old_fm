@@ -15,19 +15,24 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
  */
 public class NavigateToTeamDetailsPage extends NavigateAction
 {
-   private Team team;
+   private String teamSid;
 
    public NavigateToTeamDetailsPage(Team team)
    {
+      this(team.getSid());
+   }
+
+   public NavigateToTeamDetailsPage(String teamSid)
+   {
       super(TeamDetailsPage.class);
-      this.team = team;
+      this.teamSid = teamSid;
    }
 
    @Override
    public PageParameters getPageParameters()
    {
       PageParameters pageParameters = new PageParameters();
-      pageParameters.add(AdminApiKeys.SELECTED_TEAM_SID_KEY, team.getSid());
+      pageParameters.add(AdminApiKeys.SELECTED_TEAM_SID_KEY, teamSid);
       return pageParameters;
    }
 }

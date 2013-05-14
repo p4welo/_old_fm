@@ -6,6 +6,7 @@ import com.fm.domain.*;
 import com.fm.domain.comparator.TeamRecordComparator;
 import com.fm.service.IMatchGameService;
 import com.fm.service.ITeamRecordService;
+import com.fm.service.ITeamService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
@@ -30,6 +31,9 @@ public class TeamRecordServiceImpl extends AbstractServiceImpl<TeamRecord> imple
 
    @Resource
    private IMatchGameService matchGameService;
+
+   @Resource
+   private ITeamService teamService;
 
    @Override
    protected IAbstractDao<TeamRecord> getDao()
@@ -56,7 +60,10 @@ public class TeamRecordServiceImpl extends AbstractServiceImpl<TeamRecord> imple
          {
             TeamRecord hostRecord = oldRecords.get(i);
             TeamRecord guestRecord = oldRecords.get(i + 1);
-            MatchGame matchGame = matchGameService.simulateMatch(hostRecord.getTeam(), guestRecord.getTeam(), season,
+            Team hostTeam = teamService.getBySid(hostRecord.getTeamSid());
+            Team guestTeam = teamService.getBySid(guestRecord.getTeamSid());
+
+            MatchGame matchGame = matchGameService.simulateMatch(hostTeam, guestTeam, season,
                     hostRecord.getRoundNumber() + 1);
 
             TeamRecord newHostRecord = recalculateTeamRecord(hostRecord, matchGame, true);
@@ -92,9 +99,9 @@ public class TeamRecordServiceImpl extends AbstractServiceImpl<TeamRecord> imple
 
    @Override
    @Transactional
-   public List<TeamRecord> findAllTeamRecordsFromSeason(Team team, Season season)
+   public List<TeamRecord> findAllTeamRecordsFromSeason(String teamSid, Season season)
    {
-      return teamRecordDao.findAllTeamRecordsFromSeason(team, season);
+      return teamRecordDao.findAllTeamRecordsFromSeason(teamSid, season);
    }
 
    @Override
@@ -120,7 +127,7 @@ public class TeamRecordServiceImpl extends AbstractServiceImpl<TeamRecord> imple
       }
 
       TeamRecord newRecord = new TeamRecord();
-      newRecord.setTeam(oldRecord.getTeam());
+      newRecord.setTeamSid(oldRecord.getTeamSid());
       newRecord.setTeamName(oldRecord.getTeamName());
       newRecord.setSeason(oldRecord.getSeason());
       newRecord.setRoundNumber(oldRecord.getRoundNumber() + 1);

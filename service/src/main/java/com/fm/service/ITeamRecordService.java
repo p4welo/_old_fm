@@ -2,7 +2,6 @@ package com.fm.service;
 
 import com.fm.domain.MatchGame;
 import com.fm.domain.Season;
-import com.fm.domain.Team;
 import com.fm.domain.TeamRecord;
 
 import java.util.List;
@@ -22,7 +21,7 @@ public interface ITeamRecordService extends IAbstractService<TeamRecord>
 
    void recalculatePlaces(List<TeamRecord> newRecords);
 
-   List<TeamRecord> findAllTeamRecordsFromSeason(Team team, Season season);
+   List<TeamRecord> findAllTeamRecordsFromSeason(String teamSid, Season season);
 
    List<Integer> getPlayedRoundListBySeason(Season season);
 }

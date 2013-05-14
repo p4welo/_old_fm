@@ -19,6 +19,8 @@ public class Player extends IdentifiableEntity
 
    public static final String FIELD_TEAM = "team";
 
+   public static final String FIELD_TEAM_SID = "teamSid";
+
    @Id
    @GeneratedValue
    @Column
@@ -40,10 +42,8 @@ public class Player extends IdentifiableEntity
    @JoinColumn(nullable = true)
    private Position position;
 
-   @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-   @JoinColumn(nullable = false)
-   @NotNull
-   private Team team;
+   @Column(name = "team_sid", nullable = true)
+   private String teamSid;
 
    //   GENERAL PARAMETERS
    @Column(nullable = false)
@@ -133,16 +133,6 @@ public class Player extends IdentifiableEntity
    public void setPosition(Position position)
    {
       this.position = position;
-   }
-
-   public Team getTeam()
-   {
-      return team;
-   }
-
-   public void setTeam(Team team)
-   {
-      this.team = team;
    }
 
    public Integer getAge()
@@ -273,5 +263,15 @@ public class Player extends IdentifiableEntity
    public void setPassing(Integer passing)
    {
       this.passing = passing;
+   }
+
+   public String getTeamSid()
+   {
+      return teamSid;
+   }
+
+   public void setTeamSid(String teamSid)
+   {
+      this.teamSid = teamSid;
    }
 }

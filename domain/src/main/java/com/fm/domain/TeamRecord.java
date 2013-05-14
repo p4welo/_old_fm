@@ -12,7 +12,7 @@ import javax.validation.constraints.NotNull;
 @Table(name = "team_record")
 public class TeamRecord extends IdentifiableEntity
 {
-   public static final String FIELD_TEAM = "team";
+   public static final String FIELD_TEAM_SID = "teamSid";
 
    public static final String FIELD_SEASON = "season";
 
@@ -41,9 +41,13 @@ public class TeamRecord extends IdentifiableEntity
    @Column
    private Long id;
 
-   @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
-   @JoinColumn()
-   private Team team;
+//   @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
+//   @JoinColumn()
+//   private Team team;
+
+   @Column(name = "team_sid", nullable = false)
+   @NotNull
+   private String teamSid;
 
    @ManyToOne(cascade = {CascadeType.REFRESH}, fetch = FetchType.EAGER)
    @JoinColumn(nullable = false)
@@ -100,14 +104,14 @@ public class TeamRecord extends IdentifiableEntity
       this.id = id;
    }
 
-   public Team getTeam()
+   public String getTeamSid()
    {
-      return team;
+      return teamSid;
    }
 
-   public void setTeam(Team team)
+   public void setTeamSid(String teamSid)
    {
-      this.team = team;
+      this.teamSid = teamSid;
    }
 
    public Season getSeason()

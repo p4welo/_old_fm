@@ -6,10 +6,10 @@ import com.fm.core.ajax.ConfirmationCallListener;
 import com.fm.core.cmp.notify.Notification;
 import com.fm.domain.League;
 import com.fm.domain.Season;
-import com.fm.domain.Team;
 import com.fm.domain.TeamRecord;
 import com.fm.service.ISeasonService;
 import com.fm.service.ITeamRecordService;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxEventBehavior;
@@ -48,7 +48,7 @@ public class TableTab extends Panel
 
    private ChartPanel chart;
 
-   private Team selected;
+   private String selectedTeamSid;
 
    public TableTab(String id, IModel<League> model)
    {
@@ -96,7 +96,7 @@ public class TableTab extends Panel
                   executeOnClick(target, item.getModel());
                }
             });
-            if (teamRecord.getTeam().equals(selected))
+            if (StringUtils.equals(teamRecord.getTeamSid(), selectedTeamSid))
             {
                item.add(AttributeModifier.append("class", "selectedElement"));
             }
@@ -152,7 +152,7 @@ public class TableTab extends Panel
          @Override
          public void onClick(AjaxRequestTarget target)
          {
-            new NavigateToTeamDetailsPage(selected).navigate();
+            new NavigateToTeamDetailsPage(selectedTeamSid).navigate();
          }
       });
 
@@ -161,7 +161,7 @@ public class TableTab extends Panel
          @Override
          public Component getLazyLoadComponent(String id)
          {
-            chart = new ChartPanel(id, new PropertyModel<Team>(TableTab.this, "selected"), season);
+            chart = new ChartPanel(id, new PropertyModel<String>(TableTab.this, "selectedTeamSid"), season);
             chart.setOutputMarkupId(true);
             return chart;
          }
@@ -170,7 +170,7 @@ public class TableTab extends Panel
 
    private void executeOnClick(AjaxRequestTarget target, IModel<TeamRecord> model)
    {
-      selected = model.getObject().getTeam();
+      selectedTeamSid = model.getObject().getTeamSid();
       target.add(TableTab.this);
    }
 }
