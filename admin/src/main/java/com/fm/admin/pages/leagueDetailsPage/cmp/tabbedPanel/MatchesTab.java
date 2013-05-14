@@ -24,7 +24,7 @@ import java.util.List;
  * Date: 26.04.13
  * Time: 16:14
  */
-public class SeasonMatchesTab extends Panel
+public class MatchesTab extends Panel
 {
    @SpringBean
    private ISeasonService seasonService;
@@ -48,7 +48,7 @@ public class SeasonMatchesTab extends Panel
 
    private List<MatchGame> matchGames;
 
-   public SeasonMatchesTab(String id, IModel<League> model)
+   public MatchesTab(String id, IModel<League> model)
    {
       super(id, model);
       setOutputMarkupId(true);
@@ -76,7 +76,7 @@ public class SeasonMatchesTab extends Panel
          @Override
          protected void onUpdate(AjaxRequestTarget target)
          {
-            target.add(SeasonMatchesTab.this);
+            target.add(MatchesTab.this);
          }
       });
       add(dropDownChoice);

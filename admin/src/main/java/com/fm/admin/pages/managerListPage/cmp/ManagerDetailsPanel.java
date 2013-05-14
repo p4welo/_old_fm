@@ -1,8 +1,8 @@
-package com.fm.admin.cmp.managerListPage;
+package com.fm.admin.pages.managerListPage.cmp;
 
-import com.fm.admin.cmp.managerListPage.tabbedPanel.AccountTab;
-import com.fm.admin.cmp.managerListPage.tabbedPanel.AuthorityTab;
-import com.fm.admin.cmp.managerListPage.tabbedPanel.TeamTab;
+import com.fm.admin.pages.managerListPage.cmp.tabbedPanel.AccountTab;
+import com.fm.admin.pages.managerListPage.cmp.tabbedPanel.AuthorityTab;
+import com.fm.admin.pages.managerListPage.cmp.tabbedPanel.TeamTab;
 import com.fm.core.cmp.masterDetail.DetailsPanel;
 import com.fm.core.cmp.tabbedPanel.BootstrapTabbedPanel;
 import com.fm.domain.Manager;

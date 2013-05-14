@@ -1,6 +1,6 @@
-package com.fm.admin.cmp.managerListPage;
+package com.fm.admin.pages.managerListPage.cmp;
 
-import com.fm.admin.cmp.managerListPage.table.ManagerFilterToolbar;
+import com.fm.admin.pages.managerListPage.cmp.table.ManagerFilterToolbar;
 import com.fm.core.cmp.masterDetail.MasterDetailPanel;
 import com.fm.core.cmp.newTable.AjaxDataTable;
 import com.fm.core.cmp.newTable.DataProvider;

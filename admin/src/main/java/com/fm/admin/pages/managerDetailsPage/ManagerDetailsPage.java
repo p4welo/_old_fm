@@ -1,7 +1,8 @@
-package com.fm.admin.pages;
+package com.fm.admin.pages.managerDetailsPage;
 
 import com.fm.admin.api.AdminApiMappings;
 import com.fm.admin.cmp.breadcrumb.ManagerDetailsBreadcrumb;
+import com.fm.admin.pages.AdminAbstractPage;
 import com.fm.core.cmp.authorization.UserAuthorities;
 import com.fm.core.cmp.breadcrumb.BootstrapBreadcrumbPanel;
 import org.apache.wicket.authroles.authorization.strategies.role.annotations.AuthorizeInstantiation;
