@@ -2,6 +2,7 @@ package com.fm.admin.pages.leagueDetailsPage.cmp.tabbedPanel;
 
 import com.fm.admin.navigation.NavigateToTeamDetailsPage;
 import com.fm.admin.pages.leagueDetailsPage.cmp.chart.ChartPanel;
+import com.fm.core.ajax.ConfirmationCallListener;
 import com.fm.core.cmp.notify.Notification;
 import com.fm.domain.League;
 import com.fm.domain.Season;
@@ -13,6 +14,7 @@ import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxEventBehavior;
 import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.ajax.attributes.AjaxRequestAttributes;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.extensions.ajax.markup.html.AjaxLazyLoadPanel;
 import org.apache.wicket.markup.html.basic.Label;
@@ -126,6 +128,16 @@ public class TableTab extends Panel
          protected void onConfigure()
          {
             setVisible(season != null);
+         }
+
+         @Override
+         protected void updateAjaxAttributes(AjaxRequestAttributes attributes)
+         {
+            super.updateAjaxAttributes(attributes);
+            if (league != null)
+            {
+               attributes.getAjaxCallListeners().add(new ConfirmationCallListener(getString("next.round.confirm")));
+            }
          }
       });
       add(new AjaxLink<Void>("teamDetails")
