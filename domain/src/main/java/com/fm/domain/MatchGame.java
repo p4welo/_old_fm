@@ -17,7 +17,15 @@ public class MatchGame extends IdentifiableEntity
 
    public static final String FIELD_SEASON = "season";
 
+   public static final String FIELD_HOST_SID = "hostSid";
+
+   public static final String FIELD_HOST_NAME = "hostName";
+
    public static final String FIELD_HOST_SCORES = "hostScores";
+
+   public static final String FIELD_GUEST_SID = "guestSid";
+
+   public static final String FIELD_GUEST_NAME = "guestName";
 
    public static final String FIELD_GUEST_SCORES = "guestScores";
 
@@ -42,9 +50,25 @@ public class MatchGame extends IdentifiableEntity
    @NotNull
    private Integer round;
 
+   @Column(name = "host_sid", nullable = false)
+   @NotNull
+   private String hostSid;
+
+   @Column(name = "host_name", nullable = false)
+   @NotNull
+   private String hostName;
+
    @Column(name = "host_scores", nullable = false)
    @NotNull
    private int hostScores = 0;
+
+   @Column(name = "guest_sid", nullable = false)
+   @NotNull
+   private String guestSid;
+
+   @Column(name = "guest_name", nullable = false)
+   @NotNull
+   private String guestName;
 
    @Column(name = "guest_scores", nullable = false)
    @NotNull
@@ -108,5 +132,45 @@ public class MatchGame extends IdentifiableEntity
    public void setRound(Integer round)
    {
       this.round = round;
+   }
+
+   public String getHostSid()
+   {
+      return hostSid;
+   }
+
+   public void setHostSid(String hostSid)
+   {
+      this.hostSid = hostSid;
+   }
+
+   public String getHostName()
+   {
+      return hostName;
+   }
+
+   public void setHostName(String hostName)
+   {
+      this.hostName = hostName;
+   }
+
+   public String getGuestSid()
+   {
+      return guestSid;
+   }
+
+   public void setGuestSid(String guestSid)
+   {
+      this.guestSid = guestSid;
+   }
+
+   public String getGuestName()
+   {
+      return guestName;
+   }
+
+   public void setGuestName(String guestName)
+   {
+      this.guestName = guestName;
    }
 }

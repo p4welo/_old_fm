@@ -1,8 +1,9 @@
 package com.fm.admin.pages.leagueDetailsPage.cmp.tabbedPanel;
 
-import com.fm.domain.*;
+import com.fm.domain.League;
+import com.fm.domain.MatchGame;
+import com.fm.domain.Season;
 import com.fm.service.IMatchGameService;
-import com.fm.service.IMatchGameTeamRelationService;
 import com.fm.service.ISeasonService;
 import com.fm.service.ITeamRecordService;
 import org.apache.wicket.ajax.AjaxRequestTarget;
@@ -34,9 +35,6 @@ public class MatchesTab extends Panel
 
    @SpringBean
    private IMatchGameService matchGameService;
-
-   @SpringBean
-   private IMatchGameTeamRelationService matchGameTeamRelationService;
 
    private League league;
 
@@ -93,23 +91,9 @@ public class MatchesTab extends Panel
          protected void populateItem(ListItem<MatchGame> item)
          {
             MatchGame game = item.getModelObject();
-            List<MatchGameTeamRelation> relations = matchGameTeamRelationService.getByGame(game);
-            Team hostTeam = new Team();
-            Team guestTeam = new Team();
-            for (MatchGameTeamRelation relation : relations)
-            {
-               if (relation.getHostTeam())
-               {
-                  hostTeam = relation.getTeam();
-               }
-               else
-               {
-                  guestTeam = relation.getTeam();
-               }
-            }
 
-            item.add(new Label("host", new PropertyModel(hostTeam, Team.FIELD_NAME)));
-            item.add(new Label("guest", new PropertyModel(guestTeam, Team.FIELD_NAME)));
+            item.add(new Label("host", new PropertyModel(game, MatchGame.FIELD_HOST_NAME)));
+            item.add(new Label("guest", new PropertyModel(game, MatchGame.FIELD_GUEST_NAME)));
             item.add(new Label("hostScore", new PropertyModel(game, MatchGame.FIELD_HOST_SCORES)));
             item.add(new Label("guestScore", new PropertyModel(game, MatchGame.FIELD_GUEST_SCORES)));
          }

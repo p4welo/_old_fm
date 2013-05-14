@@ -125,6 +125,13 @@ CREATE TABLE team_record (
 	UNIQUE (sid)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+@Column(name = "host_sid", nullable = false)
+   @Column(name = "host_name", nullable = false)
+   @Column(name = "host_scores", nullable = false)
+   @Column(name = "guest_sid", nullable = false)
+   @Column(name = "guest_name", nullable = false)
+   @Column(name = "guest_scores", nullable = false)
+
 CREATE TABLE match_game (
 	id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	object_state VARCHAR(30) NOT NULL DEFAULT 'ACTIVE',
@@ -133,20 +140,12 @@ CREATE TABLE match_game (
 	season_id INT(11) NOT NULL,
 	round INT NOT NULL DEFAULT 0,
 	host_scores INT DEFAULT 0,
+	host_sid VARCHAR(32) NOT NULL,
+	host_name VARCHAR(32) NOT NULL,
 	guest_scores INT DEFAULT 0,
+	guest_sid VARCHAR(32) NOT NULL,
+	guest_name VARCHAR(32) NOT NULL,
 	FOREIGN KEY (season_id) REFERENCES season(id) ON DELETE CASCADE,
-	UNIQUE (sid)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-CREATE TABLE match_game_team_relation (
-	id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	object_state VARCHAR(30) NOT NULL DEFAULT 'ACTIVE',
-	sid VARCHAR(32) NOT NULL,
-	match_game_id INT(11) NOT NULL,
-	team_id INT(11) NOT NULL,
-	is_host_team BOOLEAN,
-	FOREIGN KEY (match_game_id) REFERENCES match_game(id) ON DELETE CASCADE,
-	FOREIGN KEY (team_id) REFERENCES team(id) ON DELETE CASCADE,
 	UNIQUE (sid)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
