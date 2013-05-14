@@ -1,6 +1,6 @@
 package com.fm.server.cmp.authorization;
 
-import com.fm.admin.pages.LeagueListPage;
+import com.fm.admin.pages.leagueListPage.LeagueListPage;
 import com.fm.core.cmp.feedback.CssFeedbackPanel;
 import org.apache.wicket.authroles.authentication.AuthenticatedWebSession;
 import org.apache.wicket.feedback.ComponentFeedbackMessageFilter;

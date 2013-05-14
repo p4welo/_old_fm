@@ -3,7 +3,6 @@ package com.fm.admin.pages;
 import com.fm.admin.api.AdminApiKeys;
 import com.fm.admin.api.AdminApiMappings;
 import com.fm.admin.cmp.breadcrumb.LeagueDetailsBreadcrumb;
-import com.fm.admin.pages.leagueDetailsPage.LeagueDetailsPage;
 import com.fm.core.cmp.authorization.UserAuthorities;
 import com.fm.core.cmp.breadcrumb.BootstrapBreadcrumbPanel;
 import com.fm.domain.Player;
@@ -53,13 +52,13 @@ public class TeamDetailsPage extends AdminAbstractPage
          Team team = teamService.getBySid(sid);
          if (team == null)
          {
-            throw new RestartResponseAtInterceptPageException(LeagueDetailsPage.class);
+            throw new RestartResponseAtInterceptPageException(LeagueSeasonsPage.class);
          }
          return team;
       }
       else
       {
-         throw new RestartResponseAtInterceptPageException(LeagueDetailsPage.class);
+         throw new RestartResponseAtInterceptPageException(LeagueSeasonsPage.class);
       }
    }
 

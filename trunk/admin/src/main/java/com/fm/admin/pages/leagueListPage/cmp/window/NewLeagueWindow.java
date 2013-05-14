@@ -1,4 +1,4 @@
-package com.fm.admin.pages.leagueDetailsPage.cmp.window;
+package com.fm.admin.pages.leagueListPage.cmp.window;
 
 import com.fm.core.cmp.web.BootstrapCheckBoxPanel;
 import com.fm.core.cmp.web.BootstrapTextFieldPanel;

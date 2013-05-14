@@ -1,6 +1,6 @@
 package com.fm.server;
 
-import com.fm.admin.pages.LeagueListPage;
+import com.fm.admin.pages.leagueListPage.LeagueListPage;
 import com.fm.server.pages.LoginPage;
 import org.apache.wicket.Application;
 import org.apache.wicket.Page;
