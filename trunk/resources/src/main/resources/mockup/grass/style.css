@@ -1,6 +1,7 @@
 header {
     height: 61px;
-    background: url('http://sg.sea.123rf.com/400wm/400/400/punphoto/punphoto1203/punphoto120300222/12930005-green-grass-texture.jpg');
+    /*background: url('http://sg.sea.123rf.com/400wm/400/400/punphoto/punphoto1203/punphoto120300222/12930005-green-grass-texture.jpg');*/
+    background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcF203szq3J6rZ5ds_3My1F5aBxPytVJJRKkNFjwVy9tlF6ZdKzw');
     box-shadow: 0 1px 12px #333;
     overflow: hidden;
     position: relative;
@@ -78,35 +79,35 @@ header .navbar .nav>.active>a, header .navbar .nav>.active>a:hover, header .navb
     /*margin-top: 0;*/
 }
 
-#ppPage-Body {
-    box-shadow: 0 0 12px rgba(0, 0, 0, .75);
-    position: relative;
-    z-index: 100;
-    /* IMPORTANT PART */
-}
+/*#ppPage-Body {*/
+/*box-shadow: 0 0 12px rgba(0, 0, 0, .75);*/
+/*position: relative;*/
+/*z-index: 100;*/
+/* IMPORTANT PART */
+/*}*/
 
-#ppPage-BodyWrap {
-    background: #F4F4F4;
-    position: relative; /* IMPORTANT PART */
-    z-index: 4; /* IMPORTANT PART */
-}
+/*#ppPage-BodyWrap {*/
+/*background: #F4F4F4;*/
+/*position: relative; *//* IMPORTANT PART */
+/*z-index: 4; *//* IMPORTANT PART */
+/*}*/
 
-.ppList_PrimaryNavigation li a:hover {
-    background: #656565;
-    -webkit-border-radius: 6px 6px 0 0;
-    -moz-border-radius: 6px 6px 0 0;
-    border-radius: 6px 6px 0 0;
-}
+/*.ppList_PrimaryNavigation li a:hover {*/
+/*background: #656565;*/
+/*-webkit-border-radius: 6px 6px 0 0;*/
+/*-moz-border-radius: 6px 6px 0 0;*/
+/*border-radius: 6px 6px 0 0;*/
+/*}*/
 
-.ppList_PrimaryNavigation li a.ppStyle_Active {
-    background: #f4f4f4;
-    color: #222;
-    -webkit-border-radius: 6px 6px 0 0;
-    -moz-border-radius: 6px 6px 0 0;
-    border-radius: 6px 6px 0 0;
-    -webkit-box-shadow: 0 0 12px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 0 0 12px rgba(0, 0, 0, 0.75);
-    box-shadow: 0 0 12px rgba(0, 0, 0, 0.75);
-    position: relative /* IMPORTANT PART */;
-    z-index: 3; /* IMPORTANT PART */
-}
+/*.ppList_PrimaryNavigation li a.ppStyle_Active {*/
+/*background: #f4f4f4;*/
+/*color: #222;*/
+/*-webkit-border-radius: 6px 6px 0 0;*/
+/*-moz-border-radius: 6px 6px 0 0;*/
+/*border-radius: 6px 6px 0 0;*/
+/*-webkit-box-shadow: 0 0 12px rgba(0, 0, 0, 0.75);*/
+/*-moz-box-shadow: 0 0 12px rgba(0, 0, 0, 0.75);*/
+/*box-shadow: 0 0 12px rgba(0, 0, 0, 0.75);*/
+/*position: relative *//* IMPORTANT PART *//*;*/
+/*z-index: 3; *//* IMPORTANT PART */
+/*}*/
