@@ -1,7 +1,7 @@
 package com.fm.admin.cmp.breadcrumb;
 
 import com.fm.admin.navigation.SimpleNavigateAction;
-import com.fm.admin.pages.LeagueListPage;
+import com.fm.admin.pages.leagueListPage.LeagueListPage;
 import com.fm.core.cmp.breadcrumb.BootstrapBreadcrumbPanel;
 import com.fm.core.cmp.breadcrumb.BreadCrumbAction;
 import org.apache.wicket.model.IModel;
