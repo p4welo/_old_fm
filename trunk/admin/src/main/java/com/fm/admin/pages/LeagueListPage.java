@@ -2,8 +2,8 @@ package com.fm.admin.pages;
 
 import com.fm.admin.api.AdminApiMappings;
 import com.fm.admin.cmp.breadcrumb.LeagueListBreadcrumb;
-import com.fm.admin.cmp.leagueDetailsPage.window.NewLeagueWindow;
 import com.fm.admin.navigation.NavigateToLeagueSeasonsPage;
+import com.fm.admin.pages.leagueDetailsPage.cmp.window.NewLeagueWindow;
 import com.fm.core.cmp.authorization.UserAuthorities;
 import com.fm.core.cmp.breadcrumb.BootstrapBreadcrumbPanel;
 import com.fm.core.cmp.newTable.AjaxDataTable;

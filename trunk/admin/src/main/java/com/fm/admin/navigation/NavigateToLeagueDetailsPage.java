@@ -1,7 +1,7 @@
 package com.fm.admin.navigation;
 
 import com.fm.admin.api.AdminApiKeys;
-import com.fm.admin.pages.LeagueDetailsPage;
+import com.fm.admin.pages.leagueDetailsPage.LeagueDetailsPage;
 import com.fm.core.navigation.NavigateAction;
 import com.fm.domain.League;
 import org.apache.wicket.request.mapper.parameter.PageParameters;

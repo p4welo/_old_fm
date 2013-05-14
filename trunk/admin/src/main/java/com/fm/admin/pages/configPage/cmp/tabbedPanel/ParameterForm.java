@@ -1,4 +1,4 @@
-package com.fm.admin.cmp.configPage.tabbedPanel;
+package com.fm.admin.pages.configPage.cmp.tabbedPanel;
 
 import com.fm.domain.SystemParameter;
 import com.fm.service.ISystemParameterService;
