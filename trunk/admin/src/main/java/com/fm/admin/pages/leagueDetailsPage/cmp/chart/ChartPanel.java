@@ -33,14 +33,16 @@ public class ChartPanel extends Panel
 
    private List<TeamRecord> records;
 
-   private final Season season;
+//   private final Season season;
 
    private Chart chart;
 
-   public ChartPanel(String id, IModel<String> model, Season season)
+   private IModel<Season> seasonModel;
+
+   public ChartPanel(String id, IModel<String> model, IModel<Season> seasonModel)
    {
       super(id, model);
-      this.season = season;
+      this.seasonModel = seasonModel;
       setOutputMarkupId(true);
       initView();
    }
@@ -51,7 +53,7 @@ public class ChartPanel extends Panel
       String teamSid = (String) getDefaultModelObject();
       if (StringUtils.isNotEmpty(teamSid))
       {
-         records = teamRecordService.findAllTeamRecordsFromSeason(teamSid, season);
+         records = teamRecordService.findAllTeamRecordsFromSeason(teamSid, seasonModel.getObject());
          Options options = prepareOptionsForChart(records);
          chart.setOptions(options);
       }

@@ -15,15 +15,20 @@ import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxEventBehavior;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.attributes.AjaxRequestAttributes;
+import org.apache.wicket.ajax.form.OnChangeAjaxBehavior;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.extensions.ajax.markup.html.AjaxLazyLoadPanel;
+import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.form.DropDownChoice;
+import org.apache.wicket.markup.html.form.IChoiceRenderer;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
+import org.apache.wicket.util.value.IValueMap;
 
 import java.util.List;
 
@@ -40,9 +45,9 @@ public class TableTab extends Panel
    @SpringBean
    private ITeamRecordService teamRecordService;
 
-   private League league;
-
    private Season season;
+
+   private List<Season> seasonList;
 
    private List<TeamRecord> teamRecords;
 
@@ -54,14 +59,37 @@ public class TableTab extends Panel
    {
       super(id, model);
       setOutputMarkupId(true);
-      league = model.getObject();
+      League league = model.getObject();
+      seasonList = seasonService.getLeagueSeasons((League) getDefaultModelObject());
       season = seasonService.getActiveSeason(league);
       teamRecords = teamRecordService.findTeamRecordsBySeason(season, true);
-
-      initView();
    }
 
-   private void initView()
+   @Override
+   protected void onInitialize()
+   {
+      super.onInitialize();
+      provideListSection();
+      provideToolbarSection();
+      provideChartSection();
+   }
+
+   private void provideChartSection()
+   {
+      add(new AjaxLazyLoadPanel("chartPanel")
+      {
+         @Override
+         public Component getLazyLoadComponent(String id)
+         {
+            chart = new ChartPanel(id, new PropertyModel<String>(TableTab.this, "selectedTeamSid"),
+                    new PropertyModel<Season>(TableTab.this, "season"));
+            chart.setOutputMarkupId(true);
+            return chart;
+         }
+      });
+   }
+
+   private void provideListSection()
    {
       final ListView<TeamRecord> teamListView = new ListView<TeamRecord>("teams",
               new PropertyModel<List<? extends TeamRecord>>(this, "teamRecords"))
@@ -103,13 +131,16 @@ public class TableTab extends Panel
          }
       };
       add(teamListView);
+   }
 
+   private void provideToolbarSection()
+   {
       add(new AjaxLink<Void>("newSeason")
       {
          @Override
          public void onClick(AjaxRequestTarget target)
          {
-            season = seasonService.nextSeason(league);
+            season = seasonService.nextSeason((League) TableTab.this.getDefaultModelObject());
             Notification.success(getString("next.season.successfully.generated"));
             target.add(TableTab.this);
          }
@@ -134,10 +165,7 @@ public class TableTab extends Panel
          protected void updateAjaxAttributes(AjaxRequestAttributes attributes)
          {
             super.updateAjaxAttributes(attributes);
-            if (league != null)
-            {
-               attributes.getAjaxCallListeners().add(new ConfirmationCallListener(getString("next.round.confirm")));
-            }
+            attributes.getAjaxCallListeners().add(new ConfirmationCallListener(getString("next.round.confirm")));
          }
       });
       add(new AjaxLink<Void>("teamDetails")
@@ -145,8 +173,25 @@ public class TableTab extends Panel
          @Override
          protected void onConfigure()
          {
-            setEnabled(league != null);
+            setEnabled(selectedTeamSid != null);
             super.onConfigure();
+         }
+
+         @Override
+         protected void onComponentTag(ComponentTag tag)
+         {
+            super.onComponentTag(tag);
+            IValueMap attributes = tag.getAttributes();
+            String clazz = attributes.getString("class");
+
+            if (!isEnabled())
+            {
+               attributes.put("class", clazz + " disabled");
+            }
+            else
+            {
+               attributes.put("class", clazz);
+            }
          }
 
          @Override
@@ -155,17 +200,30 @@ public class TableTab extends Panel
             new NavigateToTeamDetailsPage(selectedTeamSid).navigate();
          }
       });
-
-      add(new AjaxLazyLoadPanel("chartPanel")
+      DropDownChoice dropDownChoice = new DropDownChoice<Season>("season", new PropertyModel<Season>(this, "season"),
+              seasonList, new IChoiceRenderer<Season>()
       {
          @Override
-         public Component getLazyLoadComponent(String id)
+         public Object getDisplayValue(Season object)
          {
-            chart = new ChartPanel(id, new PropertyModel<String>(TableTab.this, "selectedTeamSid"), season);
-            chart.setOutputMarkupId(true);
-            return chart;
+            return object.getNumber();
+         }
+
+         @Override
+         public String getIdValue(Season object, int index)
+         {
+            return object.getSid();
          }
       });
+      dropDownChoice.add(new OnChangeAjaxBehavior()
+      {
+         @Override
+         protected void onUpdate(AjaxRequestTarget target)
+         {
+            target.add(TableTab.this);
+         }
+      });
+      add(dropDownChoice);
    }
 
    private void executeOnClick(AjaxRequestTarget target, IModel<TeamRecord> model)
