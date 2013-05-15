@@ -1,6 +1,7 @@
 package com.fm.admin.pages.configPage.cmp.masterDetail;
 
 import com.fm.admin.pages.configPage.cmp.table.NameFilterToolbar;
+import com.fm.core.cmp.masterDetail.DetailsPanel;
 import com.fm.core.cmp.masterDetail.MasterDetailPanel;
 import com.fm.core.cmp.newTable.AjaxDataTable;
 import com.fm.core.cmp.newTable.DataProvider;
@@ -10,7 +11,6 @@ import com.fm.domain.filter.OpenSearchDescription;
 import com.fm.service.INameService;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.IColumn;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.PropertyColumn;
-import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.ResourceModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
@@ -36,7 +36,7 @@ public class NameMasterDetail extends MasterDetailPanel<Name>
    }
 
    @Override
-   protected Panel provideDetailsPanel(String id, IModel<Name> model)
+   protected DetailsPanel provideDetailsPanel(String id, IModel<Name> model)
    {
       return new NameDetailsPanel(id, model, nameService, NameMasterDetail.this);
    }

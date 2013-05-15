@@ -48,9 +48,8 @@ public class TeamDetailsPage extends AdminAbstractPage
    public TeamDetailsPage(PageParameters parameters)
    {
       super();
-      setDefaultModel(new Model<Team>());
       Team team = getTeam(parameters);
-      setDefaultModelObject(team);
+      setDefaultModel(new Model<Team>(team));
       players = playerService.findTeamPlayers(team);
 
       initView();

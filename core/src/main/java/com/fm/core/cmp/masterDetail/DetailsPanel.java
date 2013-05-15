@@ -13,28 +13,19 @@ import org.apache.wicket.model.IModel;
  */
 public abstract class DetailsPanel<T extends IdentifiableEntity> extends Panel
 {
-   private IModel<T> model;
-
    private T selected;
 
    public DetailsPanel(String id, IModel<T> model)
    {
       super(id, model);
       setOutputMarkupId(true);
-      this.model = model;
    }
 
    @Override
    protected void onConfigure()
    {
-      setVisible(model.getObject() != null);
-   }
-
-   @Override
-   protected void onBeforeRender()
-   {
-      selected = model.getObject();
-      super.onBeforeRender();
+      selected = (T) getDefaultModelObject();
+      setVisible(selected != null);
    }
 
    public T getSelected()

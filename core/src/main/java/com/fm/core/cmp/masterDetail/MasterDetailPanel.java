@@ -23,11 +23,12 @@ public abstract class MasterDetailPanel<T extends IdentifiableEntity> extends Pa
    {
       super(id);
       setOutputMarkupId(true);
-      initView();
    }
 
-   private void initView()
+   @Override
+   protected void onInitialize()
    {
+      super.onInitialize();
       AjaxDataTable<T> dataTable = provideMasterTable("master");
       dataTable.setSelectionChangeCallback(new SelectionChangeCallback<T>()
       {
@@ -42,7 +43,7 @@ public abstract class MasterDetailPanel<T extends IdentifiableEntity> extends Pa
       add(provideDetailsPanel("details", new PropertyModel<T>(this, "selected")));
    }
 
-   protected abstract Panel provideDetailsPanel(String id, IModel<T> model);
+   protected abstract DetailsPanel provideDetailsPanel(String id, IModel<T> model);
 
    protected abstract AjaxDataTable<T> provideMasterTable(String id);
 }
