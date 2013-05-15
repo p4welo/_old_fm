@@ -1,5 +1,6 @@
 package com.fm.admin.pages.leagueDetailsPage.cmp.tabbedPanel;
 
+import com.fm.core.ajax.AjaxSelectBehavior;
 import com.fm.core.cmp.masterDetail.EmptyDetailsPanel;
 import com.fm.domain.League;
 import com.fm.domain.MatchGame;
@@ -8,9 +9,7 @@ import com.fm.service.IMatchGameService;
 import com.fm.service.ISeasonService;
 import com.fm.service.ITeamRecordService;
 import org.apache.wicket.AttributeModifier;
-import org.apache.wicket.ajax.AjaxEventBehavior;
 import org.apache.wicket.ajax.AjaxRequestTarget;
-import org.apache.wicket.ajax.attributes.AjaxRequestAttributes;
 import org.apache.wicket.ajax.form.OnChangeAjaxBehavior;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.DropDownChoice;
@@ -109,22 +108,13 @@ public class MatchesTab extends Panel
             item.add(new Label("hostScore", new PropertyModel(game, MatchGame.FIELD_HOST_SCORES)));
             item.add(new Label("guestScore", new PropertyModel(game, MatchGame.FIELD_GUEST_SCORES)));
 
-            item.add(new AjaxEventBehavior("onclick")
+            item.add(new AjaxSelectBehavior()
             {
-               private static final long serialVersionUID = 7672021482216074145L;
-
                @Override
                protected void onEvent(AjaxRequestTarget target)
                {
                   selected = item.getModelObject();
                   target.add(MatchesTab.this);
-               }
-
-               @Override
-               protected void updateAjaxAttributes(AjaxRequestAttributes attributes)
-               {
-                  super.updateAjaxAttributes(attributes);
-                  attributes.setAllowDefault(true);
                }
             });
             if (item.getModelObject().equals(selected))

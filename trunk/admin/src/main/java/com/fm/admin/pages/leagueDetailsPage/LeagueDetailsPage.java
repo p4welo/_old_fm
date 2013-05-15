@@ -19,7 +19,8 @@ import org.apache.wicket.extensions.ajax.markup.html.AjaxLazyLoadPanel;
 import org.apache.wicket.extensions.markup.html.tabs.AbstractTab;
 import org.apache.wicket.extensions.markup.html.tabs.ITab;
 import org.apache.wicket.markup.html.WebMarkupContainer;
-import org.apache.wicket.model.PropertyModel;
+import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.Model;
 import org.apache.wicket.model.ResourceModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.spring.injection.annot.SpringBean;
@@ -40,17 +41,17 @@ public class LeagueDetailsPage extends AdminAbstractPage
    @SpringBean
    private ILeagueService leagueService;
 
-   private League league;
-
    public LeagueDetailsPage(final PageParameters parameters)
    {
       super();
-      league = getLeague(parameters);
-      initView();
+      League league = getLeague(parameters);
+      setDefaultModel(new Model<League>(league));
    }
 
-   private void initView()
+   @Override
+   protected void onInitialize()
    {
+      super.onInitialize();
       List<ITab> tabs = new ArrayList<ITab>();
       tabs.add(new AbstractTab(new ResourceModel("active.tab"))
       {
@@ -62,11 +63,9 @@ public class LeagueDetailsPage extends AdminAbstractPage
                @Override
                public Component getLazyLoadComponent(String id)
                {
-                  return new TableTab(id, new PropertyModel<League>(LeagueDetailsPage.this, "league"));
+                  return new TableTab(id, (IModel<League>) LeagueDetailsPage.this.getDefaultModel());
                }
             };
-//            panel.setOutputMarkupId(true);
-//            panel.add(new AjaxSelfUpdatingTimerBehavior(Duration.seconds(2)));
             return panel;
          }
       });
@@ -80,7 +79,7 @@ public class LeagueDetailsPage extends AdminAbstractPage
                @Override
                public Component getLazyLoadComponent(String id)
                {
-                  return new MatchesTab(id, new PropertyModel<League>(LeagueDetailsPage.this, "league"));
+                  return new MatchesTab(id, (IModel<League>) LeagueDetailsPage.this.getDefaultModel());
                }
             };
             return panel;
@@ -94,7 +93,7 @@ public class LeagueDetailsPage extends AdminAbstractPage
       String sid = parameters.get(SELECTED_LEAGUE_SID_KEY).toString();
       if (StringUtils.isNotBlank(sid))
       {
-         league = leagueService.getBySid(sid);
+         League league = leagueService.getBySid(sid);
          if (league == null)
          {
             throw new RestartResponseAtInterceptPageException(LeagueListPage.class);

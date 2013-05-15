@@ -19,7 +19,6 @@ import org.apache.wicket.ajax.attributes.AjaxRequestAttributes;
 import org.apache.wicket.ajax.form.OnChangeAjaxBehavior;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.extensions.ajax.markup.html.AjaxLazyLoadPanel;
-import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.form.IChoiceRenderer;
@@ -29,7 +28,6 @@ import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
-import org.apache.wicket.util.value.IValueMap;
 
 import java.util.List;
 
@@ -173,33 +171,12 @@ public class TableTab extends Panel
       add(new AjaxLink<Void>("teamDetails")
       {
          @Override
-         protected void onConfigure()
-         {
-            setEnabled(selectedTeamSid != null);
-            super.onConfigure();
-         }
-
-         @Override
-         protected void onComponentTag(ComponentTag tag)
-         {
-            super.onComponentTag(tag);
-            IValueMap attributes = tag.getAttributes();
-            String clazz = attributes.getString("class");
-
-            if (!isEnabled())
-            {
-               attributes.put("class", clazz + " disabled");
-            }
-            else
-            {
-               attributes.put("class", clazz);
-            }
-         }
-
-         @Override
          public void onClick(AjaxRequestTarget target)
          {
-            new NavigateToTeamDetailsPage(selectedTeamSid).navigate();
+            if (selectedTeamSid != null)
+            {
+               new NavigateToTeamDetailsPage(selectedTeamSid).navigate();
+            }
          }
       });
       DropDownChoice dropDownChoice = new DropDownChoice<Season>("season", new PropertyModel<Season>(this, "season"),
