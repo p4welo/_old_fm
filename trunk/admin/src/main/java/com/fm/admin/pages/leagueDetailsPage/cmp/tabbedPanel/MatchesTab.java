@@ -1,5 +1,6 @@
 package com.fm.admin.pages.leagueDetailsPage.cmp.tabbedPanel;
 
+import com.fm.core.cmp.masterDetail.EmptyDetailsPanel;
 import com.fm.domain.League;
 import com.fm.domain.MatchGame;
 import com.fm.domain.Season;
@@ -79,6 +80,7 @@ public class MatchesTab extends Panel
          @Override
          protected void onUpdate(AjaxRequestTarget target)
          {
+            selected = null;
             target.add(MatchesTab.this);
          }
       });
@@ -87,6 +89,7 @@ public class MatchesTab extends Panel
       final MatchDetailsPanel matchDetailsPanel = new MatchDetailsPanel("details",
               new PropertyModel<MatchGame>(this, "selected"));
       add(matchDetailsPanel);
+      add(new EmptyDetailsPanel<Season>("emptyPanel", new PropertyModel<Season>(this, "selected")));
       add(new ListView<MatchGame>("matches", new PropertyModel<List<MatchGame>>(this, "matchGames"))
       {
          @Override
@@ -114,7 +117,7 @@ public class MatchesTab extends Panel
                protected void onEvent(AjaxRequestTarget target)
                {
                   selected = item.getModelObject();
-                  target.add(matchDetailsPanel);
+                  target.add(MatchesTab.this);
                }
 
                @Override

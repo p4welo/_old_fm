@@ -3,6 +3,7 @@ package com.fm.admin.pages.leagueDetailsPage.cmp.tabbedPanel;
 import com.fm.admin.navigation.NavigateToTeamDetailsPage;
 import com.fm.admin.pages.leagueDetailsPage.cmp.chart.ChartPanel;
 import com.fm.core.ajax.ConfirmationCallListener;
+import com.fm.core.cmp.masterDetail.EmptyDetailsPanel;
 import com.fm.core.cmp.notify.Notification;
 import com.fm.domain.League;
 import com.fm.domain.Season;
@@ -76,6 +77,7 @@ public class TableTab extends Panel
 
    private void provideChartSection()
    {
+      add(new EmptyDetailsPanel<String>("empty", new PropertyModel(this, "selectedTeamSid")));
       add(new AjaxLazyLoadPanel("chartPanel")
       {
          @Override

@@ -31,7 +31,7 @@ public class PositionMasterDetail extends MasterDetailPanel<Position>
 
    public PositionMasterDetail(String id)
    {
-      super(id);
+      super(id, true);
    }
 
    @Override
