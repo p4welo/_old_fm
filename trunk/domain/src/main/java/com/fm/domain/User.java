@@ -18,8 +18,6 @@ public class User extends IdentifiableEntity
 
    public static final String FIELD_EMAIL = "email";
 
-//   public static final String FIELD_OBJECT_STATE = "objectState";
-
    @Id
    @GeneratedValue
    @Column
