@@ -19,9 +19,17 @@ public abstract class MasterDetailPanel<T extends IdentifiableEntity> extends Pa
 {
    protected T selected;
 
+   private boolean emptyPanelHidden = false;
+
    public MasterDetailPanel(String id)
    {
+      this(id, false);
+   }
+
+   public MasterDetailPanel(String id, boolean emptyPanelHidden)
+   {
       super(id);
+      this.emptyPanelHidden = emptyPanelHidden;
       setOutputMarkupId(true);
    }
 
@@ -40,7 +48,9 @@ public abstract class MasterDetailPanel<T extends IdentifiableEntity> extends Pa
          }
       });
       add(dataTable);
-      add(provideDetailsPanel("details", new PropertyModel<T>(this, "selected")));
+      IModel<T> model = new PropertyModel<T>(this, "selected");
+      add(provideDetailsPanel("details", model));
+      add(new EmptyDetailsPanel<T>("empty", model, emptyPanelHidden));
    }
 
    protected abstract DetailsPanel provideDetailsPanel(String id, IModel<T> model);

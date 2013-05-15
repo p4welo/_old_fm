@@ -44,6 +44,7 @@ public class PositionDetailsPanel extends DetailsPanel<Position>
    @Override
    protected void onConfigure()
    {
+      setSelected((Position) getDefaultModelObject());
    }
 
    private void initView()

@@ -2,7 +2,7 @@
     <div style="float: left; display: block; width: 40%">
         <div class="table_toolbar" style="text-align: right">
             <wicket:message key="round"/>
-            <select wicket:id="round"></select>
+            <select wicket:id="round" style="width: 100px"></select>
         </div>
         <table class="table table-hover">
             <tr wicket:id="matches">
@@ -19,6 +19,7 @@
         </table>
     </div>
     <div style="float: left; display: block; width: 60%; ">
+        <div wicket:id="emptyPanel"></div>
         <div wicket:id="details"></div>
     </div>
 </wicket:panel>

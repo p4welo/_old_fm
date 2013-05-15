@@ -28,6 +28,7 @@ public class MatchDetailsPanel extends Panel
    protected void onConfigure()
    {
       selected = (MatchGame) getDefaultModelObject();
+      setVisible(selected != null);
       super.onConfigure();
    }
 
