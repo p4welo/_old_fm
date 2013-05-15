@@ -6,7 +6,10 @@ import com.fm.domain.Season;
 import com.fm.service.IMatchGameService;
 import com.fm.service.ISeasonService;
 import com.fm.service.ITeamRecordService;
+import org.apache.wicket.AttributeModifier;
+import org.apache.wicket.ajax.AjaxEventBehavior;
 import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.ajax.attributes.AjaxRequestAttributes;
 import org.apache.wicket.ajax.form.OnChangeAjaxBehavior;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.DropDownChoice;
@@ -46,6 +49,8 @@ public class MatchesTab extends Panel
 
    private List<MatchGame> matchGames;
 
+   private MatchGame selected;
+
    public MatchesTab(String id, IModel<League> model)
    {
       super(id, model);
@@ -78,17 +83,21 @@ public class MatchesTab extends Panel
          }
       });
       add(dropDownChoice);
+
+      final MatchDetailsPanel matchDetailsPanel = new MatchDetailsPanel("details",
+              new PropertyModel<MatchGame>(this, "selected"));
+      add(matchDetailsPanel);
       add(new ListView<MatchGame>("matches", new PropertyModel<List<MatchGame>>(this, "matchGames"))
       {
          @Override
-         protected void onBeforeRender()
+         protected void onConfigure()
          {
+            super.onConfigure();
             matchGames = matchGameService.getByRoundInSeason(season, round);
-            super.onBeforeRender();
          }
 
          @Override
-         protected void populateItem(ListItem<MatchGame> item)
+         protected void populateItem(final ListItem<MatchGame> item)
          {
             MatchGame game = item.getModelObject();
 
@@ -96,6 +105,29 @@ public class MatchesTab extends Panel
             item.add(new Label("guest", new PropertyModel(game, MatchGame.FIELD_GUEST_NAME)));
             item.add(new Label("hostScore", new PropertyModel(game, MatchGame.FIELD_HOST_SCORES)));
             item.add(new Label("guestScore", new PropertyModel(game, MatchGame.FIELD_GUEST_SCORES)));
+
+            item.add(new AjaxEventBehavior("onclick")
+            {
+               private static final long serialVersionUID = 7672021482216074145L;
+
+               @Override
+               protected void onEvent(AjaxRequestTarget target)
+               {
+                  selected = item.getModelObject();
+                  target.add(matchDetailsPanel);
+               }
+
+               @Override
+               protected void updateAjaxAttributes(AjaxRequestAttributes attributes)
+               {
+                  super.updateAjaxAttributes(attributes);
+                  attributes.setAllowDefault(true);
+               }
+            });
+            if (item.getModelObject().equals(selected))
+            {
+               item.add(AttributeModifier.append("class", "selectedElement"));
+            }
          }
       });
    }
