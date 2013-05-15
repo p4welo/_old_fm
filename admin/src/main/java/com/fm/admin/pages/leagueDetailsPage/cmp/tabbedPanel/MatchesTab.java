@@ -61,12 +61,12 @@ public class MatchesTab extends Panel
             matchGames = matchGameService.getByRoundInSeason(season, round);
          }
       }
-
-      initView();
    }
 
-   private void initView()
+   @Override
+   protected void onInitialize()
    {
+      super.onInitialize();
       DropDownChoice dropDownChoice = new DropDownChoice<Integer>("round", new PropertyModel<Integer>(this, "round"),
               roundList);
       dropDownChoice.add(new OnChangeAjaxBehavior()
