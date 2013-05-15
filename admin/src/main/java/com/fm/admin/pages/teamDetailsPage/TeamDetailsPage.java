@@ -5,25 +5,30 @@ import com.fm.admin.api.AdminApiMappings;
 import com.fm.admin.cmp.breadcrumb.LeagueDetailsBreadcrumb;
 import com.fm.admin.pages.AdminAbstractPage;
 import com.fm.admin.pages.leagueDetailsPage.LeagueDetailsPage;
+import com.fm.admin.pages.teamDetailsPage.cmp.tabPanel.PlayersTab;
 import com.fm.core.cmp.authorization.UserAuthorities;
 import com.fm.core.cmp.breadcrumb.BootstrapBreadcrumbPanel;
+import com.fm.core.cmp.tabbedPanel.BootstrapTabbedPanel;
 import com.fm.domain.Player;
-import com.fm.domain.Position;
 import com.fm.domain.Team;
 import com.fm.service.IPlayerService;
 import com.fm.service.ITeamService;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.wicket.Component;
 import org.apache.wicket.RestartResponseAtInterceptPageException;
 import org.apache.wicket.authroles.authorization.strategies.role.annotations.AuthorizeInstantiation;
-import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.markup.html.list.ListItem;
-import org.apache.wicket.markup.html.list.ListView;
+import org.apache.wicket.extensions.ajax.markup.html.AjaxLazyLoadPanel;
+import org.apache.wicket.extensions.markup.html.tabs.AbstractTab;
+import org.apache.wicket.extensions.markup.html.tabs.ITab;
+import org.apache.wicket.markup.html.WebMarkupContainer;
+import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
-import org.apache.wicket.model.PropertyModel;
+import org.apache.wicket.model.ResourceModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.wicketstuff.annotation.mount.MountPath;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -50,32 +55,29 @@ public class TeamDetailsPage extends AdminAbstractPage
       super();
       Team team = getTeam(parameters);
       setDefaultModel(new Model<Team>(team));
-      players = playerService.findTeamPlayers(team);
-
-      initView();
    }
 
-   private void initView()
+   @Override
+   protected void onInitialize()
    {
-      add(new ListView("players", players)
+      super.onInitialize();
+      List<ITab> tabs = new ArrayList<ITab>();
+      tabs.add(new AbstractTab(new ResourceModel("players.tab"))
       {
          @Override
-         protected void onConfigure()
+         public WebMarkupContainer getPanel(String panelId)
          {
-            players = playerService.findTeamPlayers((Team) TeamDetailsPage.this.getDefaultModelObject());
-            super.onConfigure();
-         }
-
-         @Override
-         protected void populateItem(ListItem item)
-         {
-            Player player = (Player) item.getModelObject();
-            item.add(new Label("name", new PropertyModel(player, Player.FIELD_NAME)));
-            item.add(new Label("surname", new PropertyModel(player, Player.FIELD_SURNAME)));
-            item.add(new Label("position",
-                    new PropertyModel(player, Player.FIELD_POSITION + "." + Position.FIELD_FULL_NAME)));
+            return new AjaxLazyLoadPanel(panelId)
+            {
+               @Override
+               public Component getLazyLoadComponent(String markupId)
+               {
+                  return new PlayersTab(markupId, (IModel<Team>) TeamDetailsPage.this.getDefaultModel());
+               }
+            };
          }
       });
+      add(new BootstrapTabbedPanel("tab", tabs));
    }
 
    private Team getTeam(PageParameters parameters)
