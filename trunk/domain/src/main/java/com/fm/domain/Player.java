@@ -17,9 +17,31 @@ public class Player extends IdentifiableEntity
 
    public static final String FIELD_PLAYER_STATS = "player_stats";
 
-   public static final String FIELD_TEAM = "team";
-
    public static final String FIELD_TEAM_SID = "teamSid";
+
+   public static final String FIELD_SPEED = "speed";
+
+   public static final String FIELD_STAMINA = "stamina";
+
+   public static final String FIELD_ENERGY = "energy";
+
+   public static final String FIELD_POTENTIAL = "potential";
+
+   public static final String FIELD_CROSSING = "crossing";
+
+   public static final String FIELD_PASSING = "passing";
+
+   public static final String FIELD_HEADING = "heading";
+
+   public static final String FIELD_MARKING = "marking";
+
+   public static final String FIELD_SHOTS = "shots";
+
+   public static final String FIELD_TACKLING = "tackling";
+
+   public static final String FIELD_DRIBBLING = "dribbling";
+
+   public static final String FIELD_GOALKEEPING = "goalkeeping";
 
    @Id
    @GeneratedValue

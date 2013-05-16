@@ -1,3 +1,40 @@
 <wicket:panel xmlns:wicket="http://wicket.apache.org">
-    <img src="http://www.mlssoccer.com/sites/league/files/imagecache/player_profile_headshot/players/head-shots/garcia_0.jpg"/>
+    <img src="http://www.mlssoccer.com/sites/league/files/imagecache/player_profile_headshot/players/head-shots/garcia_0.jpg"
+         style="float: left;"/>
+
+    <div class="form-horizontal" style="padding-top: 50px">
+        <div class="control-group">
+            <label class="control-label" style="padding-top: 0px;">
+                <wicket:message key="player.name"/>
+                <br/>
+                <wicket:message key="player.surname"/>
+                <br/>
+                <wicket:message key="player.age"/>
+            </label>
+
+            <div class="controls" style="font-size: 14px; margin-left: 380px;">
+                <span wicket:id="name"/>
+                <br/>
+                <span wicket:id="surname"/>
+                <br/>
+                <span wicket:id="age"/>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <wicket:message key="player.speed"/>
+        <span wicket:id="speed"/>
+    </div>
+    <div class="row">
+        <wicket:message key="player.stamina"/>
+        <span wicket:id="stamina"/>
+    </div>
+    <div class="row">
+        <wicket:message key="player.crossing"/>
+        <span wicket:id="crossing"/>
+    </div>
+    <div class="row">
+        <wicket:message key="player.passing"/>
+        <span wicket:id="passing"/>
+    </div>
 </wicket:panel>
