@@ -25,7 +25,7 @@
         <joda-time-hibernate.version>1.3</joda-time-hibernate.version>
         <commons-lang3.version>3.1</commons-lang3.version>
         <junit.version>4.10</junit.version>
-        <wicket.version>6.4.0</wicket.version>
+        <wicket.version>6.7.0</wicket.version>
         <log4j.version>1.2.17</log4j.version>
         <javax.mail.version>1.4.3</javax.mail.version>
         <hsqldb.version>1.8.0.10</hsqldb.version>
@@ -37,7 +37,6 @@
         <module>resources</module>
         <module>core</module>
         <module>admin</module>
-        <!--<module>client</module>-->
         <module>server</module>
     </modules>
 
