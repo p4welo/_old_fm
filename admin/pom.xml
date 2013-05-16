@@ -50,5 +50,10 @@
             <artifactId>wicked-charts-wicket6</artifactId>
             <version>1.4.3</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.wicket</groupId>
+            <artifactId>wicket-devutils</artifactId>
+            <version>${wicket.version}</version>
+        </dependency>
     </dependencies>
 </project>
