@@ -3,6 +3,7 @@ package com.fm.admin.pages.teamDetailsPage.cmp.tabPanel;
 import com.fm.core.cmp.label.ColorValueLabel;
 import com.fm.domain.Player;
 import com.fm.domain.PlayerStatTypeEnum;
+import com.fm.domain.Position;
 import com.fm.domain.Team;
 import com.fm.domain.filter.StatsFilter;
 import com.fm.service.IPlayerStatsService;
@@ -48,6 +49,8 @@ public class PlayersDetailsPanel extends Panel
       add(new Label("surname", PropertyModel.of(this, "player." + Player.FIELD_SURNAME)));
       add(new Label("age", PropertyModel.of(this, "player." + Player.FIELD_AGE)));
       add(new Label("potential", PropertyModel.of(this, "player." + Player.FIELD_POTENTIAL)));
+      add(new Label("position",
+              PropertyModel.of(this, "player." + Player.FIELD_POSITION + "." + Position.FIELD_FULL_NAME)));
 
       add(new ColorValueLabel("speed", PropertyModel.of(this, "player." + Player.FIELD_SPEED), 20));
       add(new ColorValueLabel("stamina", PropertyModel.of(this, "player." + Player.FIELD_STAMINA), 20));
