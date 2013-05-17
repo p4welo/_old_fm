@@ -7,9 +7,11 @@
 
     <!-- WEB -->
     <mvc:resources mapping="static/**" location="classpath:css"/>
-    <mvc:resources mapping="static/**" location="classpath:bootstrap"/>
+    <mvc:resources mapping="/upload/**" location="file:/home/pawel/dupadupa/"/>
+    <!--<mvc:resources mapping="static/**" location="classpath:bootstrap"/>-->
 
     <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter"/>
     <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping"/>
+
 
 </beans>
