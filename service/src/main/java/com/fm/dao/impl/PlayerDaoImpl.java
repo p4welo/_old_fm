@@ -28,4 +28,14 @@ public class PlayerDaoImpl extends AbstractDaoImpl<Player> implements IPlayerDao
       criteria.addOrder(Order.asc(Player.FIELD_POSITION));
       return criteria.list();
    }
+
+   @Override
+   public Player getRandom(Team team)
+   {
+      Criteria criteria = createCriteria();
+      criteria.add(Restrictions.eq(Player.FIELD_TEAM_SID, team.getSid()));
+      criteria.add(Restrictions.sqlRestriction("1=1 order by rand()"));
+      criteria.setMaxResults(1);
+      return (Player) criteria.uniqueResult();
+   }
 }

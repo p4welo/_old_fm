@@ -2,10 +2,10 @@ package com.fm.service.impl;
 
 import com.fm.dao.IAbstractDao;
 import com.fm.dao.IMatchGameDao;
-import com.fm.domain.MatchGame;
-import com.fm.domain.Season;
-import com.fm.domain.Team;
+import com.fm.domain.*;
 import com.fm.service.IMatchGameService;
+import com.fm.service.IPlayerService;
+import com.fm.service.IPlayerStatsService;
 import com.fm.service.ISeasonService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -29,6 +29,12 @@ public class MatchGameServiceImpl extends AbstractServiceImpl<MatchGame> impleme
    @Resource
    private ISeasonService seasonService;
 
+   @Resource
+   private IPlayerStatsService playerStatsService;
+
+   @Resource
+   private IPlayerService playerService;
+
    @Override
    protected IAbstractDao<MatchGame> getDao()
    {
@@ -44,16 +50,44 @@ public class MatchGameServiceImpl extends AbstractServiceImpl<MatchGame> impleme
       Season season = seasonService.getBySid(s.getSid());
 
       MatchGame matchGame = new MatchGame();
-      matchGame.setGuestScores(random.nextInt(3));
+      int guestScores = random.nextInt(3);
+      matchGame.setGuestScores(guestScores);
       matchGame.setGuestSid(guestTeam.getSid());
       matchGame.setGuestName(guestTeam.getName());
-      matchGame.setHostScores(random.nextInt(4));
+      int hostScores = random.nextInt(4);
+      matchGame.setHostScores(hostScores);
       matchGame.setHostSid(hostTeam.getSid());
       matchGame.setHostName(hostTeam.getName());
       matchGame.setMatchDate(new Date());
       matchGame.setSeason(season);
       matchGame.setRound(round);
       matchGame = save(matchGame);
+
+      for (int i = 0; i < hostScores; i++)
+      {
+         Player player = playerService.getRandom(hostTeam);
+         PlayerStats stats = new PlayerStats();
+         stats.setDate(new Date());
+         stats.setPlayerSid(player.getSid());
+         stats.setSeasonSid(season.getSid());
+         stats.setMatchSid(matchGame.getSid());
+         stats.setType(PlayerStatTypeEnum.GOAL);
+         stats.setMatchMinute(random.nextInt(90));
+         playerStatsService.save(stats);
+      }
+
+      for (int i = 0; i < guestScores; i++)
+      {
+         Player player = playerService.getRandom(guestTeam);
+         PlayerStats stats = new PlayerStats();
+         stats.setDate(new Date());
+         stats.setPlayerSid(player.getSid());
+         stats.setSeasonSid(season.getSid());
+         stats.setMatchSid(matchGame.getSid());
+         stats.setType(PlayerStatTypeEnum.GOAL);
+         stats.setMatchMinute(random.nextInt(90));
+         playerStatsService.save(stats);
+      }
 
       return matchGame;
    }

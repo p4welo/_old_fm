@@ -13,4 +13,6 @@ import java.util.List;
 public interface IPlayerDao
 {
    List<Player> findTeamPlayers(Team team);
+
+   Player getRandom(Team team);
 }

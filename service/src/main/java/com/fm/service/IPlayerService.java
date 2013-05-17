@@ -13,4 +13,6 @@ import java.util.List;
 public interface IPlayerService extends IAbstractService<Player>
 {
    List<Player> findTeamPlayers(Team team);
+
+   Player getRandom(Team team);
 }
