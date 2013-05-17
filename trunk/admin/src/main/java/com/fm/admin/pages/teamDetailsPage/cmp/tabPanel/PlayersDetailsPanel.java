@@ -30,6 +30,7 @@ public class PlayersDetailsPanel extends Panel
       add(new Label("name", PropertyModel.of(this, "player." + Player.FIELD_NAME)));
       add(new Label("surname", PropertyModel.of(this, "player." + Player.FIELD_SURNAME)));
       add(new Label("age", PropertyModel.of(this, "player." + Player.FIELD_AGE)));
+      add(new Label("potential", PropertyModel.of(this, "player." + Player.FIELD_POTENTIAL)));
 
       add(new ColorValueLabel("speed", PropertyModel.of(this, "player." + Player.FIELD_SPEED), 20));
       add(new ColorValueLabel("stamina", PropertyModel.of(this, "player." + Player.FIELD_STAMINA), 20));

@@ -55,7 +55,7 @@ public class PlayersTab extends Panel
             item.add(new Label("surname", new PropertyModel<String>(player, Player.FIELD_SURNAME)));
             item.add(new Label("age", new PropertyModel<String>(player, Player.FIELD_AGE)));
             item.add(new Label("position",
-                    new PropertyModel<String>(player, Player.FIELD_POSITION + "." + Position.FIELD_FULL_NAME)));
+                    new PropertyModel<String>(player, Player.FIELD_POSITION + "." + Position.FIELD_SHORT_NAME)));
             item.add(new AjaxSelectBehavior()
             {
                @Override
