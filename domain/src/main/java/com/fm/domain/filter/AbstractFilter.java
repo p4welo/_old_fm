@@ -1,38 +1,26 @@
 package com.fm.domain.filter;
 
+import com.fm.domain.ObjectStateEnum;
+
 import java.io.Serializable;
 
 public abstract class AbstractFilter implements Serializable
 {
    private static final long serialVersionUID = -3165722370611230573L;
 
-//   protected DataObjectStateEnum dataObjectState;
+   protected ObjectStateEnum objectState;
 
    public AbstractFilter()
    {
-//      this(null);
    }
 
-//   public AbstractFilter(DataObjectStateEnum dataObjectState)
-//   {
-//      this.dataObjectState = dataObjectState;
-//   }
-//
-//   public DataObjectStateEnum getDataObjectState()
-//   {
-//      return dataObjectState;
-//   }
-//
-//   public void setDataObjectState(DataObjectStateEnum dataObjectState)
-//   {
-//      this.dataObjectState = dataObjectState;
-//   }
+   public ObjectStateEnum getObjectState()
+   {
+      return objectState;
+   }
 
-//   @Override
-//   public String toString()
-//   {
-//      return new ToStringBuilder(this)
-//              .append("dataObjectState", dataObjectState)
-//              .toString();
-//   }
+   public void setObjectState(ObjectStateEnum objectState)
+   {
+      this.objectState = objectState;
+   }
 }

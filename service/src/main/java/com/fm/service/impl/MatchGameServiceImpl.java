@@ -69,10 +69,30 @@ public class MatchGameServiceImpl extends AbstractServiceImpl<MatchGame> impleme
          PlayerStats stats = new PlayerStats();
          stats.setDate(new Date());
          stats.setPlayerSid(player.getSid());
+         stats.setPlayerName(player.getName());
+         stats.setPlayerSurname(player.getSurname());
          stats.setSeasonSid(season.getSid());
          stats.setMatchSid(matchGame.getSid());
          stats.setType(PlayerStatTypeEnum.GOAL);
          stats.setMatchMinute(random.nextInt(90));
+         stats.setTeamSid(hostTeam.getSid());
+         playerStatsService.save(stats);
+      }
+
+      int randomYellow = random.nextInt(2);
+      for (int i = 0; i < randomYellow; i++)
+      {
+         Player player = playerService.getRandom(hostTeam);
+         PlayerStats stats = new PlayerStats();
+         stats.setDate(new Date());
+         stats.setPlayerSid(player.getSid());
+         stats.setPlayerName(player.getName());
+         stats.setPlayerSurname(player.getSurname());
+         stats.setSeasonSid(season.getSid());
+         stats.setMatchSid(matchGame.getSid());
+         stats.setType(PlayerStatTypeEnum.YELLOW_CARD);
+         stats.setMatchMinute(random.nextInt(90));
+         stats.setTeamSid(hostTeam.getSid());
          playerStatsService.save(stats);
       }
 
@@ -82,10 +102,30 @@ public class MatchGameServiceImpl extends AbstractServiceImpl<MatchGame> impleme
          PlayerStats stats = new PlayerStats();
          stats.setDate(new Date());
          stats.setPlayerSid(player.getSid());
+         stats.setPlayerName(player.getName());
+         stats.setPlayerSurname(player.getSurname());
          stats.setSeasonSid(season.getSid());
          stats.setMatchSid(matchGame.getSid());
          stats.setType(PlayerStatTypeEnum.GOAL);
          stats.setMatchMinute(random.nextInt(90));
+         stats.setTeamSid(guestTeam.getSid());
+         playerStatsService.save(stats);
+      }
+
+      randomYellow = random.nextInt(2);
+      for (int i = 0; i < randomYellow; i++)
+      {
+         Player player = playerService.getRandom(guestTeam);
+         PlayerStats stats = new PlayerStats();
+         stats.setDate(new Date());
+         stats.setPlayerSid(player.getSid());
+         stats.setPlayerName(player.getName());
+         stats.setPlayerSurname(player.getSurname());
+         stats.setSeasonSid(season.getSid());
+         stats.setMatchSid(matchGame.getSid());
+         stats.setType(PlayerStatTypeEnum.YELLOW_CARD);
+         stats.setMatchMinute(random.nextInt(90));
+         stats.setTeamSid(guestTeam.getSid());
          playerStatsService.save(stats);
       }
 

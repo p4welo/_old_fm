@@ -69,4 +69,24 @@
             <span class="pull-right" wicket:id="goalkeeping"/>
         </div>
     </div>
+
+    <div style="display: block; float: left; width: 45%; margin-top: 50px">
+        <div class="row-fluid" style="margin-bottom: 5px;">
+            <img src="static/img/goal-ball.png" style="vertical-align: middle; width: 18px"/>
+            <wicket:message key="player.goals"/>
+            <span class="pull-right" wicket:id="goalCount"/>
+        </div>
+    </div>
+    <div style="display: block; float: right; width: 45%; margin-top: 50px">
+        <div class="row-fluid" style="margin-bottom: 5px;">
+            <img src="static/img/yellow-card.png" style="vertical-align: middle; width: 10px"/>
+            <wicket:message key="player.yellow.cards"/>
+            <span class="pull-right" wicket:id="yellowCardsCount"/>
+        </div>
+        <div class="row-fluid" style="margin-bottom: 5px;">
+            <img src="static/img/red-card.png" style="vertical-align: middle; width: 10px"/>
+            <wicket:message key="player.red.cards"/>
+            <span class="pull-right" wicket:id="redCardsCount"/>
+        </div>
+    </div>
 </wicket:panel>

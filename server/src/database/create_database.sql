@@ -191,8 +191,11 @@ CREATE TABLE player_stats (
 	object_state VARCHAR(30) NOT NULL DEFAULT 'ACTIVE',
     sid VARCHAR(32) NOT NULL,
     player_sid VARCHAR(32) NOT NULL,
+    player_name varchar(15) NOT NULL,
+    player_surname varchar(40) NOT NULL,
     season_sid VARCHAR(32) NOT NULL,
     match_sid VARCHAR(32) NOT NULL,
+    team_sid VARCHAR(32) NOT NULL,
     match_minute INT,
     date timestamp NOT NULL,
     type VARCHAR(32) NOT NULL

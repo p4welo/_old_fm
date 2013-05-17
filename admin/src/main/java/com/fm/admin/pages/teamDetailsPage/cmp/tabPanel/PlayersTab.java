@@ -73,7 +73,7 @@ public class PlayersTab extends Panel
       });
       IModel model = new PropertyModel<Player>(this, "selected");
       add(new EmptyDetailsPanel<Player>("empty", model));
-      add(new PlayersDetailsPanel("details", model));
+      add(new PlayersDetailsPanel("details", model, (IModel<Team>) getDefaultModel()));
    }
 
    @Override
