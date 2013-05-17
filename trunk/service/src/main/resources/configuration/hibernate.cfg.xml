@@ -20,5 +20,6 @@
         <mapping class="com.fm.domain.User"/>
         <mapping class="com.fm.domain.Authority"/>
         <mapping class="com.fm.domain.SystemParameter"/>
+        <mapping class="com.fm.domain.PlayerStats"/>
     </session-factory>
 </hibernate-configuration>

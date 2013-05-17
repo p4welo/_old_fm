@@ -6,6 +6,8 @@ import com.fm.domain.PlayerStats;
 import com.fm.service.IPlayerStatsService;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
+
 /**
  * User: pawel
  * Date: 13.12.12
@@ -16,6 +18,7 @@ public class PlayerStatsServiceImpl extends AbstractServiceImpl<PlayerStats> imp
 {
    public static final String BEAN_NAME = "playerStatsService";
 
+   @Resource
    private IPlayerStatsDao playerStatsDao;
 
    @Override

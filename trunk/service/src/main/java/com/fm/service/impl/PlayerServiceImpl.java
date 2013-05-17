@@ -60,4 +60,11 @@ public class PlayerServiceImpl extends AbstractServiceImpl<Player> implements IP
    {
       return playerDao.findTeamPlayers(team);
    }
+
+   @Override
+   @Transactional
+   public Player getRandom(Team team)
+   {
+      return playerDao.getRandom(team);
+   }
 }

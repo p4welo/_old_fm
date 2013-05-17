@@ -1,6 +1,8 @@
 package com.fm.domain;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.util.Date;
 
 /**
  * User: pawel
@@ -16,13 +18,29 @@ public class PlayerStats extends IdentifiableEntity
    @Column
    private Long id;
 
-   private Integer goalkeeping;
+   @Column(name = "player_sid", nullable = false)
+   @NotNull
+   private String playerSid;
 
-   private Integer defence;
+   @Column(name = "match_sid", nullable = false)
+   @NotNull
+   private String matchSid;
 
-   private Integer passing;
+   @Column(name = "season_sid", nullable = false)
+   @NotNull
+   private String seasonSid;
 
-   private Integer strike;
+   @Column(name = "match_minute", nullable = true)
+   private Integer matchMinute;
+
+   @Column(nullable = false)
+   @NotNull
+   private Date date;
+
+   @Column(nullable = false)
+   @Enumerated(value = EnumType.STRING)
+   @NotNull
+   private PlayerStatTypeEnum type;
 
    public Long getId()
    {
@@ -32,5 +50,65 @@ public class PlayerStats extends IdentifiableEntity
    public void setId(Long id)
    {
       this.id = id;
+   }
+
+   public String getPlayerSid()
+   {
+      return playerSid;
+   }
+
+   public void setPlayerSid(String playerSid)
+   {
+      this.playerSid = playerSid;
+   }
+
+   public String getMatchSid()
+   {
+      return matchSid;
+   }
+
+   public void setMatchSid(String matchSid)
+   {
+      this.matchSid = matchSid;
+   }
+
+   public String getSeasonSid()
+   {
+      return seasonSid;
+   }
+
+   public void setSeasonSid(String seasonSid)
+   {
+      this.seasonSid = seasonSid;
+   }
+
+   public Integer getMatchMinute()
+   {
+      return matchMinute;
+   }
+
+   public void setMatchMinute(Integer matchMinute)
+   {
+      this.matchMinute = matchMinute;
+   }
+
+   public Date getDate()
+   {
+      return date;
+   }
+
+   public void setDate(Date date)
+   {
+      this.date = date;
+   }
+
+   public PlayerStatTypeEnum getType()
+   {
+      return type;
+   }
+
+   public void setType(PlayerStatTypeEnum type)
+   {
+      this.type = type;
    }
 }
