@@ -1,14 +1,58 @@
 <wicket:panel xmlns:wicket="http://wicket.apache.org">
-    <center>
-        <h3>
-            <a wicket:id="hostLink">
-                <span wicket:id="host"></span>
-            </a>
-            <span wicket:id="hostGoals"></span>&nbsp;:&nbsp;<span wicket:id="guestGoals"></span>
-            <a wicket:id="guestLink">
-                <span wicket:id="guest"></span>
-            </a>
-        </h3>
-        HISTORIA MECZOWA
-    </center>
+    <h3 style="text-align:center">
+        <a wicket:id="hostLink">
+            <span wicket:id="host"></span>
+        </a>
+        <span wicket:id="hostGoals"></span>&nbsp;:&nbsp;<span wicket:id="guestGoals"></span>
+        <a wicket:id="guestLink">
+            <span wicket:id="guest"></span>
+        </a>
+    </h3>
+
+    <div style="display: block; float: left; width: 45%">
+        <div wicket:id="hostStrikers" class="row-fluid">
+            <p class="pull-right">
+                <span wicket:id="name"/>
+                <span wicket:id="surname"/>
+                <img src="static/img/goal-ball.png" style="vertical-align: middle; width: 18px"/>
+            </p>
+        </div>
+        <div wicket:id="hostYellowCards" class="row-fluid">
+            <p class="pull-right">
+                <span wicket:id="name"/>
+                <span wicket:id="surname"/>
+                <img src="static/img/yellow-card.png" style="vertical-align: middle; width: 10px"/>
+            </p>
+        </div>
+        <div wicket:id="hostRedCards" class="row-fluid">
+            <p class="pull-right">
+                <span wicket:id="name"/>
+                <span wicket:id="surname"/>
+                <img src="static/img/red-card.png" style="vertical-align: middle; width: 10px"/>
+            </p>
+        </div>
+    </div>
+    <div style="display: block; float: right; width: 45%">
+        <div wicket:id="guestStrikers" class="row-fluid">
+            <p class="pull-left">
+                <img src="static/img/goal-ball.png" style="vertical-align: middle; width: 18px"/>
+                <span wicket:id="name"/>
+                <span wicket:id="surname"/>
+            </p>
+        </div>
+        <div wicket:id="guestYellowCards" class="row-fluid">
+            <p class="pull-left">
+                <img src="static/img/yellow-card.png" style="vertical-align: middle; width: 10px"/>
+                <span wicket:id="name"/>
+                <span wicket:id="surname"/>
+            </p>
+        </div>
+        <div wicket:id="guestRedCards" class="row-fluid">
+            <p class="pull-left">
+                <img src="static/img/red-card.png" style="vertical-align: middle; width: 10px"/>
+                <span wicket:id="name"/>
+                <span wicket:id="surname"/>
+            </p>
+        </div>
+    </div>
 </wicket:panel>

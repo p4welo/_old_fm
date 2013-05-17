@@ -2,10 +2,15 @@ package com.fm.admin.pages.teamDetailsPage.cmp.tabPanel;
 
 import com.fm.core.cmp.label.ColorValueLabel;
 import com.fm.domain.Player;
+import com.fm.domain.PlayerStatTypeEnum;
+import com.fm.domain.Team;
+import com.fm.domain.filter.StatsFilter;
+import com.fm.service.IPlayerStatsService;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.PropertyModel;
+import org.apache.wicket.spring.injection.annot.SpringBean;
 
 /**
  * Created with IntelliJ IDEA.
@@ -16,11 +21,23 @@ import org.apache.wicket.model.PropertyModel;
  */
 public class PlayersDetailsPanel extends Panel
 {
+   @SpringBean
+   private IPlayerStatsService playerStatsService;
+
    private Player player;
 
-   public PlayersDetailsPanel(String id, IModel<Player> model)
+   private long goalCount;
+
+   private long yellowCardsCount;
+
+   private long redCardsCount;
+
+   private IModel<Team> teamModel;
+
+   public PlayersDetailsPanel(String id, IModel<Player> model, IModel<Team> teamModel)
    {
       super(id, model);
+      this.teamModel = teamModel;
    }
 
    @Override
@@ -42,6 +59,10 @@ public class PlayersDetailsPanel extends Panel
       add(new ColorValueLabel("tackling", PropertyModel.of(this, "player." + Player.FIELD_TACKLING), 20));
       add(new ColorValueLabel("dribbling", PropertyModel.of(this, "player." + Player.FIELD_DRIBBLING), 20));
       add(new ColorValueLabel("goalkeeping", PropertyModel.of(this, "player." + Player.FIELD_GOALKEEPING), 20));
+
+      add(new Label("goalCount", PropertyModel.of(this, "goalCount")));
+      add(new Label("yellowCardsCount", PropertyModel.of(this, "yellowCardsCount")));
+      add(new Label("redCardsCount", PropertyModel.of(this, "redCardsCount")));
    }
 
    @Override
@@ -49,6 +70,17 @@ public class PlayersDetailsPanel extends Panel
    {
       super.onConfigure();
       player = (Player) getDefaultModelObject();
+      if (player != null)
+      {
+         StatsFilter filter = new StatsFilter();
+         filter.setPlayerSid(player.getSid());
+         filter.setType(PlayerStatTypeEnum.GOAL);
+         goalCount = playerStatsService.countBySearchParams(filter);
+         filter.setType(PlayerStatTypeEnum.YELLOW_CARD);
+         yellowCardsCount = playerStatsService.countBySearchParams(filter);
+         filter.setType(PlayerStatTypeEnum.RED_CARD);
+         redCardsCount = playerStatsService.countBySearchParams(filter);
+      }
       setVisible(player != null);
    }
 }

@@ -13,6 +13,24 @@ import java.util.Date;
 @Table(name = "player_stats")
 public class PlayerStats extends IdentifiableEntity
 {
+   public static final String FIELD_PLAYER_SID = "playerSid";
+
+   public static final String FIELD_PLAYER_NAME = "playerName";
+
+   public static final String FIELD_PLAYER_SURNAME = "playerSurname";
+
+   public static final String FIELD_MATCH_SID = "matchSid";
+
+   public static final String FIELD_SEASON_SID = "seasonSid";
+
+   public static final String FIELD_TEAM_SID = "teamSid";
+
+   public static final String FIELD_MATCH_MINUTE = "matchMinute";
+
+   public static final String FIELD_DATE = "date";
+
+   public static final String FIELD_TYPE = "type";
+
    @Id
    @GeneratedValue
    @Column
@@ -22,6 +40,14 @@ public class PlayerStats extends IdentifiableEntity
    @NotNull
    private String playerSid;
 
+   @Column(name = "player_name", nullable = false)
+   @NotNull
+   private String playerName;
+
+   @Column(name = "player_surname", nullable = false)
+   @NotNull
+   private String playerSurname;
+
    @Column(name = "match_sid", nullable = false)
    @NotNull
    private String matchSid;
@@ -29,6 +55,10 @@ public class PlayerStats extends IdentifiableEntity
    @Column(name = "season_sid", nullable = false)
    @NotNull
    private String seasonSid;
+
+   @Column(name = "team_sid", nullable = false)
+   @NotNull
+   private String teamSid;
 
    @Column(name = "match_minute", nullable = true)
    private Integer matchMinute;
@@ -110,5 +140,35 @@ public class PlayerStats extends IdentifiableEntity
    public void setType(PlayerStatTypeEnum type)
    {
       this.type = type;
+   }
+
+   public String getPlayerName()
+   {
+      return playerName;
+   }
+
+   public void setPlayerName(String playerName)
+   {
+      this.playerName = playerName;
+   }
+
+   public String getPlayerSurname()
+   {
+      return playerSurname;
+   }
+
+   public void setPlayerSurname(String playerSurname)
+   {
+      this.playerSurname = playerSurname;
+   }
+
+   public String getTeamSid()
+   {
+      return teamSid;
+   }
+
+   public void setTeamSid(String teamSid)
+   {
+      this.teamSid = teamSid;
    }
 }
