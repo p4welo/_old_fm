@@ -3,6 +3,7 @@ package com.fm.core.cmp.label;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.model.IModel;
+import org.apache.wicket.util.value.IValueMap;
 
 import java.util.Arrays;
 import java.util.List;
@@ -26,10 +27,14 @@ public class ColorValueLabel extends Label
    @Override
    protected void onComponentTag(ComponentTag tag)
    {
-      String cssClass = "badge";
+      IValueMap attributes = tag.getAttributes();
+      String cssClass = attributes.get("class") != null ? attributes.get("class") + " " : "";
+      cssClass += "badge";
       tag.getAttributes().put("class", cssClass);
-      String background = "background-color: " + countColor((Integer) getDefaultModelObject());
-      tag.getAttributes().put("style", background);
+
+      String style = attributes.get("style") != null ? attributes.get("style") + " " : "";
+      style += "background-color: " + countColor((Integer) getDefaultModelObject());
+      tag.getAttributes().put("style", style);
       super.onComponentTag(tag);
    }
 

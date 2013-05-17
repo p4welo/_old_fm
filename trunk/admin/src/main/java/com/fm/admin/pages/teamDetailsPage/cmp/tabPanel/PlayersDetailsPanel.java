@@ -35,6 +35,12 @@ public class PlayersDetailsPanel extends Panel
       add(new ColorValueLabel("stamina", PropertyModel.of(this, "player." + Player.FIELD_STAMINA), 20));
       add(new ColorValueLabel("crossing", PropertyModel.of(this, "player." + Player.FIELD_CROSSING), 20));
       add(new ColorValueLabel("passing", PropertyModel.of(this, "player." + Player.FIELD_PASSING), 20));
+      add(new ColorValueLabel("heading", PropertyModel.of(this, "player." + Player.FIELD_HEADING), 20));
+      add(new ColorValueLabel("marking", PropertyModel.of(this, "player." + Player.FIELD_MARKING), 20));
+      add(new ColorValueLabel("shots", PropertyModel.of(this, "player." + Player.FIELD_SHOTS), 20));
+      add(new ColorValueLabel("tackling", PropertyModel.of(this, "player." + Player.FIELD_TACKLING), 20));
+      add(new ColorValueLabel("dribbling", PropertyModel.of(this, "player." + Player.FIELD_DRIBBLING), 20));
+      add(new ColorValueLabel("goalkeeping", PropertyModel.of(this, "player." + Player.FIELD_GOALKEEPING), 20));
    }
 
    @Override
