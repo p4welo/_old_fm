@@ -3,13 +3,13 @@
 }
 
 .startScene.startPageBackground {
-    /*background: url('../img/login_bg.jpg') no-repeat center -117px;;*/
-    background: url('http://cosmosstadium.com/sites/default/files/photo-gallery-photos/Stadium-5.jpg') no-repeat center -117px;;
-    height: 1000px;
+    background: url('img/bg2.jpg') no-repeat center -117px;
+    height: 750px;
+    /*height: 1000px;*/
     background-size: cover;
 }
 
-.loginScene .container {
+.container {
     margin-right: auto;
     margin-left: auto;
     margin-top: 60px;
@@ -25,4 +25,43 @@
     -moz-box-shadow: 0 0 10px #333;
     -o-box-shadow: 0 0 10px #333;
     -ms-box-shadow: 0 0 10px #333;
+}
+
+.loginScene .login-container {
+    margin-right: auto;
+    margin-left: auto;
+    padding: 20px;
+    width: 300px;
+    background: #fff;
+    border-radius: 3px;
+    -o-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    box-shadow: 0 0 15px black;
+    -webkit-box-shadow: 0 0 10px #333;
+    -moz-box-shadow: 0 0 10px #333;
+    -o-box-shadow: 0 0 10px #333;
+    -ms-box-shadow: 0 0 10px #333;
+}
+
+.loginScene .form-horizontal .control-label {
+    width: 47px;
+}
+
+.loginScene .form-horizontal .controls {
+    margin-left: 57px;
+}
+
+.startScene.startPageBackground .contentWrapper {
+    padding-top: 200px;
+}
+
+.startScene.loginScene.startPageBackground .contentWrapper {
+    padding-right: 0;
+}
+
+.startScene.loginScene.startPageBackground .contentWrapper h3 {
+    text-align: center;
+    width: auto;
 }

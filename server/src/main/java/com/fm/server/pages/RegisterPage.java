@@ -11,8 +11,10 @@ import com.fm.service.IManagerService;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.form.AjaxSubmitLink;
+import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.form.Form;
+import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.wicketstuff.annotation.mount.MountPath;
@@ -32,6 +34,8 @@ public class RegisterPage extends WebPage
 
    private String confirmedPassword;
 
+   private Boolean success = false;
+
    public RegisterPage()
    {
       initView();
@@ -39,6 +43,35 @@ public class RegisterPage extends WebPage
 
    private void initView()
    {
+      final WebMarkupContainer confirmPanel = new WebMarkupContainer("confirmPanel")
+      {
+         @Override
+         protected void onConfigure()
+         {
+            super.onConfigure();
+            setVisible(success);
+         }
+      };
+      confirmPanel.setOutputMarkupPlaceholderTag(true);
+      confirmPanel.add(new Link<Void>("returnLink")
+      {
+         @Override
+         public void onClick()
+         {
+            setResponsePage(LoginPage.class);
+         }
+      });
+      add(confirmPanel);
+      final WebMarkupContainer registerPanel = new WebMarkupContainer("registerPanel")
+      {
+         @Override
+         protected void onConfigure()
+         {
+            super.onConfigure();
+            setVisible(!success);
+         }
+      };
+      registerPanel.setOutputMarkupPlaceholderTag(true);
       Form form = new Form("registerForm");
       form.setOutputMarkupId(true);
       form.add(new CssFeedbackPanel("feedback"));
@@ -68,7 +101,7 @@ public class RegisterPage extends WebPage
       name.setValidation();
       form.add(name);
 
-      BootstrapTextFieldPanel surname = new BootstrapTextFieldPanel("surname",
+      final BootstrapTextFieldPanel surname = new BootstrapTextFieldPanel("surname",
               new PropertyModel(this, "manager." + Manager.FIELD_SURNAME),
               "span4");
       surname.setValidation();
@@ -90,11 +123,12 @@ public class RegisterPage extends WebPage
             }
             else
             {
-               managerService.createNewManager(manager);
-               success(getString("registration.success"));
+//               managerService.createNewManager(manager);
+               success = true;
             }
 
-            target.add(form);
+            target.add(registerPanel);
+            target.add(confirmPanel);
          }
 
          @Override
@@ -103,6 +137,8 @@ public class RegisterPage extends WebPage
             target.add(form);
          }
       });
-      add(form);
+      registerPanel.add(form);
+      add(registerPanel);
+
    }
 }
