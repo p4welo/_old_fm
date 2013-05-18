@@ -119,7 +119,7 @@ input.column_header {
 
 .startScene.startPageBackground {
     /*background: url('../img/login_bg.jpg') no-repeat center -117px;;*/
-    background: url('http://cosmosstadium.com/sites/default/files/photo-gallery-photos/Stadium-5.jpg') no-repeat center -117px;
+    background: url('../img/bg2.jpg') no-repeat center -117px;
     height: 1000px;
     background-size: cover;
 }

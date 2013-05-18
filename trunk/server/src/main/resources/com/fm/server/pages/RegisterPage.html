@@ -5,46 +5,63 @@
     <title>Football Manager</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link href='http://fonts.googleapis.com/css?family=Sanchez' rel='stylesheet' type='text/css'>
-    <link href="static/css/style.css" rel="stylesheet" media="screen">
+    <link href="static/style.css" rel="stylesheet" media="screen">
 
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
     <link href="static/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="static/fontAwesome/css/font-awesome.css" rel="stylesheet" media="screen">
 
-    <script type="text/javascript" src="static/pnotify/jquery.pnotify.js"></script>
-    <link type="text/css" rel="stylesheet" href="static/pnotify/jquery.pnotify.default.css"/>
 </head>
 <body>
 <script src="static/bootstrap/js/bootstrap.min.js"></script>
-<div class="container">
-    <form wicket:id="registerForm" class="form-horizontal register_form">
-        <div wicket:id="feedback"></div>
-        <fieldset>
-            <legend>
-                <wicket:message key="account.data"/>
-            </legend>
-            <div wicket:id="login"></div>
-            <div wicket:id="password"></div>
-            <div wicket:id="confirmPassword"></div>
-            <div wicket:id="email"></div>
-        </fieldset>
-        <fieldset>
-            <legend>
-                <wicket:message key="manager.data"/>
-            </legend>
-            <div wicket:id="name"></div>
-            <div wicket:id="surname"></div>
-        </fieldset>
-        <fieldset>
-            <legend>
-                <wicket:message key="team.data"/>
-            </legend>
-            <div wicket:id="team"></div>
-        </fieldset>
-        <input wicket:id="submit" type="submit" class="btn btn-success pull-right"
-               wicket:message="value:button.register"/>
-    </form>
+<div class="startScene startPageBackground">
+    <div class="container" wicket:id="registerPanel">
+        <form wicket:id="registerForm" class="form-horizontal register_form">
+            <div wicket:id="feedback"></div>
+            <fieldset>
+                <legend>
+                    <wicket:message key="account.data"/>
+                </legend>
+                <div wicket:id="login"></div>
+                <div wicket:id="password"></div>
+                <div wicket:id="confirmPassword"></div>
+                <div wicket:id="email"></div>
+            </fieldset>
+            <fieldset>
+                <legend>
+                    <wicket:message key="manager.data"/>
+                </legend>
+                <div wicket:id="name"></div>
+                <div wicket:id="surname"></div>
+            </fieldset>
+            <fieldset>
+                <legend>
+                    <wicket:message key="team.data"/>
+                </legend>
+                <div wicket:id="team"></div>
+            </fieldset>
+            <input wicket:id="submit" type="submit" class="btn btn-success pull-right"
+                   wicket:message="value:button.register"/>
+        </form>
+    </div>
+    <div class="loginScene" wicket:id="confirmPanel">
+        <div class="contentWrapper">
+            <form class="form-horizontal login-form">
+                <div class="login-container">
+                    <div class="control-group">
+                        <wicket:message key="registration.success"/>
+                    </div>
+                    <div class="control-group" style="margin-bottom: 0px">
+                        <div class="pull-right">
+                            <a class="btn" wicket:id="returnLink">
+                                <wicket:message key="button.return"/>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
-
 </body>
 </html>
