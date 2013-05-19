@@ -1,0 +1,5 @@
+BEGIN;
+
+ALTER TABLE player ADD COLUMN avatar_path VARCHAR(256);
+
+COMMIT;

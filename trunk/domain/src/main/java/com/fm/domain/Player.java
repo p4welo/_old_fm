@@ -43,6 +43,8 @@ public class Player extends IdentifiableEntity
 
    public static final String FIELD_GOALKEEPING = "goalkeeping";
 
+   public static final String FIELD_AVATAR_PATH = "avatarPath";
+
    @Id
    @GeneratedValue
    @Column
@@ -66,6 +68,9 @@ public class Player extends IdentifiableEntity
 
    @Column(name = "team_sid", nullable = true)
    private String teamSid;
+
+   @Column(name = "avatar_path", nullable = true)
+   private String avatarPath;
 
    //   GENERAL PARAMETERS
    @Column(nullable = false)
@@ -295,5 +300,15 @@ public class Player extends IdentifiableEntity
    public void setTeamSid(String teamSid)
    {
       this.teamSid = teamSid;
+   }
+
+   public String getAvatarPath()
+   {
+      return avatarPath;
+   }
+
+   public void setAvatarPath(String avatarPath)
+   {
+      this.avatarPath = avatarPath;
    }
 }
