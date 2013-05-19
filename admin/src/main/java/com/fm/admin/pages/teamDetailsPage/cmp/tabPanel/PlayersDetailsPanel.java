@@ -1,5 +1,6 @@
 package com.fm.admin.pages.teamDetailsPage.cmp.tabPanel;
 
+import com.fm.core.cmp.image.StaticImage;
 import com.fm.core.cmp.label.ColorValueLabel;
 import com.fm.domain.Player;
 import com.fm.domain.PlayerStatTypeEnum;
@@ -44,7 +45,9 @@ public class PlayersDetailsPanel extends Panel
    @Override
    protected void onInitialize()
    {
+      //Model.of("http://www.mlssoccer.com/sites/league/files/imagecache/player_profile_headshot/players/head-shots/garcia_0.jpg"))
       super.onInitialize();
+      add(new StaticImage("avatar", PropertyModel.of(this, "player." + Player.FIELD_AVATAR_PATH)));
       add(new Label("name", PropertyModel.of(this, "player." + Player.FIELD_NAME)));
       add(new Label("surname", PropertyModel.of(this, "player." + Player.FIELD_SURNAME)));
       add(new Label("age", PropertyModel.of(this, "player." + Player.FIELD_AGE)));

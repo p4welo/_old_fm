@@ -250,6 +250,9 @@ public class PlayerGenerationStrategyImpl implements IPlayerGenerationStrategy
       Surname surname = surnameService.getRandom();
       player.setSurname(surname != null ? surname.getValue() : "Kowalski");
 
+      String avatarPath = getAvatarPath();
+      player.setAvatarPath(avatarPath);
+
       int age = getAge();
       player.setAge(age);
       player.setPotential(getPotential(age));
@@ -274,4 +277,10 @@ public class PlayerGenerationStrategyImpl implements IPlayerGenerationStrategy
       return value;
    }
 
+   public String getAvatarPath()
+   {
+      Random r = new Random();
+
+      return "/static/img/players/avatar(" + r.nextInt(27) + ").jpg";
+   }
 }

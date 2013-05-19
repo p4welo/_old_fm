@@ -44,6 +44,7 @@ CREATE TABLE player (
 	age int(11) NOT NULL DEFAULT 0,
 	position_id int(11) DEFAULT NULL,
 	team_sid VARCHAR(32),
+	avatar_path VARCHAR(256),
 	potential int(11) NOT NULL DEFAULT 0,
 	passing int(11) NOT NULL DEFAULT 0,
 	speed int(11) NOT NULL DEFAULT 0,
