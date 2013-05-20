@@ -2,13 +2,9 @@ package com.fm.admin.pages;
 
 import com.fm.admin.cmp.breadcrumb.LeagueListBreadcrumb;
 import com.fm.core.cmp.breadcrumb.BootstrapBreadcrumbPanel;
-import org.apache.wicket.markup.html.form.Form;
-import org.apache.wicket.markup.html.form.upload.FileUpload;
-import org.apache.wicket.markup.html.form.upload.FileUploadField;
-import org.apache.wicket.markup.html.panel.FeedbackPanel;
-import org.apache.wicket.util.lang.Bytes;
-
-import java.io.File;
+import com.fm.core.cmp.progress.ProgressBar;
+import com.fm.domain.Progress;
+import org.apache.wicket.model.PropertyModel;
 
 /**
  * User: pawel.radomski
@@ -17,10 +13,7 @@ import java.io.File;
  */
 public class TestPage extends AdminAbstractPage
 {
-
-   private FileUploadField fileUpload;
-
-   private String UPLOAD_FOLDER = "/home/pawel/dupadupa/";
+   private final Progress progress = new Progress();
 
    public TestPage()
    {
@@ -31,58 +24,43 @@ public class TestPage extends AdminAbstractPage
    protected void onInitialize()
    {
       super.onInitialize();
-      add(new FeedbackPanel("feedback"));
-
-      Form<?> form = new Form<Void>("form")
-      {
-         @Override
-         protected void onSubmit()
-         {
-
-            final FileUpload uploadedFile = fileUpload.getFileUpload();
-            if (uploadedFile != null)
-            {
-
-               // write to a new file
-               File newFile = new File(UPLOAD_FOLDER
-                       + uploadedFile.getClientFileName());
-
-               if (newFile.exists())
-               {
-                  newFile.delete();
-               }
-
-               try
-               {
-                  newFile.createNewFile();
-                  uploadedFile.writeTo(newFile);
-
-                  info("saved file: " + uploadedFile.getClientFileName());
-               }
-               catch (Exception e)
-               {
-                  throw new IllegalStateException("Error");
-               }
-            }
-
-         }
-
-      };
-
-      // Enable multipart mode (need for uploads file)
-      form.setMultiPart(true);
-
-      // max upload size, 10k
-      form.setMaxSize(Bytes.kilobytes(10));
-
-      form.add(fileUpload = new FileUploadField("fileUpload"));
-
-      add(form);
+      ProgressBar progressBar = new ProgressBar("progress", PropertyModel.of(this, "progress." + Progress.FIELD_VALUE));
+      add(progressBar);
+      new Thread(new TestThread(progress)).start();
    }
 
    @Override
    protected BootstrapBreadcrumbPanel provideBreadcrumb(String id)
    {
       return new LeagueListBreadcrumb(id);
+   }
+
+   public static class TestThread implements Runnable
+   {
+
+      private Progress progress;
+
+      public TestThread(Progress progress)
+      {
+         this.progress = progress;
+      }
+
+      @Override
+      public void run()
+      {
+//         do
+//         {
+//            System.out.println("sdf");
+//            try
+//            {
+//               Thread.sleep(1000);
+//               progress.setValue(progress.getValue() + 10);
+//            }
+//            catch (InterruptedException e)
+//            {
+//            }
+//         }
+//         while (progress.getValue() < 100);
+      }
    }
 }

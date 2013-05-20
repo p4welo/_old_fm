@@ -4,7 +4,6 @@ import com.fm.dao.IAbstractDao;
 import com.fm.dao.ILeagueDao;
 import com.fm.dao.ITeamDao;
 import com.fm.domain.League;
-import com.fm.domain.Progress;
 import com.fm.service.ILeagueService;
 import com.fm.service.ISeasonService;
 import com.fm.service.ITeamGenerationStrategy;
@@ -41,13 +40,13 @@ public class LeagueServiceImpl extends AbstractServiceImpl<League> implements IL
 
    @Override
    @Transactional
-   public League save(League league, boolean generateTeams, Progress progress)
+   public League save(League league, boolean generateTeams)
    {
       league.setLevel(getAvailableLevel());
       league = save(league);
       if (generateTeams)
       {
-         teamGenerationStrategy.generateLeagueCpuTeams(league, progress);
+         teamGenerationStrategy.generateLeagueCpuTeams(league);
       }
       return league;
    }

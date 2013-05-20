@@ -2,34 +2,34 @@ package com.fm.admin.pages.leagueListPage.cmp;
 
 import com.fm.domain.League;
 import com.fm.domain.Progress;
-import com.fm.service.ILeagueService;
+import com.fm.service.ITeamGenerationStrategy;
 
 /**
  * User: pawel.radomski
  * Date: 20.05.13
  * Time: 13:44
  */
-public class GenerateLeagueThread extends Thread
+public class GenerateLeagueThread implements Runnable
 {
    private final League league;
 
-   private final Boolean generateTeams;
-
    private Progress progress;
 
-   private final ILeagueService leagueService;
+   private ITeamGenerationStrategy teamGenerationStrategy;
 
-   public GenerateLeagueThread(League league, Boolean generateTeams, Progress progress, ILeagueService leagueService)
+   public GenerateLeagueThread(League league, Progress progress, ITeamGenerationStrategy teamGenerationStrategy)
    {
       this.league = league;
-      this.generateTeams = generateTeams;
       this.progress = progress;
-      this.leagueService = leagueService;
    }
 
    @Override
    public void run()
    {
-      leagueService.save(league, generateTeams, progress);
+      for (int i = 0; i < 16; i++)
+      {
+         progress.setValue(i * 100 / 16);
+         teamGenerationStrategy.generateLeagueCpuTeam(league);
+      }
    }
 }
