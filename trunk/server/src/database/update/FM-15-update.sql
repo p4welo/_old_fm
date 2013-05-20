@@ -1,0 +1,7 @@
+BEGIN;
+
+ALTER TABLE user ADD COLUMN manager_name VARCHAR(15);
+ALTER TABLE user ADD COLUMN manager_surname VARCHAR(40);
+ALTER TABLE user ADD COLUMN team_name VARCHAR(30);
+
+COMMIT;

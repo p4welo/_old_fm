@@ -3,11 +3,9 @@ package com.fm.server.pages;
 import com.fm.core.cmp.feedback.CssFeedbackPanel;
 import com.fm.core.cmp.web.BootstrapPasswordFieldPanel;
 import com.fm.core.cmp.web.BootstrapTextFieldPanel;
-import com.fm.domain.Manager;
-import com.fm.domain.Team;
 import com.fm.domain.User;
 import com.fm.server.api.ServerApiMapping;
-import com.fm.service.IManagerService;
+import com.fm.service.IUserService;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.form.AjaxSubmitLink;
@@ -28,9 +26,9 @@ import org.wicketstuff.annotation.mount.MountPath;
 public class RegisterPage extends WebPage
 {
    @SpringBean
-   private IManagerService managerService;
+   private IUserService userService;
 
-   private Manager manager;
+   private User user;
 
    private String confirmedPassword;
 
@@ -38,11 +36,12 @@ public class RegisterPage extends WebPage
 
    public RegisterPage()
    {
-      initView();
    }
 
-   private void initView()
+   @Override
+   protected void onInitialize()
    {
+      super.onInitialize();
       final WebMarkupContainer confirmPanel = new WebMarkupContainer("confirmPanel")
       {
          @Override
@@ -77,12 +76,12 @@ public class RegisterPage extends WebPage
       form.add(new CssFeedbackPanel("feedback"));
 
       BootstrapTextFieldPanel login = new BootstrapTextFieldPanel("login",
-              new PropertyModel(this, "manager." + Manager.FIELD_USER + "." + User.FIELD_LOGIN), "span4");
+              new PropertyModel(this, "user." + User.FIELD_LOGIN), "span4");
       login.setValidation();
       form.add(login);
 
       BootstrapPasswordFieldPanel password = new BootstrapPasswordFieldPanel("password",
-              new PropertyModel(this, "manager." + Manager.FIELD_USER + "." + User.FIELD_PASSWORD), "span4");
+              new PropertyModel(this, "user." + User.FIELD_PASSWORD), "span4");
       password.setValidation();
       form.add(password);
 
@@ -92,23 +91,23 @@ public class RegisterPage extends WebPage
       form.add(confirmPassword);
 
       BootstrapTextFieldPanel email = new BootstrapTextFieldPanel("email",
-              new PropertyModel(this, "manager." + Manager.FIELD_USER + "." + User.FIELD_EMAIL), "span4");
+              new PropertyModel(this, "user." + User.FIELD_EMAIL), "span4");
       email.setValidation();
       form.add(email);
 
       BootstrapTextFieldPanel name = new BootstrapTextFieldPanel("name",
-              new PropertyModel(this, "manager." + Manager.FIELD_NAME), "span4");
+              new PropertyModel(this, "user." + User.FIELD_MANAGER_NAME), "span4");
       name.setValidation();
       form.add(name);
 
       final BootstrapTextFieldPanel surname = new BootstrapTextFieldPanel("surname",
-              new PropertyModel(this, "manager." + Manager.FIELD_SURNAME),
+              new PropertyModel(this, "user." + User.FIELD_MANAGER_SURNAME),
               "span4");
       surname.setValidation();
       form.add(surname);
 
       BootstrapTextFieldPanel team = new BootstrapTextFieldPanel("team",
-              new PropertyModel(this, "manager." + Manager.FIELD_TEAM + "." + Team.FIELD_NAME), "span4");
+              new PropertyModel(this, "user." + User.FIELD_TEAM_NAME), "span4");
       team.setValidation();
       form.add(team);
 
@@ -117,13 +116,13 @@ public class RegisterPage extends WebPage
          @Override
          protected void onSubmit(AjaxRequestTarget target, Form<?> form)
          {
-            if (!StringUtils.equals(manager.getUser().getPassword(), confirmedPassword))
+            if (!StringUtils.equals(user.getPassword(), confirmedPassword))
             {
                error(getString("password.does.not.match"));
             }
             else
             {
-//               managerService.createNewManager(manager);
+               userService.registerUser(user);
                success = true;
             }
 
@@ -139,6 +138,5 @@ public class RegisterPage extends WebPage
       });
       registerPanel.add(form);
       add(registerPanel);
-
    }
 }

@@ -13,5 +13,7 @@
         <constructor-arg index="0" value="256"/>
     </bean>
 
-
+    <bean id="templateMailService" class="com.fm.service.impl.TemplateMailServiceImpl">
+        <property name="sender" value="${mail.sender}"/>
+    </bean>
 </beans>

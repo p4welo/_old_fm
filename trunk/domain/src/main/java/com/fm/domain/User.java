@@ -18,6 +18,12 @@ public class User extends IdentifiableEntity
 
    public static final String FIELD_EMAIL = "email";
 
+   public static final String FIELD_MANAGER_NAME = "managerName";
+
+   public static final String FIELD_MANAGER_SURNAME = "managerSurname";
+
+   public static final String FIELD_TEAM_NAME = "teamName";
+
    @Id
    @GeneratedValue
    @Column
@@ -33,6 +39,15 @@ public class User extends IdentifiableEntity
 
    @Column
    private String email;
+
+   @Column(name = "manager_name")
+   private String managerName;
+
+   @Column(name = "manager_surname")
+   private String managerSurname;
+
+   @Column(name = "team_name")
+   private String teamName;
 
    public Long getId()
    {
@@ -72,5 +87,35 @@ public class User extends IdentifiableEntity
    public void setEmail(String email)
    {
       this.email = email;
+   }
+
+   public String getManagerName()
+   {
+      return managerName;
+   }
+
+   public void setManagerName(String managerName)
+   {
+      this.managerName = managerName;
+   }
+
+   public String getManagerSurname()
+   {
+      return managerSurname;
+   }
+
+   public void setManagerSurname(String managerSurname)
+   {
+      this.managerSurname = managerSurname;
+   }
+
+   public String getTeamName()
+   {
+      return teamName;
+   }
+
+   public void setTeamName(String teamName)
+   {
+      this.teamName = teamName;
    }
 }

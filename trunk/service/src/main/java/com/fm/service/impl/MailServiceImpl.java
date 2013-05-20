@@ -1,5 +1,6 @@
 package com.fm.service.impl;
 
+import com.fm.domain.Email;
 import com.fm.service.IMailService;
 import org.apache.commons.lang3.CharEncoding;
 import org.springframework.mail.SimpleMailMessage;
@@ -32,27 +33,27 @@ public class MailServiceImpl implements IMailService
       javaMailSender.send(message);
    }
 
-   @Override
-   public void sendMail(String from, String to, String subject, String body)
-   {
-      SimpleMailMessage simpleMailMessage = createSimpleMailMessage(from, new String[]{to}, null, null, subject, body);
-      javaMailSender.send(simpleMailMessage);
-   }
-
-   @Override
-   public void sendMail(String from, String to, String cc, String subject, String body)
-   {
-      SimpleMailMessage simpleMailMessage = createSimpleMailMessage(from, new String[]{to}, new String[]{cc}, null,
-              subject, body);
-      javaMailSender.send(simpleMailMessage);
-   }
-
-   @Override
-   public void sendMail(String from, String to[], String[] cc, String replyTo, String subject, String content)
-   {
-      SimpleMailMessage simpleMailMessage = createSimpleMailMessage(from, to, cc, replyTo, subject, content);
-      javaMailSender.send(simpleMailMessage);
-   }
+//   @Override
+//   public void sendMail(String from, String to, String subject, String body)
+//   {
+//      SimpleMailMessage simpleMailMessage = createSimpleMailMessage(from, new String[]{to}, null, null, subject, body);
+//      javaMailSender.send(simpleMailMessage);
+//   }
+//
+//   @Override
+//   public void sendMail(String from, String to, String cc, String subject, String body)
+//   {
+//      SimpleMailMessage simpleMailMessage = createSimpleMailMessage(from, new String[]{to}, new String[]{cc}, null,
+//              subject, body);
+//      javaMailSender.send(simpleMailMessage);
+//   }
+//
+//   @Override
+//   public void sendMail(String from, String to[], String[] cc, String replyTo, String subject, String content)
+//   {
+//      SimpleMailMessage simpleMailMessage = createSimpleMailMessage(from, to, cc, replyTo, subject, content);
+//      javaMailSender.send(simpleMailMessage);
+//   }
 
    @Override
    public void sendHtmlMail(String from, String to, String subject, String body) throws MessagingException
@@ -62,19 +63,27 @@ public class MailServiceImpl implements IMailService
    }
 
    @Override
-   public void sendHtmlMail(String from, String to, String cc, String subject, String body) throws MessagingException
+   public void sendEmail(Email email) throws MessagingException
    {
-      MimeMessage mimeMessage = createHtmlMessage(from, new String[]{to}, new String[]{cc}, null, subject, body);
+      MimeMessage mimeMessage = createHtmlMessage(email.getFrom(), email.getTo(), email.getCc(), email.getReplyTo(),
+              email.getSubject(), email.getContent());
       javaMailSender.send(mimeMessage);
    }
 
-   @Override
-   public void sendHtmlMail(String from, String[] to, String[] cc, String replyTo, String subject, String content)
-           throws MessagingException
-   {
-      MimeMessage mimeMessage = createHtmlMessage(from, to, cc, replyTo, subject, content);
-      javaMailSender.send(mimeMessage);
-   }
+//   @Override
+//   public void sendHtmlMail(String from, String to, String cc, String subject, String body) throws MessagingException
+//   {
+//      MimeMessage mimeMessage = createHtmlMessage(from, new String[]{to}, new String[]{cc}, null, subject, body);
+//      javaMailSender.send(mimeMessage);
+//   }
+//
+//   @Override
+//   public void sendHtmlMail(String from, String[] to, String[] cc, String replyTo, String subject, String content)
+//           throws MessagingException
+//   {
+//      MimeMessage mimeMessage = createHtmlMessage(from, to, cc, replyTo, subject, content);
+//      javaMailSender.send(mimeMessage);
+//   }
 
    private SimpleMailMessage createSimpleMailMessage(String from, String to[], String[] cc, String replyTo,
                                                      String subject, String content)

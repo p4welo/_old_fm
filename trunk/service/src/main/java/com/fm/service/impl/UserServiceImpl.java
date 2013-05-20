@@ -2,8 +2,11 @@ package com.fm.service.impl;
 
 import com.fm.dao.IAbstractDao;
 import com.fm.dao.IUserDao;
+import com.fm.domain.ObjectStateEnum;
 import com.fm.domain.User;
+import com.fm.service.ITemplateMailService;
 import com.fm.service.IUserService;
+import com.fm.service.util.SidUtils;
 import org.springframework.security.authentication.encoding.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,6 +25,9 @@ public class UserServiceImpl extends AbstractServiceImpl<User> implements IUserS
 
    @Resource
    private PasswordEncoder passwordEncoder;
+
+   @Resource
+   private ITemplateMailService templateMailService;
 
    @Resource
    private IUserDao userDao;
@@ -46,6 +52,19 @@ public class UserServiceImpl extends AbstractServiceImpl<User> implements IUserS
    {
       user.setPassword(passwordEncoder.encodePassword(password, user.getLogin()));
       return update(user);
+   }
+
+   @Override
+   @Transactional
+   public User registerUser(User user)
+   {
+      user.setSid(SidUtils.generate());
+      user.setObjectState(ObjectStateEnum.INACTIVE);
+      user = save(user);
+
+      templateMailService.sendAccountActivationMail(user);
+
+      return user;
    }
 
    @Override
