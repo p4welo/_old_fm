@@ -1,23 +1,27 @@
 package com.fm.service;
 
+import com.fm.domain.Email;
+
 import javax.mail.MessagingException;
 
 public interface IMailService
 {
    public static final String MAIL_SERVER_USERNAME = "mail.server.username";
 
-   void sendMail(String from, String to, String subject, String body);
-
-   void sendMail(String from, String to, String cc, String subject, String body);
-
-   void sendMail(String from, String[] to, String[] cc, String replyTo, String subject, String content);
+//   void sendMail(String from, String to, String subject, String body);
+//
+//   void sendMail(String from, String to, String cc, String subject, String body);
+//
+//   void sendMail(String from, String[] to, String[] cc, String replyTo, String subject, String content);
 
    void sendHtmlMail(String from, String to, String subject, String body) throws MessagingException;
 
-   void sendHtmlMail(String from, String to, String cc, String subject, String body) throws MessagingException;
-
-   void sendHtmlMail(String from, String[] to, String[] cc, String replyTo, String subject, String content)
-           throws MessagingException;
+//   void sendHtmlMail(String from, String to, String cc, String subject, String body) throws MessagingException;
+//
+//   void sendHtmlMail(String from, String[] to, String[] cc, String replyTo, String subject, String content)
+//           throws MessagingException;
 
    void testSend();
+
+   void sendEmail(Email email) throws MessagingException;
 }

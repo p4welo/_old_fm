@@ -65,3 +65,11 @@
     text-align: center;
     width: auto;
 }
+
+.register_form .control-label {
+    width: 360px !important;
+}
+
+.register_form .controls {
+    margin-left: 380px !important;
+}
