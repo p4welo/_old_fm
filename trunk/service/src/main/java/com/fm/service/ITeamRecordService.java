@@ -24,4 +24,6 @@ public interface ITeamRecordService extends IAbstractService<TeamRecord>
    List<TeamRecord> findAllTeamRecordsFromSeason(String teamSid, Season season);
 
    List<Integer> getPlayedRoundListBySeason(Season season);
+
+   void generatePlayers(List<TeamRecord> teamRecords);
 }

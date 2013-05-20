@@ -1,9 +1,6 @@
 package com.fm.service.impl;
 
-import com.fm.domain.League;
-import com.fm.domain.Player;
-import com.fm.domain.Team;
-import com.fm.domain.TeamTypeEnum;
+import com.fm.domain.*;
 import com.fm.domain.defined.SystemParameters;
 import com.fm.service.*;
 import org.apache.log4j.Logger;
@@ -57,7 +54,7 @@ public class TeamGenerationStrategyImpl implements ITeamGenerationStrategy
    private Logger logger = Logger.getLogger(TeamGenerationStrategyImpl.class);
 
    @Override
-   public void generateLeagueCpuTeams(League league)
+   public void generateLeagueCpuTeams(League league, Progress progress)
    {
       Integer teamCount = 16;
       String value = systemParameterService.getByKey(SystemParameters.TEAM_COUNT_PER_LEAGUE);
@@ -67,6 +64,7 @@ public class TeamGenerationStrategyImpl implements ITeamGenerationStrategy
       }
       for (int i = 0; i < teamCount; i++)
       {
+         progress.setValue(i * 100 / teamCount);
          Team team = generateTeam();
          team.setLeague(league);
          team.setType(TeamTypeEnum.CPU);

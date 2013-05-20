@@ -4,8 +4,11 @@ import com.fm.core.cmp.web.BootstrapCheckBoxPanel;
 import com.fm.core.cmp.web.BootstrapTextFieldPanel;
 import com.fm.core.cmp.window.AbstractWindow;
 import com.fm.domain.League;
+import com.fm.domain.Progress;
 import com.fm.service.ILeagueService;
 import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.markup.ComponentTag;
+import org.apache.wicket.markup.html.WebComponent;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
@@ -26,6 +29,8 @@ public class NewLeagueWindow extends AbstractWindow
 
    private Boolean generateTeams;
 
+   private final Progress progress = new Progress();
+
    public NewLeagueWindow(String id, String header)
    {
       super(id, header);
@@ -42,6 +47,17 @@ public class NewLeagueWindow extends AbstractWindow
       BootstrapCheckBoxPanel checkBox = new BootstrapCheckBoxPanel("generateTeams",
               new PropertyModel<Boolean>(this, "generateTeams"));
       form.add(checkBox);
+      WebComponent progressBar = new WebComponent("progress")
+      {
+         @Override
+         protected void onComponentTag(ComponentTag tag)
+         {
+            tag.getAttributes().put("style", "width: " + progress.getValue() + "%");
+            super.onComponentTag(tag);
+         }
+      };
+//      progressBar.add(new AjaxSelfUpdatingTimerBehavior(Duration.ONE_SECOND));
+      form.add(progressBar);
    }
 
    public void resetState()
@@ -68,5 +84,10 @@ public class NewLeagueWindow extends AbstractWindow
    public Boolean getGenerateTeams()
    {
       return generateTeams;
+   }
+
+   public Progress getProgress()
+   {
+      return progress;
    }
 }

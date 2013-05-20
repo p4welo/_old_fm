@@ -3,6 +3,7 @@ package com.fm.admin.pages.leagueDetailsPage.cmp.tabbedPanel;
 import com.fm.admin.navigation.NavigateToTeamDetailsPage;
 import com.fm.admin.pages.leagueDetailsPage.cmp.chart.ChartPanel;
 import com.fm.core.ajax.ConfirmationCallListener;
+import com.fm.core.cmp.button.BootstrapLink;
 import com.fm.core.cmp.masterDetail.EmptyDetailsPanel;
 import com.fm.core.cmp.notify.Notification;
 import com.fm.domain.League;
@@ -135,6 +136,14 @@ public class TableTab extends Panel
 
    private void provideToolbarSection()
    {
+      Thread thread = new Thread()
+      {
+         @Override
+         public void run()
+         {
+            super.run();
+         }
+      };
       add(new AjaxLink<Void>("newSeason")
       {
          @Override
@@ -144,6 +153,13 @@ public class TableTab extends Panel
             Notification.success(getString("next.season.successfully.generated"));
             target.add(TableTab.this);
          }
+
+         @Override
+         protected void updateAjaxAttributes(AjaxRequestAttributes attributes)
+         {
+            super.updateAjaxAttributes(attributes);
+            attributes.getAjaxCallListeners().add(new ConfirmationCallListener(getString("next.season.confirm")));
+         }
       });
 
       add(new AjaxLink<Void>("nextRound")
@@ -152,6 +168,7 @@ public class TableTab extends Panel
          public void onClick(AjaxRequestTarget target)
          {
             teamRecords = teamRecordService.simulateNextRound(season);
+            Notification.success(getString("next.round.successfully.generated"));
             target.add(TableTab.this);
          }
 
@@ -168,7 +185,24 @@ public class TableTab extends Panel
             attributes.getAjaxCallListeners().add(new ConfirmationCallListener(getString("next.round.confirm")));
          }
       });
-      add(new AjaxLink<Void>("teamDetails")
+      add(new AjaxLink<Void>("generatePlayers")
+      {
+         @Override
+         public void onClick(AjaxRequestTarget target)
+         {
+            teamRecordService.generatePlayers(teamRecords);
+            Notification.success(getString("players.successfully.generated"));
+            target.add(TableTab.this);
+         }
+
+         @Override
+         protected void updateAjaxAttributes(AjaxRequestAttributes attributes)
+         {
+            super.updateAjaxAttributes(attributes);
+            attributes.getAjaxCallListeners().add(new ConfirmationCallListener(getString("generate.players.confirm")));
+         }
+      });
+      add(new BootstrapLink("teamDetails")
       {
          @Override
          public void onClick(AjaxRequestTarget target)
@@ -177,6 +211,12 @@ public class TableTab extends Panel
             {
                new NavigateToTeamDetailsPage(selectedTeamSid).navigate();
             }
+         }
+
+         @Override
+         public boolean isEnabled()
+         {
+            return selectedTeamSid != null;
          }
       });
       DropDownChoice dropDownChoice = new DropDownChoice<Season>("season", new PropertyModel<Season>(this, "season"),

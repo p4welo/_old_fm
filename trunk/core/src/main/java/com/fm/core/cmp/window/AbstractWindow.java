@@ -3,7 +3,7 @@ package com.fm.core.cmp.window;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
-import org.apache.wicket.ajax.markup.html.form.AjaxSubmitLink;
+import org.apache.wicket.extensions.ajax.markup.html.IndicatingAjaxButton;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Form;
@@ -28,7 +28,7 @@ public abstract class AbstractWindow extends Panel
       add(container);
 
       form = new Form<Void>("form");
-      AjaxSubmitLink submitLink = getSubmitLink(form);
+      IndicatingAjaxButton submitLink = getSubmitLink(form);
       if (submitLink != null)
       {
          form.add(submitLink);
@@ -52,9 +52,9 @@ public abstract class AbstractWindow extends Panel
       return link;
    }
 
-   protected AjaxSubmitLink getSubmitLink(Form<Void> form)
+   protected IndicatingAjaxButton getSubmitLink(Form<Void> form)
    {
-      AjaxSubmitLink ajaxLink = new AjaxSubmitLink("ajaxLink", form)
+      IndicatingAjaxButton ajaxLink = new IndicatingAjaxButton("ajaxLink", form)
       {
          private static final long serialVersionUID = -703188740715674542L;
 

@@ -5,6 +5,7 @@ import com.fm.dao.ITeamRecordDao;
 import com.fm.domain.*;
 import com.fm.domain.comparator.TeamRecordComparator;
 import com.fm.service.IMatchGameService;
+import com.fm.service.ITeamGenerationStrategy;
 import com.fm.service.ITeamRecordService;
 import com.fm.service.ITeamService;
 import org.springframework.stereotype.Service;
@@ -34,6 +35,9 @@ public class TeamRecordServiceImpl extends AbstractServiceImpl<TeamRecord> imple
 
    @Resource
    private ITeamService teamService;
+
+   @Resource
+   private ITeamGenerationStrategy teamGenerationStrategy;
 
    @Override
    protected IAbstractDao<TeamRecord> getDao()
@@ -109,6 +113,20 @@ public class TeamRecordServiceImpl extends AbstractServiceImpl<TeamRecord> imple
    public List<Integer> getPlayedRoundListBySeason(Season season)
    {
       return teamRecordDao.getPlayedRoundListBySeason(season);
+   }
+
+   @Override
+   @Transactional
+   public void generatePlayers(List<TeamRecord> teamRecords)
+   {
+      for (TeamRecord record : teamRecords)
+      {
+         Team team = teamService.getBySid(record.getTeamSid());
+         if (team != null)
+         {
+            teamGenerationStrategy.generatePlayers(team);
+         }
+      }
    }
 
    @Override
