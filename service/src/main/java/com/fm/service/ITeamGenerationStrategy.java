@@ -2,6 +2,7 @@ package com.fm.service;
 
 import com.fm.domain.League;
 import com.fm.domain.Player;
+import com.fm.domain.Progress;
 import com.fm.domain.Team;
 
 import java.util.List;
@@ -15,7 +16,7 @@ import java.util.List;
  */
 public interface ITeamGenerationStrategy
 {
-   void generateLeagueCpuTeams(League league);
+   void generateLeagueCpuTeams(League league, Progress progress);
 
    Team generateTeam();
 

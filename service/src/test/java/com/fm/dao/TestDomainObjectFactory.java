@@ -81,7 +81,11 @@ public class TestDomainObjectFactory
       game.setSid(SidUtils.generate());
       game.setObjectState(ObjectStateEnum.ACTIVE);
       game.setHostScores(1);
+      game.setHostName("host");
+      game.setHostSid(SidUtils.generate());
       game.setGuestScores(0);
+      game.setGuestName("guest");
+      game.setGuestSid(SidUtils.generate());
       game.setMatchDate(new Date());
       game.setSeason(season);
       game.setRound(3);

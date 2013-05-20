@@ -66,7 +66,7 @@ public class LeagueListPage extends AdminAbstractPage
          public void onSubmit(AjaxRequestTarget target, Form<?> form)
          {
             League league = getLeague();
-            leagueService.save(league, getGenerateTeams());
+            leagueService.save(league, getGenerateTeams(), getProgress());
             Notification.success(getString("league.successfully.saved"));
 
             resetState();

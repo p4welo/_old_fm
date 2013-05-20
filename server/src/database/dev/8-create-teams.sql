@@ -15,6 +15,8 @@ INSERT INTO team (sid, name, account, league_id, type) VALUES ('9kvjjc822c05d1e4
 INSERT INTO team (sid, name, account, league_id, type) VALUES ('fkvjjc822c05s1e495078aed80a96s33', 'Kmicic Kruszyna', 1100, (SELECT id FROM league WHERE name = 'Ekstraklasa'), 'CPU');
 INSERT INTO team (sid, name, account, league_id, type) VALUES ('hkvjjc822c05a1e495078aed80a96s33', 'Vineta Wolin', 1200, (SELECT id FROM league WHERE name = 'Ekstraklasa'), 'CPU');
 INSERT INTO team (sid, name, account, league_id, type) VALUES ('jkvjjc822c05q1e495078aed80a96s33', 'Ogniwo Babinek', 3500, (SELECT id FROM league WHERE name = 'Ekstraklasa'), 'CPU');
+INSERT INTO team (sid, name, account, league_id, type) VALUES ('jkvjjc822c05q1e49507xbed80a96s33', 'Odra Wodzislaw', 3500, (SELECT id FROM league WHERE name = 'Ekstraklasa'), 'CPU');
+INSERT INTO team (sid, name, account, league_id, type) VALUES ('jkvjjc822c05q1e4950awerd80a96s33', 'GKS Wisielec', 3500, (SELECT id FROM league WHERE name = 'Ekstraklasa'), 'CPU');
 
 -- 1 LIGA
 INSERT INTO team (sid, name, account, league_id, type) VALUES ('qkvjjc822c0t41e490278aed80a96s33', 'Tytan Wisznice', 1100, (SELECT id FROM league WHERE name = 'I liga'), 'CPU');
@@ -31,5 +33,7 @@ INSERT INTO team (sid, name, account, league_id, type) VALUES ('fkvjjc822c0b41e4
 INSERT INTO team (sid, name, account, league_id, type) VALUES ('hkvjjc822c0n41e49078aesd80a96s33', 'Vineta Wolin', 1200, (SELECT id FROM league WHERE name = 'I liga'), 'CPU');
 INSERT INTO team (sid, name, account, league_id, type) VALUES ('jkvjjc822c0m41e49078aead80a96s33', 'Ogniwo Babinek', 3500, (SELECT id FROM league WHERE name = 'I liga'), 'CPU');
 INSERT INTO team (sid, name, account, league_id, type) VALUES ('ykvjjc822c0h41e49078aewd80a96s33', 'GKS Wisielec', 400, (SELECT id FROM league WHERE name = 'I liga'), 'CPU');
+INSERT INTO team (sid, name, account, league_id, type) VALUES ('ykvjjc822c0h41e49s78aewd80a96s33', 'GKS Katowice', 400, (SELECT id FROM league WHERE name = 'I liga'), 'CPU');
+INSERT INTO team (sid, name, account, league_id, type) VALUES ('ykvjjc822c0h41e49078aewd80a9zs33', 'Odra Wodzislaw', 400, (SELECT id FROM league WHERE name = 'I liga'), 'CPU');
 
 COMMIT;
