@@ -9,6 +9,8 @@ import java.io.Serializable;
  */
 public class Progress implements Serializable
 {
+   public static final String FIELD_VALUE = "value";
+
    private Integer value = 0;
 
    public Integer getValue()

@@ -1,7 +1,6 @@
 package com.fm.service;
 
 import com.fm.domain.League;
-import com.fm.domain.Progress;
 
 /**
  * User: pawel
@@ -10,5 +9,5 @@ import com.fm.domain.Progress;
  */
 public interface ILeagueService extends IAbstractService<League>
 {
-   League save(League league, boolean generateTeams, Progress progress);
+   League save(League league, boolean generateTeams);
 }

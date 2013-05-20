@@ -15,6 +15,7 @@ import com.fm.domain.League;
 import com.fm.domain.filter.FmFilter;
 import com.fm.domain.filter.OpenSearchDescription;
 import com.fm.service.ILeagueService;
+import com.fm.service.ITeamGenerationStrategy;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.authroles.authorization.strategies.role.annotations.AuthorizeInstantiation;
@@ -42,6 +43,9 @@ public class LeagueListPage extends AdminAbstractPage
    @SpringBean
    private ILeagueService leagueService;
 
+   @SpringBean
+   private ITeamGenerationStrategy teamGenerationStrategy;
+
    private WebMarkupContainer main;
 
    public LeagueListPage()
@@ -66,9 +70,17 @@ public class LeagueListPage extends AdminAbstractPage
          public void onSubmit(AjaxRequestTarget target, Form<?> form)
          {
             League league = getLeague();
-            leagueService.save(league, getGenerateTeams(), getProgress());
-            Notification.success(getString("league.successfully.saved"));
+//            new Thread(new GenerateLeagueThread(league, getProgress(), teamGenerationStrategy)).start();
+            leagueService.save(league, getGenerateTeams());
 
+//            try
+//            {
+//               Thread.sleep(20000);
+//            }
+//            catch (InterruptedException e)
+//            {
+//            }
+            Notification.success(getString("league.successfully.saved"));
             resetState();
             target.add(main);
          }
