@@ -68,7 +68,7 @@ CREATE TABLE user (
 	login VARCHAR(15) NOT NULL,
 	password VARCHAR(65) NOT NULL,
 	email VARCHAR(30) NOT NULL,
-	manager_name VARCHAR(15);
+	manager_name VARCHAR(15),
     manager_surname VARCHAR(40),
     team_name VARCHAR(30),
 	UNIQUE (sid)
