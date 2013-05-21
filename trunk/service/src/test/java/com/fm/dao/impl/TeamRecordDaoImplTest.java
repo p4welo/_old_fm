@@ -8,6 +8,7 @@ import com.fm.domain.Season;
 import com.fm.domain.Team;
 import com.fm.domain.TeamRecord;
 import org.junit.Before;
+import org.junit.Ignore;
 
 import javax.annotation.Resource;
 import java.util.Arrays;
@@ -20,6 +21,7 @@ import java.util.List;
  * Time: 17:36
  * To change this template use File | Settings | File Templates.
  */
+@Ignore
 public class TeamRecordDaoImplTest extends IdentifiableDaoTest<TeamRecord>
 {
    @Resource
