@@ -4,6 +4,7 @@ import com.fm.dao.IAbstractDao;
 import com.fm.dao.ILeagueDao;
 import com.fm.dao.TestDomainObjectFactory;
 import com.fm.domain.League;
+import org.junit.Ignore;
 
 import javax.annotation.Resource;
 import java.util.Arrays;
@@ -16,6 +17,7 @@ import java.util.List;
  * Time: 14:59
  * To change this template use File | Settings | File Templates.
  */
+@Ignore
 public class LeagueDaoImplTest extends IdentifiableDaoTest<League>
 {
    @Resource

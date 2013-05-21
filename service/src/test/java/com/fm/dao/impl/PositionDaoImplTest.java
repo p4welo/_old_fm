@@ -4,6 +4,7 @@ import com.fm.dao.IAbstractDao;
 import com.fm.dao.IPositionDao;
 import com.fm.dao.TestDomainObjectFactory;
 import com.fm.domain.Position;
+import org.junit.Ignore;
 
 import javax.annotation.Resource;
 import java.util.Arrays;
@@ -16,6 +17,7 @@ import java.util.List;
  * Time: 17:31
  * To change this template use File | Settings | File Templates.
  */
+@Ignore
 public class PositionDaoImplTest extends IdentifiableDaoTest<Position>
 {
    @Resource
