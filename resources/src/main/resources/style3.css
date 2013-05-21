@@ -1,0 +1,18 @@
+body {
+    background-color: #20222e;
+}
+
+.main-container {
+    padding: 20px;
+    background: #fff;
+    border-radius: 3px;
+    -o-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    box-shadow: 0 0 15px black;
+    -webkit-box-shadow: 0 0 10px #333;
+    -moz-box-shadow: 0 0 10px #333;
+    -o-box-shadow: 0 0 10px #333;
+    -ms-box-shadow: 0 0 10px #333;
+}
