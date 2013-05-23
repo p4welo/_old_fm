@@ -3,7 +3,7 @@
 }
 
 .startScene.startPageBackground {
-    background: url('img/bg2.jpg') no-repeat center -117px;
+    background: url('img/bg2.jpg') no-repeat center;
     /*height: 750px;*/
     height: 1000px;
     background-size: cover;
