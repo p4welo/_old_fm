@@ -37,7 +37,6 @@
           class="org.springframework.beans.factory.config.PropertiesFactoryBean">
         <property name="locations">
             <list>
-                <!--<value>classpath:configuration/dao.properties</value>-->
                 <value>classpath:configuration/test-dao.properties</value>
             </list>
         </property>
