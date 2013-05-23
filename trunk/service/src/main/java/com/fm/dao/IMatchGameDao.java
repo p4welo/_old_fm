@@ -10,7 +10,7 @@ import java.util.List;
  * Date: 14.12.12
  * Time: 01:22
  */
-public interface IMatchGameDao
+public interface IMatchGameDao extends IAbstractDao<MatchGame>
 {
    List<MatchGame> getByRoundInSeason(Season season, Integer round);
 }

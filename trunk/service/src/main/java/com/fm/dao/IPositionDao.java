@@ -7,7 +7,7 @@ import com.fm.domain.Position;
  * Date: 01.12.12
  * Time: 00:02
  */
-public interface IPositionDao
+public interface IPositionDao extends IAbstractDao<Position>
 {
    Position getByShortName(String shortName);
 }

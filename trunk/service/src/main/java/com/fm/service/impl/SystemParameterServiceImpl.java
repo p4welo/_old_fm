@@ -27,7 +27,7 @@ public class SystemParameterServiceImpl extends AbstractServiceImpl<SystemParame
    @Override
    protected IAbstractDao<SystemParameter> getDao()
    {
-      return (IAbstractDao<SystemParameter>) systemParameterDao;
+      return systemParameterDao;
    }
 
    @Override

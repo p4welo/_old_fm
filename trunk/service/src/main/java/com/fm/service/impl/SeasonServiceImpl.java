@@ -34,7 +34,7 @@ public class SeasonServiceImpl extends AbstractServiceImpl<Season> implements IS
    @Override
    protected IAbstractDao<Season> getDao()
    {
-      return (IAbstractDao<Season>) seasonDao;
+      return seasonDao;
    }
 
    @Override

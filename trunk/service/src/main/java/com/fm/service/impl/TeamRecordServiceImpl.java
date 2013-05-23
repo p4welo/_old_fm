@@ -42,7 +42,7 @@ public class TeamRecordServiceImpl extends AbstractServiceImpl<TeamRecord> imple
    @Override
    protected IAbstractDao<TeamRecord> getDao()
    {
-      return (IAbstractDao<TeamRecord>) teamRecordDao;
+      return teamRecordDao;
    }
 
    @Override

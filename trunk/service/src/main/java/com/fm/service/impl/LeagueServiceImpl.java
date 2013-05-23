@@ -35,7 +35,7 @@ public class LeagueServiceImpl extends AbstractServiceImpl<League> implements IL
    @Override
    protected IAbstractDao<League> getDao()
    {
-      return (IAbstractDao<League>) leagueDao;
+      return leagueDao;
    }
 
    @Override

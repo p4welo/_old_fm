@@ -35,7 +35,7 @@ public class UserServiceImpl extends AbstractServiceImpl<User> implements IUserS
    @Override
    protected IAbstractDao<User> getDao()
    {
-      return (IAbstractDao<User>) userDao;
+      return userDao;
    }
 
    @Override

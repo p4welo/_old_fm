@@ -10,7 +10,7 @@ import java.util.List;
  * Date: 14.12.12
  * Time: 00:17
  */
-public interface ITeamRecordDao
+public interface ITeamRecordDao extends IAbstractDao<TeamRecord>
 {
    List<TeamRecord> findTeamRecordsBySeason(Season season, boolean orderByPlace);
 

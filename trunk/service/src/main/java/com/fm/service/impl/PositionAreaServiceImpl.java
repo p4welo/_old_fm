@@ -34,7 +34,7 @@ public class PositionAreaServiceImpl extends AbstractServiceImpl<PositionArea> i
    @Override
    protected IAbstractDao<PositionArea> getDao()
    {
-      return (IAbstractDao<PositionArea>) positionAreaDao;
+      return positionAreaDao;
    }
 
    @Override
