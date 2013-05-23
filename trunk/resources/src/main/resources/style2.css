@@ -4,7 +4,7 @@
 
 .startScene.startPageBackground {
     /*background: url('../img/login_bg.jpg') no-repeat center -117px;;*/
-    background: url('http://cosmosstadium.com/sites/default/files/photo-gallery-photos/Stadium-5.jpg') no-repeat center -117px;;
+    background: url('http://cosmosstadium.com/sites/default/files/photo-gallery-photos/Stadium-5.jpg') no-repeat center; /* -117px;;*/
     height: 1000px;
     background-size: cover;
 }
@@ -12,7 +12,7 @@
 .loginScene .container {
     margin-right: auto;
     margin-left: auto;
-    margin-top: 140px;
+    margin-top: 180px;
     padding: 20px;
     background: #fff;
     border-radius: 3px;
