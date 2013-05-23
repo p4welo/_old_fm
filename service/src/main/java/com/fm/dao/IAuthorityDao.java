@@ -10,7 +10,7 @@ import java.util.List;
  * Date: 17.12.12
  * Time: 19:39
  */
-public interface IAuthorityDao
+public interface IAuthorityDao extends IAbstractDao<Authority>
 {
    List<Authority> getAuthoritiesByUser(User user);
 }

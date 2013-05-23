@@ -30,7 +30,7 @@ public class AuthorityServiceImpl extends AbstractServiceImpl<Authority> impleme
    @Override
    protected IAbstractDao<Authority> getDao()
    {
-      return (IAbstractDao<Authority>) authorityDao;
+      return authorityDao;
    }
 
    @Override

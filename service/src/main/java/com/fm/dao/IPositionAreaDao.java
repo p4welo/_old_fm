@@ -12,7 +12,7 @@ import java.util.List;
  * Time: 18:01
  * To change this template use File | Settings | File Templates.
  */
-public interface IPositionAreaDao
+public interface IPositionAreaDao extends IAbstractDao<PositionArea>
 {
    List<PositionArea> findByPosition(Position position);
 }

@@ -10,7 +10,7 @@ import java.util.List;
  * Date: 14.12.12
  * Time: 00:01
  */
-public interface ISeasonDao
+public interface ISeasonDao extends IAbstractDao<Season>
 {
    Season getActiveSeason(League league);
 

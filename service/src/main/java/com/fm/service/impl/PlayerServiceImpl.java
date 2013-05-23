@@ -39,7 +39,7 @@ public class PlayerServiceImpl extends AbstractServiceImpl<Player> implements IP
    @Override
    protected IAbstractDao<Player> getDao()
    {
-      return (IAbstractDao<Player>) playerDao;
+      return playerDao;
    }
 
    @Transactional

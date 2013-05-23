@@ -24,6 +24,6 @@ public class PlayerStatsServiceImpl extends AbstractServiceImpl<PlayerStats> imp
    @Override
    protected IAbstractDao<PlayerStats> getDao()
    {
-      return (IAbstractDao<PlayerStats>) playerStatsDao;
+      return playerStatsDao;
    }
 }

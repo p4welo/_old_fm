@@ -24,6 +24,6 @@ public class SurnameServiceImpl extends AbstractServiceImpl<Surname> implements 
    @Override
    protected IAbstractDao<Surname> getDao()
    {
-      return (IAbstractDao<Surname>) surnameDao;
+      return surnameDao;
    }
 }

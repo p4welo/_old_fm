@@ -7,7 +7,7 @@ import com.fm.domain.User;
  * Date: 17.12.12
  * Time: 19:31
  */
-public interface IUserDao
+public interface IUserDao extends IAbstractDao<User>
 {
    User findByLogin(String login);
 

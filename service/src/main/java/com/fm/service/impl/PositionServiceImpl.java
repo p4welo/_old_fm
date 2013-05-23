@@ -25,7 +25,7 @@ public class PositionServiceImpl extends AbstractServiceImpl<Position> implement
    @Override
    protected IAbstractDao<Position> getDao()
    {
-      return (IAbstractDao<Position>) positionDao;
+      return positionDao;
    }
 
    @Override

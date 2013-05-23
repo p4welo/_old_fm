@@ -27,7 +27,7 @@ public class TeamServiceImpl extends AbstractServiceImpl<Team> implements ITeamS
    @Override
    protected IAbstractDao<Team> getDao()
    {
-      return (IAbstractDao<Team>) teamDao;
+      return teamDao;
    }
 
    @Override
