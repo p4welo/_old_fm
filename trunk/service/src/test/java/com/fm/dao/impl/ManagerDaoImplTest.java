@@ -8,7 +8,6 @@ import com.fm.domain.Manager;
 import com.fm.domain.Team;
 import com.fm.domain.User;
 import org.junit.Before;
-import org.junit.Ignore;
 
 import javax.annotation.Resource;
 import java.util.Arrays;
@@ -22,7 +21,6 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 
-@Ignore
 public class ManagerDaoImplTest extends IdentifiableDaoTest<Manager>
 {
    @Resource
@@ -48,7 +46,7 @@ public class ManagerDaoImplTest extends IdentifiableDaoTest<Manager>
    @Override
    protected IAbstractDao<Manager> getDao()
    {
-      return (IAbstractDao<Manager>) managerDao;
+      return managerDao;
    }
 
    @Override

@@ -7,7 +7,6 @@ import com.fm.domain.League;
 import com.fm.domain.MatchGame;
 import com.fm.domain.Season;
 import org.junit.Before;
-import org.junit.Ignore;
 
 import javax.annotation.Resource;
 import java.util.Arrays;
@@ -20,7 +19,6 @@ import java.util.List;
  * Time: 17:29
  * To change this template use File | Settings | File Templates.
  */
-@Ignore
 public class MatchGameDaoImplTest extends IdentifiableDaoTest<MatchGame>
 {
    @Resource
@@ -42,7 +40,7 @@ public class MatchGameDaoImplTest extends IdentifiableDaoTest<MatchGame>
    @Override
    protected IAbstractDao<MatchGame> getDao()
    {
-      return (IAbstractDao<MatchGame>) matchGameDao;
+      return matchGameDao;
    }
 
    @Override

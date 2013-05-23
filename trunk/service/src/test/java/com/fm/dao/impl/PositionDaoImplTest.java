@@ -26,7 +26,7 @@ public class PositionDaoImplTest extends IdentifiableDaoTest<Position>
    @Override
    protected IAbstractDao<Position> getDao()
    {
-      return (IAbstractDao<Position>) positionDao;
+      return positionDao;
    }
 
    @Override
