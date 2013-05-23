@@ -4,7 +4,6 @@ import com.fm.dao.IAbstractDao;
 import com.fm.dao.INameDao;
 import com.fm.dao.TestDomainObjectFactory;
 import com.fm.domain.Name;
-import org.junit.Ignore;
 
 import javax.annotation.Resource;
 import java.util.Arrays;
@@ -17,7 +16,6 @@ import java.util.List;
  * Time: 14:37
  * To change this template use File | Settings | File Templates.
  */
-@Ignore
 public class NameDaoImplTest extends IdentifiableDaoTest<Name>
 {
    @Resource
@@ -32,7 +30,7 @@ public class NameDaoImplTest extends IdentifiableDaoTest<Name>
    @Override
    protected IAbstractDao<Name> getDao()
    {
-      return (IAbstractDao<Name>) nameDao;
+      return nameDao;
    }
 
    @Override

@@ -6,7 +6,6 @@ import com.fm.dao.TestDomainObjectFactory;
 import com.fm.domain.Authority;
 import com.fm.domain.User;
 import org.junit.Before;
-import org.junit.Ignore;
 
 import javax.annotation.Resource;
 import java.util.Arrays;
@@ -19,7 +18,6 @@ import java.util.List;
  * Time: 14:51
  * To change this template use File | Settings | File Templates.
  */
-@Ignore
 public class AuthorityDaoImplTest extends IdentifiableDaoTest<Authority>
 {
    @Resource
@@ -43,7 +41,7 @@ public class AuthorityDaoImplTest extends IdentifiableDaoTest<Authority>
    @Override
    protected IAbstractDao<Authority> getDao()
    {
-      return (IAbstractDao<Authority>) authorityDao;
+      return authorityDao;
    }
 
    @Override

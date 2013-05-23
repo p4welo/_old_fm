@@ -1,5 +1,4 @@
 import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.security.authentication.encoding.PasswordEncoder;
 import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
@@ -9,7 +8,6 @@ import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
  * Date: 22.03.13
  * Time: 14:11
  */
-@Ignore
 public class PasswordTest
 {
    @Test
