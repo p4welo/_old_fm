@@ -7,7 +7,7 @@ package com.fm.domain;
  * Time: 08:24
  * To change this template use File | Settings | File Templates.
  */
-public enum PlayerStatTypeEnum
+public enum PlayerStatsTypeEnum
 {
    RED_CARD,
    YELLOW_CARD,

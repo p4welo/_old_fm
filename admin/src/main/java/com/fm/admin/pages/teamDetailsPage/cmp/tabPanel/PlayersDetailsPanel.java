@@ -3,7 +3,7 @@ package com.fm.admin.pages.teamDetailsPage.cmp.tabPanel;
 import com.fm.core.cmp.image.StaticImage;
 import com.fm.core.cmp.label.ColorValueLabel;
 import com.fm.domain.Player;
-import com.fm.domain.PlayerStatTypeEnum;
+import com.fm.domain.PlayerStatsTypeEnum;
 import com.fm.domain.Position;
 import com.fm.domain.Team;
 import com.fm.domain.filter.StatsFilter;
@@ -80,11 +80,11 @@ public class PlayersDetailsPanel extends Panel
       {
          StatsFilter filter = new StatsFilter();
          filter.setPlayerSid(player.getSid());
-         filter.setType(PlayerStatTypeEnum.GOAL);
+         filter.setType(PlayerStatsTypeEnum.GOAL);
          goalCount = playerStatsService.countBySearchParams(filter);
-         filter.setType(PlayerStatTypeEnum.YELLOW_CARD);
+         filter.setType(PlayerStatsTypeEnum.YELLOW_CARD);
          yellowCardsCount = playerStatsService.countBySearchParams(filter);
-         filter.setType(PlayerStatTypeEnum.RED_CARD);
+         filter.setType(PlayerStatsTypeEnum.RED_CARD);
          redCardsCount = playerStatsService.countBySearchParams(filter);
       }
       setVisible(player != null);

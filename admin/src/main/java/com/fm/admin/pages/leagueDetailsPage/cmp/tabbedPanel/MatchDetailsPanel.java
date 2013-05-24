@@ -2,8 +2,8 @@ package com.fm.admin.pages.leagueDetailsPage.cmp.tabbedPanel;
 
 import com.fm.admin.navigation.NavigateToTeamDetailsPage;
 import com.fm.domain.MatchGame;
-import com.fm.domain.PlayerStatTypeEnum;
 import com.fm.domain.PlayerStats;
+import com.fm.domain.PlayerStatsTypeEnum;
 import com.fm.domain.filter.SortFilterChain;
 import com.fm.domain.filter.StatsFilter;
 import com.fm.service.IPlayerStatsService;
@@ -63,24 +63,24 @@ public class MatchDetailsPanel extends Panel
          filter = new StatsFilter();
          filter.setMatchSid(selected.getSid());
 
-         filter.setType(PlayerStatTypeEnum.GOAL);
+         filter.setType(PlayerStatsTypeEnum.GOAL);
          filter.setTeamSid(selected.getHostSid());
          hostStrikers = playerStatsService.findBySearchParams(filter, new SortFilterChain(), 0, 20);
 
-         filter.setType(PlayerStatTypeEnum.YELLOW_CARD);
+         filter.setType(PlayerStatsTypeEnum.YELLOW_CARD);
          hostYellowCards = playerStatsService.findBySearchParams(filter, new SortFilterChain(), 0, 20);
 
-         filter.setType(PlayerStatTypeEnum.RED_CARD);
+         filter.setType(PlayerStatsTypeEnum.RED_CARD);
          hostRedCards = playerStatsService.findBySearchParams(filter, new SortFilterChain(), 0, 20);
 
-         filter.setType(PlayerStatTypeEnum.GOAL);
+         filter.setType(PlayerStatsTypeEnum.GOAL);
          filter.setTeamSid(selected.getGuestSid());
          guestStrikers = playerStatsService.findBySearchParams(filter, new SortFilterChain(), 0, 20);
 
-         filter.setType(PlayerStatTypeEnum.YELLOW_CARD);
+         filter.setType(PlayerStatsTypeEnum.YELLOW_CARD);
          guestYellowCards = playerStatsService.findBySearchParams(filter, new SortFilterChain(), 0, 20);
 
-         filter.setType(PlayerStatTypeEnum.RED_CARD);
+         filter.setType(PlayerStatsTypeEnum.RED_CARD);
          guestRedCards = playerStatsService.findBySearchParams(filter, new SortFilterChain(), 0, 20);
       }
 

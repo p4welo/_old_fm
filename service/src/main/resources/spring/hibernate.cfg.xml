@@ -22,5 +22,6 @@
         <mapping class="com.fm.domain.PlayerStats"/>
         <mapping class="com.fm.domain.UserLogHistory"/>
         <mapping class="com.fm.domain.PlayerRating"/>
+        <mapping class="com.fm.domain.TeamStats"/>
     </session-factory>
 </hibernate-configuration>

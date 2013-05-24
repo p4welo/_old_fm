@@ -70,7 +70,7 @@ public class PlayerStats extends IdentifiableEntity
    @Column(nullable = false)
    @Enumerated(value = EnumType.STRING)
    @NotNull
-   private PlayerStatTypeEnum type;
+   private PlayerStatsTypeEnum type;
 
    public Long getId()
    {
@@ -132,12 +132,12 @@ public class PlayerStats extends IdentifiableEntity
       this.date = date;
    }
 
-   public PlayerStatTypeEnum getType()
+   public PlayerStatsTypeEnum getType()
    {
       return type;
    }
 
-   public void setType(PlayerStatTypeEnum type)
+   public void setType(PlayerStatsTypeEnum type)
    {
       this.type = type;
    }
