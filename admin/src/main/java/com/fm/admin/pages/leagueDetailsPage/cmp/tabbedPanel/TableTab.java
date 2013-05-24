@@ -2,11 +2,13 @@ package com.fm.admin.pages.leagueDetailsPage.cmp.tabbedPanel;
 
 import com.fm.admin.navigation.NavigateToTeamDetailsPage;
 import com.fm.admin.pages.leagueDetailsPage.cmp.chart.ChartPanel;
+import com.fm.admin.pages.leagueDetailsPage.cmp.thread.GeneratePlayersThread;
 import com.fm.core.ajax.ConfirmationCallListener;
 import com.fm.core.cmp.button.BootstrapLink;
 import com.fm.core.cmp.masterDetail.EmptyDetailsPanel;
 import com.fm.core.cmp.notify.Notification;
 import com.fm.domain.League;
+import com.fm.domain.Progress;
 import com.fm.domain.Season;
 import com.fm.domain.TeamRecord;
 import com.fm.service.ISeasonService;
@@ -16,10 +18,12 @@ import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxEventBehavior;
 import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.ajax.AjaxSelfUpdatingTimerBehavior;
 import org.apache.wicket.ajax.attributes.AjaxRequestAttributes;
 import org.apache.wicket.ajax.form.OnChangeAjaxBehavior;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.extensions.ajax.markup.html.AjaxLazyLoadPanel;
+import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.form.IChoiceRenderer;
@@ -29,6 +33,8 @@ import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
+import org.apache.wicket.util.time.Duration;
+import org.apache.wicket.util.value.IValueMap;
 
 import java.util.List;
 
@@ -185,14 +191,35 @@ public class TableTab extends Panel
             attributes.getAjaxCallListeners().add(new ConfirmationCallListener(getString("next.round.confirm")));
          }
       });
-      add(new AjaxLink<Void>("generatePlayers")
+      AjaxLink generateLink = new AjaxLink("generatePlayers")
       {
+         private final Progress generateProgress = new Progress();
+
          @Override
          public void onClick(AjaxRequestTarget target)
          {
-            teamRecordService.generatePlayers(teamRecords);
-            Notification.success(getString("players.successfully.generated"));
+            Thread generateThread = new Thread(
+                    new GeneratePlayersThread(teamRecords, teamRecordService, generateProgress));
+            generateThread.start();
+            Notification.success(getString("players.generation.started"));
             target.add(TableTab.this);
+         }
+
+         @Override
+         protected void onComponentTag(ComponentTag tag)
+         {
+            super.onComponentTag(tag);
+            IValueMap attributes = tag.getAttributes();
+            String clazz = attributes.getString("class");
+
+            if (generateProgress.getValue() > 0)
+            {
+               attributes.put("class", clazz + " disabled");
+            }
+            else
+            {
+               attributes.put("class", clazz);
+            }
          }
 
          @Override
@@ -201,7 +228,10 @@ public class TableTab extends Panel
             super.updateAjaxAttributes(attributes);
             attributes.getAjaxCallListeners().add(new ConfirmationCallListener(getString("generate.players.confirm")));
          }
-      });
+      };
+      generateLink.setOutputMarkupId(true);
+      generateLink.add(new AjaxSelfUpdatingTimerBehavior(Duration.ONE_SECOND));
+      add(generateLink);
       add(new BootstrapLink("teamDetails")
       {
          @Override
