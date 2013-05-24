@@ -216,3 +216,14 @@ CREATE TABLE user_log_history (
     success BOOLEAN NOT NULL,
     UNIQUE (sid)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE player_rating (
+    id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	object_state VARCHAR(30) NOT NULL DEFAULT 'ACTIVE',
+    sid VARCHAR(32) NOT NULL,
+    player_sid VARCHAR(32) NOT NULL,
+    match_sid VARCHAR(32) NOT NULL,
+    season_sid VARCHAR(32) NOT NULL,
+    creation_date timestamp NOT NULL,
+    rating float NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

@@ -129,6 +129,8 @@ public class MatchGameServiceImpl extends AbstractServiceImpl<MatchGame> impleme
          playerStatsService.save(stats);
       }
 
+      //TODO: zrobić ocenę zawodników, ale pierw musi być ustalanie składu na mecz
+
       return matchGame;
    }
 

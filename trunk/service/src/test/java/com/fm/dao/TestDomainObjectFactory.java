@@ -154,4 +154,17 @@ public class TestDomainObjectFactory
       logHistory.setSuccess(true);
       return logHistory;
    }
+
+   public static PlayerRating getPlayerRating()
+   {
+      PlayerRating rating = new PlayerRating();
+      rating.setSid(SidUtils.generate());
+      rating.setObjectState(ObjectStateEnum.ACTIVE);
+      rating.setCreationDate(new Date());
+      rating.setPlayerSid(SidUtils.generate());
+      rating.setMatchSid(SidUtils.generate());
+      rating.setSeasonSid(SidUtils.generate());
+      rating.setRating(4.0f);
+      return rating;
+   }
 }
