@@ -140,6 +140,7 @@ CREATE TABLE match_game (
 	guest_scores INT DEFAULT 0,
 	guest_sid VARCHAR(32) NOT NULL,
 	guest_name VARCHAR(32) NOT NULL,
+	status VARCHAR(32) NOT NULL,
 	FOREIGN KEY (season_id) REFERENCES season(id) ON DELETE CASCADE,
 	UNIQUE (sid)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
