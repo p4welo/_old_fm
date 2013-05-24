@@ -33,12 +33,12 @@ public class ColorValueLabel extends Label
       tag.getAttributes().put("class", cssClass);
 
       String style = attributes.get("style") != null ? attributes.get("style") + " " : "";
-      style += "background-color: " + countColor((Integer) getDefaultModelObject());
+      style += "background-color: " + countColor((Float) getDefaultModelObject());
       tag.getAttributes().put("style", style);
       super.onComponentTag(tag);
    }
 
-   private String countColor(Integer value)
+   private String countColor(Float value)
    {
       List<String> colors = Arrays.asList(
               "#990000",
@@ -56,6 +56,6 @@ public class ColorValueLabel extends Label
               "#009900",
               "#006600");
 
-      return colors.get(value * (colors.size() - 1) / MAX);
+      return colors.get(value.intValue() * (colors.size() - 1) / MAX);
    }
 }

@@ -75,11 +75,11 @@ public class Player extends IdentifiableEntity
    //   GENERAL PARAMETERS
    @Column(nullable = false)
    @NotNull
-   private Integer speed;        // szybkość
+   private Float speed;        // szybkość
 
    @Column(nullable = false)
    @NotNull
-   private Integer stamina;      // wytrzymałość
+   private Float stamina;      // wytrzymałość
 
    @Column(nullable = false)
    @NotNull
@@ -92,35 +92,35 @@ public class Player extends IdentifiableEntity
    //   SKILLS
    @Column(nullable = false)
    @NotNull
-   private Integer crossing;     // dośrodkowania
+   private Float crossing;     // dośrodkowania
 
    @Column(nullable = false)
    @NotNull
-   private Integer passing;     // podania
+   private Float passing;     // podania
 
    @Column(nullable = false)
    @NotNull
-   private Integer heading;      // gra głową
+   private Float heading;      // gra głową
 
    @Column(nullable = false)
    @NotNull
-   private Integer marking;      // krycie
+   private Float marking;      // krycie
 
    @Column(nullable = false)
    @NotNull
-   private Integer shots;        // strzały
+   private Float shots;        // strzały
 
    @Column(nullable = false)
    @NotNull
-   private Integer tackling;     // odbiór
+   private Float tackling;     // odbiór
 
    @Column(nullable = false)
    @NotNull
-   private Integer dribbling;    // drybling
+   private Float dribbling;    // drybling
 
    @Column(nullable = false)
    @NotNull
-   private Integer goalkeeping;  // um. bramkarskie
+   private Float goalkeeping;  // um. bramkarskie
 
    public Long getId()
    {
@@ -172,26 +172,6 @@ public class Player extends IdentifiableEntity
       this.age = age;
    }
 
-   public Integer getSpeed()
-   {
-      return speed;
-   }
-
-   public void setSpeed(Integer speed)
-   {
-      this.speed = speed;
-   }
-
-   public Integer getStamina()
-   {
-      return stamina;
-   }
-
-   public void setStamina(Integer stamina)
-   {
-      this.stamina = stamina;
-   }
-
    public Integer getEnergy()
    {
       return energy;
@@ -202,76 +182,6 @@ public class Player extends IdentifiableEntity
       this.energy = energy;
    }
 
-   public Integer getCrossing()
-   {
-      return crossing;
-   }
-
-   public void setCrossing(Integer crossing)
-   {
-      this.crossing = crossing;
-   }
-
-   public Integer getHeading()
-   {
-      return heading;
-   }
-
-   public void setHeading(Integer heading)
-   {
-      this.heading = heading;
-   }
-
-   public Integer getMarking()
-   {
-      return marking;
-   }
-
-   public void setMarking(Integer marking)
-   {
-      this.marking = marking;
-   }
-
-   public Integer getShots()
-   {
-      return shots;
-   }
-
-   public void setShots(Integer shots)
-   {
-      this.shots = shots;
-   }
-
-   public Integer getTackling()
-   {
-      return tackling;
-   }
-
-   public void setTackling(Integer tackling)
-   {
-      this.tackling = tackling;
-   }
-
-   public Integer getDribbling()
-   {
-      return dribbling;
-   }
-
-   public void setDribbling(Integer dribbling)
-   {
-      this.dribbling = dribbling;
-   }
-
-   public Integer getGoalkeeping()
-   {
-      return goalkeeping;
-   }
-
-   public void setGoalkeeping(Integer goalkeeping)
-   {
-      this.goalkeeping = goalkeeping;
-   }
-
    public Integer getPotential()
    {
       return potential;
@@ -280,16 +190,6 @@ public class Player extends IdentifiableEntity
    public void setPotential(Integer potential)
    {
       this.potential = potential;
-   }
-
-   public Integer getPassing()
-   {
-      return passing;
-   }
-
-   public void setPassing(Integer passing)
-   {
-      this.passing = passing;
    }
 
    public String getTeamSid()
@@ -310,5 +210,105 @@ public class Player extends IdentifiableEntity
    public void setAvatarPath(String avatarPath)
    {
       this.avatarPath = avatarPath;
+   }
+
+   public Float getSpeed()
+   {
+      return speed;
+   }
+
+   public void setSpeed(Float speed)
+   {
+      this.speed = speed;
+   }
+
+   public Float getStamina()
+   {
+      return stamina;
+   }
+
+   public void setStamina(Float stamina)
+   {
+      this.stamina = stamina;
+   }
+
+   public Float getCrossing()
+   {
+      return crossing;
+   }
+
+   public void setCrossing(Float crossing)
+   {
+      this.crossing = crossing;
+   }
+
+   public Float getPassing()
+   {
+      return passing;
+   }
+
+   public void setPassing(Float passing)
+   {
+      this.passing = passing;
+   }
+
+   public Float getHeading()
+   {
+      return heading;
+   }
+
+   public void setHeading(Float heading)
+   {
+      this.heading = heading;
+   }
+
+   public Float getMarking()
+   {
+      return marking;
+   }
+
+   public void setMarking(Float marking)
+   {
+      this.marking = marking;
+   }
+
+   public Float getShots()
+   {
+      return shots;
+   }
+
+   public void setShots(Float shots)
+   {
+      this.shots = shots;
+   }
+
+   public Float getTackling()
+   {
+      return tackling;
+   }
+
+   public void setTackling(Float tackling)
+   {
+      this.tackling = tackling;
+   }
+
+   public Float getDribbling()
+   {
+      return dribbling;
+   }
+
+   public void setDribbling(Float dribbling)
+   {
+      this.dribbling = dribbling;
+   }
+
+   public Float getGoalkeeping()
+   {
+      return goalkeeping;
+   }
+
+   public void setGoalkeeping(Float goalkeeping)
+   {
+      this.goalkeeping = goalkeeping;
    }
 }
