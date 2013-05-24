@@ -1,6 +1,7 @@
 package com.fm.dao;
 
 import com.fm.domain.Manager;
+import com.fm.domain.Team;
 
 /**
  * User: pawel
@@ -9,4 +10,5 @@ import com.fm.domain.Manager;
  */
 public interface IManagerDao extends IAbstractDao<Manager>
 {
+   Manager getByTeam(Team team);
 }

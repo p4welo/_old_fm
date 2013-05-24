@@ -24,6 +24,6 @@ public class NameServiceImpl extends AbstractServiceImpl<Name> implements INameS
    @Override
    protected IAbstractDao<Name> getDao()
    {
-      return (IAbstractDao<Name>) nameDao;
+      return nameDao;
    }
 }

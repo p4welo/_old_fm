@@ -38,7 +38,7 @@ public class ManagerServiceImpl extends AbstractServiceImpl<Manager> implements 
    @Override
    protected IAbstractDao getDao()
    {
-      return (IAbstractDao) managerDao;
+      return managerDao;
    }
 
    @Override
@@ -59,5 +59,12 @@ public class ManagerServiceImpl extends AbstractServiceImpl<Manager> implements 
       }
       manager.setObjectState(ObjectStateEnum.INACTIVE);
       return save(manager);
+   }
+
+   @Override
+   @Transactional
+   public Manager getByTeam(Team team)
+   {
+      return managerDao.getByTeam(team);
    }
 }

@@ -25,8 +25,7 @@ public class TeamStats extends IdentifiableEntity
    @Length(max = 32)
    private String teamSid;
 
-   @Column(name = "manager_sid", nullable = false, length = 32)
-   @NotNull
+   @Column(name = "manager_sid", length = 32)
    @Length(max = 32)
    private String managerSid;
 
@@ -35,7 +34,7 @@ public class TeamStats extends IdentifiableEntity
    @Length(max = 32)
    private String seasonSid;
 
-   @Column(name = "match_sid", nullable = false, length = 32)
+   @Column(name = "match_sid", length = 32)
    @NotNull
    @Length(max = 32)
    private String matchSid;
