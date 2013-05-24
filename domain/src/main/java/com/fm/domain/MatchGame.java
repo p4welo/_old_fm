@@ -74,6 +74,11 @@ public class MatchGame extends IdentifiableEntity
    @NotNull
    private int guestScores = 0;
 
+   @Column(nullable = false)
+   @Enumerated(value = EnumType.STRING)
+   @NotNull
+   private MatchGameStatusEnum status;
+
    public Long getId()
    {
       return id;
@@ -172,5 +177,15 @@ public class MatchGame extends IdentifiableEntity
    public void setGuestName(String guestName)
    {
       this.guestName = guestName;
+   }
+
+   public MatchGameStatusEnum getStatus()
+   {
+      return status;
+   }
+
+   public void setStatus(MatchGameStatusEnum status)
+   {
+      this.status = status;
    }
 }

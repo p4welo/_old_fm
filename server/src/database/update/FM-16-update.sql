@@ -33,4 +33,6 @@ CREATE TABLE player_rating (
     rating float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+ALTER TABLE match_game ADD COLUMN status VARCHAR(32) NOT NULL DEFAULT 'FINISHED';
+
 COMMIT;
