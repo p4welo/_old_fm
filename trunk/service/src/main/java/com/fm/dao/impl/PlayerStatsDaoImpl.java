@@ -1,8 +1,8 @@
 package com.fm.dao.impl;
 
 import com.fm.dao.IPlayerStatsDao;
-import com.fm.domain.PlayerStatTypeEnum;
 import com.fm.domain.PlayerStats;
+import com.fm.domain.PlayerStatsTypeEnum;
 import com.fm.domain.filter.AbstractFilter;
 import com.fm.domain.filter.StatsFilter;
 import org.apache.commons.lang3.StringUtils;
@@ -48,7 +48,7 @@ public class PlayerStatsDaoImpl extends AbstractDaoImpl<PlayerStats> implements 
          criteria.add(Restrictions.eq(PlayerStats.FIELD_PLAYER_SID, playerSid));
       }
 
-      PlayerStatTypeEnum type = filter.getType();
+      PlayerStatsTypeEnum type = filter.getType();
       if (type != null)
       {
          criteria.add(Restrictions.eq(PlayerStats.FIELD_TYPE, type));

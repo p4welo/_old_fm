@@ -168,4 +168,18 @@ public class TestDomainObjectFactory
       rating.setRating(4.0f);
       return rating;
    }
+
+   public static TeamStats getTeamStats()
+   {
+      TeamStats teamStats = new TeamStats();
+      teamStats.setSid(SidUtils.generate());
+      teamStats.setObjectState(ObjectStateEnum.ACTIVE);
+      teamStats.setTeamSid(SidUtils.generate());
+      teamStats.setManagerSid(SidUtils.generate());
+      teamStats.setSeasonSid(SidUtils.generate());
+      teamStats.setMatchSid(SidUtils.generate());
+      teamStats.setCreationDate(new Date());
+      teamStats.setType(TeamStatsTypeEnum.WIN);
+      return teamStats;
+   }
 }

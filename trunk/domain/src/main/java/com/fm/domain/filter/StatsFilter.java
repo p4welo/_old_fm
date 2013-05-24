@@ -1,6 +1,6 @@
 package com.fm.domain.filter;
 
-import com.fm.domain.PlayerStatTypeEnum;
+import com.fm.domain.PlayerStatsTypeEnum;
 
 /**
  * User: pawel.radomski
@@ -17,7 +17,7 @@ public class StatsFilter extends AbstractFilter
 
    private String playerSid;
 
-   private PlayerStatTypeEnum type;
+   private PlayerStatsTypeEnum type;
 
    public String getMatchSid()
    {
@@ -49,12 +49,12 @@ public class StatsFilter extends AbstractFilter
       this.teamSid = teamSid;
    }
 
-   public PlayerStatTypeEnum getType()
+   public PlayerStatsTypeEnum getType()
    {
       return type;
    }
 
-   public void setType(PlayerStatTypeEnum type)
+   public void setType(PlayerStatsTypeEnum type)
    {
       this.type = type;
    }

@@ -73,7 +73,7 @@ public class MatchGameServiceImpl extends AbstractServiceImpl<MatchGame> impleme
          stats.setPlayerSurname(player.getSurname());
          stats.setSeasonSid(season.getSid());
          stats.setMatchSid(matchGame.getSid());
-         stats.setType(PlayerStatTypeEnum.GOAL);
+         stats.setType(PlayerStatsTypeEnum.GOAL);
          stats.setMatchMinute(random.nextInt(90));
          stats.setTeamSid(hostTeam.getSid());
          playerStatsService.save(stats);
@@ -90,7 +90,7 @@ public class MatchGameServiceImpl extends AbstractServiceImpl<MatchGame> impleme
          stats.setPlayerSurname(player.getSurname());
          stats.setSeasonSid(season.getSid());
          stats.setMatchSid(matchGame.getSid());
-         stats.setType(PlayerStatTypeEnum.YELLOW_CARD);
+         stats.setType(PlayerStatsTypeEnum.YELLOW_CARD);
          stats.setMatchMinute(random.nextInt(90));
          stats.setTeamSid(hostTeam.getSid());
          playerStatsService.save(stats);
@@ -106,7 +106,7 @@ public class MatchGameServiceImpl extends AbstractServiceImpl<MatchGame> impleme
          stats.setPlayerSurname(player.getSurname());
          stats.setSeasonSid(season.getSid());
          stats.setMatchSid(matchGame.getSid());
-         stats.setType(PlayerStatTypeEnum.GOAL);
+         stats.setType(PlayerStatsTypeEnum.GOAL);
          stats.setMatchMinute(random.nextInt(90));
          stats.setTeamSid(guestTeam.getSid());
          playerStatsService.save(stats);
@@ -123,7 +123,7 @@ public class MatchGameServiceImpl extends AbstractServiceImpl<MatchGame> impleme
          stats.setPlayerSurname(player.getSurname());
          stats.setSeasonSid(season.getSid());
          stats.setMatchSid(matchGame.getSid());
-         stats.setType(PlayerStatTypeEnum.YELLOW_CARD);
+         stats.setType(PlayerStatsTypeEnum.YELLOW_CARD);
          stats.setMatchMinute(random.nextInt(90));
          stats.setTeamSid(guestTeam.getSid());
          playerStatsService.save(stats);

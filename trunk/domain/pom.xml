@@ -54,15 +54,20 @@
             <artifactId>hibernate-validator</artifactId>
             <version>${hibernate-validator.version}</version>
         </dependency>
-        <dependency>
-            <groupId>joda-time</groupId>
-            <artifactId>joda-time</artifactId>
-            <version>${joda-time.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>joda-time</groupId>
-            <artifactId>joda-time-hibernate</artifactId>
-            <version>${joda-time-hibernate.version}</version>
-        </dependency>
+        <!--<dependency>-->
+        <!--<groupId>joda-time</groupId>-->
+        <!--<artifactId>joda-time</artifactId>-->
+        <!--<version>${joda-time.version}</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+        <!--<groupId>joda-time</groupId>-->
+        <!--<artifactId>joda-time-hibernate</artifactId>-->
+        <!--<version>${joda-time-hibernate.version}</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+        <!--<groupId>org.jadira.usertype</groupId>-->
+        <!--<artifactId>usertype.jodatime</artifactId>-->
+        <!--<version>${jadira.version}</version>-->
+        <!--</dependency>-->
     </dependencies>
 </project>
