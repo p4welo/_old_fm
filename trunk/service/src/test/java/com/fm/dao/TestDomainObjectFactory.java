@@ -142,4 +142,16 @@ public class TestDomainObjectFactory
       teamRecord.setRoundNumber(3);
       return teamRecord;
    }
+
+   public static UserLogHistory getUserLogHistory()
+   {
+      UserLogHistory logHistory = new UserLogHistory();
+      logHistory.setSid(SidUtils.generate());
+      logHistory.setUserSid(SidUtils.generate());
+      logHistory.setObjectState(ObjectStateEnum.ACTIVE);
+      logHistory.setDate(new Date());
+      logHistory.setLogin("login");
+      logHistory.setSuccess(true);
+      return logHistory;
+   }
 }

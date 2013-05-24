@@ -1,14 +1,18 @@
 package com.fm.server;
 
 import com.fm.domain.User;
+import com.fm.domain.UserLogHistory;
 import com.fm.security.service.ISecurityService;
 import com.fm.service.IAuthorityService;
+import com.fm.service.IUserLogHistoryService;
 import com.fm.service.IUserService;
 import org.apache.wicket.Session;
 import org.apache.wicket.authroles.authentication.AuthenticatedWebSession;
 import org.apache.wicket.authroles.authorization.strategies.role.Roles;
 import org.apache.wicket.injection.Injector;
+import org.apache.wicket.protocol.http.request.WebClientInfo;
 import org.apache.wicket.request.Request;
+import org.apache.wicket.request.cycle.RequestCycle;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -18,6 +22,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -38,6 +43,9 @@ public class AdminSession extends AuthenticatedWebSession
 
    @SpringBean
    private IUserService userService;
+
+   @SpringBean
+   private IUserLogHistoryService userLogHistoryService;
 
    @SpringBean
    private IAuthorityService authorityService;
@@ -65,7 +73,29 @@ public class AdminSession extends AuthenticatedWebSession
       {
          authenticated = false;
       }
+
+      createUserLogHistory(userName, authenticated);
       return authenticated;
+   }
+
+   private void createUserLogHistory(String login, boolean authenticated)
+   {
+      WebClientInfo info = new WebClientInfo(RequestCycle.get());
+      String ip = info.getProperties().getRemoteAddress();
+
+      UserLogHistory logHistory = new UserLogHistory();
+      logHistory.setDate(new Date());
+      logHistory.setSuccess(authenticated);
+      logHistory.setLogin(login);
+      logHistory.setIp(ip);
+
+      User user = userService.getByLogin(login);
+      if (user != null)
+      {
+         logHistory.setUserSid(user.getSid());
+      }
+
+      userLogHistoryService.save(logHistory);
    }
 
    public static AdminSession get()
