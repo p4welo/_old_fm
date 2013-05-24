@@ -3,6 +3,7 @@ package com.fm.dao.impl;
 import com.fm.dao.IManagerDao;
 import com.fm.domain.Manager;
 import com.fm.domain.ObjectStateEnum;
+import com.fm.domain.Team;
 import com.fm.domain.filter.AbstractFilter;
 import com.fm.domain.filter.FmFilter;
 import org.apache.commons.lang3.StringUtils;
@@ -44,5 +45,14 @@ public class ManagerDaoImpl extends AbstractDaoImpl<Manager> implements IManager
       }
 
       return criteria;
+   }
+
+   @Override
+   public Manager getByTeam(Team team)
+   {
+      Criteria criteria = createCriteria();
+      criteria.add(Restrictions.eq(Manager.FIELD_TEAM, team));
+      criteria.setMaxResults(1);
+      return (Manager) criteria.uniqueResult();
    }
 }

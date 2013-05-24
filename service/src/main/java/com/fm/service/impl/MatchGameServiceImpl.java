@@ -3,10 +3,7 @@ package com.fm.service.impl;
 import com.fm.dao.IAbstractDao;
 import com.fm.dao.IMatchGameDao;
 import com.fm.domain.*;
-import com.fm.service.IMatchGameService;
-import com.fm.service.IPlayerService;
-import com.fm.service.IPlayerStatsService;
-import com.fm.service.ISeasonService;
+import com.fm.service.*;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -35,10 +32,13 @@ public class MatchGameServiceImpl extends AbstractServiceImpl<MatchGame> impleme
    @Resource
    private IPlayerService playerService;
 
+   @Resource
+   private ITeamStatsService teamStatsService;
+
    @Override
    protected IAbstractDao<MatchGame> getDao()
    {
-      return (IAbstractDao<MatchGame>) matchGameDao;
+      return matchGameDao;
    }
 
    @Override
@@ -60,8 +60,11 @@ public class MatchGameServiceImpl extends AbstractServiceImpl<MatchGame> impleme
       matchGame.setHostName(hostTeam.getName());
       matchGame.setMatchDate(new Date());
       matchGame.setSeason(season);
+      matchGame.setStatus(MatchGameStatusEnum.FINISHED);
       matchGame.setRound(round);
       matchGame = save(matchGame);
+
+      teamStatsService.createTeamStats(hostTeam, hostScores, guestTeam, guestScores, season, matchGame);
 
       for (int i = 0; i < hostScores; i++)
       {

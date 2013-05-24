@@ -1,6 +1,7 @@
 package com.fm.service;
 
 import com.fm.domain.Manager;
+import com.fm.domain.Team;
 
 /**
  * User: pawel
@@ -10,4 +11,6 @@ import com.fm.domain.Manager;
 public interface IManagerService extends IAbstractService<Manager>
 {
    Manager createNewManager(Manager manager);
+
+   Manager getByTeam(Team team);
 }
