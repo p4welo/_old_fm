@@ -88,6 +88,7 @@ public class TestDomainObjectFactory
       game.setGuestSid(SidUtils.generate());
       game.setMatchDate(new Date());
       game.setSeason(season);
+      game.setStatus(MatchGameStatusEnum.FINISHED);
       game.setRound(3);
       return game;
    }
