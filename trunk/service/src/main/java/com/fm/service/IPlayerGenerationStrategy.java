@@ -16,11 +16,11 @@ public interface IPlayerGenerationStrategy
 
    int getPotential(int age);
 
-   int getHighAbility();
+   float getHighAbility();
 
-   int getStandardAbility();
+   float getStandardAbility();
 
-   int getLowAbility();
+   float getLowAbility();
 
    Player getGoalkeeper(Team team);
 

@@ -53,7 +53,7 @@ public class PlayerGenerationStrategyImpl implements IPlayerGenerationStrategy
    }
 
    @Override
-   public int getHighAbility()
+   public float getHighAbility()
    {
       double m = 15.0;
       double s = 2;
@@ -62,7 +62,7 @@ public class PlayerGenerationStrategyImpl implements IPlayerGenerationStrategy
    }
 
    @Override
-   public int getStandardAbility()
+   public float getStandardAbility()
    {
       double m = 15.0;
       double s = 10 / 3;
@@ -71,7 +71,7 @@ public class PlayerGenerationStrategyImpl implements IPlayerGenerationStrategy
    }
 
    @Override
-   public int getLowAbility()
+   public float getLowAbility()
    {
       double m = 5;
       double s = 2;

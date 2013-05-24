@@ -10,4 +10,16 @@ CREATE TABLE user_log_history (
     success BOOLEAN NOT NULL,
     UNIQUE (sid)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+ALTER TABLE player CHANGE speed speed FLOAT;
+ALTER TABLE player CHANGE stamina stamina FLOAT;
+ALTER TABLE player CHANGE crossing crossing FLOAT;
+ALTER TABLE player CHANGE passing passing FLOAT;
+ALTER TABLE player CHANGE heading heading FLOAT;
+ALTER TABLE player CHANGE marking marking FLOAT;
+ALTER TABLE player CHANGE shots shots FLOAT;
+ALTER TABLE player CHANGE tackling tackling FLOAT;
+ALTER TABLE player CHANGE dribbling dribbling FLOAT;
+ALTER TABLE player CHANGE goalkeeping goalkeeping FLOAT;
+
 COMMIT;
