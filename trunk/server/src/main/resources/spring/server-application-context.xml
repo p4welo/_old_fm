@@ -9,6 +9,7 @@
     <import resource="classpath:spring/dao-context.xml"/>
     <import resource="classpath:spring/service-context.xml"/>
     <import resource="classpath:spring/security-context.xml"/>
+    <!--<import resource="classpath:spring/cron-context.xml"/>-->
 
     <!-- WEB -->
     <import resource="classpath:spring/server-configuration-context.xml"/>
