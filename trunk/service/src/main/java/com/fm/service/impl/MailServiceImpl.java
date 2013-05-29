@@ -1,5 +1,6 @@
 package com.fm.service.impl;
 
+import com.fm.context.ServerEndpointHolder;
 import com.fm.domain.Email;
 import com.fm.service.IMailService;
 import org.apache.commons.lang3.CharEncoding;
@@ -28,32 +29,10 @@ public class MailServiceImpl implements IMailService
       message.setTo("p4welo@gmail.com");
       message.setFrom("p4welo@gmail.com");
       message.setSubject("User Registration successful");
-      message.setText("The user ");
+      message.setText("The user " + ServerEndpointHolder.getEndpoint());
 
       javaMailSender.send(message);
    }
-
-//   @Override
-//   public void sendMail(String from, String to, String subject, String body)
-//   {
-//      SimpleMailMessage simpleMailMessage = createSimpleMailMessage(from, new String[]{to}, null, null, subject, body);
-//      javaMailSender.send(simpleMailMessage);
-//   }
-//
-//   @Override
-//   public void sendMail(String from, String to, String cc, String subject, String body)
-//   {
-//      SimpleMailMessage simpleMailMessage = createSimpleMailMessage(from, new String[]{to}, new String[]{cc}, null,
-//              subject, body);
-//      javaMailSender.send(simpleMailMessage);
-//   }
-//
-//   @Override
-//   public void sendMail(String from, String to[], String[] cc, String replyTo, String subject, String content)
-//   {
-//      SimpleMailMessage simpleMailMessage = createSimpleMailMessage(from, to, cc, replyTo, subject, content);
-//      javaMailSender.send(simpleMailMessage);
-//   }
 
    @Override
    public void sendHtmlMail(String from, String to, String subject, String body) throws MessagingException
@@ -69,21 +48,6 @@ public class MailServiceImpl implements IMailService
               email.getSubject(), email.getContent());
       javaMailSender.send(mimeMessage);
    }
-
-//   @Override
-//   public void sendHtmlMail(String from, String to, String cc, String subject, String body) throws MessagingException
-//   {
-//      MimeMessage mimeMessage = createHtmlMessage(from, new String[]{to}, new String[]{cc}, null, subject, body);
-//      javaMailSender.send(mimeMessage);
-//   }
-//
-//   @Override
-//   public void sendHtmlMail(String from, String[] to, String[] cc, String replyTo, String subject, String content)
-//           throws MessagingException
-//   {
-//      MimeMessage mimeMessage = createHtmlMessage(from, to, cc, replyTo, subject, content);
-//      javaMailSender.send(mimeMessage);
-//   }
 
    private SimpleMailMessage createSimpleMailMessage(String from, String to[], String[] cc, String replyTo,
                                                      String subject, String content)

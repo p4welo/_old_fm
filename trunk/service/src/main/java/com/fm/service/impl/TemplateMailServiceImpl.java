@@ -1,5 +1,6 @@
 package com.fm.service.impl;
 
+import com.fm.context.ServerEndpointHolder;
 import com.fm.domain.Email;
 import com.fm.domain.User;
 import com.fm.service.IMailService;
@@ -27,7 +28,11 @@ public class TemplateMailServiceImpl implements ITemplateMailService
    @Override
    public void sendAccountActivationMail(User user)
    {
-      Email email = new Email(sender, user.getEmail(), "aktywacja", "WELCOME");
+      Email email = new Email(
+              sender,
+              user.getEmail(),
+              "aktywacja",
+              ServerEndpointHolder.getEndpoint());
       try
       {
          mailService.sendEmail(email);

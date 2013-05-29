@@ -1,10 +1,12 @@
-package com.fm.server.pages;
+package com.fm.server.pages.registerPage;
 
 import com.fm.core.cmp.feedback.CssFeedbackPanel;
 import com.fm.core.cmp.web.BootstrapPasswordFieldPanel;
 import com.fm.core.cmp.web.BootstrapTextFieldPanel;
 import com.fm.domain.User;
 import com.fm.server.api.ServerApiMapping;
+import com.fm.server.pages.loginPage.LoginPage;
+import com.fm.server.pages.registerPage.cmp.thread.RegistrationThread;
 import com.fm.service.IUserService;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.wicket.ajax.AjaxRequestTarget;
@@ -122,7 +124,8 @@ public class RegisterPage extends WebPage
             }
             else
             {
-               userService.registerUser(user);
+               Thread registration = new Thread(new RegistrationThread(user, userService));
+               registration.start();
                success = true;
             }
 

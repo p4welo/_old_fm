@@ -1,7 +1,7 @@
 package com.fm.server;
 
 import com.fm.admin.pages.leagueListPage.LeagueListPage;
-import com.fm.server.pages.LoginPage;
+import com.fm.server.pages.loginPage.LoginPage;
 import org.apache.wicket.Application;
 import org.apache.wicket.Page;
 import org.apache.wicket.authroles.authentication.AbstractAuthenticatedWebSession;
