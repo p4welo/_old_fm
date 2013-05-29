@@ -3,12 +3,12 @@
 }
 
 .startScene.startPageBackground {
-    background: url('img/bg2.jpg') no-repeat center;
+    background: url('../img/bg2.jpg') no-repeat center;
     height: 1000px;
     background-size: cover;
 }
 
-.container {
+.registerContainer {
     margin-right: auto;
     margin-left: auto;
     margin-top: 120px;
@@ -52,9 +52,9 @@
     margin-left: 57px;
 }
 
-.startScene.startPageBackground .contentWrapper {
-    padding-top: 200px;
-}
+/*.startScene.startPageBackground .contentWrapper {*/
+/*padding-top: 200px;*/
+/*}*/
 
 .startScene.loginScene.startPageBackground .contentWrapper {
     padding-right: 0;

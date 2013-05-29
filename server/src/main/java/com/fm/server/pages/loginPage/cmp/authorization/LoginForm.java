@@ -1,13 +1,17 @@
-package com.fm.server.cmp.authorization;
+package com.fm.server.pages.loginPage.cmp.authorization;
 
 import com.fm.admin.pages.leagueListPage.LeagueListPage;
+import com.fm.core.cmp.authorization.UserAuthorities;
 import com.fm.core.cmp.feedback.CssFeedbackPanel;
+import com.fm.security.service.ISecurityService;
+import com.fm.user.TestPage;
 import org.apache.wicket.authroles.authentication.AuthenticatedWebSession;
 import org.apache.wicket.feedback.ComponentFeedbackMessageFilter;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.PasswordTextField;
 import org.apache.wicket.markup.html.form.RequiredTextField;
 import org.apache.wicket.model.CompoundPropertyModel;
+import org.apache.wicket.spring.injection.annot.SpringBean;
 
 /**
  * Created with IntelliJ IDEA.
@@ -18,6 +22,9 @@ import org.apache.wicket.model.CompoundPropertyModel;
  */
 public class LoginForm extends Form
 {
+   @SpringBean
+   private ISecurityService securityService;
+
    private String username;
 
    private String password;
@@ -43,9 +50,15 @@ public class LoginForm extends Form
       AuthenticatedWebSession session = AuthenticatedWebSession.get();
       if (session.signIn(username, password))
       {
-         setResponsePage(LeagueListPage.class);
-//         if (((AdminSession) Session.get()).getUser()
-//         setDefaultResponsePageIfNecessary();
+         if (securityService.hasRole(UserAuthorities.ADMIN))
+         {
+            setResponsePage(LeagueListPage.class);
+         }
+         else if (securityService.hasRole(UserAuthorities.USER))
+         {
+            setResponsePage(TestPage.class);
+         }
+
       }
       else
       {

@@ -13,7 +13,6 @@ public class PasswordTest
    @Test
    public void testSpringEncoder()
    {
-
       PasswordEncoder encoder = new ShaPasswordEncoder(256);
       String hashedPass = encoder.encodePassword("test", null);
 

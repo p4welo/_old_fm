@@ -1,7 +1,8 @@
-package com.fm.server.pages;
+package com.fm.server.pages.loginPage;
 
 import com.fm.server.api.ServerApiMapping;
-import com.fm.server.cmp.authorization.LoginForm;
+import com.fm.server.pages.loginPage.cmp.authorization.LoginForm;
+import com.fm.server.pages.registerPage.RegisterPage;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.markup.html.WebPage;
