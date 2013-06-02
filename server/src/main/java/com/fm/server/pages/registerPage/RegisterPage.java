@@ -1,12 +1,12 @@
 package com.fm.server.pages.registerPage;
 
-import com.fm.core.cmp.feedback.CssFeedbackPanel;
 import com.fm.core.cmp.web.BootstrapPasswordFieldPanel;
 import com.fm.core.cmp.web.BootstrapTextFieldPanel;
 import com.fm.domain.User;
 import com.fm.server.api.ServerApiMapping;
 import com.fm.server.pages.loginPage.LoginPage;
 import com.fm.server.pages.registerPage.cmp.thread.RegistrationThread;
+import com.fm.server.pages.registerPage.cmp.validator.LoginUniqueValidator;
 import com.fm.service.IUserService;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.wicket.ajax.AjaxRequestTarget;
@@ -75,11 +75,11 @@ public class RegisterPage extends WebPage
       registerPanel.setOutputMarkupPlaceholderTag(true);
       Form form = new Form("registerForm");
       form.setOutputMarkupId(true);
-      form.add(new CssFeedbackPanel("feedback"));
 
       BootstrapTextFieldPanel login = new BootstrapTextFieldPanel("login",
               new PropertyModel(this, "user." + User.FIELD_LOGIN), "span4");
       login.setValidation();
+      login.addValidator(new LoginUniqueValidator());
       form.add(login);
 
       BootstrapPasswordFieldPanel password = new BootstrapPasswordFieldPanel("password",
@@ -137,6 +137,14 @@ public class RegisterPage extends WebPage
          protected void onError(AjaxRequestTarget target, Form<?> form)
          {
             target.add(form);
+         }
+      });
+      form.add(new Link<Void>("return")
+      {
+         @Override
+         public void onClick()
+         {
+            setResponsePage(LoginPage.class);
          }
       });
       registerPanel.add(form);

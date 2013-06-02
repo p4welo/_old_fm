@@ -19,8 +19,8 @@
         <div style="width: 100%; z-index: 9999;">
             <img style="position:relative; top: -250px; " class="pull-right" src="static/img/fmlogo2.png">
         </div>
-        <form wicket:id="registerForm" class="form-horizontal register_form">
-            <div wicket:id="feedback"></div>
+        <!--<form wicket:id="registerForm" class="form-horizontal register_form">-->
+        <form wicket:id="registerForm">
             <fieldset>
                 <legend>
                     <wicket:message key="account.data"/>
@@ -43,8 +43,14 @@
                 </legend>
                 <div wicket:id="team"></div>
             </fieldset>
-            <input wicket:id="submit" type="submit" class="btn btn-success pull-right"
-                   wicket:message="value:button.register"/>
+            <!--<input wicket:id="submit" type="submit" class="btn btn-success pull-right"-->
+            <!--wicket:message="value:button.register"/>-->
+            <a wicket:id="submit" class="btn btn-success pull-right">
+                <wicket:message key="button.register"/>
+            </a>
+            <a class="btn pull-right" wicket:id="return">
+                <wicket:message key="button.return"/>
+            </a>
         </form>
     </div>
     <div class="loginScene" wicket:id="confirmPanel">

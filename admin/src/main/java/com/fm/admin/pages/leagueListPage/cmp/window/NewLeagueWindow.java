@@ -1,6 +1,5 @@
 package com.fm.admin.pages.leagueListPage.cmp.window;
 
-import com.fm.core.cmp.progress.ProgressBar;
 import com.fm.core.cmp.web.BootstrapCheckBoxPanel;
 import com.fm.core.cmp.web.BootstrapTextFieldPanel;
 import com.fm.core.cmp.window.AbstractWindow;
@@ -46,17 +45,6 @@ public class NewLeagueWindow extends AbstractWindow
       BootstrapCheckBoxPanel checkBox = new BootstrapCheckBoxPanel("generateTeams",
               new PropertyModel<Boolean>(this, "generateTeams"));
       form.add(checkBox);
-//      WebComponent progressBar = new WebComponent("progress")
-//      {
-//         @Override
-//         protected void onComponentTag(ComponentTag tag)
-//         {
-//            tag.getAttributes().put("style", "width: " + progress.getValue() + "%");
-//            super.onComponentTag(tag);
-//         }
-//      };
-//      progressBar.add(new AjaxSelfUpdatingTimerBehavior(Duration.ONE_SECOND));
-      form.add(new ProgressBar("progress", PropertyModel.of(this, "progress." + Progress.FIELD_VALUE)));
    }
 
    public void resetState()

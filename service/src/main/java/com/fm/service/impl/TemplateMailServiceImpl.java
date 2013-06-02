@@ -25,6 +25,8 @@ public class TemplateMailServiceImpl implements ITemplateMailService
 
    private String sender;
 
+   private String serverAbsolutePath;
+
    @Override
    public void sendAccountActivationMail(User user)
    {
@@ -46,5 +48,10 @@ public class TemplateMailServiceImpl implements ITemplateMailService
    public void setSender(String sender)
    {
       this.sender = sender;
+   }
+
+   public void setServerAbsolutePath(String serverAbsolutePath)
+   {
+      this.serverAbsolutePath = serverAbsolutePath;
    }
 }
