@@ -8,6 +8,7 @@ import com.fm.server.pages.loginPage.LoginPage;
 import com.fm.server.pages.registerPage.cmp.thread.RegistrationThread;
 import com.fm.server.pages.registerPage.cmp.validator.LoginUniqueValidator;
 import com.fm.service.IUserService;
+import com.fm.user.TestPage;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.form.AjaxSubmitLink;
@@ -144,7 +145,8 @@ public class RegisterPage extends WebPage
          @Override
          public void onClick()
          {
-            setResponsePage(LoginPage.class);
+            setResponsePage(TestPage.class);
+//            setResponsePage(LoginPage.class);
          }
       });
       registerPanel.add(form);

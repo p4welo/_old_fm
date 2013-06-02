@@ -36,6 +36,7 @@ public class AdminApplication extends AuthenticatedWebApplication
       getDebugSettings().setAjaxDebugModeEnabled(false);
       getRequestCycleSettings().setRenderStrategy(IRequestCycleSettings.RenderStrategy.ONE_PASS_RENDER);
       new AnnotatedMountScanner().scanPackage("com.fm.admin").mount(this);
+      new AnnotatedMountScanner().scanPackage("com.fm.user").mount(this);
    }
 
    public static AdminApplication get()
