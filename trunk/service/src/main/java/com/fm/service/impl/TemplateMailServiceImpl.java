@@ -1,6 +1,5 @@
 package com.fm.service.impl;
 
-import com.fm.context.ServerEndpointHolder;
 import com.fm.domain.Email;
 import com.fm.domain.User;
 import com.fm.service.IMailService;
@@ -30,11 +29,40 @@ public class TemplateMailServiceImpl implements ITemplateMailService
    @Override
    public void sendAccountActivationMail(User user)
    {
+      String subject = "[FM] Aktywacja konta";
+      String activationLink = serverAbsolutePath + "/user/" + user.getSid() + "/activation";
+
+      StringBuilder body = new StringBuilder();
+      body.append("Witaj,");
+      body.append("<br/><br/>");
+      body.append("dziękujemy za zarejestrowanie się w grze Football Manager!");
+      body.append("<br/><br/>");
+      body.append("Kliknij w poniższy link w celu aktywacji konta:");
+      body.append("<br/>");
+      body.append("<a href='");
+      body.append(activationLink);
+      body.append("'>");
+      body.append(activationLink);
+      body.append("</a>");
+      body.append("<br/><br/>");
+      body.append("Login: ");
+      body.append(user.getLogin());
+      body.append("<br/>");
+      body.append("Manager: ");
+      body.append(user.getManagerName());
+      body.append(" ");
+      body.append(user.getManagerSurname());
+      body.append("<br/>");
+      body.append("Klub: ");
+      body.append(user.getTeamName());
+      body.append("<br/><br/>");
+      body.append("Jeżeli nie zarejestrowałeś się do naszej gry, zignoruj niniejszą wiadomość.");
+
       Email email = new Email(
               sender,
               user.getEmail(),
-              "aktywacja",
-              ServerEndpointHolder.getEndpoint());
+              subject,
+              body.toString());
       try
       {
          mailService.sendEmail(email);
