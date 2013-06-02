@@ -15,5 +15,6 @@
 
     <bean id="templateMailService" class="com.fm.service.impl.TemplateMailServiceImpl">
         <property name="sender" value="${mail.sender}"/>
+        <property name="serverAbsolutePath" value="${server.absolute.path}"/>
     </bean>
 </beans>

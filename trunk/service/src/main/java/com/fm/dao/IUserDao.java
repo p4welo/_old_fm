@@ -11,5 +11,5 @@ public interface IUserDao extends IAbstractDao<User>
 {
    User findByLogin(String login);
 
-//   User authenticate(String login, String password);
+   User findByEmail(String email);
 }

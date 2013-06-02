@@ -23,15 +23,12 @@ public class UserDaoImpl extends AbstractDaoImpl<User> implements IUserDao
       return (User) criteria.uniqueResult();
    }
 
-//   @Override
-//   public User authenticate(String login, String password)
-//   {
-//      Query query = getSessionFactory().getCurrentSession().createSQLQuery(
-//              "select * from user u where u.login = :login and u.password = md5(:password)")
-//              .addEntity(User.class)
-//              .setParameter(User.FIELD_LOGIN, login)
-//              .setParameter(User.FIELD_PASSWORD, password);
-//      User result = (User) query.uniqueResult();
-//      return result;
-//   }
+   @Override
+   public User findByEmail(String email)
+   {
+      Criteria criteria = createCriteria();
+      criteria.add(Restrictions.eq(User.FIELD_EMAIL, email));
+      criteria.setMaxResults(1);
+      return (User) criteria.uniqueResult();
+   }
 }

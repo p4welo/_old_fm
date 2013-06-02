@@ -68,6 +68,13 @@ public class UserServiceImpl extends AbstractServiceImpl<User> implements IUserS
    }
 
    @Override
+   @Transactional(readOnly = true)
+   public User getByEmail(String email)
+   {
+      return userDao.findByEmail(email);
+   }
+
+   @Override
    @Transactional
    public User getByLogin(String login)
    {
