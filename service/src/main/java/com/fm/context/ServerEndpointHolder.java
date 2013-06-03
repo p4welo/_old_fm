@@ -6,7 +6,7 @@ public class ServerEndpointHolder
 {
    private static final ThreadLocal<String> HOLDER = new ThreadLocal<String>();
 
-   private static final String DEFAULT_ENDPOINT = "http://localhost";
+   private static final String DEFAULT_ENDPOINT = "http://localhostWRONG";
 
    public static void clearEndpoint()
    {
