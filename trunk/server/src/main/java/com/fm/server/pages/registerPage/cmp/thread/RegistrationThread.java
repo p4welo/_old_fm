@@ -12,17 +12,20 @@ public class RegistrationThread implements Runnable
 {
    private final User user;
 
+   private String serverEndpoint;
+
    private final IUserService userService;
 
-   public RegistrationThread(User user, IUserService userService)
+   public RegistrationThread(User user, String serverEndpoint, IUserService userService)
    {
       this.user = user;
+      this.serverEndpoint = serverEndpoint;
       this.userService = userService;
    }
 
    @Override
    public void run()
    {
-      userService.registerUser(user);
+      userService.registerUser(user, serverEndpoint);
    }
 }

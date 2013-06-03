@@ -56,13 +56,13 @@ public class UserServiceImpl extends AbstractServiceImpl<User> implements IUserS
 
    @Override
    @Transactional
-   public User registerUser(User user)
+   public User registerUser(User user, String serverEndpoint)
    {
       user.setSid(SidUtils.generate());
       user.setObjectState(ObjectStateEnum.INACTIVE);
       user = save(user);
 
-      templateMailService.sendAccountActivationMail(user);
+      templateMailService.sendAccountActivationMail(user, serverEndpoint);
 
       return user;
    }

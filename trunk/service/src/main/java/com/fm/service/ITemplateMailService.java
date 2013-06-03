@@ -11,5 +11,5 @@ import com.fm.domain.User;
  */
 public interface ITemplateMailService
 {
-   void sendAccountActivationMail(User user);
+   void sendAccountActivationMail(User user, String serverEndpoint);
 }

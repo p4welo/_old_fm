@@ -13,7 +13,7 @@ public interface IUserService extends IAbstractService<User>
 
    User changePassword(User user, String password);
 
-   User registerUser(User user);
+   User registerUser(User user, String serverEndpoint);
 
    User getByEmail(String email);
 }
