@@ -1,5 +1,6 @@
 package com.fm.server.pages.registerPage;
 
+import com.fm.context.ServerEndpointHolder;
 import com.fm.core.cmp.web.BootstrapPasswordFieldPanel;
 import com.fm.core.cmp.web.BootstrapTextFieldPanel;
 import com.fm.domain.User;
@@ -35,10 +36,13 @@ public class RegisterPage extends WebPage
 
    private String confirmedPassword;
 
+   private String serverEndpoint;
+
    private Boolean success = false;
 
    public RegisterPage()
    {
+      serverEndpoint = ServerEndpointHolder.getEndpoint();
    }
 
    @Override
@@ -125,7 +129,7 @@ public class RegisterPage extends WebPage
             }
             else
             {
-               Thread registration = new Thread(new RegistrationThread(user, userService));
+               Thread registration = new Thread(new RegistrationThread(user, serverEndpoint, userService));
                registration.start();
                success = true;
             }

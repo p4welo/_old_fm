@@ -1,6 +1,5 @@
 package com.fm.service.impl;
 
-import com.fm.context.ServerEndpointHolder;
 import com.fm.domain.Email;
 import com.fm.domain.User;
 import com.fm.service.IMailService;
@@ -28,11 +27,10 @@ public class TemplateMailServiceImpl implements ITemplateMailService
    private String serverAbsolutePath;
 
    @Override
-   public void sendAccountActivationMail(User user)
+   public void sendAccountActivationMail(User user, String serverEndpoint)
    {
       String subject = "[FM] Aktywacja konta";
-      String endpoint = ServerEndpointHolder.getEndpoint();
-      String activationLink = endpoint + "/user/" + user.getSid() + "/activation";
+      String activationLink = serverEndpoint + "/user/" + user.getSid() + "/activation";
 
       StringBuilder body = new StringBuilder();
       body.append("Witaj,");

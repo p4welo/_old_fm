@@ -27,7 +27,6 @@ public class UserActivationPage extends WebPage implements Serializable, UserApi
    public UserActivationPage(PageParameters parameters)
    {
       super(parameters);
-//      RequestCycle.get().getRequest().getOriginalUrl();
       User user = getUser(parameters);
    }
 
