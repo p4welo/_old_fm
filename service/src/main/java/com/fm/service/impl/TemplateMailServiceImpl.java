@@ -27,10 +27,10 @@ public class TemplateMailServiceImpl implements ITemplateMailService
    private String serverAbsolutePath;
 
    @Override
-   public void sendAccountActivationMail(User user, String serverEndpoint)
+   public void sendAccountActivationMail(User user, String endpoint)
    {
       String subject = "[FM] Aktywacja konta";
-      String activationLink = serverEndpoint + "/user/" + user.getSid() + "/activation";
+      String activationLink = endpoint + "/user/" + user.getSid() + "/activation";
 
       StringBuilder body = new StringBuilder();
       body.append("Witaj,");

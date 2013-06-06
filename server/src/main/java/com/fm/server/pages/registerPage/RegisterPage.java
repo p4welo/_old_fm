@@ -36,13 +36,10 @@ public class RegisterPage extends WebPage
 
    private String confirmedPassword;
 
-   private String serverEndpoint;
-
    private Boolean success = false;
 
    public RegisterPage()
    {
-      serverEndpoint = ServerEndpointHolder.getEndpoint();
    }
 
    @Override
@@ -129,7 +126,8 @@ public class RegisterPage extends WebPage
             }
             else
             {
-               Thread registration = new Thread(new RegistrationThread(user, serverEndpoint, userService));
+               Thread registration = new Thread(
+                       new RegistrationThread(user, ServerEndpointHolder.getEndpoint(), userService));
                registration.start();
                success = true;
             }
