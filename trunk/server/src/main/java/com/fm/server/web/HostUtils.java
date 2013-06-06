@@ -19,8 +19,6 @@ public class HostUtils
 
    public static final String STR2 = ":";
 
-   public static final String DEFAULT_SERVER = "www.football-manager.com.pl";
-
    public static String buildServerEndPoint(ServletRequest request)
    {
       if (request == null || !(request instanceof HttpServletRequest))
@@ -44,47 +42,35 @@ public class HostUtils
          sb.append(scheme);
       }
       sb.append(STR1);
-
-      String resultServer;
       if (StringUtils.isNotBlank(server))
       {
-         resultServer = server;
+         sb.append(server);
       }
       else
       {
-         resultServer = request.getServerName();
+         sb.append(request.getServerName());
       }
-
-      String resultPort = new String();
       if (StringUtils.isNotBlank(port))
       {
          if (HTTP.equals(scheme))
          {
             if (!DEFAULT_HTTP_PORT.equals(port))
             {
-               resultPort = STR2 + port;
+               sb.append(STR2).append(port);
             }
          }
          else
          {
             if (!DEFAULT_HTTPS_PORT.equals(port))
             {
-               resultPort = STR2 + port;
+               sb.append(STR2).append(port);
             }
          }
       }
       else
       {
-         resultPort = STR2 + request.getServerPort();
+         sb.append(STR2).append(request.getServerPort());
       }
-
-      if (StringUtils.isNotBlank(resultPort))
-      {
-         resultServer = DEFAULT_SERVER;
-      }
-
-      sb.append(resultServer);
-      sb.append(resultPort);
 
       sb.append(httpRequest.getContextPath());
       return sb.toString();
